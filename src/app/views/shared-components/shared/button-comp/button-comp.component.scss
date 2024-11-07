@@ -1,0 +1,18 @@
+
+    .prodBtn{
+        border-radius: 15px;
+        width: 100%;
+        height: 50px;
+        img{
+            width: 30px;
+        }
+        span{
+            font-size: 12px;
+          }
+          @media only screen and (max-width: 769px) {
+            width: 100%;
+              span{
+                  font-size: 10px;
+              }
+       }
+    }

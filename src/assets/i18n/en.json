@@ -1,0 +1,1329 @@
+{
+  "LANDING":{
+  "HOME":"Home",    
+  "fatorhPro":"FATORAH PRO",
+  "mainTitle1":"Create Professional Invoices,",
+  "mainTitle2":"Send It To Customers",
+  "description":"Fatorah pro is an invoiceing software as service authorized from Zakat, Tax and Customs Authority that enable you to create your own electronic invoices for your business and sends them to your customers for free, and you can also manage, organize and save them.",
+  "createFreeInvoice":"Create Invoice for free",
+  "FEATURES":"Fatorah Features",
+  "FEATUREDESCR":"Fawateh Pro offers several advantages for store owners, small and medium enterprises, among the features provided:",
+  "EASYTOUSE":"Easy to use",
+  "EASYTOUSEDESC":"The user can create new account and activate it, Then manage his invoices easily through his own control panel.",
+  "FASTACCESS":"Fast access",
+  "FASTACCESSDESC":"You can manage the invoices of your customers and products on a professional control panel.",
+  "GENERALSTATISTICS":"General statistics",
+  "GENERALSTATISTICSDESC":"Fatorah Pro provides a statistics on your invoices, products, customers, and your sales during the months.",
+  "ONLINEINVOICES":"Online Invoices",
+  "ONLINEINVOICESDESC":"Fatorah Pro enables you to get a perfect design of invoices, print or send them to your customers directly, without papers.",
+  "HIGHSECURITY":"High secure",
+  "HIGHSECURITYDESC":"Fatorah Pro service provides a high security and protection, Your information and invoices are confidential.",
+  "MULTILANGUAGE":"Multi languages",
+  "MULTILANGUAGEDESC":"Fatorah Pro is multi language, you can create invoices for your customers in both Arabic and English Language.",
+  "ABOUTUS":"ABOUT US",
+  "ABOUTFATORAHPRO":"About fatorah pro",
+  "ABOUTFATORAHPRODESC":"Fateh Pro website: It is a system that makes it easier for the owners of projects or stores to easily create invoices and send them to their customers without fees or complicated requirements and facilitate the use of electronic invoices instead of papers, electronic transactions instead of papers without papers, printing and design costs.",
+  "ABOUTUS1":"Simplifying the mechanism of creating invoices, recording and receiving them for non-experts in the accounting field.",
+  "ABOUTUS2":"Saving time and effort for non-specialists and securing the time needed for them to develop their business.",
+  "USERS":"Users",
+  "INVOICES":"Invoices",
+  "PRODUCTS":"Products",
+  
+  "HOWWORKS":"HOW WORKS",
+  "HOWFATORAPROWORK":"How fatorah pro works",
+  "HOWFATORAPROWORKDESC":"With fatorah pro, you can create invoices and issue them to your customers via a direct link or by printing them as a pdf file.",
+  "CREATEACOUNT":"Create account",
+  "CREATEACOUNTDESC":"Create new a account, then activate it either with your phone number or your email.",
+  "ADDCUSTOMERS":"Add customers",
+  "ADDCUSTOMERSDESC":"After activating your account, add your customers list from your dashboard.",
+  "CREATEINVOICE":"Create invoices",
+  "CREATEINVOICEDESC":"Create your customers's invoice, print and send it to them.",
+  "FAQS":"FAQS",
+  "REUEQUANTQUAST":"Frequently fatorah pro asked questions",
+  "QUEST1":"How Fatorah pro will save my invoices?",
+  "ANSWER1":"Answer : Throught the user's control panel after activating the account.",
+  "QUEST2":"Are there any fees for this services?",
+  "ANSWER2":"Answer : No, Fatorah pro service is completely free.",
+  "QUEST3":"Are all stores can benefit from fatorah pro?",
+  "ANSWER3":"Answer : Yes, Anyone who ones projects or has a clients can benifits from fatorah pro.",
+  "QUEST4":"Is there privacy on my invoices ?",
+  "ANSWER4":"Answer : Absolutely, no one can see your invoices or has access on them excepts you.",
+  "QUEST5":"How can i contact us?",
+  "ANSWER5":"Answer : In case of your inquiries and contacts: You can contact us via social media linksm, and contact numbers or direclty from the contact us form.",
+  "SUBSCRIPTIONS":"SUBSCRIPTIONS",
+  "SUBSCRIPTIONPACKAGES":"Subscription packages",
+  "MONTHLY":"MONTHLY",
+  "YEARLY":"YEARLY",
+  "SUBSCRIPTION":"subscription",
+  "CONTACTUS":"CONTACT US",
+  "CONTACTUSFATORAHPRO":"Contact us fatorah pro",
+  "ENTERYOURMESSAGE":"Enter your message here",
+  "NAME":"full name",
+  "EMAIL":"email",
+  "SUBJECT":"subject",
+  "MESSAGE":"Enter Your Message Her",
+  "SENDMESSAGE":"send message",
+  "FOOTERDESC":"It is a system that makes it easy for the owners of projects or stores to easily create invoices and send them to their customers without fees or complicated requirements and facilitate the use of electronic invoices instead of papers.",
+  "SUBSCRIBETONEWSLETTER":"Subscribe to Newsletter",
+  "ENTERYOUREMAIL":"Enter you email",
+  "ADDRESS":"Address",
+  "PHONE":"Phone",
+  "LOGIN":"Login",
+  "LOGOUT":"Logout",
+  "LANG":"Language",
+  "COPYRIGHTS":"All rights reserved ©2024 Farotah pro",
+  "TERMS":"Terms and conditions && Privacy policy",
+  "CONTACTUSFOOTER":" Contact us ",
+  "SEND":"Send message",
+  "MONTHLYDES":"Monthly",
+  "YEARLYDES":"Yearly",
+  "CREATEINVOICEBTN":"Create your invoices now",
+  "INVALIDPHONE":"Invalid Phone"
+  
+  },
+  "TABLE":{
+      "ADDNEWINVOICE":"Add New Invoice",
+      "DOWNLOAD":"Download",
+      "DOWNLOADINVOICE":"Download Invoice",
+      "VERIFIED":"Activated",
+      "VERIFY":"Activate",
+      "NOTVERIFIED":"Not active",
+      "ENTER":"Enter",
+      "PLANFEATURES":"Display Plan Features",
+  
+      "ADDRECEIPTS":" Create receipt ",
+      "ADDCREDIT":" Create credit note ",
+      "ADDDEBIT":" Create debit note ",
+
+      "EXPENSE":"Expense",
+      "CANTCREATCREDIT": "Cannot create a credit note because the invoice has been fully returned or is more than 15 days old."
+  },
+  "CREDITNOTICE":{
+  "TITLE":"List credit notes",
+  "SUBTITLE":"Credit notes list",
+  "SEARCH":"Search",
+  "CREDITNOTICEDETAILSDISPLAY":"Credit notes details",
+  
+  "CREDITNOTICEDETAILS":"Credit notes details",
+  "CREDITNOTICE":"Credit Notes",
+  "CREATE":"Add Credit Notes",
+  
+  "CREDITNOTICENUMBER":"Credit Notes Number",
+  "DOWNLOAD":"Download Credit Notes",
+  "ADDDESC":"Please enter the invoice number associated with the credit note (sales return)",
+  "CREDIT":"Credit Notes",
+  "BACK":"Back"
+  },
+  "DEBITITNOTICE":{
+  "TITLE":"List Debit notes",
+  "SUBTITLE":"Debit notes list",
+  "SEARCH":"Search",
+  "DEBITNOTICEDETAILSDISPLAY":"Debit notes details",
+  
+  "DEBITNOTICEDETAILS":"Debit notes details",
+  "DEBITNOTICE":"Debit Notes",
+  "CREATE":"Add Debit Notes",
+  
+  "DEBITNOTICENUMBER":"Debit Notes Number",
+  "DOWNLOAD":"Download Debit Notes",
+  "ADDDESC":"Please enter the invoice number associated with the Debit note",
+  "DEBIT":"Debit Notes",
+  "BACK":"Back",
+  "ORIGINALINVOICEPRODUCTS" : "Original invoice products",
+  "DEBITPRODUCTS" : "Debit note products"
+  },
+  "INVOICE":{
+      "TITLE":"Invoices List",
+      "SUBTITLE":" Invoices List",
+      "ADDINVOICE":"Add New Invoice",
+      "CANCELEDINVOICES":"Cancelled Invoice",
+      "DELETEDINVOICES":"Deleted Invoices",
+      "CANCEL":"CANCEL",
+      "INVOICE":"Invoice",
+      "INVOICENUMBER":"Invoice Number",
+      "CREATEDAT":"Created At",
+      "TIME":"Date and time",
+      "INVOICEID":" invoice id",
+      "DATEOFCREATION":" date of creation "
+  
+  },
+  "CANCELLEDINVOICES":{
+      "CANCELLEDINVOICES":"Cancelled Invoices"
+  },
+  "RECEIPTVOUCHER":{
+      "TITLE":"Receipt Voucher List",
+      "SUBTITLE":"Receipts list",
+      "CREATE":"Create receipt",
+      "ADD":"Create receipt",
+      "DETAILS":"Receipt details",
+      "VOUCHERNUMBER":"Receipt id",
+      "RECEIPTVOUCHER":"Receipt Voucher",
+      "NUMBER":"Receipt Voucher Number ",
+      "TOTALINVOICE":"Receipt Total Amount",
+      "ADDDESC": "Please enter the invoice number associated with the receipt voucher.",
+      "BACK":"Back",
+      "PAIDINVOICE": "Paid Amount",
+      "UNPAIDINVOICE": "Remaining Amount"
+  },
+  "PAYMENTLINKS":{
+      "TITLE":"List payment links",
+      "SUBTITLE":"Payment links list",
+      "CREATE":"Generate payment link"
+  },
+  "BALANCETRANSERREQUESTS":{
+      "TITLE":"List Balance Transfer requests ",
+      "SUBTITLE":"Balance Transfer Requests List",
+      "ADDBALANCETRANCFERREQUEST":"Add Balace Transfer Request"
+  },
+  "PRICELIST":{
+      "TITLE":"List quotations",
+      "SUBTITLE":"Quotations list",
+      "ADDPRICEOFFER":"Create quotation",
+      "PRICEOFFER":"Quotations",
+      "PRICE":"Quotation",
+      "NUMBER":"Quotation Number",
+      "CANCELLEDQUOTATIONS":"Cancelled Qutations"
+  },
+  "PRODUCTS":{ 
+      "TITLE":"List products",
+      "SUBTITLE":"Products list",
+      "ADDPRODUCT":"Create Product",
+      "DESCRIPTION":"Description"
+  
+  },
+  "PURCHASE":{ 
+      "TITLE":"Purchasing List", 
+      "SUBTITLE":"Purchasing list",
+      "PURCHASENUM":"Purchasing id",
+
+      "PURCHASENUMBER":" Purchase number ",
+      "EXPENSENUMBER":" Expense number ",
+
+      "PURCHASE":"Purchasing ",
+      "PURCHASEDETAILS":"Show purchasing",
+      "VIEWPURCHASEDETAILS":"View Purchase Details",
+      "VIEWEXPENSEDETAILS":"View Expense Details  ",
+      "DETAILSPURCHASE":" Purchase Details",
+      "DETAILSEXPENSE":" Expense Details  ",
+
+      "ADDPRURCHASE":"Create purchasing",
+      "CANDELLEDPURCHASE":"Cancelled purchasings",
+      "TAXABLE" : "Taxable",
+      "NONTAXABLE" : "Non-taxable",
+      "IMPORTED" : "Imported",
+      "NOTIMPORTED" : "Not imported",
+      "EXEMPT":"Exempt",
+      "ZEROTAX": "Zero tax"
+  },
+  "BANKACCOUNT":{
+      "TITLE":"Banks list",
+      "ADDBANK":"Add Bank"
+  },
+  "USERLIST":{
+      "TITLE":" List clients",
+      "SUBTITLE":"Clients list",
+      "ADDNEWUSER":"Create client",
+      "CANCELLEDUSERS":"Deleted clients",
+      "CANCELLEDUSERSTITLE":"Deleted clients list",
+      "USERDETAILS":"Show client"
+  },
+  
+  "SUPPLIER":{
+    "SUPPLIERS":"Suppliers",
+    "SINGLESUPPLIER":"Suppliers",
+  
+    "TITLE":"View Suppliers List",
+    "SUBTITLE":"Suppliers List",
+    "ADDNEWUSER":"Create Supplier",
+    "USERDETAILS":"Show Supplier",
+    "EDITSUPPLIER":"Edit Supplier",
+    "SUPPLIERDETAILS":"Supplier Details",
+    "SUPPLIERID":"Supplier Id",
+    "NAME":"Supplier Name",
+    "TAXNUMBER":"Tax Number ",
+    "SUPPLIER":"Supplier"
+  },
+  
+  "COMMON":{
+    "ID":"ID",
+    "USER":"User",
+    "EXCEEDINVOICECOUNT":"You have exceeded the number of invoices available to you",
+    "PRODUCTNUMEBER":"Product Number",
+    "CLIENTNUMBER":"Client Number",
+  
+    "SUPPLIERNUMBER":"Supplier Number",
+    "SUPPLIERNAME":"Supplier Name",
+  
+    "REQUIRED":"Required",
+    "PRICEONLY":"Price",
+    "SAR":"SAR",
+    "ACTIVEINVOICE":"Ctive Invoice",
+  "NOTACTIVEINVOICE":"Inactive Invoice",
+      "WITHTAX":"With Tax",
+      "WITHOUTTAX":"Without Tax",
+  
+      "EXPENSETAX":"Taxable",
+  "EXPENSEWITHOUTTAX":"Non-taxable",
+  
+      "CHANGEINVOICEDATA1":"ّIn order to change your invoices type, you need to change your",
+      "CHANGEINVOICEDATA2":"Business account settings",
+      "CHANEGGENERALDATA1":"Change your informations from",
+      "CHANEGGENERALDATA2":" Account Settings",
+      "LOGO":"Company Logo",
+  "ADDLOGO":"Add Company Logo",
+  "TO":"To",
+  "RECIVEDATE":"Received at",
+  "ISSUEDATE":"Issue Date",
+  "INVOICEDUE":"Invoice due",
+  "PRODUCTS":"Products",
+  "QUANTITY":"Quantity",
+  "PRICE":"Price",
+  "DISCOUNT":"Discount",
+  "DISCOUNTTYPE":"Discount Type",
+  "TAXABLEAMOUNT":"Taxable amount",
+  "TAX":"Tax (%)",
+  "TOTAL":"Amount",
+  "TOTALTAXABLEAMOUNT":"Total taxable amounts",
+  "TOTALTAX":"Total taxes",
+  "NOTES":"Notes",
+  "ADDRESS":"Address",
+  "TELEPHONE":"Telephone",
+  "PHONE":"Mobile",
+  "FAXNUMBER":"Fax Number",
+  "TAXIDENTNUMBER":"Tax Identification Number",
+  "TAXREGNUMBER":" Tax registration number ",
+  "COMMREGNUMBER":"Commercial registration number",
+  "REGION":"Region",
+  "EDITLATER":"Or you can change it later, it will be synced with all your invoices.",
+  "SUBMIT":"Submit",
+  "CANCEL2":"Cancel",
+  "CLIENT":"Client",
+  "ADD":"Add",
+  "DOWNLOADINVOICE":"Download Invoice",
+  "DOWNLOAD":"Download",
+  "SENDTOCLIENT":"Send To Customer",
+  "SENDVIAEMAIL":"Send Via Email",
+  "SHAREINVOICE":"Share Invoice",
+  "CANCELINVOICE":"Cancel Invoice",
+  "BANKACCOUNTS":"Bank Accounts",
+  "CLIENTORCOMPANY":"Client/Organization name ",
+  "BANKNAME":"Bank name",
+  "BANKFULLNAME":"Full name",
+  "IBANNUMBER":"IBAN number",
+  "COPYLINK":"Copy Link",
+  "DATE":"Date",
+  "ADDPRODUCTNAME":"Enter Product Name For Search",
+  "RECEIVEDAT":"Received at",
+  "AMOUNT":"Amount",
+  "TOBANK":"To Bank",
+  "PAYMENTMETHOD":"Payment Method",
+  "DESCRIPTION":"Description",
+  "TOTALSALES":"Sales amount",
+  "TOTALINVOICESAMOUNT":"Total Amount of Invoices",
+  "RECEIPTSAMOUNT":"Receipts amount",
+  "SALESREPORT":"Sales report",
+  "RECEIPTSREPORT":"Receipts report",
+  "TOPCLIENTS":"Top 5 clients",
+  "VIEWALL":"View All",
+  "BESTPRODUCTS":"Best selling products",
+  "SALESNUMBER":"Sales Number",
+  "WELCOME":"Welcome",
+  "DAY":"Day",
+  "REMAINING":"Remaining",
+  "NAME":"Name",
+  "EX":"EX",
+  "OUSSAMA":"أسامة",
+  "COUNTRY":"Country",
+  "CITY":"City",
+  "CODE":"Code",
+  "CANCEL":"Cancel",
+  "SAVE":"Save",
+  "TYPE":"Type ",
+  "EDIT":"Edit",
+  "ADDCLIENTDATE":"Created At",
+  "CLIENTSALESREPORT":"Client sales report",
+  "SHAREPURCHASE":"Share purchasing ",
+  "SHAREPURCHASEBTN":" Share Purchase",
+  "SHAREEXPENCEBTN":" Share Expense ",
+  "CLIENTNAME":"Client Name ",
+  "ADDPRFILEPHOTO":"Upload a picture for your personal account.",
+  "ADDLOGOPHOTO":"Upload your logo picture.",
+  "ADDSEALPHOTO":"Upload your stamp picture.",
+  "BUSSINESSETTINGS":"Business settings",
+  "LOGOUSED":"Your logo will be used primarily in your Invoices.",
+  "ADDITIONALINFO":"Additional Information",
+  "ENTITYTYPE":"Entity type",
+  "BUSSINESTYPE":"Activity/Business type",
+  "ISTAXABLE":"Is Your business registered in the VAT",
+  "MYSALES":"My sales",
+  "ONLYLOGO":"Logo",
+  "ACCOUNTINFO":"Account Details",
+  "STAMPUSED":"The attached signature will be included on all invoices.",
+  "LOGODISAPEAR":"Hide Site Signature",
+  "LOGODISPLAY":"show Site Signature",
+  "STAMP":"Stamp",
+  "FAX":"FAX",
+  "TAXNUMBER":"TAX NUMBER ",
+  "INCLUDETAX":"Includes Value Added Tax (VAT)",
+  "ADDEDBYFATORAH":"This invoice has been issued by FatorahPro platform for electronic invoicing.",
+  "PAYMENTCARD":"Payment Card",
+  "PLANE":" Subscribe to a Package",
+  "PLANEFROM":"During the period from",
+  "HOME":"Home",
+  "ACCOUNT":"Account",
+  "ROLE":"Role",
+  "STATUS":"Account Status",
+  "STATUSONLY":"Status",
+  "EMAIL":"Email",
+  "ARABIC":"Arabic",
+  "ENGLISH":"English",
+  "CAPITALMONEY":" Opening Balance",
+  "CATGNAME":"Category name",
+  "PRODUCTREQUIRED":"Products is required",
+  
+  "STREETNAME": "Street Name",
+  "BUILDINGNUMBER": "Building Number",
+  "PLOTID": "Sub-number (Additional Number)",
+  "SUBDIVNAME": "Neighborhood",
+  "OTPZATCA":"OTP for ZATCA",
+  "REFRESHZATCA":"Refresh",
+  "ACTIVATEZATCA":"Activate",
+  "SENDTOZATCA":"Submit to Zatca",
+  "CLIENTTYPE":"Client Type",
+  "ZATCASUBMITED":" Submited",
+  "ZATCANOTSUBMITED":"Not Submited",
+  "NOTCOMPWITHZATCA":"Not compatible",
+  "CREATEDBEFOREZATCA":"This account may not be subject to tax.",
+  "NEEDROSENDZATCA":"You must submit the invoice to the Zakat Authority to obtain the QR Code.",
+  
+  "ZEROTAXCATG":"Zero Tax Category Type",
+  "ZATCASIMULATION":"Submitted on a trial basis ",
+  "ZATCASTATUS":" Zatca Status ",
+  "ZATCAEDITCONFIRM":"If you want to integrate with Zatca, firstly you have to fill your details and press save button",
+  "REASON":"Reason",
+  "REASONDES":"State the reason for the credit note",
+  "REASONDEBIT":"State the reason for the debit note",
+  
+  "ZATCASETTINGSACTIVE": "Zatca Verification Code has been activated in",
+  "ZATCASETTINGSACTIVESIMU": "simulation mode",
+  "ZATCASETTINGSACTIVELIVE": "live mode",
+  "ZATCASETTINGSNOTACTIVE": "Zakat Verification Code has not been activated",
+  "SEND":"Send",
+  "SENDVIAWHATSAPP":"Send via Whatsapp",
+  
+  "CHOOSE_PURCHASE_TYPE":"Choose purchase type",
+  "OLDWEBSITE":"Old Website",
+  "PREVWEBSITE":" Previous Version ",
+  "INVOICEDUEDISAPEARTITLE": "Template Settings",
+  "INVOICEDUEDISAPEAR": "Hide due date ",
+  "INVOICE DUE DISPLAY": "Show due date ",
+  "PERCENTAGE":"Percentage",
+  "VALUE":"Value",
+  "DISCARDCHANGES" : "Discard Changes",
+  "DELETEINVOICE":"Delete Invoice"
+},
+  "ADDINVOICE":{
+      "INVOICEDETAILS":"Invoice details",
+      "DISPLAYINVOICEDETAILS":"Show invoice",
+      "INVOICENUMBER":"Invoice Number",
+      "REMAINING":"The remaining amount of the invoice",
+      "INVOICEPAYMENTLINKS":"ّInvoice payment links",
+      "TAXABLEINVOICE":"Taxable Invoice",
+      "DOWNLOADSIPLEFIED":"Download as simplified",
+      "SIMPLIFIEDINVOICE":"Simplified Tax Invoice ",
+      "EXTRADISCOUNT":"Extra Discount"
+  },
+  "SUBSCRIPTION":{
+      "SUBSCRIPTIONANDPAYMENT":"Subscription and Payment",
+      "INVOICEAMOUNT":" Due invoice ",
+      "RENEWDATE":"Next payment due",
+      "CURRENTPLANE":"Current plan",
+      "PREVINVOICES":"Payments history",
+      "PAYMENTMETHODS":"Payment methods",
+      
+      "TRIALBTNI":"Test free for 7 Day",
+      "TRIALBTNII":"Try all the pro features during the trial period",
+      "OR":"Or",
+      "CHANGEPLAN":"Change Package",
+  
+      "MONTHLYSUB": "Monthly Subscription",
+      "YEARLYSUB": "Yearly Subscription",
+      "PACKAGE": "Package",
+      "MOHTN": "Months",
+      "CURRENTPLAN":"Current Plan",
+      "FROM":"From",
+      "TO":"To",
+      "ENDWITH":"ends with",
+      "AUTORENEWTITLE":"Subscription auto renew",
+      "AUTORENEWDES":"Activating the automatic renewal to avoid service interruption",
+      "ENABLE":"Enable",
+      "DISABLE":"Disable",
+
+      "SETDEFAULT":"Set Default",
+       "USEDCARD": "The card ending with number",
+       "ADDNEWCARD":"Add New Card",
+       "CARDNUMBER":"Card Number",
+       "CARDNAME":"Name",
+       "CARDMONTH":"Month",
+       "CARDYEAR":"Year",
+       "CARDCVC":"CVC",
+       "NOCARDSEXISTS":"No cards have been added."
+  },
+  "ADDCLIENT":{
+      "ADDCLIENT":"Create client",
+      "CLIENTINFO":"Account Details",
+      "POSTALCODE":"Postal Code",
+      "COMMERCIALREGNUM":"Commercial Registration Number",
+      "DELIVERYDATA":"Contact Information",
+      "EDITCLIENT":"Edit client",
+      "PURCHASEDATE":"Purchasing date"
+  },
+  "ADDPURCHASE":{
+      "ADDPRURCHASE":"Create purchase",
+      "ADDPRURCHASEANDEXPENSE":"Create purchase & expense",
+      "EDITPRURCHASE":" Edit purchasing ",
+      "SELECTTYPE":"Select Type",
+      "SELECT":"Select",
+      "PURCHASEDETAILS":"Purchasing details",
+      "UPLOADRECEIPT":"Upload invoice",
+      "UPLOADFILE":"Upload File",
+      "CODENUM":"Code number",
+      "INVOICE_NUMBER":"Invoice Number",
+      "AMOUNT":"Amount",
+      "CURRENCY":"Currency",
+      "RECIPIENTNAME":"Recipient name",
+      "ISSUEDATE":"Issue Date",
+      "PAYMENTMETHOD":"Payment Method",
+      "NOTES":"Notes",
+      "PURCHASEDATE":"Purchasing date ",
+      "MAINCURRENCY":"Main Currency",
+      "EXPENSESTYPE":" Expense Type ",
+      "PURCHASETYPE":"Purchase Type ",
+  
+      "TAXAMOUNT":" Tax Amount ",
+     "INVOICEDATE":" Invoice Date ",
+  
+      "SUPPLIER":"Supplier",
+  
+      "PAYMENTSLIST":"Payments",
+      "PAYMENTNAME":" Name",
+      "PAYMENTAMOUNT":" Amount ",
+      "ADDSUPPLIER":" add new supplier ",
+      "ADDNEWPAYMENT":"Add New Payment",
+      "REMAININGAMOUNT":"Remaining Amount",
+      "TOTALAMOUNT":"Total Amount",
+      "FILLDATAQRCODE":"You can fill data using QR, click to upload the QR Code.",
+      "DOWNLOADRECEIPT":"Download receipt",
+      "DOWNLOADQRCODE":"Download Qr Code",
+      "TAXEXEMPTION":"Tax Category Type",
+      "EXCHANGERATE":" Exchange Rate ",
+      "EDITEXCHANGERATE":"Change Exchange Rate ",
+      "CHANGEEXCHANGERATEWARN":"Any change in the exchange rate is not the responsibility of the Fatora Pro platform."
+  },
+  "ADDPRODUCT":{
+      "ADDPRODUCT":"Create product",
+      "EDITPRODUCT":"Edit product",
+      "PRODUCTDETAILS":"Product details",
+      "PRICE":"Price"
+  },
+  "PRODUCTDETAILS":{
+      "PRODUCTDETAILS":"Show product",
+      "SUBTITLE":"Product details",
+      "TOTALPRODUCTSALE":"Total product sales",
+      "PRODUCTSALESREPORT":"Product sales report",
+      "PRODUCTINVOICES":"Invoices",
+      "PRICEOFFERS":"Quotations",
+      "CREATEDAT":"Created At"
+  
+  },
+  "PRICEOFFERDETAILS": {
+      "PRICEOFFERDETAILS": "Quotation Details",
+      "PRICEOFFER": "Quotation",
+      "SHAREPRICEOFFER": "Share Quotation",
+      "DETAILS": "Quotation Details"
+  },
+  "ADDPRICEOFFER":{
+      "ADDPRICEOFFER":"Create quotation",
+      "NEWPRICEOFFER":"New quotation",
+      "PRICEOFFERNUM":"Quotation id",
+      "SHAREPRICEOFFER":"Share quotation",
+      "DETAILS":"Quotation details"
+  },
+  "RECEITVOUCHERDETAILS":{
+      "RECEITVOUCHERDETAILS":"Show receipt",
+      "RECITEVOUCHER":"Receipt ",
+      "VOUCHERNUMEBR":"Receipt id",
+      "SHAREVOUCHER":"Share Receipt"
+  },
+  "PAYMENTLINKDETAILS":{
+      "TITLE":"Show payment link",
+      "TOTALINVOICEAMOUNT":"Total invoice amount",
+      "INVOICEDETAILS":"Invoice details",
+      "PAYEDAMOUNT":"Paid amount",
+      "PAYMENTLINKSDETAILS":"Payment transfers",
+      "RECIVEDAMOUNT":"Received amount",
+      "SUBTITLE":"Payment link details",
+      "PAYMENTFOR":"Payment for ",
+      "LINKSTATUS":"State ",
+      "GENERATEDAT":"Generated at ",
+      "ACTIVEUNTILE":"Active until",
+      "PAYMENTTRANSFERS":"Payment transfers"
+  
+  },
+  "ADDBALANCETRANSFER":{
+      "ADD_BALANCE_TRANSFER_REQUEST": "Add Balance Transfer Request",
+      "TRANSFER_FEE": "Transfer Fee",
+      "WITHDRAWAL_DETAILS": "Withdrawal of 8.05 Riyals, Bank Transfer Fee",
+      "ACCOUNT_HOLDER_NAME": "Account Holder's Name",
+      "MATCH_ACCOUNT_NAME": "Make sure the bank account name matches your account name on the Pro Invoice",
+      "BANK_NAME": "Bank Name",
+      "IBAN_NUMBER": "IBAN Number",
+      "ENSURE_IBAN_NUMBER": "Please ensure the IBAN number for the account",
+      "AMOUNT": "Amount",
+      "MINIMUM_WITHDRAWAL_AMOUNT": "Minimum withdrawal amount is 50 Saudi Riyals",
+      "BALANCE_TRANSFER_REQUEST": "Balance Transfer Request"
+    },
+    "USERPROFILE":{
+      "PROFILE_TITLE": "Profile",
+      "PERSONAL_PROFILE": "Personal Profile",
+      "CHANGE_PASSWORD": "Change Password",
+      "EDITPROFILE":"Edit Profile",
+      "UPLOAD_PROFILE_IMAGE": "Upload Profile Image",
+      "CHANGE_IMAGE_TITLE": "Change Image",
+      "USERNAME": "Username",
+      "PHONE_NUMBER": "Phone Number",
+      "EMAIL": "Email",
+      "EDIT": "Edit",
+      "CURRENT_PASSWORD": "Current Password",
+      "NEW_PASSWORD": "New Password",
+      "CONFIRM_PASSWORD": "Confirm Password",
+      "SUBMIT": "Submit",
+      "REQUIRED_FIELD": "Required Field"
+    },
+    "SALESREPORT":{
+      "REPORTS": "Reports",
+      "SALES_REPORT": "Sales Report",
+      "CHOOSE_REPORT_DURATION": "Choose report duration",
+      "CHOOSE_DURATION": " Choose duration ",
+      "GENERATE": "Generate report",
+      "END": "End",
+      "SELECT": "Select",
+      "TOTAL": "Total",
+      "DATE_ISSUED": "Date Issued",
+      "INVOICE_NUMBER": "Invoice Number",
+      "CLIENT": "Client",
+      "DESCRIPTION": "Description",
+      "TAX_NUMBER": "Tax Number",
+      "TAX_PERCENTAGE": "Tax Percentage (%)",
+      "TAXABLE_AMOUNT": "Taxable Amount",
+      "TAX_VALUE": "Tax Value",
+      "GRAND_TOTAL": "Total",
+      "START":"Start",
+      "SELECT_DATE":"Custom Range"
+    },
+    "TAXREPORT":{
+      "TAXREPORTTITLE":" Tax return report  ",
+      "TOTALSALES": "Total Sales",
+      "TOTALTAX": "Total Tax Amount",
+      "TOTALTAXSALES": "Total Taxable Amount for Sales",
+      "TOTALTAXPURCHASE": "Total Taxable Amount for Purchases",
+       "ADDTAXREPORT":"Add Tax Report",
+       "VIEWTAXREPORT":"View Tax Report",
+      "REPORTTYPE" :"Report Type",
+      "MONTH":"Month",
+      "YEAR":"Year",
+      "QUARTERTYPE":" Quarter ",
+      "INVOICEISSUED":"Consult a tax expert to obtain a tax return.",
+      "TAXWARN":"The company bears no responsibility for the accuracy of the data displayed in the tax return report, as the report is based on the information entered in the Fatura Pro system related to sales and purchase invoices. The user must agree to release the company from any responsibility for any dispute or conflict that may arise as a result of using this report, and this note must be acknowledged before issuing the report.",
+      "AGREE":"Agree", 
+      "STARTTAXREPORT":"Start Report Release",
+      "SAVETAXREPORT":" Generate report ",
+      "DOWNLOAD":"Download Report",
+      "QUARTER":"Quarterly",
+      "MONTHLY":"Monthly",
+      "OPTIONI":"Do you have sales or purchases that you prefer to tax at 5% according to the transitional provisions or sales, purchases, imports or their amendment to 5% and you would like to extract from them during this period?"
+      
+    },
+    "COLLECTIONREPORT":{
+      "REPORTS": "Reports",
+      "COLLECTION_REPORT": "Collection Report",
+      "CHOOSE_REPORT_DURATION": "Choose report duration",
+      "GENERATE": "Generate report",
+  
+      "START": "Start",
+      "END": "End",
+      "SELECT": "Select",
+      "TOTAL": "Total",
+      "DATE_RECEIVED": "Date Received",
+      "RECEIPT_NUMBER": "Receipt Number",
+      "INVOICE_NUMBER": "Invoice Number",
+      "AMOUNT": "Amount"
+    },
+    "CUSTOMERACCOUNTREPORT":{
+      "REPORTS": "Reports",
+      "COLLECTION_REPORT": "Customer Account Statement Report",
+      "TO": "To",
+      "GENERATE": "Generate report",
+      "COLLECTION":"Collection Report",
+  
+      "CHOOSE_REPORT_DURATION": "Choose report duration",
+      "TOTAL": "Total",
+      "TYPE": "Type",
+      "NUMBER": "Number",
+      "DATE": "Date",
+      "DUE_DATE": "Due Date",
+      "CREATE_DATE":" Release Date ",
+  
+      "DESCRIPTION": "Description",
+      "DEBIT": "Debit",
+      "CREDIT": "Credit",
+      "BALANCE": "Balance",
+      "PDF":"Export as Excel File",
+      "EXPORTPDF":" Export as PDF File"
+  
+    },
+    "ADDBANKACCOUNT":{
+      "ADD_NEW_BANK_ACCOUNT": "Add New Bank Account",
+    "BANK_ACCOUNT_INFORMATION": "Bank Account Information",
+    "EDIT_ACCOUNT_INFORMATION":"Edit Bank Account Information"
+    
+    },
+    "DESIGNANDCOLORS":{
+      "DESIGNANDCOLORS":"Design and Colors"
+    },
+    "COLORS":{
+      "COLORS":"Colors",
+      "SELECTCOLOR":"Use color pick tool  to choose your color from your company's logo.",
+      "INVOICECOLOR":"Invoice Color",
+      "DASHBOARDCOLOR":"Dashboard main color",
+      "PRIMARYBTNCOLOR":"Primary button color",
+      "SECONDARYBTNCOLOR":"Secondary button color"
+    },
+    "INVOICETEMPLATES":{
+      "CHOOSETEMPLATES":"Choose template",
+      "VIEW":"Preview",
+      "TEMPLATEIMAGE":" Template Image"
+    },
+    "LOGIN": {
+      "LOGIN": "Login",
+      "FORGETPASSWORD": "Forgot Password?",
+      "REMEMBERME": "Remember Me",
+      "NOACCOUNT": "Don't have an account?",
+      "CREATEACOUNT": "Create Account",
+      "PASSWORD":"Password"
+  },
+  "REGISTER": {
+      "REGISTER": "Register New Account",
+      "AGREEON": "Agree on ",
+      "TEARMSANDCONDITIONS": "Terms and Conditions",
+      "CREATENEWACCOUNT": "Create New Account",
+      "PASSWORD": "Password",
+      "REENTERPASSWORD": "Re-enter Password",
+      "ACCOUNTEXIST": "Already Registered?",
+      "LOGIN": "Login",
+  
+      "BEFORCONT": "Before Proceeding",
+  "CHECKMAIL": "Please check your email for the verification link or enter the code sent to your email.",
+  "CODE": "Verification Code",
+  "CHECK": "Check",
+  
+  "CONGRATULATIONS": "Congratulations",
+  "COMPLETED": "Your profile information has been completed",
+  "CREATEINVOICE": "Create your invoices now",
+  "DNTRCVCODE":" Didn't receive the code? ",
+  "REMAINING":"Resend Code in"
+  },
+  "FORGETPASSWORD":{
+      "FORGETPASSWORD":"Forgot Password",
+      "RESET":"Reset Password",
+      "REWRITEPASSWORD":"Enter the new password",
+      "CHANGEPASSWORD":"Change Password"
+  },
+  "SIDENAV":{
+  "DASHBOARD":"Admin panel",    
+  "INVOICES":"Sales Invoices",
+  "ALLINVOICES":"All Sales Invoices",
+  "CREDITNOTES":"Credit Notes",
+  "DEBITNOTES":"Debit Notes",
+  "ADDINVOICE":"Add Invoice",
+  "ADDCREDITNOTES":"Add Credit Note",
+  "ADDDEBITNOTES":"Add Debit Note",
+ 
+  "PURCHASE":"Purchases",
+  "PURCHASEANDEXPENSE":"Purchases & Expenses",
+  
+  "ALLPURCHASES":"All Purchases",
+  "ALLPURCHASEANDEXPENSE":"All Purchases & Expenses",
+
+  "ADDPURCHASES":"Add Purchases",
+  "ADDPURCHASEANDEXPENSE":"Add Purchase or Expense",
+  
+  "CLIENTS":"Clients",
+  
+  "PRODUCTS":"Products",
+  
+  "Quotations":"Quotations",
+  
+  "RECEITVOUCHER":"Receipt Voucher",
+  
+  "PAYMENTLINKS":"Payment Links",
+  
+  "BALANCETRANSFERREQUESTS":"Balance Transfer Requests",
+  
+  "SUBSCRIPTIONANDPAYMENT":"Subscription and Payment",
+  
+  "REPORTS":"Reports",
+  "SALESREPORTS":"Sales Reports",
+  "COLLECTIONREPORTS":"Collection Reports",
+  "CLIENTACCOUNTREPORTS":"Client Account Reports",
+  "PURCHASEREPORTS":"Purchases Report",
+  
+  "SETTINGS":"Settings",
+  "COMMERSIALACCOUNTDETAILS":"Commercial Account Details",
+  "DESIGNANDCOLORS":"Design and Colors",
+  
+  "BLOGS":"Blogs",
+  "MESSAGES":"Contact Us Messages",
+  "TEMPLATES":"Invoice Templates",
+  "CITIES":"Cities List",
+  "ACTIVITIES":"Activities List",
+  "COMPANYTYPE":"Companies types list",
+  "GENERALSETTINGS":"General Settings",
+  
+  
+  "ADMINUSERSREPORT": "Users Report",
+  "ADMININCOMESREPORT": "Monthly Income Report",
+  "ADMINCONTINUINGUSERSREPORT": "Continuing Users Report",
+  "ADMININTERMITTENTUSERSREPORT": "Intermittent Users Report",
+  "ADMINEXPIREDSUBREPORT": "Expired Subscriptions Report",
+  "TAXRETURNREPORT":" Tax Return Report",
+  
+  "EARNINGREPORT":"Financial Report",
+  "SUPPLIERS":"Suppliers",
+  "ADMINSUBS":"User subscriptions report",
+  "LISTOFCATG":" List of categories ",
+  "LISTOFDUR":"List of durations",
+  "SENDEMAIL":" Send emails ",
+  "INACTIVEUSERSREPORT":" Inactive Users ",
+
+  "SENDWHATSAPP":"Send via Whatsapp",
+  "PROFITLOSSREPORTS":"Profit and Loss Statement Report"
+  
+  },
+
+  "PROFITLOSSREPORTS": {
+  "TITLE": "Profit and Loss Statement Report",
+  "CLIENT": "Client",
+  "PRODUCT": "Product",
+  "TOTALTAXWITHOUTSALES": "Total Sales Without Tax",
+  "TOTALPURCHASES_EXPENSES": "Total Purchases and Expenses",
+  "TOTALPROFITS": "Total Profits",
+  "TOTALLOSS" :" Total loss  "
+
+},
+  "EARNINGSREPORT":{
+    "EARNINGREPORT":"Financial Report",
+  
+    "OPENINGBALANCE":"Opening Balace",
+    "TOTALPURCHASES" : "Total purchases and expenses",
+    "TOTALSALES":"Total sales",
+    "TOTALTAX":"Total Tax Amount",
+    "CURRENTBALANCE":" Current Balace"
+  },
+  
+  "TREARMSANDCONDITIONS":{
+      "TITLE":"Terms of Service and Privacy Policy:",
+      "SUBTITLE1":"Terms and Conditions of Website Use. Welcome to our website:",
+      "SUBTITLE2":"Privacy and Confidentiality Statement:",
+      "SUBTITLE3":"Browsing:",
+      "SUBTITLE4":"IP (Internet Protocol) Address:",
+      "SUBTITLE5":"Network Scanning Operations:",
+      "SUBTITLE6":"Disclosure of Information:",
+  "SUBTITLE7": "Mandatory Data for Processing Required Transactions from You:",
+  "SUBTITLE8": "When Contacting Us:",
+  "SUBTITLE9": "Fee Refund:",
+  "SUBTITLE10": "Modifications to the Privacy and Confidentiality Policy:",
+  "SUBTITLE11": "Finally:"
+  
+    },
+    "ADMIN-USERS":{
+      "TITLE":"View Users",
+      "SUBTITLE":"User List",
+      "ADDUSER":"Add New User",
+      "ADDUSERSUBTITLE":"User Information",
+      "EDITUDER":"Edit User",
+      "USERDETAILS":"User Details",
+      "ALLOWACCESS":"Allow Access To The Account",
+      "CREATEDAT":"Created At",
+      "ROLE":"Created At"
+      },
+      "ADMIN-USER-DETAILS":{
+          "CHANGEDATE":"Change the subscription expiration date ",
+          "TRANSDATE":"Transaction date",
+          "AVAILABLEPLANS":"Available subscription plans:",
+          "ENDPLANEDATE":"New expiration date:",
+          "INVOICELIST":"Invoices List",
+          "INVOICELISTSUBTITLE":"Invoices List"
+      
+        },
+        "PLANS":{
+          "BASIC":"Basic Plan",
+          "BUSINESS":"Basic Business Plan",
+          "PROFESSIONAL":"Professional Business Plan",
+          "PLAN": "Subscription Plan"
+        },
+        "ADMINISTRATIVE-USERS":{
+          "TITLE":"Administrative Users",
+          "SUBTITLE":"Administrative Users List"
+        },
+        "ADMIN-SIDENAV":{
+          "USERS":"Users",
+          "ADMINUSERS":"Administratives",
+          "ROLES":"Roles",
+          "COUPONS":"Discount Coupons",
+          "SUBSCRIPTIONPLANS":"Subscription Plans",
+          "SALES":"Sales",
+          "REVENUES":"Revenues"
+  
+  
+         },
+         "REVENUES":{
+          "TITLE":"Revenues",
+          "SUBTITLE":"Revenues List"
+        },
+         "DASHBOARD": {
+          "USERS": "Users",
+          "TAX": "Tax",
+          "NONTAX": "Non-tax",
+          "PLANS": "Subscription Plans",
+          "PLANSSTATISTICS": "Plans Statistics",
+          "REPORTSSTATISTICS": "Reports Statistics",
+          "REVENUESTATISTICS":" Revenue Statistics ",
+  
+          "LASTTRANS": "Last Events",
+          "INVOICESREPORTS":"Invoices Reports",
+          "SALESREPORTS":"Sales Reports",
+          "RECEIPTSREPORTS":"Receipt Voucher Reports",
+          "PROFITSREPORTS":"Profits Reports",
+          "ACTIVEUSERS":"Top Users",
+          "INVOICES":"Invoices",
+          "INVOICE":"Invoice",
+          "USER":"User",
+          "CLIENTS":"Clients",
+          "USERSREPORTS":"Users Reports",
+          "PRICEOFFERSREPORTS":"Quotations Reports",
+          "ABOUTTOEXPIRE":"Subscriptions are about to expire",
+          "EXPIRED":"Subscriptions recently expired",
+          "PAYMENTHISTORY":"Payment History",
+          "CREATED":"created a new",
+          "CREATEDI":"",
+          "CREATEDII":"A new client has been created",
+          "NEW1":"",
+          "NEW2":"",
+  
+          "ACTIVE":"(Active)",
+          "INACTIVE":"(Inactive)",
+  
+          "ACTIVESUBS": "Active Subscriptions",
+          "INACTIVESUBS": "Inactive Subscriptions",
+          "ZATCAINTEGRATION" :" Zatca Integration",
+          "LIVEZATCA":"Live",
+          "SIMZATCA":" Simulation "
+        },
+  
+        "DELETEPOPUP":{
+          "MESSAGE":"Are You Sure You Want to Delete?",
+          "DELETE":"Delete",
+          "CANCEL":"Cancel"
+        } ,
+    "ADMINROLES":{
+      "TITLE":"Roles",
+      "SUBTITLE":"Roles List",
+      "ADDROLE":"Add role"
+    },
+    "ADDROLE":{
+      "TITLEADD":"Add Role",
+      "TITLEEDIT":"Edit Role",
+      "SUBTITLE":"Role Details",
+      "PERMISSIONS":"Permissions",
+      "NAME":"Name"
+    },
+    "ROLEDETAILS":{
+      "TITLE":"Roles Permissions",
+      "NOPERMISSIONS":"No Permissions Ror This Role"
+        },
+        "COUPONS":{
+          "ALLCOUPONS":"Discount Coupons",
+          "COUPONSLIST":"Discount Coupons List",
+          "ADDCOUPON":"Add New Coupon"
+        },
+        "ADDCOUPON":{
+          "COUPONDETAILS":"New Coupon Details",
+          "DISCOUNTCOUPN":"Discount Code",
+          "NUMBEROFUSE":"Number of Uses",
+          "STARTDATE":"Coupon Start Date",
+          "ENDDATE":"Coupon End Date",
+          "DISCOUNTTYPE":"Discount Type",
+          "DISCOUNTAMOUNT":"Discount Amount",
+          "SUBSCRIPTIONTYPE":"Subscription Type",
+          "PLANETYPE":"Plan Type",
+          "COUPONSTATUS":"Coupon Status",
+          "EDITCOUPON":"Edit Coupon",
+          "EDITCOUPONDETAILS":"Coupon Details"
+      },
+      "COUPONDETAILS":{
+        "COUPONAMOUNT":"Amount collected with the code",
+        "INCOME":"Code Income",
+        "ALLSUBSCRIPTION":"All Subscriptions"
+      },
+      "SUBSCRIPTIONPLANS":{
+        "ADD":"Add Subscription Plan",
+        "DISPLAY":"Subscription Plans",
+        "DISPLAYSINGLE":"Subscription Plan",
+  
+        "LIST":"Subcription Plans List",
+        "EDIT":"Edit Subscription Plan",
+        "DETAILS":"Subscription Plan Details",
+        "NEWDETAILS":"New Subscription Plan Details",
+  
+        "DURATIONLIST": "Subscription duration list",
+      "ADDDURATION": "Add duration",
+      "EDITDURATION": "Edit duration data",
+      "DURATIONTITLE": "Duration",
+      "PRICE": "Price"
+      },
+      "EDITPLAN":{
+        "PLANNAME":"Plan Name",
+        "NAME":"Feature name",
+        "ADDRESS":"Address",
+        "DISCRIPTION":"Description",
+        "PLANSLUG":"Plan Slug",
+        "SLUG":"Feature Slug",
+        "CURRENCY":"Currency",
+        "SUBSCRIPTIONPRICE":"Price",
+        "SUBSCRIPTIONPRICEWTHOUTDISCOUNT":"Price before discount",
+        "REGISTERCURRENCY":"Signup fee",
+        "FREETRIALTIME":"Trial period",
+        "TIMEDIFFERANCE":"Trial interval",
+        "INVOICEDUE":"Invoice period",
+        "INVOICEDIFFERENCE":"Invoice interval",
+        "ALLOWTIME":"Grace period",
+        "ALLOWDIFFERENCE":"Grace interval",
+        "EXPANDDAY":"Prorate day",
+        "EXPANDDUE":"Prorate interval",
+        "EXTENDAMOUNT":"Prorate extend due",
+        "MAXACTIVATED":"Active subscribers limit",
+        "PLANSTATUS":"Subscription Plan Status",
+        "SORT":"Sort Order",
+        "DURATIONS":" Duration "
+      },
+      "INTERVAL":{
+          "HOUR":"Hour",
+          "DAY":"Day",
+          "WEEK":"Week",
+          "MONTH":"Month"
+        },
+        "ALLFEATURES":{
+          "ALLFEATURES":"Subscription Plan Features List",
+          "ADD":"Add New Feature",
+          "DETAILS":"Subscription Plan Feature Details",
+          "EDIT":"Edit Subscription Plan Feature"
+        },
+        "EDITFEATURE":{
+          "Resettable_period":"Resettable Period",
+          "Resettable_interval":"Resettable Interval",
+          "VALUE":"Value"
+        },
+        "ADMINRECEIPTVOUCHER":{
+          "CANCELLEDVOUCHERS":"Cancelled Vouchers",
+          "SUBTITLE":"Cancelled Vouchers List",
+          "LIST":"Receipt Vouchers List"
+      
+        },
+        "TEMPLATES":{
+          "TITLE":"Templates List",
+          "SUBTITLE":"Templates List",
+          "EDIT":"Edit Template",
+          "DETAILS":"Template Details",
+          "TEMPNAME":"Template Name",
+          "SLAG":"Slag",
+          "AVAILABLEPLANS":"Available subscription plans",
+          "STATUS":"Temlate Status",
+          "IMAGE":"Template Image",
+          "UPLOAD":"Upload Template Image"
+  
+        },
+  
+        "BLOGS":{
+          "REQUIRED":"Required",
+          "TITLE":"Articles List",
+          "SUBTITLE":"Articles List",
+          "ADD":"Add New Article",
+          "NEWDETAILS":"New Article Details",
+          "BLOGTITLE":"Article Title",
+          "ARCHIVETITLE":"Article Archive Title",
+          "CATEGORIES":"Categories",
+          "BLOGCONTENT":"Article Content",
+          "BLOGIMAGES":"Article Image",
+          "ADDTIME":"Created At",
+          "PAYMENTTYPE":"Payment Method",
+          "ARCHIVETITLEDETAILS":"Article Archive Title (Link)",
+          "UPLOAD": "Add The Article Image",
+          "DETAILS":"Article Details ",
+          "ADDNEW":"Add Article",
+          "EDIT":"Edit Article"
+  
+        },
+        "MESSAGES":{
+          "SUBTITLE":"Messages List",
+          "TITLE":"Messages",
+          "DETAILSSUBTITLE":"Message Details",
+          "SENDERNAME":"Sender Name",
+          "EMAIL":"Email",
+          "CREATEDAT":"Created At",
+          "SUBJECT":"Subject",
+          "CONTENT":"Content",
+  
+  
+          "SENDEMAIL":" Send E-mail ",
+          "SENDEWHATSAPP":"Send Via Whatsapp",
+          "CHOOSECLIENTTYPE":" Choose a group of users ",
+          "CHOOSECLIENTS":" Choose users",
+          "CHOOSECLIENTSMANUALLY":" Choose users manually",
+          "SUBJECTPLACHOLDER":"Please enter your email subject",
+  
+          "ALLCLIENTS":"All Users",
+          "NEWCLIENTS":"Users - New Subscriptions ",
+          "INACTIVECLIENTS":"Users - In Active Subscriptions",
+          "EXPIREDSUBSCLIENTS":"Users - Expired Subscriptions ",
+          "ACTIVECLIENTS":"Users - Active Subscriptions",
+           "SUBCLIENTS":"Subscribed Users",
+  
+          "CHOOSEJOININGDATE":"Choose Joining Date Duration",
+          "CHOOSEEXPIREDDATE":"Choose Expired Date Duration",
+          "CHOOSESUBSDATE":"Choose Subscription Date Duration",
+          
+          "ISSUINGINVOICES":"Issuing Invoices",
+          "HASISSUINGINVOICES":"Invoices were issued",
+          "HASNOTISSUINGINVOICES":"No invoices issued",
+          "ALL":"All"
+  
+        },
+        "CITIES":{
+          "ALLCITIESTITLE":"Cities List",
+          "DELETEDCITIESTITLE":"Deleted Cities List",
+          "SUBTITLE":"Cities List",
+          "ADD":"Add New City",
+          "DELETEDCITIES":"Deleted Cities",
+          "ORDER":"Order",
+          "CREATEDAT":"Created At",
+          "DETAILS":"City Details",
+          "DETAILSSUBTITLE":"City Details",
+          "EDIT":"Edit City",
+  
+          "ACTIVATED":"Active",
+          "INACTIVE":"Inactive"
+        },
+        "ACTIVITIES":{
+          "TITLE":"Activities List",
+          "ALLSUBTITLE":"Activities List",
+          "ADD":"Add New Activity",
+          "DELETEDACTIVITIES":"Deleted Activities",
+          "DETAILS":"Activity Details",
+          "DETAILSSUBTITLE":"Activity Details",
+          "EDIT":"Edit Activity",
+          "CREATEDAT":"Created At"
+  
+  
+        },
+        "DURATION":{
+          "TITLE":"Duration List",
+          "ALLSUBTITLE":"List of Durations",
+          "ADD":"Add New Duration",
+          "DETAILS":"View Duration Details",
+          "DETAILSSUBTITLE":"Duration Details",
+          "EDIT":"Edit Duration",
+          "CREATEDAT":"Duration Created At",
+          "DAYS":"Number of days"
+        },
+        "COMPANYTYPE":{
+          "TITLE":"Company Types List",
+          "SUBTITLE":"Company Types List",
+          "ADD":"Add Company Type",
+          "DELETEDCOMPANYTYPE":"Deleted Company Types",
+          "DELETEDTITLE":"Deleted Company Types",
+  
+          "DETAILS":"Company Type Details",
+          "DETAILSSUBTITLE":"Company Type Details",
+          "EDIT":"Edit Company Type",
+          "CREATEDAT":"Created At"
+  
+        },
+        "GENERALSETTINGS":{
+          "WEBSITESETTINGS":"Website Settings",
+          "WEBSITENAME":"Site Name",
+          "KEYWORDS":"Keywords",
+          "DESCRIPTION":"Description",
+          "SMSACTIVATION":"SMS Activation Content",
+          "ACTIVATIONEMAIL":"E-mail Activation",
+          "FACEBOOK":"Facebook account",
+          "WHATSAPP":"Whatsapp number",
+          "TWITTER":"Twitter account",
+          "TERMS&CONDITIOS":"Terms and conditions"
+        },
+        "RENEWSUBSCRIPTION":{
+          "NEWPLAN": "Subscribe",
+          "CURRENTPLAN": "Renew Plan",
+          "ADDCOUPONTITLE": "Enter the discount coupon and get the discount",
+          "COUPON": "Coupon Code",
+          "CHOOSEPLAN": "Choose the appropriate package for your business activity",
+  "HASCOUPON": "Do you have a discount coupon?",
+  "FREETRIAL": "Try for free for 7 days",
+  "TRYFREEOR": "Try all the professional features during the trial period or",
+  "SUBSCRIBENOW": "Subscribe to the package directly",
+  "CANNOTAPPLAY":"Can’t apply promo code on this subscription"
+  
+      },
+      "ADMINREPORTS":{
+        "GENERATE":"Generate",
+        "ADMINUSERSREPORT":"Users Report",
+        "ADMINCONTINUINGUSERSREPORT":"Regular Users Report",
+        "ADMININTERMITTENTUSERSREPORT":"Intermittent Users Report",
+        "ADMINEXPIREDSUBREPORT":"Expired Subscriptions Report",
+        "ADMININCOMESREPORT":"Monthly Income Report",
+    
+        "SUBCOUNT":"Subcription Count",
+        "TOTALREVENUE":"Total Revenue",
+        "NEWSUBS":"New Subscriptions",
+        "RENEWSUBS":"Renew Subcription ",
+        "PLAN1": "The Basic Package",
+        "PLAN2": "The Basic Business Package",
+        "PLAN3": "The Professional Business Package",
+  
+        "ADMINSUBS":"User subscriptions report",
+        "SEARCH":"Search",
+     
+        "CHOOSEPLAN":" Choose Plan ",
+        "CHOOSEDURATION":" Choose Duration",
+        "INVOICECREATED":"Invoices have already been created",
+
+        "INACTIVEUSERSREPORT":" Inactive Users "
+      },
+  
+      "all" : {
+        "manage" : "All permissions"
+    },
+    "access" : {
+        "admin" : "Access to Admin Dashboard"
+    },
+    "roles" : {
+        "name" : "ٍRoles permissions: ",
+        "manage" : "Manage roles"
+    },
+    "quotations" : {
+        "name" : "Quotations permissions: ",
+        "manage" : "Manage quotations"
+    },
+    "receipts" : {
+        "name" : "Receipts permissions: ",
+        "manage" : "Manage receipts"
+    },
+    "settings" : {
+        "name" : "Settings permissions: ",
+        "manage" : "Manage settings"
+    },
+    "templates" : {
+        "name" : "Templates permissions: ",
+        "manage" : "Manage templates"
+    },
+    "orders" : {
+        "name" : "Orders permissions: ",
+        "manage" : "Manage orders"
+    },
+    "vouchers" : {
+        "name" : "Vouchers permissions: ",
+        "manage" : "Manage vouchers"
+    },
+    "plans" : {
+        "name" : "Plans permissions: ",
+        "manage" : "Manage plans"
+    },
+    "payment_links" : {
+        "name" : "Payment links permissions: ",
+        "manage" : "Manage payment links"
+    },
+    "revenues" : {
+        "name" : "Revenues permissions: ",
+        "view" : "View revenues"
+    },
+    "reports" : {
+        "name" : "Reports permissions: ",
+        "view" : "View reports",
+        "download" : "Download reports",
+        "access" : "Access reports"
+  
+    },
+    "users" : {
+        "name" : "Users permissions: ",
+        "view" : "View users list",
+        "manage" : "Manage users",
+        "login_as" : "Login to users accounts"
+    },
+    "profiles" : {
+        "name" : "Profile permissions: ",
+        "manage" : "Manage profile"
+    },
+    "clients" : {
+        "name" : "Clients permissions: ",
+        "manage" : "Manage clients"
+    },
+    "products" : {
+        "name" : "Products permissions: ",
+        "manage" : "Manage product"
+    },
+    "invoices" : {
+        "name" : "Invoices permissions: ",
+        "manage" : "Manage invoice"
+    },
+    "blogs" : {
+        "name" : "Articles permissions: ",
+        "manage" : "Manage article"
+    },
+    "contact_us" : {
+        "name" : "Contact us permissions: ",
+        "manage" : "Manage contact us"
+    },
+  
+      
+      
+      "CATEGORIES":{
+        "VIEWCATGS": "View categories",
+        "GATGLIST": "Categories list",
+        "ADDCATG": "Add new category",
+        "EDIT": "Edit category",
+        "ADD": "Add new category",
+        "CATGTYPE": "Category type",
+        "CATGSTATUS": "Category status",
+        "TAXABLE": "Taxable",
+        "NONTAXABLE": "Non-taxable"
+  
+      },
+      "ZERORATEDGOODS":{
+        "ITEM1":"The international transport of Goods",
+        "ITEM2":"International transport of passengers",
+        "ITEM3":"Services directly connected and incidental to a Supply of international passenger transport",
+        "ITEM4":"Supply of a qualifying means of transport",
+        "ITEM5":"Any services relating to Goods or passenger transportation, as defined in article twenty five of these Regulations",
+        "ITEM6":"Medicines and medical equipment",
+        "ITEM7":"Qualifying metals",
+        "ITEM8":"Private education to citizen",
+        "ITEM9":"Private healthcare to citizen",
+        "ITEM10":"Supply of qualified military goods",
+        "ITEM11":"Export of goods",
+        "ITEM12":"Export of services",
+        "ITEM13":" Financial services mentioned in Article 29 of the VAT Regulations",
+        "ITEM14":"Life insurance services mentioned in Article 29 of the VAT Regulations",
+        "ITEM15":"Real estate transactions mentioned in Article 30 of the VAT Regulations"
+      }
+  
+  }

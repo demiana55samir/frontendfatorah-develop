@@ -1,0 +1,56 @@
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+ 
+    
+  <div class="login position-absolute overflow-hidden d-flex flex-wrap align-items-center">
+
+    <div class="position-absolute top-0 ps-5 pt-1">
+      <img src="../../../assets/logo/logo 1.svg" width="70" alt="" >
+    </div>
+    <div class="ContDiv position-relative container "> 
+      <div class="background">
+        <div class="loginBody w-100 h-100 text-start ps-0 ps-md-3 ps-lg-3">
+          <div class="d-flex flex-column ">
+             <h1 class=" title">{{'LOGIN.LOGIN'|translate}}</h1>
+  
+             <div class="width-40 form-floating mb-3">
+              <input  formControlName="email" class="textInput h-46px form-control" id="floatingInput" placeholder="name@example.com">
+              <label class="inputFieldLable text-white" for="floatingInput">{{'LANDING.EMAIL'|translate}}</label>
+              <app-Form-errors [control]="loginForm.controls['email']"></app-Form-errors>
+            </div>
+  
+             <div class="width-40 form-floating mb-3 inner-addon right-addon">
+              <input formControlName="password" [type]="showPassword ? 'text' : 'password'" class="textInput h-46px form-control subTitle" id="floatingInputI" placeholder="name@example.com">
+              <i [ngClass]="{'far-ltr':language=='en'}" alt="show" class="text-white far fa-eye eye-show" 
+              (click)="showPassword = !showPassword"
+              [class.hide]="showPassword"></i>
+              <i [ngClass]="{'far-ltr':language=='en'}" alt="hide" class="text-white far fa-eye-slash eye-hide" 
+              (click)="showPassword = !showPassword"
+              [class.hide]="!showPassword"></i> 
+              <label class="text-white inputFieldLable subTitle" for="floatingInputI">{{'LOGIN.PASSWORD'|translate}}</label>
+              <app-Form-errors [control]="loginForm.controls['password']"></app-Form-errors>
+  
+            </div>
+            <div class="width-40 d-flex flex-wrap justify-content-between">
+              <div class="d-flex">
+                <input class="cursor-pointer checkbox form-check-input me-1" type="checkbox" formControlName="rememberMe" value="" id="flexCheckDefault">
+                <label class="text-white" for="flexCheckDefault">{{'LOGIN.REMEMBERME'|translate}}</label>
+              </div>
+            <span routerLink="/auth/forget-password" class="forgetPassword cursor-pointer" >{{'LOGIN.FORGETPASSWORD'|translate}}</span>
+            </div>
+            <div class="width-40 mt-3 text-center d-flex flex-column gap-1">
+              <div>
+                <button type="submit" class="loginBtn">{{'LOGIN.LOGIN'|translate}}</button>
+              </div>
+              <div>
+                <span class="text-white fs-16 fw-300 subTitle">{{'LOGIN.NOACCOUNT'|translate}}</span>
+                <span routerLink="/auth/register-step1" class="text-white underLined-text fs-16 fw-400 cursor-pointer subTitle">{{'LOGIN.CREATEACOUNT'|translate}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+

@@ -1,0 +1,55 @@
+<!-- ui_fix -->
+<div class="row users-container p-0 ps-5 pe-5">
+  <div class="col-md-12 d-flex justify-content-start title">
+   <h2 class="ms-4">{{'ADMIN-USERS.TITLE' | translate}}</h2>
+  </div>
+  <div class="card users-card mt-3">
+   <div class="px-3 pb-3 d-flex flex-wrap justify-content-between">
+     <div class=" cardTitle ">
+       <p>{{'ADMIN-USERS.SUBTITLE' | translate}}</p>
+     </div>
+     <div class="addUserBtn" >
+       <button routerLink="/admin/users/user-data/add/null" class="userBtn fw-semibold blue_Color_BG  border-0 text-white my-auto mx-0">
+           <img src="../../../../assets/images/invoices/add.svg" alt="">
+           <span >{{'ADMIN-USERS.ADDUSER' | translate}}</span>
+       </button>
+     </div>
+
+     
+
+   </div>
+   <div class="px-3" *ngIf="users">
+    <div class="col-md-12 tabs mb-3" >
+      <p-tabMenu [model]="items" [activeItem]="activeItem">
+        <ng-template pTemplate="item" let-item let-i="index">
+         <span class="tab_text">{{item.label}}</span>  
+         <!-- <span class="text-center tab_text" style="width:35px;background: #E0E1FF;border-radius:10px;">{{numberArray[i]}}</span> -->
+      </ng-template>
+      </p-tabMenu>
+     </div>    
+  </div>
+    <div class="col-md-12 d-flex justify-content-between px-3 py-3">
+       <div class="search">
+        <span class="me-2 my-auto">{{'CREDITNOTICE.SEARCH' | translate}}</span>
+         <input placeholder="{{'COMMON.CLIENTORCOMPANY'|translate}} , {{'LANDING.EMAIL'|translate}} , {{'COMMON.PHONE'|translate}}, {{'ADMIN-USERS.CREATEDAT' | translate}}" type="text"(keyup.enter)="search()"
+         [(ngModel)]="searchWord" (input)="search()">
+       </div>
+    </div>
+    <div class="col-md-12">
+
+      <app-table-comp 
+      [columnsArray]="columnsArray"
+      [columnsNames]="columnsNames"
+      [RowsData] = "users"
+      [controlArray]="controlArray">
+      </app-table-comp>
+
+
+      <p-paginator (onPageChange)="onPageChange($event)" #paginator
+       [first]="1" [rows]="perPage" [totalRecords]="totalPage" 
+      ></p-paginator> 
+
+
+    </div>
+</div>
+</div>

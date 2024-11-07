@@ -1,0 +1,63 @@
+<!-- ui_fix -->
+<div class="p-0 ps-5 pe-5">
+  <div class="userInfo">
+    <div class="mb-3">
+      <h3 *ngIf="viewType=='add'" class="fw-bolder">{{'ADDBANKACCOUNT.ADD_NEW_BANK_ACCOUNT' |translate}}</h3>
+      <h3 *ngIf="viewType=='edit'" class="fw-bolder">{{'ADDBANKACCOUNT.EDIT_ACCOUNT_INFORMATION' |translate}}</h3>
+    </div>
+    <div>
+      
+<form [formGroup]="addBankAccountForm" >
+  <div class="p-4 card boxShadow-10 borderRadius_20px">
+    <div #form class="row w-100 m-auto">
+      <div class="mb-2">
+        <h6 class="fw-bold">{{'ADDBANKACCOUNT.BANK_ACCOUNT_INFORMATION' |translate}}</h6>
+      </div>
+      <div class="col-md-5">
+    
+      <div formGroupName="name">
+        <div class="col-12 fullScreenWidth mx-0 my-4">
+          <label class="form-label  fw-bold mb-1">{{'COMMON.BANKNAME' |translate}} - {{'COMMON.ARABIC' |translate}} <span style="color: red;">*</span></label>
+          <input type="text" formControlName="ar" 
+          [ngClass]="!addBankAccountForm.get('name.ar')?.valid && addBankAccountForm.get('name.ar')?.touched ?'errorInput' : ''"
+          placeholder=" "  class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+          <app-Form-errors [control]="addBankAccountForm.get('name.ar')"></app-Form-errors> 
+
+        </div>   
+        <div class="col-12 fullScreenWidth mx-0 my-4">
+          <label class="form-label  fw-bold mb-1">{{'COMMON.BANKNAME' |translate}} - {{'COMMON.ENGLISH' |translate}} <span style="color: red;">*</span></label>
+          <input type="text" formControlName="en"  
+          [ngClass]="!addBankAccountForm.get('name.en')?.valid && addBankAccountForm.get('name.en')?.touched ?'errorInput' : ''"
+          placeholder=" "  class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+          <app-Form-errors [control]="addBankAccountForm.get('name.en')"></app-Form-errors> 
+
+        </div>   
+      </div>   
+        <div class="col-12 fullScreenWidth mx-0 my-4">
+          <label class="form-label  fw-bold mb-1"> {{'COMMON.BANKFULLNAME' |translate}} <span style="color: red;">*</span></label>
+          <input type="text" formControlName="full_name" 
+          [ngClass]="!addBankAccountForm.controls['full_name'].valid && addBankAccountForm.controls['full_name'].touched ?'errorInput' : ''"
+          placeholder=" " class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100">
+          <app-Form-errors [control]="addBankAccountForm.controls['full_name']"></app-Form-errors>
+
+        </div>    
+        <div class="col-12 fullScreenWidth mx-0 my-4">
+          <label class="form-label  fw-bold mb-1">{{'COMMON.IBANNUMBER' |translate}} <span style="color: red;">*</span></label>
+          <input type="text" formControlName="number"  
+          [ngClass]="!addBankAccountForm.controls['number'].valid && addBankAccountForm.controls['number'].touched ?'errorInput' : ''"
+          placeholder=" " class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100">
+          <app-Form-errors [control]="addBankAccountForm.controls['number']"></app-Form-errors>
+        </div>    
+    </div>
+     
+      <div class="col-md-12 d-flex justify-content-center justify-content-md-end mt-5">
+        <app-button-comp *ngIf="viewType=='add'" [btnType]="'main'" (click)="addBankAccount()"  style="width: 120px;"  [name]="'COMMON.ADD' |translate" [background_color]="'#1B1464'" ></app-button-comp>
+        <app-button-comp *ngIf="viewType=='edit'" [btnType]="'main'" (click)="editBankAccount()"  style="width: 120px;"  [name]="'COMMON.EDIT' |translate" [background_color]="'#1B1464'" ></app-button-comp>
+      </div>
+    </div>
+
+  </div>
+</form>
+    </div>
+  </div>
+</div>

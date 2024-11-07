@@ -1,0 +1,515 @@
+<form [formGroup]="addPurchaseForm" action="">
+  <!-- ui_fix -->
+  <div class="divCont p-0 ps-5 pe-5">
+    <div class="title mb-3">
+      <h2 *ngIf="formType == 'add'">{{'ADDPURCHASE.ADDPRURCHASEANDEXPENSE'|translate}}</h2>
+      <h2 *ngIf="formType == 'edit'">{{'ADDPURCHASE.EDITPRURCHASE'|translate}}</h2>
+    </div>
+  
+    
+    <div class="card ligth-blue-Bg boxShadow-10 borderRadius_20px">
+      <div class="p-3">
+        <h4 class="fs-20 fw-semibold ">{{'ADDPURCHASE.SELECTTYPE'|translate}}</h4>
+  
+        <div class="d-flex flex-wrap justify-content-center justify-content-lg-start justify-content-md-start pb-5">
+          <div class="Types align-items-center gap-3 px-4">
+            <div class="Type" *ngFor="let type of purchase_types; let i = index">
+              <label class=" rounded-3 ">
+                 <input type="radio"  [attr.id]="'class'+i" formControlName="status"   [value]="type.id"
+                 [checked]="type.id === selectedTypes"
+                 (change)="selectedTypes = type.id;resetExpense();">
+    
+                 <div class="typeBody rounded-3">
+                  <img [src]="type?.img" alt="">
+                  </div>
+                 
+              </label>
+              <div *ngIf="language=='ar'" class="pt-3"> {{ type.name_ar }} </div>
+              <div *ngIf="language=='en'" class="pt-3"> {{ type.name_en }} </div>
+           </div>
+    
+          </div>
+          
+          <div class="vl"></div>
+          <!-- has_taxable_inoivce -->
+          <!-- <div> -->
+           <div  class="Types align-items-center gap-3 px-4">
+
+            <!-- style="margin-left: 20px;" -->
+           <div  class="Type" *ngFor="let type of invoices_types; let i = index">
+             <label class=" rounded-3 ">
+                <input type="radio" [attr.id]="'class'+i"  [value]="type.id"
+                [checked]="type.id === selectedTypes1"
+                (change)="selectedTypes1 = type.id;chooseHasInvoiceTaxable(type.id);"
+                >
+                <div class="typeBody rounded-3">
+                 <img [src]="type?.img" alt="">
+                 </div>
+                
+             </label>
+             <div *ngIf="language=='ar'" class="pt-3"> {{ type.name_ar }} </div>
+             <div *ngIf="language=='en'" class="pt-3"> {{ type.name_en }} </div>
+          </div>
+        </div>
+      
+  
+          <!-- </div> -->
+          <div class="vl"></div>
+          <!-- ================== -->
+           <!-- is_imported -->
+          <!-- <div> -->
+            <div  class="Types align-items-center gap-3 px-4">
+              <!-- style="margin-left: 20px;" -->
+            <div  class="Type" *ngFor="let type of imported_types; let i = index">
+              <label class=" rounded-3 ">
+                 <input type="radio" [attr.id]="'class'+i"  [value]="type.id"
+                 [checked]="type.id === is_imported"
+                 (change)="is_imported = type.id;chooseIsImported(type.id);"
+                 >
+                 <div class="typeBody rounded-3">
+                  <img [src]="type?.img" alt="">
+                  </div>
+                 
+              </label>
+              <div *ngIf="language=='ar'" class="pt-3"> {{ type.name_ar }} </div>
+              <div *ngIf="language=='en'" class="pt-3"> {{ type.name_en }} </div>
+           </div>
+         <!-- </div> -->
+       
+   
+           </div>
+        
+        </div>
+        
+
+        <!-- hide it now -->
+        <div class="d-flex gap-2" *ngIf="selectedTypes == 1" style="display: none !important;">
+          <img src="./assets/images/icons8-qr-code-96.png" width="35" height="35" alt="">
+          <p class="w-80 mb-0 cursor-pointer text-dark pt-1 underLined-text fw-bold"  (click)="QrCodeInput.click()">{{'ADDPURCHASE.FILLDATAQRCODE'|translate}} </p>
+          <!-- <input class="file-input" type="file"  #QrCodeInput hidden (change)="addQRCode($event)" /> -->
+
+          <input #file type="file"  #QrCodeInput hidden (change)="onSelects(file.files)" [multiple]="'multiple'" [accept]="'.jpg, .png, .gif, .jpeg'" class="btn btn-success my-2"/>
+            <div *ngFor="let item of qrCodeResult" class="d-none">
+              <ngx-scanner-qrcode #actionFile="scanner" [src]="item.url" [config]="config" [isBeep]="false"  (event)="onEvent($event)"></ngx-scanner-qrcode>
+              <!-- <p class="data">{{ actionFile.data | async }}</p> -->
+            </div>
+        </div>
+        <div class="row gap-8">
+          <div class="col-md-4 d-flex flex-column">
+  
+            <div class="fs-16 fw-400 mx-0 my-3" *ngIf="!selectedTypes">
+              <label class="form-label fs-16 fw-400 mb-1"> {{'ADDPURCHASE.EXPENSESTYPE'|translate}} <span style="color: red;">*</span></label>
+            
+              <!-- (onChange)="chooseExpense($event,'expense')" -->
+              <p-dropdown  [options]="expenses" formControlName="expenses_id"  
+            [styleClass]="!addPurchaseForm.controls['expenses_id'].valid && addPurchaseForm.controls['expenses_id'].touched ?'errorInput' : ''"
+            placeholder="{{'ADDPURCHASE.EXPENSESTYPE'|translate}}" class="my-1 mx-0 py-2  w-100"  optionLabel="name" optionValue="id"></p-dropdown> 
+            <app-Form-errors [control]="addPurchaseForm.controls['expenses_id']"></app-Form-errors>
+            </div>
+  
+            <div class="fs-16 fw-400 mx-0 my-3" *ngIf="selectedTypes">
+              <label class="form-label fs-16 fw-400 mb-1">{{'ADDPURCHASE.PURCHASETYPE'|translate}} <span style="color: red;">*</span> </label>
+              <!-- (onChange)="chooseExpense($event,'purchase')" -->
+              <p-dropdown  [options]="purchase" formControlName="expenses_id" 
+            [styleClass]="!addPurchaseForm.controls['expenses_id'].valid && addPurchaseForm.controls['expenses_id'].touched ?'errorInput' : ''"
+            
+            placeholder="{{'ADDPURCHASE.PURCHASETYPE'|translate}}" class="my-1 mx-0 py-2  w-100"   optionLabel="name" optionValue="id"></p-dropdown> 
+            <app-Form-errors [control]="addPurchaseForm.controls['expenses_id']"></app-Form-errors>
+            </div>
+  
+  
+            <div class="fs-16 fw-400 mx-0 my-3" *ngIf="selectedTypes == 1">
+              <label class="form-label fs-16 fw-400 mb-1">{{'ADDPURCHASE.INVOICE_NUMBER'|translate}} </label>
+              <input type="text" appOnlyNumber formControlName="code_number" 
+              [ngClass]="!addPurchaseForm.controls['code_number'].valid && addPurchaseForm.controls['code_number'].touched ?'errorInput' : ''"
+              placeholder="{{'ADDPURCHASE.INVOICE_NUMBER'|translate}}" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2  w-100">
+              <app-Form-errors [control]="addPurchaseForm.controls['code_number']"></app-Form-errors>
+  
+            </div>
+
+            <div class="fs-16 fw-400 mx-0 my-3">
+              <label class="form-label fs-16 fw-400 mb-1">{{'ADDPURCHASE.CURRENCY'|translate}} <span style="color: red;">*</span></label>
+              <p-dropdown  [options]="currency" formControlName="currency" (ngModelChange)="updateTotalAmount();chooseCurrency($event)" 
+              [styleClass]="!addPurchaseForm.controls['currency'].valid && addPurchaseForm.controls['currency'].touched ?'errorInput' : ''"
+              placeholder="{{'ADDPURCHASE.CURRENCY'|translate}}" filterBy="name" [filter]="true"
+               class="my-1 mx-0 py-2  w-100" optionLabel="name" optionValue="currency_code"></p-dropdown> 
+
+              <app-Form-errors [control]="addPurchaseForm.controls['currency']"></app-Form-errors>
+  
+          </div>
+          <div class="fs-16 fw-400 mx-0 my-3">
+
+            <label class="form-label  fs-16 fw-400 mb-1">{{'ADDPURCHASE.EXCHANGERATE'|translate}} <span style="color: red;">*</span></label>
+            <input type="text" appOnlyNumber placeholder="{{'ADDPURCHASE.EXCHANGERATE'|translate}} " [readOnly]="!rate_is_changed"
+            [ngClass]="(!addPurchaseForm.controls['conversion_rate'].valid && addPurchaseForm.controls['conversion_rate'].touched ?'errorInput' : '')!"
+            (ngModelChange)="updateExchangeAmount()" [(ngModel)]="conversion_rate"
+            formControlName="conversion_rate" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2  w-100">
+            <app-Form-errors [control]="addPurchaseForm.controls['conversion_rate']"></app-Form-errors>
+
+            <div class="d-flex gap-3">
+              <div class="my-auto">
+                <p class="m-0"> {{'ADDPURCHASE.EDITEXCHANGERATE' | translate}} </p>
+              </div>
+      
+              <p-inputSwitch  (onChange)="changeExchangeRate($event)"></p-inputSwitch>
+<!-- 
+              <label class="switch">
+                <input type="checkbox"  [disabled]="enableChangeExchangeRate">
+                <span  class="slider round" (click)="changeExchangeRate($event)"></span>
+              </label> -->
+      
+             </div>
+             <p class="text-warning" *ngIf="rate_is_changed"> {{'ADDPURCHASE.CHANGEEXCHANGERATEWARN' | translate}} </p>
+        </div>
+
+          <div class="fs-16 fw-400 mx-0 my-3">
+            <label class="form-label  fs-16 fw-400 mb-1">{{'ADDPURCHASE.AMOUNT'|translate}} <span style="color: red;">*</span></label>
+            <input type="text" appOnlyNumber placeholder="{{'ADDPURCHASE.AMOUNT'|translate}} " 
+            [ngClass]="!addPurchaseForm.controls['converted_amount'].valid && addPurchaseForm.controls['converted_amount'].touched ?'errorInput' : ''"
+            (ngModelChange)="updateTotalAmount()"
+            formControlName="converted_amount" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2  w-100">
+            <app-Form-errors [control]="addPurchaseForm.controls['converted_amount']"></app-Form-errors>
+
+        </div>
+
+        <div class="fs-16 fw-400 mx-0 my-3">
+            <label class="form-label  fs-16 fw-400 mb-1">{{'ADDPURCHASE.AMOUNT'|translate}} ( {{'COMMON.SAR'|translate}} )<span style="color: red;">*</span></label>
+            <!-- (ngModelChange)="updateTotalAmount()" -->
+            <input type="text" appOnlyNumber placeholder="{{'ADDPURCHASE.AMOUNT'|translate}} ( {{'COMMON.SAR'|translate}} )" 
+            [ngClass]="!addPurchaseForm.controls['total'].valid && addPurchaseForm.controls['total'].touched ?'errorInput' : ''"
+            style="pointer-events: none;"
+            formControlName="total" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2  w-100">
+            <app-Form-errors [control]="addPurchaseForm.controls['total']"></app-Form-errors>
+
+        </div>
+         
+  
+          <!-- *ngIf="isTaxable" -->
+          <div class="fs-16 fw-400 mx-0 my-3" >
+            <label class="form-label  fs-16 fw-400 mb-1"> {{'ADDPURCHASE.TAXAMOUNT'|translate}} <span style="color: red;">*</span></label>
+
+            <p-dropdown  [options]="tax" formControlName="tax_rate" 
+            [styleClass]="!addPurchaseForm.controls['tax_rate'].valid && addPurchaseForm.controls['tax_rate'].touched ?'errorInput' : ''"
+            (onChange)="updateTotalAmount()"
+            placeholder="{{'ADDPURCHASE.TAXAMOUNT'|translate}}" class="my-1 mx-0 py-2  w-100"   optionLabel="name" optionValue="value"></p-dropdown> 
+
+            <!-- <input type="text" appOnlyNumber placeholder=" {{'ADDPURCHASE.TAXAMOUNT'|translate}} "  (ngModelChange)="updateTotalAmount()"
+            [ngClass]="!addPurchaseForm.controls['tax_amount'].valid && addPurchaseForm.controls['tax_amount'].touched ?'errorInput' : ''"
+            formControlName="tax_amount" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2  w-100"> -->
+            <app-Form-errors [control]="addPurchaseForm.controls['tax_rate']"></app-Form-errors>
+  
+          </div>
+  
+          <div class="fs-16 fw-400 mx-0 my-3" *ngIf="[0,-1].includes(addPurchaseForm.controls['tax_rate'].value)">
+            <label class="form-label  fs-16 fw-400 mb-1"> {{'ADDPURCHASE.TAXEXEMPTION'|translate}} <span style="color: red;">*</span></label>
+
+            <p-dropdown [options]="taxCodes" formControlName="tax_exemption_code"  class="my-1 mx-0 py-2  w-100"
+              optionLabel="name" optionValue="code">
+              <ng-template let-item pTemplate="item">
+                {{ item.name | translate }}
+              </ng-template>
+              <ng-template let-selectedItem pTemplate="selectedItem">
+                {{ selectedItem.name | translate }}
+              </ng-template>
+            </p-dropdown>
+
+            <!-- <p-dropdown  [options]="taxCodes" formControlName="tax_exemption_code" 
+            [styleClass]="!addPurchaseForm.controls['tax_exemption_code'].valid && addPurchaseForm.controls['tax_exemption_code'].touched ?'errorInput' : ''"
+            (onChange)="choose_taxCodes()"
+            placeholder="{{'ADDPURCHASE.TAXEXEMPTION'|translate}}" class="my-1 mx-0 py-2  w-100"   optionLabel="name" optionValue="value"></p-dropdown>  -->
+
+            <!-- <input type="text" appOnlyNumber placeholder=" {{'ADDPURCHASE.TAXAMOUNT'|translate}} "  (ngModelChange)="updateTotalAmount()"
+            [ngClass]="!addPurchaseForm.controls['tax_amount'].valid && addPurchaseForm.controls['tax_amount'].touched ?'errorInput' : ''"
+            formControlName="tax_amount" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2  w-100"> -->
+            <app-Form-errors [control]="addPurchaseForm.controls['tax_exemption_code']"></app-Form-errors>
+  
+          </div>
+
+          <div class="fs-16 fw-400 mx-0 my-3" *ngIf="selectedTypes == 1 && currentCurrency.currency_code != 'SAR'">
+            <!-- <span style="color: red;">*</span> -->
+            <label class="form-label  fs-16 fw-400 mb-1"> {{'ADDPURCHASE.TOTALAMOUNT'|translate}} ( {{ currentCurrency.name }} ) </label>
+            <input type="text" appOnlyNumber placeholder=" {{'ADDPURCHASE.TOTALAMOUNT'|translate}} ( {{ currentCurrency.name }} )" 
+            [(ngModel)]="totalAmountInCurrency" [ngModelOptions]="{standalone: true}"
+         
+             class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2  w-100" style="pointer-events: none;">
+            <!-- <app-Form-errors [control]="addPurchaseForm.controls['total_amount']"></app-Form-errors> -->
+  
+          </div>
+
+          <div class="fs-16 fw-400 mx-0 my-3" *ngIf="selectedTypes == 1">
+            <!-- <span style="color: red;">*</span> -->
+            <label class="form-label  fs-16 fw-400 mb-1"> {{'ADDPURCHASE.TOTALAMOUNT'|translate}} ( {{'COMMON.SAR'|translate}} )</label>
+            <input type="text" appOnlyNumber placeholder=" {{'ADDPURCHASE.TOTALAMOUNT'|translate}} ( {{'COMMON.SAR'|translate}} )" 
+            [(ngModel)]="totalAmount" [ngModelOptions]="{standalone: true}"
+         
+             class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2  w-100" style="pointer-events: none;">
+            <!-- <app-Form-errors [control]="addPurchaseForm.controls['total_amount']"></app-Form-errors> -->
+  
+          </div>
+  
+  
+          <div class="fs-16 fw-400 mx-0 my-3" *ngIf="selectedTypes == 1">
+            <label class="form-label  fs-16 fw-400 mb-1">{{'ADDPURCHASE.INVOICEDATE'|translate}} <span style="color: red;">*</span></label>
+            <div class=" d-flex position-relative justify-content-end  flex-wrap w-100">
+              <p-calendar class="w-100 " dateFormat="dd-mm-yy"
+              [styleClass]="!addPurchaseForm.controls['purchase_date'].valid && addPurchaseForm.controls['purchase_date'].touched ?'errorInput' : ''"
+              [baseZIndex]="10000" formControlName="purchase_date"  placeholder="{{'ADDPURCHASE.INVOICEDATE'|translate}} "></p-calendar>
+              <img class=" position-absolute p-3 calenderImg" src="./assets/images/inputs/calender.svg" alt="">
+            </div>
+            <app-Form-errors [control]="addPurchaseForm.controls['purchase_date']"></app-Form-errors>
+  
+          </div>
+  
+  
+            
+          </div>
+          <div class="col-md-6 text-start d-flex flex-column">
+
+            <div class="title mb-3">
+              <span *ngIf="selectedTypes == 1" class="fw-400 fs-20">{{'ADDPURCHASE.UPLOADRECEIPT'|translate}} </span>
+              <span *ngIf="selectedTypes == 0" class="fw-400 fs-20">{{'ADDPURCHASE.UPLOADFILE'|translate}}</span>
+            </div>
+            <!-- <div class="imgUpload  d-flex flex-column justify-content-center align-items-center" style="width: 80%; height: 75%; justify-content: center;overflow: hidden;" (click)="fileInput.click()">
+             <div *ngIf="!fileUrl" class="d-flex flex-column justify-content-center align-items-center">
+              <svg width="78" height="61" viewBox="0 0 78 61" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M40.9505 14.8714L40.8663 14.8491C40.3588 14.7147 40.0407 14.2268 40.2041 13.7402C40.2041 13.7402 40.2041 13.7401 40.2041 13.7401L40.3463 13.7879L40.9505 14.8714ZM40.9505 14.8714L40.9536 14.8683M40.9505 14.8714L40.9536 14.8683M40.9536 14.8683C41.433 14.9533 41.9292 14.7041 42.0789 14.2554L40.9536 14.8683Z" fill="#483EA8" stroke="#F9FFF9" stroke-width="0.3"/>
+                <path d="M63.894 42.732H58.9153C58.4572 42.732 58.0855 42.4021 58.0855 41.9952C58.0855 41.5884 58.4571 41.2584 58.9153 41.2584H63.894C70.7568 41.2584 76.3407 36.3003 76.3407 30.2066C76.3407 24.1128 70.7568 19.1547 63.894 19.1547H63.7742C63.5336 19.1547 63.3048 19.062 63.1472 18.9005C62.9895 18.7389 62.9184 18.5247 62.9528 18.3131C63.0268 17.8542 63.0642 17.3932 63.0642 16.9443C63.0642 11.6631 58.2247 7.36593 52.2769 7.36593C49.963 7.36593 47.7564 8.00799 45.8952 9.22316C45.4862 9.48998 44.9054 9.37157 44.6689 8.97212C39.398 0.0601123 25.6311 -1.13668 18.4936 6.61599C15.4868 9.88207 14.3054 14.1307 15.2521 18.2716C15.3564 18.7289 14.9623 19.1552 14.4389 19.1552H14.1064C7.24355 19.1552 1.65965 24.1134 1.65965 30.2071C1.65965 36.3009 7.24355 41.259 14.1064 41.259H19.085C19.5432 41.259 19.9148 41.589 19.9148 41.9958C19.9148 42.4026 19.5432 42.7326 19.085 42.7326H14.1064C6.3283 42.7326 0 37.1135 0 30.2071C0 23.4944 5.97795 17.9979 13.455 17.6947C12.7527 13.3986 14.0957 9.06524 17.2086 5.68343C24.8503 -2.61758 39.495 -1.68715 45.6857 7.56908C47.6606 6.46967 49.9205 5.89293 52.2766 5.89293C59.4827 5.89293 65.1929 11.3389 64.6932 17.7016C72.1014 18.0705 78 23.538 78 30.2065C78 37.1135 71.6717 42.7321 63.8936 42.7321L63.894 42.732Z" fill="#483EA8"/>
+                <path d="M17.994 41.5802C17.994 51.8362 27.3847 60.1503 38.8889 60.1503C50.3933 60.1503 59.7837 51.8361 59.7837 41.5802C59.7837 31.3242 50.3933 23.0102 38.8889 23.0102C27.3845 23.0102 17.994 31.3243 17.994 41.5802ZM19.954 41.5802C19.954 32.3354 28.4311 24.7841 38.8889 24.7841C49.3466 24.7841 57.8238 32.3352 57.8238 41.5802C57.8238 50.825 49.3466 58.3763 38.8889 58.3763C28.4312 58.3763 19.954 50.8252 19.954 41.5802Z" fill="#483EA8" stroke="#F9FFF9" stroke-width="0.3"/>
+                <path d="M38.5111 48.9945C38.5111 49.3915 38.8676 49.684 39.2686 49.684C39.6696 49.684 40.0261 49.3919 40.0261 48.9945V34.9696C40.0261 34.5726 39.6696 34.2802 39.2686 34.2802C38.8676 34.2802 38.5111 34.5727 38.5111 34.9696V48.9945Z" fill="#483EA8" stroke="#483EA8" stroke-width="0.3"/>
+                <path d="M43.5991 39.78C43.7477 39.912 43.94 39.9758 44.1282 39.9759H44.1283C44.3162 39.9758 44.5086 39.9126 44.6574 39.78C44.962 39.5096 44.962 39.0633 44.6574 38.7928L39.7975 34.4775C39.5034 34.2164 39.0328 34.2163 38.739 34.4776L33.8792 38.7928C33.5746 39.0633 33.5746 39.5096 33.8792 39.78C34.1733 40.0412 34.6438 40.0413 34.9377 39.78L39.2683 35.9346L43.5991 39.78Z" fill="#483EA8" stroke="#483EA8" stroke-width="0.3"/>
+                </svg>
+                <div class="d-flex">
+                  <span class="text-decoration-underline fw-bold color-darkPurple"> Browse </span>
+                  <span class="fw-bold text-dark"> Drag & drop files or </span>
+                </div>
+                <span> jpeg,png,pdf </span>
+               
+             </div>
+           
+             <div *ngIf="fileUrl && fileType === 'image'" class="d-flex flex-column justify-content-center align-items-center position-relative p-3">
+              <button class="btn-close position-absolute top-0 end-0" (click)="removeItem()" aria-label="Close"></button>
+              <img [src]="fileUrl" alt="Image" style="object-fit: cover;" width="150" height="150">
+            </div>
+            
+            <div *ngIf="fileUrl && fileType === 'pdf'" class="d-flex flex-column justify-content-center align-items-center position-relative p-3">
+              <button class="btn-close position-absolute top-0 end-0" (click)="removeItem()" aria-label="Close"></button>
+                <p > {{ fileName }} </p>
+            </div>
+            
+             <input class="file-input" type="file"  formControlName="image" #fileInput hidden (change)="onFileSelect($event)" 
+             (drop)="onDrop($event)" (dragover)="onDragOver($event)" />
+            </div> -->
+
+            <div class="imgUpload d-flex flex-column justify-content-center align-items-center"
+            style="width: 100%; height: 75%; justify-content: center;overflow: hidden;"
+            (click)="fileInput.click()" 
+            (drop)="onDrop($event)" 
+            (dragover)="onDragOver($event)" 
+            (dragleave)="onDragLeave($event)">
+            
+            <div *ngIf="!fileUrl" class="d-flex flex-column justify-content-center align-items-center">
+                <svg width="78" height="61" viewBox="0 0 78 61" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- SVG content here -->
+                </svg>
+                <div class="d-flex">
+                    <span class="text-decoration-underline fw-bold color-darkPurple"> Browse </span>
+                    <span class="fw-bold text-dark"> Drag & drop files or </span>
+                </div>
+                <span> jpeg, png, pdf </span>
+            </div>
+            
+            <div *ngIf="fileUrl && fileType === 'image'" class="d-flex flex-column justify-content-center align-items-center position-relative p-3">
+                <button class="btn-close position-absolute top-0 end-0" (click)="removeItem()" aria-label="Close"></button>
+                <img [src]="fileUrl" alt="Image" style="object-fit: cover;" width="150" height="150">
+            </div>
+            
+            <div *ngIf="fileUrl && fileType === 'pdf'" class="d-flex flex-column justify-content-center align-items-center position-relative p-3">
+                <button class="btn-close position-absolute top-0 end-0" (click)="removeItem()" aria-label="Close"></button>
+                <p>{{ fileName }}</p>
+            </div>
+            
+            <input type="file" #fileInput hidden (change)="onFileSelect($event)" />
+        </div>
+          
+        <!-- <span *ngIf="showrequired" style="color: red;">*{{'COMMON.REQUIRED'|translate}}</span> -->
+  
+          </div>
+        </div>
+      </div>
+      <div class="HLine"></div>
+      <div class="p-3">
+        <div class="row" *ngIf="selectedTypes == 1">
+          <div class="col-md-4 mb-3">
+            <div class="fs-16 fw-400 mx-0 my-3">
+              <label class="form-label fs-16 fw-400 mb-1 w-100 d-flex justify-content-between"> 
+                <!-- <span style="color: red;">*</span> -->
+                 <div>{{'SUPPLIER.SINGLESUPPLIER'|translate}} </div> 
+                </label>
+              
+              <p-dropdown [options]="suppliers" formControlName="supplier_id"
+              [styleClass]="!addPurchaseForm.controls['supplier_id'].valid && addPurchaseForm.controls['supplier_id'].touched ?'errorInput' : ''"
+              placeholder="{{'SUPPLIER.SUPPLIERS'|translate}}"
+                class="my-1 mx-0 py-2  w-100" optionLabel="name" optionValue="supplier_id"></p-dropdown>
+              <app-Form-errors [control]="addPurchaseForm.controls['supplier_id']"></app-Form-errors>
+              <p class="cursor-pointer" style="color: rgb(0, 167, 220);" data-bs-toggle="modal" data-bs-target="#addNewModal"> {{'ADDPURCHASE.ADDSUPPLIER'|translate}}  </p> 
+  
+            </div>
+            
+          </div>
+        </div>
+  
+        <div class="row">
+           <div class="col-md-4 mb-3">
+            <div class="mx-0 my-3">
+              <label class="form-label  fs-16 fw-400 mb-1">{{'ADDPURCHASE.RECIPIENTNAME'|translate}} <span style="color: red;">*</span> </label>
+              <input type="text" placeholder="{{'ADDPURCHASE.RECIPIENTNAME'|translate}}" 
+              [ngClass]="!addPurchaseForm.controls['recipient'].valid && addPurchaseForm.controls['recipient'].touched ?'errorInput' : ''"
+              formControlName="recipient" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2  w-100">
+              <app-Form-errors [control]="addPurchaseForm.controls['recipient']"></app-Form-errors>
+  
+            </div>
+           </div>
+        </div>
+        <div class="row gap-6 mb-3">
+          <div class="col-md-4">
+            <label class="form-label  fs-16 fw-400 mb-1">{{'ADDPURCHASE.ISSUEDATE'|translate}} <span style="color: red;">*</span></label>
+            <div class=" d-flex position-relative justify-content-end  flex-wrap w-100">
+              <p-calendar class="w-100 " dateFormat="dd-mm-yy" formControlName="date" 
+              [styleClass]="!addPurchaseForm.controls['date'].valid && addPurchaseForm.controls['date'].touched ?'errorInput' : ''"
+              [baseZIndex]="10000"  placeholder="{{'ADDPURCHASE.ISSUEDATE'|translate}} "></p-calendar>
+              <img class=" position-absolute p-3" src="./assets/images/inputs/calender.svg" alt="">
+            </div>
+            <app-Form-errors [control]="addPurchaseForm.controls['date']"></app-Form-errors>
+          </div>
+          <div class="col-md-4">
+            <div class="fs-16 fw-400 mx-0">
+              <label class="form-label fs-16 fw-400 mb-1">{{'ADDPURCHASE.PAYMENTMETHOD'|translate}} <span style="color: red;">*</span></label>
+              <p-dropdown  [options]="paymentType" formControlName="payment_method" 
+              [styleClass]="!addPurchaseForm.controls['payment_method'].valid && addPurchaseForm.controls['payment_method'].touched ?'errorInput' : ''"
+              placeholder="{{'ADDPURCHASE.PAYMENTMETHOD'|translate}}" class="my-1 mx-0 py-2  w-100" optionLabel="name" optionValue="value"></p-dropdown> 
+              <app-Form-errors [control]="addPurchaseForm.controls['payment_method']"></app-Form-errors>
+            </div>
+          </div>
+       </div>
+      </div>
+      <div class="HLine"></div>
+      <div class="row m-3" style="margin-bottom: 80px !important;">
+  
+        <div *ngIf="selectedTypes == 1">
+          <label class="form-label  fs-16 fw-400 mb-1"> {{'ADDPURCHASE.PAYMENTSLIST'|translate}}  </label>
+        
+          <!--  for wide Screen  PaymentsCard-->
+          <div class="me-4 mt-4 ms-2  wideScreen d-flex align-items-center  border-2 gap-2 flex-wrap ">
+           <div class="flex-fill">
+            <p> {{'ADDPURCHASE.PAYMENTNAME'|translate}} </p>
+           </div>
+           <div class="flex-fill d-flex ">
+             <p> {{'ADDPURCHASE.PAYMENTAMOUNT'|translate}}</p>
+            </div>
+           <div class="flex-fill d-flex ">
+             <p> {{'ADDPURCHASE.PAYMENTAMOUNT'|translate}} ( {{'COMMON.SAR'|translate}} )</p>
+            </div>
+          </div>
+   
+          <!-- labels inside white box for small Screen  PaymentsCard-->
+         <div  *ngFor="let product of addedPayments; let i = index" class=" m-sm-auto m-auto ms-md-2 me-md-4 mt-2 bg-white shadowCard  d-flex align-items-center  border-2 gap-2 mb-3 flex-wrap">
+   
+           <div class="flex-fill">
+           <p class="smallScreen"> {{'ADDPURCHASE.PAYMENTNAME'|translate}} </p>
+           <div class="card displayCard">
+             <input   styleClass="productInput" type="text"
+              [(ngModel)]="product.name.ar" [ngModelOptions]="{standalone:true}"  class="productInput" pInputText />
+           </div>
+           </div>
+           <div class="flex-fill">
+           <p class="smallScreen"> {{'ADDPURCHASE.PAYMENTAMOUNT'|translate}} </p>
+           <div class="card displayCard">
+             <input styleClass="productInput" type="text" appOnlyNumber  [(ngModel)]="product.converted_amount" 
+             (ngModelChange)="updatePaymentAmount(i)" class="productInput" [ngModelOptions]="{standalone:true}"  pInputText />
+           </div>
+           </div>
+           <div class="flex-fill">
+           <p class="smallScreen"> {{'ADDPURCHASE.PAYMENTAMOUNT'|translate}} ( {{'COMMON.SAR'|translate}} )</p>
+           <div class="card displayCard">
+             <input styleClass="productInput" type="text" appOnlyNumber  [(ngModel)]="product.paid_amount"  [readOnly]="true"
+            class="productInput" [ngModelOptions]="{standalone:true}"  pInputText />
+           </div>
+           </div>
+   
+           <div class="width-4">
+             <i class="pi pi-trash text-danger mx-1  mt-1  fs-4 cursor-pointer " 
+             (click)="deleteRowDevice(i)" *ngIf="i < (addedPayments.length-1) && addedPayments.length > 1"
+           ></i>
+           </div>
+         </div>
+           <div class="w-100">
+               <div class="col-md-12 pe-0 pe-md-5 pe-lg-5 pt-2 mb-5 d-flex justify-content-end">
+                 <app-button-comp (click)="increaseDevice()" [btnType]="'main'"  
+                 class="addBtn" [name]="'COMMON.ADD' | translate" background_color="#82D35C"></app-button-comp>
+               </div>
+           </div>
+        </div>
+       
+  
+         <div class="col-md-12">
+          <label class="form-label fs-16 fw-400 mb-1">{{'ADDPURCHASE.NOTES'|translate}}</label>
+          <textarea resize="false" class="form-control no-resize" formControlName="notes" placeholder="{{'ADDPURCHASE.NOTES'|translate}}"  style="height: 100px" id="validationTextarea"></textarea>
+         </div>
+      </div>
+      <div class=" d-flex w-100 submitPart justify-content-end p-3">
+        <app-button-comp *ngIf="formType == 'add'" [btnType]="'main'" class="submitBtn" (click)="getNewNumber()" [style.width.%]="15" [name]="'COMMON.SUBMIT'|translate"  [background_color]="'#1B1464'"></app-button-comp>
+  
+        <app-button-comp *ngIf="formType == 'edit'" [btnType]="'main'" class="submitBtn" (click)="editPurchase()" [style.width.%]="15" [name]="'COMMON.EDIT'|translate"  [background_color]="'#1B1464'"></app-button-comp>
+     </div>
+    </div>
+  </div>
+  </form>
+  
+  
+  
+  <!-- Button trigger modal -->
+  <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addNewModal">
+    Launch demo modal
+  </button> -->
+  
+  <!-- Modal -->
+  <div class="modal fade" id="addNewModal" tabindex="-1" aria-labelledby="addNewModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="text-end fw-bold"> {{'SUPPLIER.ADDNEWUSER'|translate}} </span>
+        </div>
+        <div class="modal-body">
+            <!-- form  -->
+          <form [formGroup]="SupplierForm" class="row g-3 needs-validation ContactForm" >
+                  
+            <div class="col-12" formGroupName="name">
+                <label for="validationCustomPhone" class="form-label"> {{'SUPPLIER.NAME'|translate}} </label>
+                <input formControlName="ar" type="text" class="form-control" 
+                [ngClass]="!SupplierForm.get('name.ar')?.valid && SupplierForm.get('name.ar')?.touched ?'errorInput' : ''"
+                placeholder="{{'SUPPLIER.NAME'|translate}}" id="validationCustomPhone" aria-describedby="inputGroupPrepend" required>
+                <app-Form-errors [control]="SupplierForm.get('name.ar')"></app-Form-errors>
+              </div>
+            <div class="col-12">
+              <label for="validationCustomPhone" class="form-label"> {{'SUPPLIER.TAXNUMBER'|translate}} </label>
+              <input formControlName="tax_number" type="text" class="form-control"  placeholder=" {{'SUPPLIER.TAXNUMBER'|translate}} "
+               id="validationCustomPhone" aria-describedby="inputGroupPrepend">
+              <app-Form-errors [control]="SupplierForm.controls['tax_number']"></app-Form-errors>
+              
+            </div>
+  
+          
+  
+        <div class="col-12">
+          <div class="d-flex justify-content-end">
+           
+            <app-button-comp [btnType]="'main'" (click)="AddSupplier()" data-bs-dismiss="modal" class="me-2" [name]="'COMMON.ADD'|translate " [background_color]="'#1B1464'"></app-button-comp>
+          </div>
+        </div>
+        </form>
+          <!-- ------ -->
+        </div>
+  
+      </div>
+    </div>
+  </div>

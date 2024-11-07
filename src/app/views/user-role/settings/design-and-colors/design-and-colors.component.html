@@ -1,0 +1,26 @@
+<!-- ui_fix -->
+<div class="contDiv p-0 ps-5 pe-5">
+  <!-- ui_fix -->
+  <div class="mb-5">
+      <div class="title w-100 mb-2">
+         <h3 class="fw-bolder">{{'DESIGNANDCOLORS.DESIGNANDCOLORS'|translate}}</h3>
+      </div>
+      <div class="tabs w-100 mb-1">
+        <p-tabMenu [model]="items" [activeItem]="activeItem">
+          <ng-template pTemplate="item" let-item let-i="index">
+           <span>{{item.label}}</span>
+        </ng-template>
+        </p-tabMenu>
+      </div>
+
+      <div *ngIf="activeItem.label==='الشعار والختم' || activeItem.label=='Logo and Stamp'">
+      <app-logo-and-seal></app-logo-and-seal>
+      </div>
+      <div *ngIf="activeItem.label=='الألوان'  || activeItem.label=='Colors'">
+      <app-colors></app-colors>
+      </div>
+      <div *ngIf="activeItem.label=='قوالب الفواتير'  || activeItem.label=='Invoices templates'">
+      <app-All-invoice-templates></app-All-invoice-templates>
+      </div>
+  </div>
+</div>

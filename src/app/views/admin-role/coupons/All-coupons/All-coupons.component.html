@@ -1,0 +1,47 @@
+<!-- ui_fix -->
+<div class="row main-container p-0 ps-5 pe-5">
+  <div class="col-md-12 d-flex justify-content-start title">
+   <h2 class="ms-4">{{'COUPONS.ALLCOUPONS' | translate}}</h2>
+  </div>
+  <div class="card main-card mt-3">
+   <div class="px-3 pb-3 d-flex flex-wrap justify-content-between">
+     <div class=" cardTitle ">
+       <p>{{'COUPONS.COUPONSLIST' | translate}}</p>
+     </div>
+     <div class="addBtn" >
+      
+       <!-- <button routerLink="/admin/users/user-data/add/null" class="Btn fw-semibold blue_Color_BG  border-0 text-white my-auto mx-0">
+           <img src="../../../../assets/images/invoices/add.svg" alt="">
+           <span >{{'COUPONS.ADDCOUPON' | translate}}</span>
+       </button> -->
+       <app-button-comp class="Btn" routerLink="/admin/coupons/coupon-details/add/null"  [btnType]="'main'" image="../../../../assets/images/invoices/add.svg"    [name]="'COUPONS.ADDCOUPON' | translate " [background_color]="'#1B1464'" ></app-button-comp>
+
+     </div>
+
+   </div>
+
+    <div class="col-md-12 d-flex justify-content-between px-3 py-3">
+       <div class="search">
+        <span class="me-2 my-auto">{{'CREDITNOTICE.SEARCH' | translate}}</span>
+         <input placeholder="{{'ADDCOUPON.DISCOUNTCOUPN'|translate}}" type="text"(keyup.enter)="search()"
+         [(ngModel)]="searchWord" (input)="search()">
+       </div>
+    </div>
+    <div class="col-md-12">
+
+      <app-table-comp 
+      [columnsArray]="columnsArray"
+      [columnsNames]="columnsNames"
+      [RowsData] = "coupons"
+      [controlArray]="controlArray">
+      </app-table-comp>
+
+
+      <p-paginator (onPageChange)="onPageChange($event)"  #paginator
+       [first]="1" [rows]="perPage" [totalRecords]="totalPage" 
+      ></p-paginator> 
+
+
+    </div>
+</div>
+</div>

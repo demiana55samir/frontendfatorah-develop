@@ -1,0 +1,143 @@
+<!-- ui_fix -->
+<div class="divCont p-0 ps-5 pe-5">
+  <div class="title">
+     <h3 class="fw-bolder">{{ 'USERPROFILE.PROFILE_TITLE' | translate }}</h3>
+  </div>
+  <div class="tabs mb-5">
+    <p-tabMenu [model]="items" [activeItem]="activeItem">
+
+    </p-tabMenu>
+  </div>
+  <div class="card mainCard borderRadius_20px">
+    <div *ngIf="activeItem.label=='الملف الشخصي' || activeItem.label=='Profile'">
+      <!-- profile image -->
+      <div class="w-100 d-flex flex-wrap topPart mb-5">
+        <div class="w-25 profileImage position-relative">
+          <img *ngIf="!profilePhoto && user?.media?.avatar" [src]="user?.media?.avatar" alt="">
+          <img *ngIf="profilePhoto" [src]="profilePhoto" alt="">
+          <!-- <img *ngIf="!profilePhoto && !user?.media?.avatar" src="../../../../assets/images/user-profile/profileImg.png" alt=""> -->
+           <img *ngIf="!profilePhoto && !user?.media?.avatar" src="./assets/logo/profile_img.svg" alt="">
+          <img [ngClass]="{'left-58px':language=='en'}" (click)=" removeMedia('avatar')" *ngIf="profilePhoto || user?.media?.avatar" class="clearBtn position-relative" src="../../../../assets/images/settings/close-button.png" alt="">
+
+        </div>
+        <div class="changeImage d-flex flex-fill align-items-center">
+          <div>
+            <img (click)="fileInput.click()" src="../../../../assets/images/user-profile/camera-icon.svg" alt="">
+            <span (click)="fileInput.click()" class="cursor-pointer changeTitle fw-bold my-0 mx-2 text-end blue_Color_Btn ">{{ 'USERPROFILE.UPLOAD_PROFILE_IMAGE' | translate }}</span>
+            <input type="file"  hidden #fileInput accept=".png, .jpg, .jpeg"  id="fileInput" (change)="validateProfileImage($event)" style="display: none;">
+          </div>
+        </div>
+      </div> 
+      <div class="userInfo">
+        <div>
+          <h4 class="fw-bold">{{ 'USERPROFILE.EDITPROFILE' | translate }}</h4>
+        </div>
+        <div>
+          
+   <form [formGroup]="editProfileForm">
+    <div #form class="row w-100 m-auto">
+      <div class="col-md-5">
+
+        <div class="col-12 fullScreenWidth mx-0 my-3">
+          <label class="form-label  fw-bold mb-1">  {{ 'USERPROFILE.USERNAME' | translate }} </label>
+          <input type="text" formControlName="name" placeholder=" {{ 'USERPROFILE.USERNAME' | translate }}"  class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+
+        </div>   
+        <div class="col-12 fullScreenWidth mx-0 my-3">
+          <label class="form-label  fw-bold mb-1">{{ 'USERPROFILE.PHONE_NUMBER' | translate }}</label>
+          <input type="text" formControlName="number" placeholder="{{ 'USERPROFILE.PHONE_NUMBER' | translate }}" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100">
+
+        </div>    
+        <div class="col-12 fullScreenWidth mx-0 my-3">
+          <label class="form-label  fw-bold mb-1">{{ 'USERPROFILE.EMAIL' | translate }}</label>
+          <input type="text" formControlName="email" placeholder="{{ 'USERPROFILE.EMAIL' | translate }}" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100">
+
+        </div>    
+    </div>
+     
+      <div class="col-md-12 d-flex justify-content-end mt-5">
+        <app-button-comp [btnType]="'main'" (click)="editProfile()"  class="sumbitBtn"
+         [name]=" 'USERPROFILE.EDIT' | translate " [background_color]="'#1B1464'" ></app-button-comp>
+      </div>
+    </div>
+    </form>
+        </div>
+      </div>
+
+    </div>
+    <div *ngIf="activeItem.label=='تغيير كلمة المرور' || activeItem.label=='Change Password' ">
+      <div class="userInfo">
+        <div>
+          <h4 class="fw-bold">{{ 'USERPROFILE.CHANGE_PASSWORD' | translate }}</h4>
+        </div>
+        <div>
+          
+   <form [formGroup]="changePasswordForm">
+    <div #form class="row w-100 m-auto">
+      <div class="col-md-5">
+
+
+        <!-- <div class="width-40 form-floating mb-3 inner-addon right-addon">
+          <input formControlName="password" [type]="showCurrentPassword ? 'text' : 'password'" class="textInput h-46px form-control" id="floatingInput" placeholder="name@example.com">
+          <i [ngClass]="{'far-ltr':language=='en'}" alt="show" class="text-white far fa-eye eye-show" 
+          (click)="showCurrentPassword = !showCurrentPassword"
+          [class.hide]="showCurrentPassword"></i>
+          <i [ngClass]="{'far-ltr':language=='en'}" alt="hide" class="text-white far fa-eye-slash eye-hide" 
+          (click)="showCurrentPassword = !showCurrentPassword"
+          [class.hide]="!showCurrentPassword"></i> 
+          <label class="text-white inputFieldLable" for="floatingInput">{{'LOGIN.PASSWORD'|translate}}</label>
+          <app-Form-errors [control]="loginForm.controls['password']"></app-Form-errors>
+
+        </div> -->
+
+
+        <div class="col-12 fullScreenWidth mx-0 my-4 inner-addon right-addon">
+          <label class="form-label  fw-bold mb-1">{{ 'USERPROFILE.CURRENT_PASSWORD' | translate }} <span style="color: red;">*</span></label>
+          <input type="text" formControlName="current_password" [type]="showCurrentPassword ? 'text' : 'password'" placeholder=" "  class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+          <i [ngClass]="{'far-ltr':language=='en'}" alt="show" class="text-white far fa-eye eye-show" 
+          (click)="showCurrentPassword = !showCurrentPassword"
+          [class.hide]="showCurrentPassword"></i>
+          <i [ngClass]="{'far-ltr':language=='en'}" alt="hide" class="text-white far fa-eye-slash eye-hide" 
+          (click)="showCurrentPassword = !showCurrentPassword"
+          [class.hide]="!showCurrentPassword"></i> 
+          <app-Form-errors [control]="changePasswordForm.controls['current_password']"></app-Form-errors>
+
+        </div>   
+        <div class="col-12 fullScreenWidth mx-0 my-4 inner-addon right-addon">
+          <label class="form-label  fw-bold mb-1">{{ 'USERPROFILE.NEW_PASSWORD' | translate }} <span style="color: red;">*</span></label>
+          <input type="text" id=passwordField formControlName="new_password" [type]="showNewPassword ? 'text' : 'password'" placeholder=" " class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100">
+          <i [ngClass]="{'far-ltr':language=='en'}" alt="show" class="text-white far fa-eye eye-show" 
+          (click)="showNewPassword = !showNewPassword"
+          [class.hide]="showNewPassword"></i>
+          <i [ngClass]="{'far-ltr':language=='en'}" alt="hide" class="text-white far fa-eye-slash eye-hide" 
+          (click)="showNewPassword = !showNewPassword"
+          [class.hide]="!showNewPassword"></i> 
+          <app-Form-errors [control]="changePasswordForm.controls['new_password']"></app-Form-errors>
+
+        </div>    
+        <div class="col-12 fullScreenWidth mx-0 my-4 inner-addon right-addon">
+          <label class="form-label  fw-bold mb-1">{{ 'USERPROFILE.CONFIRM_PASSWORD' | translate }} <span style="color: red;">*</span></label>
+          <input type="text" formControlName="new_password_confirmation" [type]="showNewPasswordConf ? 'text' : 'password'" placeholder=" " class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100">
+          <i [ngClass]="{'far-ltr':language=='en'}" alt="show" class="text-white far fa-eye eye-show" 
+          (click)="showNewPasswordConf = !showNewPasswordConf"
+          [class.hide]="showNewPasswordConf"></i>
+          <i [ngClass]="{'far-ltr':language=='en'}" alt="hide" class="text-white far fa-eye-slash eye-hide" 
+          (click)="showNewPasswordConf = !showNewPasswordConf"
+          [class.hide]="!showNewPasswordConf"></i> 
+          <app-Form-errors [control]="changePasswordForm.controls['new_password_confirmation']"></app-Form-errors>
+          <app-Form-errors [control]="changePasswordForm"></app-Form-errors>
+        </div>    
+    </div>
+     
+      <div class="col-md-12 d-flex justify-content-end mt-5">
+        <app-button-comp [btnType]="'main'" (click)="changePassword()" 
+        class="sumbitBtn"
+        [name]=" 'USERPROFILE.SUBMIT' | translate " [background_color]="'#1B1464'" ></app-button-comp>
+      </div>
+    </div>
+    </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

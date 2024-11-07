@@ -1,0 +1,24 @@
+.divCont{
+    padding: 10% 3%;
+    @media screen and (max-width:1024px){
+        padding: 1% 1%;
+
+    }
+
+    .title{
+        h2{
+         @media only screen and (max-width: 769px) {
+             font-size: 25px !important;
+         }
+        }
+     }
+     ::ng-deep .p-tabmenu .p-tabmenu-nav {
+        background-color:transparent !important;
+    }
+    ::ng-deep .p-menuitem-link{
+        background-color:transparent !important;
+    }
+    ::ng-deep .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link:not(.p-disabled):focus{
+        box-shadow: none !important;
+       }
+}

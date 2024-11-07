@@ -1,0 +1,107 @@
+.dashboard-container{
+    padding: 6% 3%;
+    .pageTitle{
+        font-weight: 600;
+        font-size: 20px;
+
+    }
+    .cards{
+        @media screen and (max-width:768px){
+            justify-content: center;
+        }
+        .infoCards{
+            height: 230px;
+            width: 185px;
+            border-radius: 10px;
+    
+            @media screen and (max-width:768px){
+                width: 100%;
+            }
+            .cardTitle{
+                font-weight: 500;
+                font-size: 18px;
+            }
+            .num{
+                font-weight: 700;
+                font-size: 25px;
+            }
+            .price{
+                display: flex;
+                justify-content: center;
+                font-weight: 700;
+                font-size: 15px;
+
+                word-break: break-all;
+                text-align: center;
+            }
+        }
+    }
+    .chart{
+        ::ng-deep .apexcharts-legend.apx-legend-position-bottom.apexcharts-align-center{
+            display: none;
+        }
+        ::ng-deep .p-card{
+            box-shadow: 10px 10px 80px rgba(63, 39, 102, 0.1) !important;
+        border-radius: 24px !important;
+        }  
+        ::ng-deep .apexcharts-toolbar{
+            display: none;
+        }  
+    }
+    .secIII{
+
+        .cardsII{
+            height: 417px;
+            overflow: auto;
+            width: 45%;
+            //width: 35.8vw;
+            height: 400px;
+            background: #FFFFFF;
+            border-radius: 17.0118px;
+            padding: 20px;
+            @media screen and (max-width:768px){
+                width: 100%;
+            }
+            .more{
+                font-weight: 500;
+                font-size: 14.01px;
+                color: #667FFE;
+            }
+        }
+        .bottomSecII{
+            .num{
+                font-weight: 500 !important;
+                font-size: 24px !important;
+                //display: flex;
+                align-items: center;
+            }
+            .name{
+                font-weight: 500 !important;
+                font-size: 15px !important;
+                //display: flex;
+                margin-top: 8px;
+                align-items: center;
+            }
+            span{
+                font-weight: 400;
+                font-size: 12px;
+            }
+        }
+    }
+    .text{
+        font-weight: 500;
+        font-size: 16.0111px;
+        color: #000000;
+    }
+}
+
+::ng-deep .apexcharts-yaxis-texts-g{
+   margin-right: 20px !important;
+}
+
+::ng-deep{
+   [dir='rtl'] .apexcharts-yaxis {
+        transform: translate(-0.125px, 0px) !important;
+    }
+}
+// .apexcharts-text

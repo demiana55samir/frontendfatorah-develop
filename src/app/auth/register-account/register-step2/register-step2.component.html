@@ -1,0 +1,96 @@
+<form [formGroup]="verificationForm" (ngSubmit)="otpCheck()">
+  <div class="register position-absolute overflow-hidden d-flex flex-wrap align-items-center">
+    <div class="position-absolute top-0 ps-5 pt-1">
+      <img src="../../../assets/logo/logo 1.svg" width="70" alt="" >
+    </div>
+    <div class="ContDiv position-relative"> 
+      <div class="background">
+        <div [ngClass]="{
+          'registerBodyAR':language=='ar',
+          'registerBodyEN':language=='en'
+      }"
+         class="registerBody w-100 h-100 text-start py-3 px-5">
+          <div class="d-flex flex-column justify-content-center h-100">
+             <h1 class="mb-2 title">{{'REGISTER.REGISTER' |translate}}</h1>
+             <div class="width-40 mt-2 mb-3 d-flex justify-content-center">
+               <div class="w-50">
+                <div class="d-flex position-relative w-100 justify-content-between align-items-center ">
+                  <div class="hLine"></div>
+                  <div class="active"></div>
+                  <div class="active"></div>
+                  <div class="notActive"></div>
+                  <div class="notActive"></div>
+                </div>
+               </div>
+             </div>
+             <div class="d-flex flex-column">
+              <div class="d-flex width-40 flex-column">
+                <span class="text-white fw-400 desctext">{{'REGISTER.BEFORCONT' |translate}}</span>
+                <span class="mb-1 text-white desctext fw-400">
+                  {{'REGISTER.CHECKMAIL' |translate}}
+                </span>
+              </div>
+              <span class="mb-2 text-light fs-12"> {{'REGISTER.CODE' |translate}}
+                <span style="color: red;">*</span>
+              </span>
+              <div class="width-40 d-flex otp">
+                <div>
+                  <input (paste)="onPaste($event)" id="digit4" formControlName="digit4" [libAutoTab]="{next:'',prev:'digit3'}"
+                  class="form-control otpInputs text-center  BoxShadow_25 blue_Color_Btn" 
+                   type="text" maxlength="1"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" />
+                </div>
+                <div>
+                  <input (paste)="onPaste($event)" id="digit3" [libAutoTab]="{next:'digit4',prev:'digit2'}" formControlName="digit3" 
+                  class="form-control otpInputs text-center  BoxShadow_25 blue_Color_Btn" 
+                   type="text" maxlength="1"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" />
+                </div>
+                <div>
+                  <input (paste)="onPaste($event)" id="digit2" [libAutoTab]="{next:'digit3',prev:'digit1'}" formControlName="digit2" 
+                  class="form-control otpInputs text-center   BoxShadow_25 blue_Color_Btn" 
+                   type="text" maxlength="1"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" />
+                </div>
+                <div>
+                  <input (paste)="onPaste($event)" id="digit1" [libAutoTab]="{next:'digit2',prev:''}" formControlName="digit1" 
+                  class="form-control otpInputs text-center   BoxShadow_25 blue_Color_Btn" 
+                   type="text" maxlength="1"  oninput="this.value=this.value.replace(/[^0-9]/g,'');" />
+                </div>
+
+
+ 
+                
+              </div>
+              <div class="err mt-2" *ngIf="displayError && language=='en'">
+                *Required
+              </div>
+              <div class="err mt-2" *ngIf="displayError && language=='ar'">
+                *مطلوب
+              </div>
+                <div class="w-25 ">
+                   <button class="bg-transparent border-0  text-start text-white underLined-text mt-4 fs-14"  
+                    [ngClass]=" remainingSeconds > 0 ? 'disabledDiv': '' " 
+                    (click)="reSendCode()">  {{'REGISTER.DNTRCVCODE' |translate}} </button>
+
+                   <span class="text-white fs-12" *ngIf="remainingSeconds > 0"> {{'REGISTER.REMAINING' |translate}} {{ remainingSeconds }} </span> 
+                </div>
+               
+
+              <div class="width-40 mt-5 text-center d-flex flex-column gap-1">
+                <div>
+                  <button   type="submit" class="loginBtn">{{'REGISTER.CHECK' |translate}}</button>
+                </div>
+                <!-- <app-button-comp style="width: 120px;"  [name]="'تسجيل دخول'" background_color="#6759FF" ></app-button-comp> -->
+                <div class="mt-1">
+                  <span class="text-white fs-16 fw-300">{{'REGISTER.ACCOUNTEXIST' |translate}} </span>
+                  <span routerLink="/auth/login" class="text-white underLined-text fs-16 fw-400 cursor-pointer">{{'REGISTER.LOGIN' |translate}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+
+

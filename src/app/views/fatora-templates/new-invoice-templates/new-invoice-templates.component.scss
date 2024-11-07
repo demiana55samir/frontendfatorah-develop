@@ -1,0 +1,17 @@
+$primary: #669FDB;
+
+.simplified_template{
+    .text_primary{
+        color: $primary;
+    }
+    .smallwb {
+        font-size: 0.5em;
+    }
+    .smallb {
+        font-size: 0.5em;
+        font-weight: bold;
+    }
+    .pageBreak{
+        page-break-inside: abs($number: 0);
+    }
+}

@@ -1,0 +1,31 @@
+.divCont{
+    @media screen and (max-width:426px) {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+    .mainCard{
+        @media screen and (max-width:426px) {
+            padding-left: 10px !important;
+            padding-right: 10px !important;
+        }
+    }
+    .secIII{
+
+        .cardsII{
+            height: 417px;
+            overflow: auto;
+            width: 47%;
+            //width: 35.8vw;
+            height: 480px;
+            background: #FFFFFF;
+            border-radius: 17.0118px;
+            padding: 20px;
+            @media screen and (max-width:768px){
+                width: 100%;
+            }
+        }
+        @media screen and (max-width:768px){
+            row-gap: 25px;
+        }
+    }
+}

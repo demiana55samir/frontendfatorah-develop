@@ -1,0 +1,80 @@
+<div class="p-2">
+
+  <div class="w-100 h-100 card borderRadius_20px my-4" *ngIf="show != null">
+    <div style="
+    height: 50px;
+    background-color: #F5F9FC;
+    border-top-left-radius: 19px;
+    border-top-right-radius: 19px;" class="fw-bold card-header">
+     {{'COMMON.INVOICEDUEDISAPEARTITLE' | translate}}
+    </div>
+    <div class="card-body d-flex flex-wrap">
+      <div class="card-body d-flex flex-wrap align-items-center gap-3">
+        
+        <input type="checkbox"  name="is_enable"   
+        [ngStyle]="{'--checked-color': primaryColor}"
+        [(ngModel)]="show"  (ngModelChange)="updateInvoiceDue()"
+        class="form-check-input cursor-pointer m-0" style="width: 1.7em; height: 1.7em;border-radius:5px;" > 
+
+        <span >{{ 'COMMON.INVOICEDUEDISPLAY' | translate }}</span>
+
+      <!-- <app-button-comp [btnType]="'main'" *ngIf="show==false" (click)="updateInvoiceDue()" style="width: 250px;"  [name]="'COMMON.INVOICEDUEDISAPEAR' | translate" [background_color]="'#1B1464'" ></app-button-comp>
+      <app-button-comp [btnType]="'main'" *ngIf="show==true" (click)="updateInvoiceDue()" style="width: 250px;"  [name]="'COMMON.INVOICEDUEDISPLAY' | translate" [background_color]="'#1B1464'" ></app-button-comp>                                                                     -->
+    </div>
+  </div>
+</div>
+
+  <div class="w-100 h-100 card borderRadius_20px">
+
+    
+
+   <div class="d-flex justify-content-center">
+    <div class="d-flex flex-wrap gap-4 p-4 templates">
+      <div class="template-card mb-3" *ngFor="let template of templates">
+        <div class="w-100 h-100 card borderRadius_20px">
+          <div class="fw-bold header card-header d-flex justify-content-between">
+             <div class="my-auto" *ngIf="language=='ar'"> {{template.name_ar}} </div>
+             <div class="my-auto" *ngIf="language=='en'"> {{template.name_en}} </div>
+             <div class="my-auto" *ngIf="templateId == template.id"> 
+             <img src="./assets/images/templates/activeTemplate.png" alt=""> 
+             </div>
+            
+          </div>
+          <div class="card-body templateImage  d-flex flex-wrap">
+            <img [src]="template.preview_image" class="w-100 h-100" alt="">
+          </div>
+          <div class="card-footer footer d-flex justify-content-between flex-wrap">
+            <app-button-comp [btnType]="'main'" id="openTemplate" (click)="setTemplateUrl(template.preview_image)"    [name]="'INVOICETEMPLATES.VIEW'|translate" [background_color]="'#1B1464'" ></app-button-comp>
+            <app-button-comp [btnType]="'main'" (click)="setTemplate(template.id)"   [name]="'INVOICETEMPLATES.CHOOSETEMPLATES'|translate" [background_color]="'#1B1464'" ></app-button-comp>
+          </div>
+        </div>
+  
+      </div>
+
+    </div>
+   </div>
+
+</div>
+
+
+<button hidden #imagesModal type="button"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#templateModel">
+
+</button>
+<div class="modal fade" id="templateModel"  tabindex="-1"
+aria-labelledby="allImagesModelLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header mb-4">
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="d-flex justify-content-center w-100">
+        <span  class="text-center fs-16 fw-600"></span>
+      </div>
+    </div>
+    <div class="modal-body">
+      <img class="w-100" [src]="templateUrl" alt="">
+    </div>
+    <div>
+    </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,40 @@
+  <div class="register position-absolute overflow-hidden d-flex flex-wrap align-items-center">
+    <div class="position-absolute top-0 ps-5 pt-1">
+      <img src="../../../assets/logo/logo 1.svg" width="70" alt="" >
+    </div>
+    
+    <div class="ContDiv position-relative"> 
+      <div class="background">
+        <div [ngClass]="{
+          'registerBodyAR':language=='ar',
+          'registerBodyEN':language=='en'
+      }"
+         class="registerBody w-100 h-100 text-start py-3 px-5">
+          <div class="d-flex flex-column justify-content-center h-100">
+             <h1 class="mb-2 title">{{'REGISTER.REGISTER'|translate}}</h1>
+             <div class="width-40 mt-2 mb-3 d-flex justify-content-center">
+               <div class="w-50">
+                <div class="d-flex  w-100 justify-content-between align-items-center ">
+                  <div class="hLine"></div>
+                  <div class="active"></div>
+                  <div class="active"></div>
+                  <div class="active"></div>
+                  <div class="active"></div>
+                </div>
+               </div>
+             </div>
+           <div class="width-40 d-flex mt-5 justify-content-center">
+              <div class="w-100 d-flex flex-column justify-content-center">
+                <h3 class="text-white fw-bold mb-5 text-center">{{'REGISTER.CONGRATULATIONS'|translate}}</h3>
+                <h6 class="text-white fw-bold mb-5 text-center">{{'REGISTER.COMPLETED'|translate}}</h6>
+                <h6 routerLink="/user/control/dashboard" class="underLined-text blue-color fw-bold text-center cursor-pointer">{{'REGISTER.CREATEINVOICE'|translate}}</h6>
+              </div>
+           </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+

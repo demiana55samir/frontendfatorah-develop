@@ -1,0 +1,78 @@
+<!-- ui_fix -->
+<div class="divCont px-5 p-0 ps-5 pe-5">
+  <div class="w-100 title mb-2"> 
+     <h2>{{'PAYMENTLINKDETAILS.TITLE' |translate}} </h2>
+  </div>
+  <div class="card borderRadius_20px mainCard p-5">
+
+    <div class="d-flex flex-wrap gap-3 mb-5">
+        <div class="h-115px width-32 boxShadow-25 borderRadius_20px p-3 gap-2 card">
+           <span class="text-secondary fw-bold fs-16">{{'PAYMENTLINKDETAILS.TOTALINVOICEAMOUNT' |translate}}</span>
+           <span class="fw-bold fs-16">{{paymentLink.invoice_amount}}</span>
+           <span [routerLink]="'/user/invoices/invoice-details/'+paymentLink.invoice_uuid" class="cursor-pointer light-purple-text fw-bold fs-16">{{'PAYMENTLINKDETAILS.INVOICEDETAILS' |translate}}</span>
+        </div>
+        <div class="h-115px width-32 boxShadow-25 borderRadius_20px gap-2 p-3 card">
+           <span class="text-secondary fw-bold fs-16">{{'PAYMENTLINKDETAILS.PAYEDAMOUNT' |translate}}</span>
+           <span class="fw-bold fs-16">{{paymentLink.paid_amount}}</span>
+           <span class="cursor-pointer light-purple-text fw-bold fs-16" (click)="scrollFunc('scroll')" > {{'PAYMENTLINKDETAILS.PAYMENTLINKSDETAILS' |translate}} </span>
+        </div>
+        <div class="h-115px width-32 boxShadow-25 borderRadius_20px gap-3 p-3 card">
+           <span class="text-secondary fw-bold fs-16">{{'PAYMENTLINKDETAILS.RECIVEDAMOUNT' |translate}}</span>
+           <span *ngIf="language=='ar'" class="fw-bold fs-16">{{paymentLink.received_amount}} ريال</span>
+           <span *ngIf="language=='en'" class="fw-bold fs-16">{{paymentLink.received_amount}} SAR</span>
+        </div>
+    </div>
+
+    <div  class="secIII d-flex flex-wrap justify-content-between">
+      <div class="cardsII boxShadow-25">
+        <div class="mb-3">
+          <h4 class="fw-bold">{{'PAYMENTLINKDETAILS.SUBTITLE' |translate}}</h4>
+        </div>
+        <div>
+          <div class="d-flex">
+            <p style="color: #333333;" class="fw-bold">{{'INVOICE.INVOICE' |translate}} :</p>
+            <p style="color: #333333;" class="fw-bold">{{paymentLink.inoice_number}}</p>
+          </div>
+          <div class="d-flex">
+            <p style="color: #333333;" class="fw-bold"> {{'PAYMENTLINKDETAILS.PAYMENTFOR' |translate}} :</p>
+            <p style="color: #333333;" class="fw-bold">{{paymentLink.payment_for}}</p>
+          </div>
+          <div class="d-flex">
+            <p style="color: #333333;" class="fw-bold">{{'LANDING.EMAIL' |translate}}:</p>
+            <p style="color: #333333;" class="fw-bold">{{paymentLink.email}}</p>
+          </div>
+          <div class="d-flex">
+            <p style="color: #333333;" class="fw-bold">{{'PAYMENTLINKDETAILS.PAYEDAMOUNT' |translate}} :</p>
+            <p style="color: #333333;" class="fw-bold">{{paymentLink.paid_amount}}</p>
+          </div>
+          <div class="d-flex">
+            <p style="color: #333333;" class="fw-bold">{{'PAYMENTLINKDETAILS.RECIVEDAMOUNT' |translate}} :</p>
+            <p style="color: #333333;" class="fw-bold">{{paymentLink.received_amount}}</p>
+          </div>
+          <div class="d-flex">
+            <p style="color: #333333;" class="fw-bold">{{'PAYMENTLINKDETAILS.LINKSTATUS' |translate}} :</p>
+            <p style="color: #333333;" class="fw-bold">{{paymentLink.state}}</p>
+          </div>
+          <div class="d-flex">
+            <p style="color: #333333;" class="fw-bold">{{'PAYMENTLINKDETAILS.GENERATEDAT' |translate}} :</p>
+            <p style="color: #333333;" class="fw-bold">{{paymentLink.generated_at}}</p>
+          </div>
+          <div class="d-flex">
+            <p style="color: #333333;" class="fw-bold">{{'PAYMENTLINKDETAILS.ACTIVEUNTILE' |translate}} :</p>
+            <p style="color: #333333;" class="fw-bold">{{paymentLink.active_until}}</p>
+          </div>
+          <div class="d-flex">
+            <p style="color: #333333;" class="fw-bold">link :</p>
+            <p  class="fw-bold light-purple-text">link</p>
+          </div>
+        </div>
+      </div>
+      <div #scroll id="scroll" class="cardsII boxShadow-25">
+        <div class="mb-3">
+          <h4>{{'PAYMENTLINKDETAILS.PAYMENTTRANSFERS' |translate}}</h4>
+        </div>
+      </div>
+  </div>
+  </div>
+</div>
+

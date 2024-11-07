@@ -1,0 +1,394 @@
+<!-- ui_fix -->
+<div class="px-5 main_container p-0 ps-5 pe-5">
+
+<form [formGroup]="addInvoiceForm" autocomplete="off">
+  <div>
+    <div class="rounded-3 ligth-blue-Bg boxShadow-10 mt-4 ">
+        <h4 class=" fw-semibold pt-4 ps-4 ">{{'ADDINVOICE.INVOICEDETAILS' | translate}} </h4>
+  
+        <div class="p-2">
+          <!-- ui-fix -->
+          <div class="Types gap-4 ms-2 ">
+
+            <div class="Type" *ngFor="let type of invoices_types; let i = index">
+                <label class=" rounded-3 ">
+                   <input type="radio"  [attr.id]="'class'+i"  [value]="type.id"
+                   [checked]="type.id === selectedTypes"
+                   [disabled]="type.id != selectedTypes"
+                   >
+                   <div class="typeBody rounded-3">
+                    <img [src]="type?.img" alt="">
+                    </div>
+                </label>
+                <div *ngIf="language=='ar'" class="pt-3 "> {{ type.name_ar }} </div>
+                <div *ngIf="language=='en'" class="pt-3"> {{ type.name_en }} </div>
+             </div>
+          </div>
+          <div class="m-auto mt-3 ms-3">
+            <p> {{'COMMON.CHANGEINVOICEDATA1' | translate}} 
+              <span class=" cursor-pointer " routerLink="/user/settings/commercial-account-details" [style.color]="'#00A7DC'"> {{'COMMON.CHANGEINVOICEDATA2' | translate}}</span></p>
+          </div>
+          <div class="d-flex flex-wrap justify-content-between m-3 mt-4 pb-4 gap-5  border-2   ">
+            <div class="width-476px my-auto">
+    
+              <label for="invoiceNumber" class="fw-semibold">{{'ADDINVOICE.INVOICENUMBER' | translate}} <span style="color: red;">*</span></label>
+              <input  formControlName="number" readonly id="invoiceNumber"
+              [ngClass]="{'errorInput': !addInvoiceForm.controls['number'].valid && addInvoiceForm.controls['number'].touched}"
+              placeholder="{{'ADDINVOICE.INVOICENUMBER' | translate}}"
+                class="form-control h-100 d-flex fw-semibold py-2 mt-2 inputDiv" type="text" #invoiceNumber appOnlyNumber
+               >
+               <app-Form-errors [control]="addInvoiceForm.controls['number']"></app-Form-errors>
+
+               <!--  formControlName="invoiceNumber" -->
+              <!--   <app-form-errors class="text-left error-message" [control]="loginForm.controls['password']">
+                </app-form-errors> -->
+            </div>
+            <div class="justifay-center-sm">
+              <div class="d-flex flex-wrap justify-content-center">
+                <div class="d-flex flex-column">
+                 <p>{{'COMMON.LOGO' | translate}}</p>
+                  
+                  <div class="d-flex flex-wrap align-items-center gap-5">
+                    <img class="logo" *ngIf="currentCompanyLogo" [src]="currentCompanyLogo" alt="">
+                    <!-- <img class="logo" *ngIf="companyLogo && ! currentCompanyLogo" [src]="companyLogo"  alt=""> -->
+                    <img class="logo" *ngIf="!currentCompanyLogo" src="../../../../assets/images/landing/logo 3.png"  alt="">
+                    <input type="file"  hidden #fileInput accept=".png, .jpg, .jpeg"  id="fileInput" (change)="validateImage($event)" style="display: none;">
+                    <app-button-comp (click)="fileInput.click()" [btnType]="'main'" [name]="'COMMON.ADDLOGO' | translate" image="./assets/logo/Group30.svg" background_color="#1B1464" ></app-button-comp>
+                   </div>
+                </div>
+                
+              </div>
+            </div>
+         </div>
+        </div>
+
+         <div class="HLine"></div>
+    
+         <div >
+          <div class="p-4">
+          <div class="width-45">
+            <label class="form-label  fw-bold mb-1">  {{'COMMON.TO' | translate}} <span style="color: red;">*</span></label>
+            <div>
+                <p-dropdown   [filter]="true" [options]="clients"  formControlName="client_id"
+                [styleClass]="!addInvoiceForm.controls['client_id'].valid && addInvoiceForm.controls['client_id'].touched ?'errorInput' : ''"
+                 placeholder="{{'COMMON.CLIENT' | translate}}" class="my-1 mx-0 py-2 py-2"
+                 optionLabel="name" optionValue="id"></p-dropdown>        
+                </div>       
+                <app-Form-errors [control]="addInvoiceForm.controls['client_id']"></app-Form-errors>
+          </div> 
+  
+          <!-- <div class="d-flex flex-wrap justify-content-between">
+            <div class="mx-0 my-3">
+              <label class="form-label  fw-bold mb-1">{{'COMMON.ISSUEDATE' | translate}}</label>
+  
+              <div class=" d-flex position-relative justify-content-end align-content-center flex-wrap width-440px">
+                <p-calendar [showIcon]="true"  class="w-100" formControlName="date"   placeholder="{{'COMMON.ISSUEDATE' | translate}} "></p-calendar>
+              </div>
+  
+            </div> 
+            <div class="mx-0 my-3">
+              <label class="form-label  fw-bold mb-1">  {{'COMMON.INVOICEDUE' | translate}} </label>
+              <div class=" d-flex position-relative justify-content-end align-content-center flex-wrap width-440px">
+                <p-calendar [showIcon]="true" class="w-100" formControlName="invoice_due"  placeholder=" {{'COMMON.INVOICEDUE' | translate}} "></p-calendar>
+              </div>
+            </div> 
+          </div> -->
+          <div class="py-4 d-flex flex-wrap justify-content-between">
+            <div class="width-45 mb-2">
+              <label class="form-label  fw-bold mb-1">{{'COMMON.ISSUEDATE' | translate}} <span style="color: red;">*</span></label>
+
+              <div>
+                <!-- [minDate]="TodayDate" -->
+                <!-- [ngModelOptions]="{standalone: true}" -->
+                <p-calendar [showIcon]="true"  class="w-100" formControlName="temp_date" [defaultDate]="TodayDate"
+                [styleClass]="!addInvoiceForm.controls['temp_date'].valid && addInvoiceForm.controls['temp_date'].touched ?'errorInput' : ''"
+                 [(ngModel)]="issueDate"  dateFormat="yy-mm-dd"  (ngModelChange)="changeIssueDate();"
+                   placeholder="{{'COMMON.ISSUEDATE' | translate}} "></p-calendar>
+               
+                  </div>      
+                  <app-Form-errors [control]="addInvoiceForm.controls['temp_date']"></app-Form-errors>
+            </div> 
+    
+            
+              <div class="width-45 mb-2">
+                <label class="form-label  fw-bold mb-1"> {{'COMMON.INVOICEDUE'|translate}} <span style="color: red;">*</span></label>
+    
+                <div class=" d-flex position-relative justify-content-end align-content-center flex-wrap w-100">
+                  <!-- (ngModelChange)="changeInvoice_due();" -->
+                  <p-calendar [showIcon]="true" class="w-100"  [showTime]="false"
+                  [styleClass]="!addInvoiceForm.controls['invoice_due'].valid && addInvoiceForm.controls['invoice_due'].touched ?'errorInput' : ''"
+                  formControlName="invoice_due"  
+                    [minDate]="issueDate"dateFormat="yy-mm-dd"  
+                    placeholder="{{'COMMON.INVOICEDUE'|translate}} "></p-calendar>
+                  </div>
+                  <app-Form-errors [control]="addInvoiceForm.controls['invoice_due']"></app-Form-errors>
+    
+              </div> 
+            
+           
+           </div>
+         
+         </div>
+  
+         <!--  for wide Screen -->
+           <!-- ui_fix -->
+         <div class="me-4 mt-4 ms-4  wideScreen d-flex align-items-center  border-2 gap-1 flex-wrap ">
+          <div class="width-20">
+           <p class="productTitle"> {{'COMMON.PRODUCTS' | translate}}<span style="color: red;">*</span></p>
+          </div>
+          <div class="width-8 d-flex ">   <!-- discount type feature -->
+            <p class="productTitle">{{'COMMON.QUANTITY' | translate}}<span style="color: red;">*</span></p>
+           </div>
+          <div class="width-8">   <!-- discount type feature -->
+           <p class="productTitle">{{'COMMON.PRICE' | translate}}<span style="color: red;">*</span></p>
+          </div>
+          <div class="width-12">
+           <p class="productTitle">{{'COMMON.DISCOUNTTYPE' | translate}}</p>
+         </div>
+          <div class="width-8">
+           <p class="productTitle">{{'COMMON.DISCOUNT' | translate}}</p>
+         </div>
+          <div class="width-12" *ngIf="selectedTypes != 0">
+           <p class="productTitle">{{'COMMON.TAXABLEAMOUNT' | translate}}</p>
+           </div>
+          <div class="width-12" *ngIf="selectedTypes != 0">    <!-- discount type feature -->
+           <p class="productTitle"> {{'COMMON.TAX' | translate}} </p></div>
+          <div class="width-12 " [ngClass]="{'flex-fill':selectedTypes == 0}">
+           <p class="productTitle">{{'COMMON.TOTAL' | translate}}  </p>
+          </div>
+         </div>
+  
+         <!-- labels inside white box for small Screen -->
+          <!-- ui_fix -->
+        <div  *ngFor="let product of addedProducts; let i = index" 
+        [ngClass]="{'errorInput': !checkValidAddedProduct(i) && addInvoiceForm.touched}"
+        class="m-sm-auto m-auto ms-md-4 me-md-4 mt-2 bg-white shadowCard d-flex align-items-center  border-2 gap-2 mb-3 flex-wrap">
+          <div class="width-18">
+          <p class="smallScreen">{{'COMMON.PRODUCTS' | translate}}<span style="color: red;">*</span></p>
+          <div class="card displayCard ">
+            <p-dropdown   [options]="products"  [filter]="true" [(ngModel)]="product.product_id" appOnlyNumber
+             [ngModelOptions]="{standalone:true}"  placeholder=" " (onChange)="setPrice(i,product.product_id);getTotalWithoutTax(i);setCardData()" 
+              styleClass="invisable" class="invisable my-1 mx-0 " optionLabel="name" optionValue="uuid"></p-dropdown>        
+
+          </div>
+          </div>
+           <!-- discount type feature -->
+          <div class="width-8">
+          <p class="smallScreen">{{'COMMON.QUANTITY' | translate}}<span style="color: red;">*</span></p>
+          <div class="card displayCard">
+            <!-- appOnlyIntegersNumber -->
+            <input  appOnlyNumber styleClass="productInput" type="text" 
+              autocomplete="off"
+            (input)="getTotalWithoutTax(i);setCardData()" [(ngModel)]="product.quantity" [ngModelOptions]="{standalone:true}"  class="productInput"  pInputText />
+
+          </div>
+          </div>
+            <!-- discount type feature -->
+          <div class="width-8">
+          <p class="smallScreen">{{'COMMON.PRICE' | translate}} <span style="color: red;">*</span></p>
+          <div class="card displayCard">
+           
+            <input styleClass="productInput" type="text" appOnlyNumber (input)="getTotalWithoutTax(i);setCardData()" [(ngModel)]="product.price"  class="productInput" [ngModelOptions]="{standalone:true}"  pInputText />
+
+          </div>
+          </div>
+          <!-- discount type -->   <!-- discount type feature -->
+          <div class="width-12">
+            <p class="smallScreen">{{'COMMON.DISCOUNTTYPE' | translate}}</p>
+            <div class="card displayCard">
+
+              <!-- setPrice(i,product.product_id); -->
+
+
+              <p-dropdown  *ngIf="language == 'ar'"  [options]="discountTypes"  [(ngModel)]="product.discount_type" appOnlyNumber
+              [ngModelOptions]="{standalone:true}"  placeholder=" " (onChange)="getTotalWithoutTax(i);setCardData()" 
+               styleClass="invisable" class="invisable my-1 mx-0" optionLabel="name_ar" optionValue="id"></p-dropdown>          
+              <p-dropdown  *ngIf="language == 'en'"  [options]="discountTypes"  [(ngModel)]="product.discount_type" appOnlyNumber
+              [ngModelOptions]="{standalone:true}"  placeholder=" " (onChange)="getTotalWithoutTax(i);setCardData()" 
+               styleClass="invisable" class="invisable my-1 mx-0" optionLabel="name_en" optionValue="id"></p-dropdown>          
+            </div>
+          </div>
+
+          <div class="width-8">   <!-- discount type feature -->
+          <p class="smallScreen">{{'COMMON.DISCOUNT' | translate}}</p>
+          <div class="card displayCard">
+            <!-- change amount to discount_value -->
+            <input styleClass="productInput" type="text" appOnlyNumber [(ngModel)]="product.discount_value" (input)="getTotalWithoutTax(i);setCardData()"   [ngModelOptions]="{standalone:true}"  class="productInput"  pInputText />
+
+          </div>
+        </div>
+          <div class="width-12" *ngIf="selectedTypes != 0">
+          <p class="smallScreen">{{'COMMON.TAXABLEAMOUNT' | translate}}</p>
+            <div class="card displayCard">
+              <input styleClass="productInput" disabled="true"  [(ngModel)]="product.totalwithoutTax" 
+               [ngModelOptions]="{standalone:true}"  class="productInput" type="text" pInputText />
+            </div>
+          </div>
+          <div class="width-12" *ngIf="selectedTypes != 0">    <!-- discount type feature -->
+            <p class="smallScreen">{{'COMMON.TAX' | translate}}</p>
+            <div class="card displayCard">
+              <!-- <input styleClass="productInput" [(ngModel)]="product.tax"  class="productInput" [ngModelOptions]="{standalone:true}"  class="productInput" type="text" pInputText /> -->
+              <p-dropdown  (onChange)="getTotalWithoutTax(i);setCardData()" [options]="tax"  placeholder=" "  [(ngModel)]="product.tax" [ngModelOptions]="{standalone:true}" styleClass="invisable" class="invisable my-1 mx-0" optionLabel="name" optionValue="value"></p-dropdown>        
+
+            </div>
+          </div>
+
+          <div class="width-12 " [ngClass]="{'flex-fill':selectedTypes == 0}">
+          <p class="smallScreen">{{'COMMON.TOTAL' | translate}}</p>
+          <div class="card displayCard">
+            <input styleClass="productInput" disabled="true" [(ngModel)]="product.total"  class="productInput" [ngModelOptions]="{standalone:true}"  class="productInput" type="text" pInputText />
+          </div>
+          </div>
+          <div class="width-4">
+            <i class="pi pi-trash text-danger mx-1  mt-3  fs-4 cursor-pointer " 
+            (click)="deleteRowDevice(i)" *ngIf="i < (addedProducts.length-1) && addedProducts.length > 1"
+          ></i>
+          </div>
+        </div>
+        <p *ngIf="!ISValidAddedProducts() && addInvoiceForm.touched" class="err"> * {{'COMMON.PRODUCTREQUIRED' | translate}} </p>
+          <div class="w-100">
+            <!-- ui_fix -->
+              <div class="col-md-12 pe-0 pe-md-5 pe-lg-5 pt-2 mb-3 mt-3 d-flex justify-content-end">
+                <app-button-comp (click)="increaseDevice()" [btnType]="'main'"  
+                class="addBtn" [name]="'COMMON.ADD' | translate" background_color="#82D35C">
+              </app-button-comp>
+              </div>
+          </div>
+
+          
+         </div>
+         
+         <!-- extra discount  hided for now-->
+         <div class="width-45 p-4" style="display: none;">
+          <label class="form-label  fw-bold mb-1">  {{'ADDINVOICE.EXTRADISCOUNT' | translate}} </label>
+          <div class="width-45">
+            <input class="w-100" styleClass="productInput" type="text"  [(ngModel)]="extraDiscount"
+             formControlName="discount" appOnlyNumber  (input)="setCardData()" 
+             
+              pInputText />
+          </div>       
+              <app-Form-errors [control]="addInvoiceForm.controls['discount']"></app-Form-errors>
+        </div> 
+      <!-- ------------------- -->
+
+
+
+      <div class="p-4" *ngIf="zeroTaxBoolean"> 
+        <label class="form-label  fw-bold mb-1"> {{'COMMON.ZEROTAXCATG' | translate}}  </label>
+        <div class="card displayCard">
+          <p-dropdown 
+          [options]="taxCodes" 
+          formControlName="tax_exemption_code"
+          styleClass="invisable" 
+          class="invisable my-1 mx-0" 
+          optionLabel="name" 
+          optionValue="code">
+          <ng-template let-item pTemplate="item">
+            {{ item.name | translate }}
+          </ng-template>
+          <ng-template let-selectedItem pTemplate="selectedItem">
+            {{ selectedItem.name | translate }}
+          </ng-template>
+        </p-dropdown>
+         
+
+        </div>
+      </div>
+         <div class="HLine"></div>
+    
+         <div >
+  
+          <!-- ui_fix -->
+          <div class="gap-4 mt-4 pb-4 px-2 mx-2 border-2 d-flex flex-wrap justify-content-around ">
+            <div  style="background-color: #11C387;"  *ngIf="selectedTypes != 0"
+            class="totalCards card width-30 d-flex align-items-center justify-content-center text-center">
+               <span class="text">{{'COMMON.TOTALTAXABLEAMOUNT'|translate}}</span><br>
+               <span class="num">{{'COMMON.SAR'|translate}} {{totalWithTax | number:'1.2-2' : ''}}</span>
+            </div>
+            <div style="background-color: #5C60F5;" *ngIf="selectedTypes != 0"
+            class="totalCards card width-30 d-flex align-items-center justify-content-center text-center">
+              <span class="text">{{'COMMON.TOTALTAX'|translate}}</span><br>
+              <span class="num">{{'COMMON.SAR'|translate}} {{totaltax | number:'1.2-2' : ''}}</span>
+            </div>
+            <div style="background-color: #4C4C4C;" class="totalCards card width-30 d-flex align-items-center justify-content-center text-center">
+              <span class="text">{{'COMMON.TOTAL'|translate}}  </span><br>
+              <span class="num">{{'COMMON.SAR'|translate}} {{total | number:'1.2-2' : ''}}</span>
+            </div>
+          </div>
+  
+  
+          <div formGroupName="notes">
+            <div class="p-4">
+    
+              <label for="invoiceNumber" class="fw-semibold"> {{'COMMON.NOTES' | translate}}  </label>
+               <textarea name="" id="" id="invoiceNumber" placeholder="{{'COMMON.NOTES' | translate}}"
+               [style.width.%]="100" [style.heigth.px]="120" formControlName="ar"  [style.resize]="'none'"
+               class="form-control fw-semibold py-2 mt-2 inputDiv"></textarea>
+               <!--  formControlName="invoiceNumber" -->
+              <!--   <app-form-errors class="text-left error-message" [control]="loginForm.controls['password']">
+                </app-form-errors> -->
+            </div>
+            <div class="p-4 d-none">
+    
+              <label for="invoiceNumber" class="fw-semibold"> {{'COMMON.NOTES' | translate}}  </label>
+               <textarea name="" id="" id="invoiceNumber" placeholder="{{'COMMON.NOTES' | translate}}"
+               [style.width.%]="100" [style.heigth.px]="120" formControlName="en"  [style.resize]="'none'"
+               class="form-control fw-semibold py-2 mt-2 inputDiv"></textarea>
+               <!--  formControlName="invoiceNumber" -->
+              <!--   <app-form-errors class="text-left error-message" [control]="loginForm.controls['password']">
+                </app-form-errors> -->
+            </div>
+          </div>
+
+          
+  
+         </div>
+        
+         <div class="HLine"></div>
+  
+       <div class="ps-4">
+        <!-- ui_fix -->
+        <div class="pe-5 mt-4 pb-4 border-2 ">
+          <div class="col-md-12">
+            <p> {{'COMMON.CHANEGGENERALDATA1' | translate}} 
+              <span [style.color]="'#00A7DC'" class="cursor-pointer" 
+               routerLink="/user/settings/commercial-account-details">
+                 {{'COMMON.CHANEGGENERALDATA2' | translate}} </span> </p>
+          </div>
+          <div class="col-md-5">
+            <div class="card infoCard p-3">
+              <div class="d-flex flex-wrap">
+                <p> {{'COMMON.ADDRESS' | translate}} :</p>
+                <p>{{profileData?.address}}</p>
+              </div>
+              <div class="d-flex flex-wrap">
+                <p>  {{'COMMON.TELEPHONE' | translate}} :  </p>
+                <p>{{profileData?.phone}}</p>
+              </div>
+              <div class="d-flex flex-wrap">
+                <p>  {{'COMMON.FAXNUMBER' | translate}} : </p>
+                <p>{{profileData?.fax}}</p>
+              </div>
+              <div class="d-flex flex-wrap">
+                 <p> {{'COMMON.TAXIDENTNUMBER' | translate}} :  </p>              
+                 <p> {{profileData?.tax_number}} </p>
+              </div>
+              
+            </div>
+          </div>
+  
+          <div class="col-md-12 mt-3">
+            <p> {{'COMMON.EDITLATER' | translate}}</p>
+          </div>
+  
+          <div class=" d-flex addBtn justify-content-end w-100">
+             <app-button-comp (click)="addInvoice()" [btnType]="'main'"  [name]="'COMMON.SUBMIT' | translate"  background_color="#1B1464"></app-button-comp>
+          </div>
+         
+        </div>
+       </div>
+    </div>
+  </div>
+
+</form>
+</div>

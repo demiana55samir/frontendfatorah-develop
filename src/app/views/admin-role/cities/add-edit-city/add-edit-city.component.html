@@ -1,0 +1,104 @@
+<!-- ui_fix -->
+<div class="main-container p-0 ps-5 pe-5">
+  <div class="row  AddUsers-container">
+    <div class="col-md-12 d-flex justify-content-start title">
+     <h2 *ngIf="type!='edit'" class="ms-4">{{'CITIES.ADD' | translate}}</h2>
+     <h2 *ngIf="type=='edit'" class="ms-4">{{'CITIES.EDIT' | translate}}</h2>
+    </div>
+    <div class="card p-4 borderRadius_10px AddUsers-card mt-3">
+     <div class="px-3 pb-2 d-flex flex-wrap justify-content-between">
+       <div  class=" cardTitle ">
+         <h4 >{{'CITIES.DETAILSSUBTITLE' | translate}}</h4>
+       </div>
+     </div>
+     <form [formGroup]="cityDataForm" >
+  <div class="px-2">
+  
+    <div formGroupName="name">
+      <!-- *ngIf="language == 'ar'" -->
+      <div class="col-12 col-xs-12 col-sm-12 col-md-10 col-lg-10 col-xl-10 fullScreenWidth mx-0 my-4 inner-addon right-addon" >
+        <label class="form-label mb-1">{{ 'COMMON.NAME' | translate }} - {{'COMMON.ARABIC' |translate}} <span style="color: red;">*</span></label>
+        <input type="text" formControlName="ar" placeholder=" " 
+        [ngClass]="!cityDataForm.get('name.ar')?.valid && cityDataForm.get('name.ar')?.touched ?'errorInput' : ''"
+        class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100">
+        <app-Form-errors [control]="cityDataForm.get('name.ar')"></app-Form-errors>
+      </div>  
+
+      <!-- *ngIf="language == 'en'" -->
+      <div class="col-12 col-xs-12 col-sm-12 col-md-10 col-lg-10 col-xl-10 fullScreenWidth mx-0 my-4 inner-addon right-addon" >
+        <label class="form-label mb-1">{{ 'COMMON.NAME' | translate }} - {{'COMMON.ENGLISH' |translate}} <span style="color: red;">*</span></label>
+        <input type="text" formControlName="en"
+        [ngClass]="!cityDataForm.get('name.en')?.valid && cityDataForm.get('name.en')?.touched ?'errorInput' : ''"
+        placeholder=" " class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100">
+        <app-Form-errors [control]="cityDataForm.get('name.en')"></app-Form-errors>
+      </div>  
+
+    </div>
+     
+    
+    <div class="col-12 col-xs-12 col-sm-12 col-md-10 col-lg-10 col-xl-10 fullScreenWidth mx-0 my-4 inner-addon right-addon">
+      <label class="form-label mb-1">{{ 'TEMPLATES.SLAG' | translate }} <span style="color: red;">*</span></label>
+      <input type="text" formControlName="slug"
+      [ngClass]="!cityDataForm.controls['slug'].valid && cityDataForm.controls['slug'].touched ?'errorInput' : ''"
+      placeholder=" " class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100">
+      <app-Form-errors [control]="cityDataForm.controls['slug']"></app-Form-errors>
+  
+    </div>  
+  
+    <div class="col-12 col-xs-12 col-sm-12 col-md-10 col-lg-10 col-xl-10 fullScreenWidth mx-0 my-4 inner-addon right-addon">
+      <label class="form-label mb-1">{{ 'CITIES.ORDER' | translate }} <span style="color: red;">*</span></label>
+      <input type="number" formControlName="sort_order" placeholder=" " 
+      [ngClass]="!cityDataForm.controls['sort_order'].valid && cityDataForm.controls['sort_order'].touched ?'errorInput' : ''"
+      appOnlyNumber class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100">
+      <app-Form-errors [control]="cityDataForm.controls['sort_order']"></app-Form-errors>
+  
+    </div>   
+  
+  
+    <div class="col-12 col-xs-12 col-sm-12 col-md-10 col-lg-10 col-xl-10  d-flex flex-wrap gap-5 justify-content-between fullScreenWidth mx-0 my-4 ">
+      <div class="">
+        <label class="form-label mb-1">{{ 'COMMON.STATUSONLY' | translate }} <span style="color: red;">*</span></label>
+        <div class="d-flex flex-wrap  justify-content-between fullScreenWidth gap-3 mx-0 mb-3 ">
+          <div class="statusClass">
+            <div class="d-flex gap-1 align-items-center justify-content-between">
+              <span >{{ 'CITIES.ACTIVATED' | translate }}</span>
+              <input type="radio" formControlName="is_enable" name="is_enable" 
+              [ngClass]="!cityDataForm.controls['is_enable'].valid && cityDataForm.controls['is_enable'].touched ?'errorInput' : ''"
+              [ngStyle]="{'--checked-color': primaryColor}"
+              class="form-check-input cursor-pointer" style="width: 2.5em; height: 2.5em;border-radius: 5px;"  [value]="1"> 
+            </div>
+      
+          </div>
+          <div class="statusClass">
+            <div class="d-flex gap-1 align-items-center justify-content-between">
+              <span >{{ 'CITIES.INACTIVE' | translate }}</span>
+              <input type="radio" formControlName="is_enable" name="is_enable" 
+              [ngClass]="!cityDataForm.controls['is_enable'].valid && cityDataForm.controls['is_enable'].touched ?'errorInput' : ''"
+              [ngStyle]="{'--checked-color': primaryColor}"
+              class="form-check-input cursor-pointer" style="width: 2.5em; height: 2.5em;border-radius:5px;"  [value]="0"> 
+            </div>
+          </div>
+  
+        </div>
+        <app-Form-errors [control]="cityDataForm.controls['is_enable']"></app-Form-errors>
+  
+      </div>
+      <div>
+  
+  
+      </div>
+  
+  
+    </div>
+  </div>
+   
+    <div class="col-12 d-flex justify-content-center justify-content-md-end mt-5">
+      <app-button-comp *ngIf="type!='edit'" [btnType]="'main'" (click)="addCity()" style="width: 120px;"  [name]=" 'COMMON.ADD' | translate " [background_color]="'#1B1464'" ></app-button-comp>
+      <app-button-comp *ngIf="type=='edit'" [btnType]="'main'" (click)="editCity()" style="width: 120px;"  [name]=" 'COMMON.EDIT' | translate " [background_color]="'#1B1464'" ></app-button-comp>
+    </div>
+     </form>
+  
+  </div>
+  </div>
+
+</div>

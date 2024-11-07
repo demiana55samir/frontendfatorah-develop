@@ -1,0 +1,149 @@
+<ng-container *ngIf="owl">
+  <owl-carousel-o [options]="customOptions">
+    <ng-container *ngFor="let plan of subscriptionPlanes;let i=index" >
+      <ng-template carouselSlide   style="width: 100px !important;">
+        <div class="d-flex flex-column">
+          <div [ngClass]="{
+            'whitebackground':i%2==0,
+            'purplebackground':i%2!=0
+          }" class="card plans  mt-5">
+            <div class="card-body text-center h-100 py-4">
+              <h4 class="card-title fw-bolder fw-800 mb-3 fs-21 ">{{plan?.name}}</h4>
+              <div *ngIf="plan?.features">
+                <div  *ngFor="let item of plan?.features;let j=index" class=" cardData">
+                  <div class="d-flex align-items-start justify-content-start mb-2">
+                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g clip-path="url(#clip0_616_545)">
+                      <path d="M6.80655 12C6.50233 12 6.2142 11.884 6.02958 11.684L3.53082 8.986C3.45356 8.90268 3.39716 8.80774 3.36484 8.70659C3.33252 8.60545 3.32491 8.50009 3.34244 8.39654C3.35998 8.29299 3.40232 8.19329 3.46704 8.10312C3.53176 8.01295 3.6176 7.93409 3.71964 7.87104C3.82165 7.80774 3.93794 7.7615 4.06185 7.73499C4.18576 7.70848 4.31486 7.70221 4.44174 7.71654C4.56862 7.73088 4.6908 7.76553 4.80126 7.81852C4.91172 7.87151 5.0083 7.9418 5.08546 8.02534L6.72962 9.79922L10.8634 4.37472C11.0005 4.19561 11.219 4.06826 11.4708 4.02058C11.7227 3.97291 11.9874 4.00881 12.2069 4.12041C12.6636 4.35243 12.8041 4.8439 12.5188 5.21765L7.63457 11.624C7.55119 11.7338 7.43627 11.8254 7.29978 11.8907C7.16328 11.956 7.00934 11.9932 6.85131 11.9989C6.83592 12 6.82193 12 6.80655 12Z" 
+                      [attr.fill]="i%2==0 ? '#5C60F5' : '#ffff' "
+                      />
+                      </g>
+                      <defs>
+                      <clipPath id="clip0_616_545">
+                      <rect width="9.92" height="8.32" fill="white" transform="translate(3.04004 3.83984)"/>
+                      </clipPath>
+                      </defs>
+                      </svg>
+                      
+                      <!-- [style.color]="i%2==0 ? '#5C60F5' : '#ffff' " -->
+                      <span class="fs-16  text-start" [style.color]="i%2==0 ? '#5C60F5' : '#ffff' ">{{item?.description}}</span>
+                  </div>
+               </div>
+              </div>
+              <div  class="mb-2 d-flex align-items-center flex-column w-100" style="position: absolute;bottom: 0;padding: 3px; left: 0px;">
+               
+               <!-- *ngIf="language=='ar'" -->
+                <div  >
+                
+                  <h6 class="card-text mt-2 text-center"><s>{{ plan?.full_price}} {{ plan.currency }} / {{ plan.plan_duration  }} </s></h6>
+                  <div  [ngClass]="{
+                    'darkBlue-text':i%2==0,
+                    'white-text':i%2!=0}" 
+                    class="d-flex mt-1 mb-3 justify-content-center">
+                   
+           
+                    <span [ngClass]="{'text-decoration-line-through':couponData.id && checkPlanDetails(plan.id,i) != -1 && plan.id!=1}" *ngIf="monthly==true" class="fs-40  ">
+                     {{plan?.price}}
+                    </span>
+                    <span [ngClass]="{'text-decoration-line-through':couponData.id && checkPlanDetails(plan.id,i) != -1 && plan.id!=1}" *ngIf="monthly==false" class="fs-40 ">
+                     {{plan?.yearly_price}}
+                    </span>
+                    &nbsp;
+                    <span [ngClass]="{'text-decoration-line-through':couponData.id && checkPlanDetails(plan.id,i) != -1 && plan.id!=1}"
+                     *ngIf="monthly==true "  class="fs-16 d-flex align-items-end ">
+                      {{plan?.currency}} /  {{ plan.plan_duration  }}
+                    </span>
+                    <span [ngClass]="{'text-decoration-line-through':couponData.id && checkPlanDetails(plan.id,i) != -1 && plan.id!=1}"
+                     *ngIf="monthly==false" class="fs-16 d-flex align-items-end ">
+                      {{plan?.currency}} / {{ plan.plan_duration  }}
+                    </span>
+                  </div>
+                  <div  [ngClass]="{
+                    'darkBlue-text':i%2==0,
+                    'white-text':i%2!=0
+                  
+                }" *ngIf="couponData?.id && checkPlanDetails(plan.id,i) != -1 && plan.id!=1"  class=" d-flex mt-1 mb-3 ">
+                    <span  class="fs-40  ">{{checkPlanDetails(plan.id,i)}}</span>
+                     <span *ngIf="monthly==true" class="fs-16 d-flex align-items-end ">
+                       {{plan?.currency}} / {{'LANDING.MONTHLYDES'|translate}}
+                     </span>
+                     <span *ngIf="monthly==false" class="fs-16 d-flex align-items-end ">
+                       {{plan?.currency}} / {{'LANDING.YEARLYDES'|translate}}
+                     </span>
+                  </div>
+
+                  <div style="color: red;" *ngIf="couponData?.id && checkPlanDetails(plan.id,i) == -1 && plan.id!=1">
+                       {{'RENEWSUBSCRIPTION.CANNOTAPPLAY'|translate}}
+                  </div>
+                </div>
+                <!-- <div *ngIf="language=='en'">
+                  <div  [ngClass]="{
+                    'darkBlue-text':i%2==0,
+                    'white-text':i%2!=0
+                }" class=" d-flex mt-1 mb-3 justify-content-center">
+                   
+                   <span *ngIf="monthly==false" [ngClass]="{'text-decoration-line-through':couponData?.id && checkPlanDetails(plan.id,i) != -1 && plan.id!=1}" class="fs-40 ">
+                     {{plan?.price}}
+                    </span>
+                    <span *ngIf="monthly==true" [ngClass]="{'text-decoration-line-through':couponData?.id && checkPlanDetails(plan.id,i) != -1 && plan.id!=1}" class="fs-40  ">
+                     {{plan?.yearly_price}}
+                    </span>
+                    <span *ngIf="monthly==false && language=='en'" [ngClass]="{'text-decoration-line-through': couponData?.id && checkPlanDetails(plan.id,i) != -1 && plan.id!=1}" class="fs-16 d-flex align-items-end ">
+                      {{plan?.currency}} / Month
+                    </span>
+                    <span *ngIf="monthly==true&& language=='en'" [ngClass]="{'text-decoration-line-through':couponData?.id && checkPlanDetails(plan.id,i) != -1 && plan.id!=1}" class="fs-16 d-flex align-items-end ">
+                      {{plan?.currency}} / Year
+                    </span>
+                  </div>
+                  <div [ngClass]="{
+                    'darkBlue-text':i%2==0,
+                    'white-text':i%2!=0
+                }"   class=" d-flex mt-1 mb-3 "  *ngIf="couponData?.id && checkPlanDetails(plan.id,i) != -1 && plan.id!=1">
+                    <span  class="fs-40 ">{{checkPlanDetails(plan.id,i)}}</span>
+                     <span *ngIf="monthly==false && language=='en'" class="fs-16 d-flex align-items-end ">
+                       {{plan?.currency}} / Month
+                     </span>
+                     <span *ngIf="monthly==true&& language=='en'" class="fs-16 d-flex align-items-end ">
+                       {{plan?.currency}} / Year
+                     </span>
+                    </div>
+
+   
+                  <div style="color: red;" *ngIf="couponData?.id && checkPlanDetails(plan.id,i) == -1 && plan.id!=1">
+                    {{'RENEWSUBSCRIPTION.CANNOTAPPLAY'|translate}}
+                  </div>
+                </div> -->
+
+                <!-- && currentPlanId!=1" -->
+                <div *ngIf="plan.id!=1 && plan.id!=4 && plan.id!=7" class="d-flex flex-column justify-content-center align-items-center pt-3">
+                <p class="m-0"  *ngIf="freeTrialBool">
+                 
+                  <span class="cursor-pointer freeTrial" (click)="renewSubscription(plan.id, plan.durations.slug , 1,plan.durations.id)"> {{'SUBSCRIPTION.TRIALBTNI'|translate}} {{ plan.trial_period }}   {{'SUBSCRIPTION.TRIALBTNIDAYS'|translate}}</span> <br>
+                  <span class="fs-10"> {{'SUBSCRIPTION.TRIALBTNII'|translate}} </span>
+                </p>
+                
+                <p class="m-0"  *ngIf="freeTrialBool"> {{'SUBSCRIPTION.OR'|translate}} </p>
+
+                  <app-button-comp *ngIf="(currentPlanId==plan.id && currentDurationId == plan.durations.slug) && i%2!=0" (click)="initiateSubscription(plan.price,plan.description,plan.id,i)"  style="width: 180px;" class="d-flex"  [name]="'RENEWSUBSCRIPTION.CURRENTPLAN' | translate" color="#5C60F5"   ></app-button-comp>
+                  <app-button-comp *ngIf="(currentPlanId==plan.id && currentDurationId == plan.durations.slug) && i%2==0" (click)="initiateSubscription(plan.price,plan.description,plan.id,i)"  style="width: 180px;" class="d-flex"  [name]="'RENEWSUBSCRIPTION.CURRENTPLAN' | translate"  background_color="#5C60F5" ></app-button-comp>
+
+                  <app-button-comp *ngIf="(currentPlanId!=plan.id || currentDurationId != plan.durations.slug) && i%2!=0" (click)="initiateSubscription(plan.price,plan.description,plan.id,i)" style="width: 180px;" class="d-flex"  [name]="'RENEWSUBSCRIPTION.NEWPLAN' | translate" color="#5C60F5" ></app-button-comp> 
+                 <app-button-comp *ngIf="(currentPlanId!=plan.id ||  currentDurationId != plan.durations.slug) && i%2==0" (click)="initiateSubscription(plan.price,plan.description,plan.id,i)" style="width: 180px;" class="d-flex"  [name]="'RENEWSUBSCRIPTION.NEWPLAN' | translate" background_color="#5C60F5" ></app-button-comp> 
+             
+                 <!-- <app-button-comp *ngIf="(currentPlanId==plan.id && currentDurationId == plan.durations.slug) && i%2!=0" (click)="renewSubscription(plan.id,plan.durations.slug , 0,plan.durations.id)"  style="width: 180px;" class="d-flex"  [name]="'RENEWSUBSCRIPTION.CURRENTPLAN' | translate" color="#5C60F5"   ></app-button-comp>
+                 <app-button-comp *ngIf="(currentPlanId==plan.id && currentDurationId == plan.durations.slug) && i%2==0" (click)="renewSubscription(plan.id,plan.durations.slug, 0,plan.durations.id)"  style="width: 180px;" class="d-flex"  [name]="'RENEWSUBSCRIPTION.CURRENTPLAN' | translate"  background_color="#5C60F5" ></app-button-comp>
+
+                 <app-button-comp *ngIf="(currentPlanId!=plan.id || currentDurationId != plan.durations.slug) && i%2!=0" (click)="renewSubscription(plan.id,plan.durations.slug, 0,plan.durations.id)" style="width: 180px;" class="d-flex"  [name]="'RENEWSUBSCRIPTION.NEWPLAN' | translate" color="#5C60F5" ></app-button-comp> 
+                <app-button-comp *ngIf="(currentPlanId!=plan.id ||  currentDurationId != plan.durations.slug) && i%2==0" (click)="renewSubscription(plan.id,plan.durations.slug, 0,plan.durations.id)" style="width: 180px;" class="d-flex"  [name]="'RENEWSUBSCRIPTION.NEWPLAN' | translate" background_color="#5C60F5" ></app-button-comp>  -->
+              
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </ng-container>
+  </owl-carousel-o>
+</ng-container>

@@ -1,0 +1,95 @@
+.main-container{
+    margin: 6% 4%;
+    @media only screen and (max-width: 1024px) and (min-width:768px){
+        margin: 3% 5%;
+    }  
+    .topCards{
+        @media screen and (max-width:798px) {
+            justify-content: center;
+        }
+    
+    }
+    .secIII{
+    
+        .cardsIIbg{
+            height: 518px;
+            //overflow: auto;
+            width: 45%;
+            //width: 35.8vw;
+            background: #FFFFFF;
+            border-radius: 17.0118px;
+            //padding: 20px;
+            @media screen and (max-width:768px){
+                width: 100%;
+            }
+        }
+        .cardsII{
+            height: 518px;
+            //overflow: auto;
+            width: 45%;
+            //width: 35.8vw;
+            border-radius: 17.0118px;
+            //padding: 20px;
+            @media screen and (max-width:768px){
+                width: 100%;
+            }
+        }
+        ::ng-deep .p-card{
+       box-shadow: none;
+       padding: 0;
+        }
+
+    
+    }
+    .infoCard{
+      border-radius: 10px;
+    }
+}
+
+  ::ng-deep{
+    .p-dropdown{
+        width: 100% !important;
+    }
+
+    .p-dropdown.p-component, .p-calendar .p-inputtext, .p-calendar , textarea{
+        background: #FFFFFF;
+        // border: 1px solid #DDDDDD;
+        border-radius: 10px !important;
+        width: 100% ;
+    }
+
+    .p-dropdown-panel{
+      max-width: 100% !important;
+    }
+}
+
+::ng-deep{
+    // .p-datepicker .p-datepicker-prev {
+    //   order: 3 !important;
+    // }
+  .p-datepicker .p-datepicker-title {
+      order: 2 !important;
+    }
+  
+  // .p-datepicker .p-datepicker-next {
+  //   order: 1 !important;
+  //   }
+  }
+
+  ::ng-deep{
+    .rtl{
+        .p-datepicker .p-datepicker-prev ,.p-datepicker .p-datepicker-next {
+            transform: rotateY(180deg);
+        }
+    }}
+    @media screen and (max-width:375px){
+        .statusClass{
+            width: 100%;
+        }
+    }
+
+    .form-check-input:checked {
+        background-color: var(--checked-color, #0d6efd); /* Default color is #0d6efd */
+        border-color: var(--checked-color, #0d6efd);
+    }
+    

@@ -1,0 +1,25 @@
+::ng-deep{
+    .p-dropdown{
+        width: 100% !important;
+    }
+
+    .p-dropdown.p-component, .p-calendar .p-inputtext, .p-calendar , textarea{
+        background: #FFFFFF;
+        border: 1px solid #DDDDDD;
+        border-radius: 5px !important;
+        width: 100% ;
+    }
+
+    .p-calendar-w-btn .p-datepicker-trigger {
+        width: 10%;
+        background: transparent;
+        color: black;
+        border: none;
+        span{
+            font-size: 22px;
+        }
+    }
+    .p-dropdown-panel{
+      max-width: 100% !important;
+    }
+}

@@ -1,0 +1,25 @@
+<!-- ui_fix -->
+<div class="contDiv p-0 ps-5 pe-5">
+    <div>
+        <div class="title w-100 mb-2 ms-3">
+           <h3 class="fw-bolder">{{'COMMON.BUSSINESSETTINGS' | translate}}</h3>
+        </div>
+        <div class="tabs w-100 mb-1">
+          <p-tabMenu [model]="items" [activeItem]="activeItem">
+            <ng-template pTemplate="item" let-item let-i="index">
+             <span>{{item.label}}</span>
+          </ng-template>
+          </p-tabMenu>
+        </div>
+
+        <div *ngIf="activeItem.label==='بيانات الحساب' || activeItem.label==='Account Details'">
+          <app-account-details></app-account-details>
+        </div>
+        <div *ngIf="activeItem.label=='الحسابات البنكية' || activeItem.label==='Bank Accounts'">
+        <app-bank-accounts></app-bank-accounts>
+        </div>
+        <div *ngIf="activeItem.label=='إعدادات عامة' || activeItem.label==='General preferences'">
+           <app-general-settings></app-general-settings>
+        </div>
+    </div>
+</div>

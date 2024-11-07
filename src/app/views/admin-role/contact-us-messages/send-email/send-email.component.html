@@ -1,0 +1,304 @@
+<!-- ui_fix -->
+<div class="row main-container p-0 ps-5 pe-5">
+  <div class="col-md-12 d-flex justify-content-start title">
+    <h2 class="ms-4">{{'MESSAGES.SENDEMAIL' | translate}}</h2>
+  </div>
+  <div class="card borderRadius_10px p-3 main-card mt-3">
+    <div class="px-3 pb-3 d-flex flex-wrap justify-content-between">
+      <div class=" cardTitle ">
+        <h5>{{'MESSAGES.SENDEMAIL' | translate}}</h5>
+      </div>
+    </div>
+    <form [formGroup]="emailDataForm">
+      <div class="px-3">
+
+
+        <div class="col-12 fullScreenWidth mx-0 my-4 inner-addon right-addon">
+          <label class="form-label  fw-bold mb-1">{{ 'MESSAGES.CHOOSECLIENTTYPE' | translate }} <span style="color: red;">*</span></label>
+          <p-dropdown   
+            [styleClass]="!emailDataForm.controls['users'].valid && emailDataForm.controls['users'].touched ?'errorInput' : ''"
+            [options]="translatedUserList" formControlName="users" (onChange)="checkUser($event)" placeholder=" {{ 'MESSAGES.CHOOSECLIENTTYPE' | translate }}" 
+            class="my-1 mx-0 py-2 w-100" optionLabel="name" optionValue="val"></p-dropdown>   
+          <app-Form-errors [control]="emailDataForm.controls['users']"></app-Form-errors>
+
+        </div>
+        <!-- expired and active users filter -->
+        <div class="row w-100 justify-content-between" 
+        *ngIf="emailDataForm.controls['users'].value == 'expired' ||
+               emailDataForm.controls['users'].value == 'active'  ||
+               emailDataForm.controls['users'].value == 'subscription'">
+          <div class="col-12 col-lg-6 pe-0 pe-lg-3">
+            <div class="topPart h-100 d-flex flex-wrap  align-items-center gap-1">
+              <label class="form-label fw-bolder mt-2 mb-0">{{'ADMINREPORTS.CHOOSEPLAN' |translate}}</label>
+              <div class="mx-0 w-100">
+                <p-multiSelect [options]="PlansList" formControlName="plan_ids" 
+                placeholder=" {{'ADMINREPORTS.CHOOSEPLAN' |translate}}" (onChange)="choosePlan($event)"
+                [styleClass]="!emailDataForm.controls['plan_ids'].valid && emailDataForm.controls['plan_ids'].touched ?'errorInput' : ''"
+                 optionLabel="name" optionValue="id" display="chip"></p-multiSelect>
+
+                <!-- <p-dropdown  [options]="PlansList" formControlName="plan_id"
+                  placeholder="{{'ADMINREPORTS.CHOOSEPLAN' |translate}} " class="my-1 mx-0 h-60px  d-flex generateDiv"
+                  optionLabel="name" optionValue="id"></p-dropdown> -->
+              </div>
+              <!-- <div class="d-flex align-items-center">
+                  <app-button-comp [btnType]="'main'" (click)="changeDate()" [style.width.px]="200"  type="submit"  [name]="'ADMINREPORTS.GENERATE' |translate" background_color="#1B1464"></app-button-comp>
+              </div> -->
+            </div>
+          </div>
+
+          <div class="col-12 col-lg-6 " *ngIf="emailDataForm.controls['users'].value == 'expired' ">
+            <!-- joining date -->
+            <div class="topPart h-100 d-flex flex-wrap  align-items-center gap-1">
+              <label class="form-label fw-bolder mt-2 mb-0">{{'MESSAGES.CHOOSEEXPIREDDATE' |translate}}</label> 
+              <div class="mx-0 w-100">
+                <p-dropdown *ngIf="language=='ar'" #durationDropDownI (onChange)="applyExpiredDuration()" (click)="openModelCheckI()" [options]="duration"
+                  [(ngModel)]="currentExpiredDuration" [ngModelOptions]="{standalone: true}" placeholder="{{'MESSAGES.CHOOSEEXPIREDDATE' |translate}} "
+                  class="my-1 mx-0 h-60px  d-flex  generateDiv" optionLabel="nameAR" optionValue="value"></p-dropdown>
+
+                <p-dropdown *ngIf="language=='en'" #durationDropDownI (onChange)="applyExpiredDuration()" (click)="openModelCheckI()" [options]="duration"
+                  [(ngModel)]="currentExpiredDuration" [ngModelOptions]="{standalone: true}" placeholder="{{'MESSAGES.CHOOSEEXPIREDDATE' |translate}} "
+                  class="my-1 mx-0 h-60px  d-flex  generateDiv" optionLabel="nameEN" optionValue="value"></p-dropdown>
+              </div>
+              <!-- <div class="d-flex align-items-center">
+                              <app-button-comp [btnType]="'main'" (click)="changeDate()" [style.width.px]="200"  type="submit"  [name]="'ADMINREPORTS.GENERATE' |translate" background_color="#1B1464"></app-button-comp>
+                            </div> -->
+            </div>
+           
+          </div>
+          <!-- -------------- -->
+          <div class="col-12 col-lg-6 " *ngIf=" emailDataForm.controls['users'].value == 'active' || emailDataForm.controls['users'].value == 'subscription'">
+            <!-- joining date -->
+            <div class="topPart h-100 d-flex flex-wrap  align-items-center gap-1">
+              <label class="form-label fw-bolder mt-2 mb-0">{{'MESSAGES.CHOOSESUBSDATE' |translate}}</label> 
+              <div class="mx-0 w-100">
+                <p-dropdown *ngIf="language=='ar'" #durationDropDownII (onChange)="applySubDuration()" (click)="openModelCheckII()" [options]="duration"
+                  [(ngModel)]="currentsubscriptionDuration" [ngModelOptions]="{standalone: true}" placeholder="{{'MESSAGES.CHOOSESUBSDATE' |translate}} "
+                  class="my-1 mx-0 h-60px  d-flex  generateDiv" optionLabel="nameAR" optionValue="value"></p-dropdown>
+
+                <p-dropdown *ngIf="language=='en'" #durationDropDownII (onChange)="applySubDuration()" (click)="openModelCheckII()" [options]="duration"
+                  [(ngModel)]="currentsubscriptionDuration" [ngModelOptions]="{standalone: true}" placeholder="{{'MESSAGES.CHOOSESUBSDATE' |translate}} "
+                  class="my-1 mx-0 h-60px  d-flex  generateDiv" optionLabel="nameEN" optionValue="value"></p-dropdown>
+              </div>
+              <!-- <div class="d-flex align-items-center">
+                              <app-button-comp [btnType]="'main'" (click)="changeDate()" [style.width.px]="200"  type="submit"  [name]="'ADMINREPORTS.GENERATE' |translate" background_color="#1B1464"></app-button-comp>
+                            </div> -->
+            </div>
+           
+          </div>
+
+        </div>
+        <!-- end of expired users filter -->
+
+
+        <!-- joining date & issuing invoices -->
+        <div class="row w-100 justify-content-between" *ngIf="emailDataForm.controls['users'].value != 'users_manually'">
+          <div class="col-12 col-lg-6 pe-0 pe-lg-3">
+            <!-- joining date -->
+            <div class="topPart h-100 d-flex flex-wrap  align-items-center gap-1">
+              <label class="form-label fw-bolder mt-2 mb-0">{{'MESSAGES.CHOOSEJOININGDATE' |translate}}</label>
+              <div class="mx-0 w-100">
+                <p-dropdown *ngIf="language=='ar'" #durationDropDown (onChange)="applyJoiningDuration()" (click)="openModelCheck()" [options]="duration"
+                  [(ngModel)]="currentJoiningDuration" [ngModelOptions]="{standalone: true}" placeholder="{{'MESSAGES.CHOOSEJOININGDATE' |translate}} "
+                  class="my-1 mx-0 h-60px  d-flex  generateDiv" optionLabel="nameAR" optionValue="value"></p-dropdown>
+
+                <p-dropdown *ngIf="language=='en'" #durationDropDown (onChange)="applyJoiningDuration()" (click)="openModelCheck()" [options]="duration"
+                  [(ngModel)]="currentJoiningDuration" [ngModelOptions]="{standalone: true}" placeholder="{{'MESSAGES.CHOOSEJOININGDATE' |translate}} "
+                  class="my-1 mx-0 h-60px  d-flex  generateDiv" optionLabel="nameEN" optionValue="value"></p-dropdown>
+              </div>
+              <!-- <div class="d-flex align-items-center">
+                              <app-button-comp [btnType]="'main'" (click)="changeDate()" [style.width.px]="200"  type="submit"  [name]="'ADMINREPORTS.GENERATE' |translate" background_color="#1B1464"></app-button-comp>
+                            </div> -->
+            </div>
+            <!-- ------------ -->
+          </div>
+        
+          <div class="col-12 col-lg-6">
+            <div class="topPart h-100 d-flex flex-wrap  align-items-center gap-1">
+              <label class="form-label fw-bolder mt-2 mb-0">{{'MESSAGES.ISSUINGINVOICES' |translate}}</label> 
+              <div class="mx-0 w-100">
+                <p-dropdown  [options]="issuingInvoiceList" formControlName="user_invoices"
+                  placeholder="{{'MESSAGES.ISSUINGINVOICES' |translate}} " class="my-1 mx-0 h-60px  d-flex generateDiv"
+                  optionLabel="name" optionValue="val"></p-dropdown>
+              </div>
+              <!-- <div class="d-flex align-items-center">
+                                <app-button-comp [btnType]="'main'" (click)="changeDate()" [style.width.px]="200"  type="submit"  [name]="'ADMINREPORTS.GENERATE' |translate" background_color="#1B1464"></app-button-comp>
+                              </div> -->
+            </div>
+          </div>
+        </div>
+        <!-- end of joining date & issuing invoices -->
+
+        <!-- choose clients -->
+        <div class="col-12 fullScreenWidth mx-0 my-4 " *ngIf="emailDataForm.controls['users'].value == 'users_manually'">
+          <label class="form-label  fw-bold mb-1">{{ 'MESSAGES.CHOOSECLIENTS' | translate }} <span style="color: red;">*</span> </label>
+          <p-multiSelect [options]="clients" formControlName="user_ids" [virtualScroll]="true" [virtualScrollItemSize]="50" placeholder=" {{ 'MESSAGES.CHOOSECLIENTS' | translate }}"
+            [styleClass]="!emailDataForm.controls['user_ids'].valid && emailDataForm.controls['user_ids'].touched ?'errorInput' : ''"
+             optionLabel="email" optionValue="id" display="chip"></p-multiSelect>
+          <app-Form-errors [control]="emailDataForm.controls['user_ids']"></app-Form-errors>
+        </div>
+        <!-- end of choose clients -->
+
+        <div class="col-12 fullScreenWidth mx-0 my-4 inner-addon right-addon">
+          <label class="form-label  fw-bold mb-1">{{ 'MESSAGES.SUBJECT' | translate }} <span style="color: red;">*</span> </label>
+          <input type="text" formControlName="subject" 
+          [ngClass]="!emailDataForm.controls['subject'].valid && emailDataForm.controls['subject'].touched ?'errorInput' : ''"
+          placeholder=" {{ 'MESSAGES.SUBJECTPLACHOLDER' | translate }} "
+            class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100">
+          <app-Form-errors [control]="emailDataForm.controls['subject']"></app-Form-errors>
+
+        </div>
+
+        <div class="col-md-12">
+          <div class="text-start d-flex flex-column">
+            <div class="title mb-3">
+              <span class=" fw-bold ">{{'MESSAGES.CONTENT'|translate}} <span style="color: red;">*</span></span>
+            </div>
+            <p-editor [style]="{ height: '320px' }" 
+            [(ngModel)]="emailContent" [ngModelOptions]="{standalone: true}"></p-editor>
+
+          </div>
+          <app-Form-errors [control]="emailDataForm.controls['message']"></app-Form-errors>
+        </div>
+
+
+        <div class="col-12 d-flex justify-content-center justify-content-md-end mt-5">
+          <app-button-comp [btnType]="'main'" (click)="addEmail()" style="width: 120px;"
+            [name]=" 'COMMON.SEND' | translate " [background_color]="'#1B1464'"></app-button-comp>
+
+        </div>
+
+      </div>
+
+
+    </form>
+
+  </div>
+</div>
+
+
+
+<!-- joining Date -->
+<button hidden #calendarModel type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#chooseTimeModel"></button>
+<!-- Modal -->
+<div  class="modal fade" id="chooseTimeModel"  tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">{{'SALESREPORT.SELECT_DATE' |translate}}</h1>
+       
+      </div>
+      <div class="modal-body">
+        <div class="w-100 d-flex flex-wrap justify-content-between gap-3">
+           <div class="d-flex width-49 justify-content-start flex-column">
+               <h4>{{'SALESREPORT.START' |translate}}</h4>
+               <p-calendar class="max-w-full" [(ngModel)]="joiningStartDate"  [inline]="true" [showWeek]="true" dateFormat="dd-mm-yy"></p-calendar>
+           </div>
+           <div class="d-flex width-49 justify-content-start flex-column">
+               <h4>{{'SALESREPORT.END' |translate}}</h4>
+               <p-calendar class="max-w-full" [(ngModel)]="joiningEndDate"  [inline]="true" [showWeek]="true" dateFormat="dd-mm-yy"></p-calendar>
+           </div>
+        </div>
+
+
+
+
+        <div class="w-100 d-flex justify-content-center align-items-center mt-4">
+          <app-button-comp [btnType]="'main'" (click)="fillDurationControls(1)" class="width-210px d-flex  me-2" data-bs-dismiss="modal"
+          aria-label="Close" #closePoPModal  [name]="'SALESREPORT.SELECT' |translate" [color]="'#1B1464'"></app-button-comp>
+        </div>
+      
+      </div>
+
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+<!-- expired date -->
+<button hidden #calendarModelI type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#chooseTimeModelI">
+
+</button>
+
+<!-- Modal -->
+<div  class="modal fade dashboard_date" id="chooseTimeModelI"  tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">{{'SALESREPORT.SELECT_DATE' |translate}}</h1>
+       
+      </div>
+      <div class="modal-body">
+        <div class="w-100 d-flex flex-wrap justify-content-between gap-3">
+           <div class="d-flex width-49 justify-content-start flex-column">
+               <h4>{{'SALESREPORT.START' |translate}}</h4>
+               <!-- (ngModelChange)="handleDateI(startDateRevenues,1)"  -->
+               <p-calendar class="max-w-full" [(ngModel)]="expiredStartDate" [inline]="true" [showWeek]="true" dateFormat="dd-mm-yy"></p-calendar>
+           </div>
+           <div class="d-flex width-49 justify-content-start flex-column">
+               <h4>{{'SALESREPORT.END' |translate}}</h4>
+               <!-- (ngModelChange)="handleDateI(endDateRevenues,2)" -->
+               <p-calendar class="max-w-full" [(ngModel)]="expiredEndDate"  [inline]="true" [showWeek]="true" dateFormat="dd-mm-yy"></p-calendar>
+           </div>
+        </div>
+
+
+
+
+        <div class="w-100 d-flex justify-content-center align-items-center mt-4">
+          <app-button-comp [btnType]="'main'" (click)="fillDurationControls(2)"  class="width-210px d-flex  me-2" data-bs-dismiss="modal"
+          aria-label="Close" #closePoPModal  [name]="'SALESREPORT.SELECT' |translate" [color]="'#1B1464'"></app-button-comp>
+        </div>
+      
+      </div>
+
+      
+
+    </div>
+  </div>
+</div>
+
+<!-- subscription date -->
+<button hidden #calendarModelII type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#chooseTimeModelII">
+
+</button>
+
+<!-- Modal -->
+<div  class="modal fade dashboard_date" id="chooseTimeModelII"  tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">{{'SALESREPORT.SELECT_DATE' |translate}}</h1>
+       
+      </div>
+      <div class="modal-body">
+        <div class="w-100 d-flex flex-wrap justify-content-between gap-3">
+           <div class="d-flex width-49 justify-content-start flex-column">
+               <h4>{{'SALESREPORT.START' |translate}}</h4>
+               <!-- (ngModelChange)="handleDateI(startDateRevenues,1)"  -->
+               <p-calendar class="max-w-full" [(ngModel)]="subscriptionStartDate" [inline]="true" [showWeek]="true" dateFormat="dd-mm-yy"></p-calendar>
+           </div>
+           <div class="d-flex width-49 justify-content-start flex-column">
+               <h4>{{'SALESREPORT.END' |translate}}</h4>
+               <!-- (ngModelChange)="handleDateI(endDateRevenues,2)" -->
+               <p-calendar class="max-w-full" [(ngModel)]="subscriptionEndDate"  [inline]="true" [showWeek]="true" dateFormat="dd-mm-yy"></p-calendar>
+           </div>
+        </div>
+
+
+
+
+        <div class="w-100 d-flex justify-content-center align-items-center mt-4">
+          <app-button-comp [btnType]="'main'" (click)="fillDurationControls(3)"  class="width-210px d-flex  me-2" data-bs-dismiss="modal"
+          aria-label="Close" #closePoPModal  [name]="'SALESREPORT.SELECT' |translate" [color]="'#1B1464'"></app-button-comp>
+        </div>
+      
+      </div>
+
+      
+
+    </div>
+  </div>
+</div>

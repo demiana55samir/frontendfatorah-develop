@@ -1,0 +1,125 @@
+.main-container{
+    margin: 7% 5%;
+    @media only screen and (max-width: 1024px) and (min-width:768px){
+        margin: 3% 5%;
+    }
+    .title{
+        h2{
+            font-weight: 600; 
+        }
+    }
+    .cardTitle{
+        h5{
+            font-weight: 600;
+            @media only screen and (max-width: 768px){
+               font-size: 15px;
+               font-weight: 700;
+            }
+        }
+    }
+    .tabs{
+        background-color:#F5F9FC;
+        border-radius: 20px;
+    }
+    ::ng-deep .p-dropdown {
+        width: 100% ;
+        height: 45px;
+        border-radius: 10px !important;
+        :hover{
+            border:1px solid #FCFCFC !important ;
+       
+        }
+    }
+   ::ng-deep .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link:not(.p-disabled):focus{
+    box-shadow: none !important;
+   }
+   ::ng-deep{
+    .p-dropdown.p-component, .p-calendar .p-inputtext, .p-calendar , textarea{
+        background: #FFFFFF;
+        border-radius: 10px !important;
+        width: 100% ;
+    }
+    .p-calendar{
+       border:  1px solid #ced4da;
+    }
+.p-inputtext{
+    border: none;
+}
+.p-inputtext:enabled:focus{
+    box-shadow: none !important;
+}
+    .p-calendar-w-btn .p-datepicker-trigger {
+        width: 10%;
+        background: transparent;
+        color: black;
+        border: none;
+        padding: unset;
+        span{
+            font-size: 22px;
+        }
+    }
+
+
+}
+.fullScreenWidth{
+ @media screen and (max-width:767px) {
+    width: 100% !important;
+ }
+}
+
+}
+
+.direction{
+    direction: rtl !important;
+}
+
+
+.disabled{
+    .form-control:focus {
+        color: #212529;
+        background-color: #fff;
+        border: 1px solid #ced4da;
+        outline: 0;
+        box-shadow: none;
+    }
+
+}
+::ng-deep{
+    .p-multiselect{
+        width: 100% !important;
+    }
+    .p-multiselect-panel .p-multiselect-items .p-multiselect-item .p-checkbox {
+        margin-left: 0.5rem !important;
+    }
+    textarea.form-control {
+        min-height: calc(5.5em + 0.75rem + 2px) !important;
+    }
+
+    ngx-dropzone{
+
+        border: 3px solid #6759FF !important;
+
+    }
+}
+
+::ng-deep{
+    // .p-datepicker .p-datepicker-prev {
+    //   order: 3 !important;
+    // }
+  .p-datepicker .p-datepicker-title {
+      order: 2 !important;
+    }
+  
+//   .p-datepicker .p-datepicker-next {
+//     order: 1 !important;
+//     }
+  }
+
+
+
+  ::ng-deep{
+    .rtl{
+        .p-datepicker .p-datepicker-prev ,.p-datepicker .p-datepicker-next {
+            transform: rotateY(180deg);
+        }
+    }}

@@ -1,0 +1,153 @@
+<form [formGroup]="InfoForm" (ngSubmit)="addInfo()">
+  <div class="register position-absolute  d-flex flex-wrap align-items-center">
+    <div class="position-absolute top-0 ps-5 pt-1">
+      <img src="../../../assets/logo/logo 1.svg" width="70" alt="" >
+    </div>
+    
+    <div class="ContDiv position-relative d-flex align-items-center"> 
+      <div class="background">
+        <div [ngClass]="{
+          'registerBodyAR':language=='ar',
+          'registerBodyEN':language=='en'
+      }"
+        
+        class="registerBody w-100 h-100 text-start py-1 px-3">
+          <div class="d-flex flex-column justify-content-center h-100 ps-lg-5">
+             <h4 class="mb-2 title">{{'REGISTER.REGISTER'|translate}}</h4>
+             <div class="width-40 my-2 d-flex justify-content-center">
+              <div class="w-50">
+               <div class="d-flex  w-100 justify-content-between align-items-center ">
+                 <div class="hLine"></div>
+                 <div class="active"></div>
+                 <div class="active"></div>
+                 <div class="notActive"></div>
+                 <div class="notActive"></div>
+               </div>
+              </div>
+            </div>
+           
+  
+             <div class="width-50 d-flex flex-wrap justify-content-between gap-3   mb-2">
+              <div class="width-46 form-floating">
+                <input type="text" formControlName="account_name" class="textInput w-100 h-40px form-control" id="floatingInput1" placeholder="name@example.com">
+                <label class="inputFieldLable text-white" for="floatingInput1">{{'COMMON.CLIENTORCOMPANY'|translate}}<span style="color: red;">*</span></label>
+                <app-Form-errors [control]="InfoForm.controls['account_name']"></app-Form-errors>
+              </div>
+              <div class="width-46 form-floating position-relative">
+                <p-dropdown formControlName="city_id" id="cityDropdown" optionLabel="name" optionValue="id" [options]="cities" placeholder="*{{'COMMON.CITY'|translate}}"></p-dropdown>
+                <div class="place d-flex">
+                  <span *ngIf="InfoForm.controls['city_id'].value">{{'COMMON.CITY'|translate}}</span>
+                  <!-- <span style="color: red;">*</span> -->
+                </div>
+                <app-Form-errors [control]="InfoForm.controls['city_id']"></app-Form-errors>
+              </div>
+            </div>
+             <div class="width-50 form-floating mb-2 position-relative">
+              <p-dropdown formControlName="business_type_id"  optionLabel="name" optionValue="id" [options]="business_types" placeholder="{{'COMMON.BUSSINESTYPE'|translate}}"></p-dropdown>
+              <div class="place d-flex ">
+                <span *ngIf="InfoForm.controls['business_type_id'].value">{{'COMMON.BUSSINESTYPE'|translate}}</span>
+                <span style="color: red;">*</span>
+              </div>
+              <app-Form-errors [control]="InfoForm.controls['business_type_id']"></app-Form-errors>
+            </div>
+             <div class="width-50 form-floating mb-2 position-relative">
+              <p-dropdown formControlName="company_type_id"  optionLabel="name" optionValue="id" [options]="company_type" placeholder="{{'COMMON.ENTITYTYPE'|translate}}"></p-dropdown>
+              <div class="place ">
+                <span *ngIf="InfoForm.controls['company_type_id'].value">{{'COMMON.ENTITYTYPE'|translate}}</span>
+                <span style="color: red;">*</span>
+              </div>
+              <app-Form-errors [control]="InfoForm.controls['company_type_id']"></app-Form-errors>
+            </div>
+
+            <!---->
+            <div class="choose w-100 pt-1 d-flex flex-wrap ">
+              <div>
+                <div class="mb-2 selectTitle">
+
+                  <span class="text-light fs-12">{{'COMMON.ISTAXABLE'|translate}}
+                    <span style="color: red;">*</span>
+
+                  </span>
+                </div>
+               <div [ngClass]="{'tax-en':language=='en'}" style="margin-left: 37px; border-left: white solid 2px; height: 100px;" class="Types align-items-center gap-4">
+               <div style="margin-left: 20px;" class="Type" *ngFor="let type of invoices_types; let i = index">
+                 <label class=" rounded-3 ">
+                    <input type="radio" [attr.id]="'class'+i"  [value]="type.id"
+                    [checked]="type.id === selectedTypes1"
+                    (change)="selectedTypes1 = type.id;changed=true"
+                    >
+                    <div class="typeBody rounded-3">
+                     <img [src]="type?.img" alt="">
+                     </div>
+                    
+                 </label>
+                 <div *ngIf="language=='ar'" class="pt-1 fs-12 text-white"> {{ type.name_ar }} </div>
+                 <div *ngIf="language=='en'" class="pt-1 fs-12 text-white"> {{ type.name_en }} </div>
+              </div>
+            </div>
+            <app-Form-errors [control]="InfoForm.controls['is_taxable']"></app-Form-errors>
+
+              </div>
+              <div >
+                <div class="mb-2">
+                  <span class="mb-2 text-light fs-12" >{{'COMMON.MYSALES'|translate}}
+                    <span style="color: red;">*</span>
+
+                  </span>
+
+                </div>
+               <div class="Types  gap-4">
+    
+               <div class="Type" *ngFor="let type of sales_type; let i = index">
+                 <label class=" rounded-3 ">
+                    <input type="radio"  [attr.id]="'class'+i"  [value]="type.id"
+                    [checked]="type.checked === true"
+                    (click)="check(i)"
+    
+                    >
+                    <div class="typeBody rounded-3">
+                     <img [src]="type?.img" alt="">
+                     </div>
+                    
+                 </label>
+                 <div *ngIf="language=='ar'" class="pt-1 fs-12 text-white"> {{ type.name_ar }} </div>
+                 <div *ngIf="language=='en'" class="pt-1 fs-12 text-white"> {{ type.name_en }} </div>
+              </div>
+            </div>
+            <app-Form-errors [control]="InfoForm.controls['offering']"></app-Form-errors>
+
+              </div>
+            </div>
+            <div class="p-1" *ngIf="selectedTypes1=='1'">
+              <div class="width-50 mx-0 form-floating ">
+                <input type="text" formControlName="tax_number" class="textInput w-100 h-40px form-control" id="floatingInput1" placeholder="name@example.com">
+                <!-- <label class="inputFieldLable text-white" for="floatingInput1">{{'COMMON.TAXIDENTNUMBER'|translate}}  </label> -->
+                <label class="inputFieldLable text-white" for="floatingInput1">{{'COMMON.TAXREGNUMBER'|translate}}  
+                </label>
+                <app-Form-errors [control]="InfoForm.controls['tax_number']"></app-Form-errors>
+            </div> 
+              <div class="width-50 mx-0 form-floating mt-3">
+                <input type="text" formControlName="commercial_registration_number" class="textInput w-100 h-40px form-control" id="floatingInput1" placeholder="name@example.com">
+                <label class="inputFieldLable text-white" for="floatingInput1">{{'COMMON.COMMREGNUMBER'|translate}}  
+                </label>
+                <app-Form-errors [control]="InfoForm.controls['commercial_registration_number']"></app-Form-errors>
+            </div> 
+            </div>
+            <div class="width-40 mt-1 text-center d-flex flex-column gap-1">
+              <div>
+                <button type="submit" class="loginBtn">{{'REGISTER.CREATENEWACCOUNT'|translate}}</button>
+              </div>
+              <div>
+                <span class="text-white fs-16 fw-300">{{'REGISTER.ACCOUNTEXIST'|translate}}</span>
+                <span routerLink="/auth/login" class="text-white underLined-text fs-16 fw-400 cursor-pointer"> {{'REGISTER.LOGIN'|translate}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+
+

@@ -1,0 +1,32 @@
+<!-- ui_fix -->
+<div class="row users-container p-0 ps-5 pe-5">
+  <div class="col-md-12 d-flex justify-content-start title">
+   <h2 class="ms-4">{{'TEMPLATES.TITLE' | translate}}</h2>
+  </div>
+  <div class="card users-card mt-3">
+   <div class="px-3 pb-3 d-flex flex-wrap justify-content-between">
+     <div class=" cardTitle ">
+       <p>{{'TEMPLATES.SUBTITLE' | translate}}</p>
+     </div>
+   </div>
+
+
+    <div class="col-md-12">
+
+      <app-table-comp 
+      [columnsArray]="columnsArray"
+      [columnsNames]="columnsNames"
+      [RowsData] = "templates"
+      [controlArray]="controlArray">
+      </app-table-comp>
+
+
+      <p-paginator (onPageChange)="onPageChange($event)" #paginator
+       [first]="1" [rows]="perPage" [totalRecords]="totalPage" 
+      ></p-paginator> 
+
+
+    </div>
+</div>
+</div>
+

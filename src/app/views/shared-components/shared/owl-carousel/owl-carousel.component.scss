@@ -1,0 +1,86 @@
+.subscription{
+    height: max-content !important;
+    width: 100%;
+    // ../../../../assets/images/landing/Group\ 149.png
+    // background-image: url('../../../../../assets/images/landing/Group\ 149.png');
+    // background-position: 0 0; 
+    // background-repeat:no-repeat; 
+    // background-size: cover;
+    .content{
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: white !important;
+    }
+}
+
+.plans{
+    height:950px !important;
+    width: 275px;
+     padding: 20px;
+    position: relative;
+    border-radius: 24px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+    card{
+      border: 1px solid #5C60F5;
+    }
+}
+  
+::ng-deep .rtl{
+    .owl-carousel .owl-nav .owl-next{
+        // order: 1;
+        transform: rotateY(180deg);
+    }
+    .owl-carousel .owl-nav .owl-prev{
+    //   order: 2;
+      transform: rotateY(180deg);
+    }
+
+    .owl-theme .owl-nav {
+        display: flex;
+        justify-content: center;
+    }    
+    .owl-carousel.owl-rtl .owl-item {
+       display: flex !important;
+       justify-content: center !important;
+    }
+
+}
+::ng-deep .ltr{
+    .owl-carousel .owl-item {
+        display: flex !important;
+        justify-content: center !important;
+     }
+}
+
+::ng-deep .p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
+    background-color: white !important;
+    border: 1px solid #5C60F5 !important;
+    // width: 60px !important;
+}
+::ng-deep .p-inputswitch .p-inputswitch-slider:before {
+    background: #5C60F5 !important;
+    // transform: translateX(1.9rem) !important;
+}
+::ng-deep .p-inputswitch .p-inputswitch-slider:after{
+    background: #5C60F5 !important;
+
+}
+::ng-deep .p-inputswitch .p-inputswitch-slider{
+    background-color: white !important;
+    border: 1px solid #5C60F5 !important;
+
+    // width: 60px !important;
+}
+a{
+    color: #5C60F5;
+}
+a:hover{
+    text-decoration: underline !important;
+    // color: #5C60F5 !important;
+}
+
+.freeTrial{
+    text-decoration: underline;
+}

@@ -1,0 +1,84 @@
+.main-container{
+    margin: 6% 4%;
+    @media only screen and (max-width: 1024px) and (min-width:768px){
+        margin: 3% 5%;
+    }
+    .title{
+
+        h2{
+            font-weight: 600;
+            font-size: 32px;
+            line-height: 39px;
+            @media only screen and (max-width: 769px) {
+                font-size: 25px;
+            }
+        }
+    }
+    .main-card{
+        border-radius: 20px;
+        padding: 20px 0px;        
+        .cardTitle{
+            width: 40%;
+            font-weight: 600;
+            font-size: 20px;
+            display: flex;
+           align-items: center;
+            @media only screen and (max-width: 769px) {
+                font-size: 15px;
+                width: 50%;
+                display: flex;
+                align-items: center;
+            }
+
+        }
+   
+    }
+    .fullScreenWidth{
+        @media screen and (max-width:767px) {
+           width: 100% !important;
+        }
+       }
+.permissionsName{
+    font-size: 20px;
+font-style: normal;
+font-weight: 400;
+}
+}
+
+::ng-deep .btn-secondary{
+    background-color: #FFFFFF !important;
+    border: none;
+}
+::ng-deep .p-checkbox .p-checkbox-box.p-highlight {
+    border-color: #11C387 ;
+    background: #11C387 ;
+}
+::ng-deep .p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-highlight:hover{
+    border-color: #11C387 ;
+    background: #11C387 ;
+    color: #ffffff;
+}
+::ng-deep{
+    .p-checkbox {
+        width: 50px;
+        height: 50px;
+    }
+    .p-checkbox .p-checkbox-box{
+        width:55px !important;
+        height: 55px !important;
+        border-radius: 10px !important;
+
+    }
+    .p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box:hover {
+        border-color: #11C387;
+    }
+    ::ng-deep .p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-focus{
+       box-shadow: none !important;
+       border-color: #11C387 !important;
+
+    }
+}
+.gap-7{
+    gap: 50px;
+}
+

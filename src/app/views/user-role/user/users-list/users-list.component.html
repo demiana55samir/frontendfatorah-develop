@@ -1,0 +1,46 @@
+
+<!-- ui_fix -->
+<div class="ceditNotesContainer p-0 ps-5 pe-5">
+    <div class="d-flex mb-2 justify-content-start title">
+      <h2>{{'USERLIST.TITLE' | translate}}</h2>
+    </div>
+    <div class="card py-4 mainCard borderRadius_20px mb-5">
+      <div class="mb-3 w-100 d-flex flex-wrap justify-content-between">
+        <div class=" px-3 width-20 cardTitle">
+          <span class="fw-bold">{{'USERLIST.SUBTITLE' | translate}}</span>
+        </div>
+        <div class=" px-3 width-50 d-flex bottons mb-3 justify-content-end">
+          <app-button-comp routerLink="/user/users/add-user"
+          class="me-3 botton w-75" [btnType]="'main'" [name]="'USERLIST.ADDNEWUSER' | translate" image="./assets/images/invoices/add.svg" [background_color]="'#5C60F5'" ></app-button-comp>
+  
+          <app-button-comp  routerLink="/user/users/cancelled-users"
+           class="me-3 botton w-75" [btnType]="'secondary'"  [name]="'USERLIST.CANCELLEDUSERS' | translate" image="./assets/logo/x.svg" [background_color]="'#F44545'" ></app-button-comp>
+      </div>
+      </div>
+
+      <div class="w-100 px-3  mb-3">
+        <div class="w-100  d-flex">
+          <p class="me-3 my-auto">{{'CREDITNOTICE.SEARCH' | translate}}</p>
+          <input type="text" placeholder="{{'COMMON.CLIENTNUMBER'|translate}} , {{'COMMON.CLIENTNAME'|translate}}" (keyup.enter)="search()"
+          [(ngModel)]="searchWord" (input)="search()">
+        </div>
+      </div>
+      <div class="w-100">
+         <div class="w-100">
+           
+          <app-table-comp 
+          [columnsArray]="columnsArray"
+          [columnsNames]="columnsNames"
+          [RowsData] = "users"
+          [controlArray]="controlArray">
+          </app-table-comp>
+    
+    
+          <p-paginator (onPageChange)="onPageChange($event)"  #paginator
+           [first]="1" [rows]="perPage" [totalRecords]="totalPage" 
+          ></p-paginator> 
+
+         </div>
+      </div>
+    </div>
+</div>

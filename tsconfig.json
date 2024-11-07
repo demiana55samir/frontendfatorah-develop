@@ -1,0 +1,84 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@modules/*": [
+     
+        "app/views/user-role/invoices/*",
+        "app/views/landing/*",
+        "app/views/user-role/products/*",
+        "app/views/user-role/control-board/*",
+        "app/views/user-role/prices/*",
+        "app/shared/*",
+        "app/views/user-role/user/*",
+        "app/views/user-role/subscription/*",
+        "app/views/user-role/reports/*",
+        "app/views/user-role/settings/*",
+        "app/views/shared-components/shared/*",
+        "app/views/user-role/purchases/*",
+        "app/auth/*",
+        "app/views/user-role/payment-links/*",
+        "app/views/fatora-templates/*",
+        "app/views/user-role/*",
+        "app/views/admin-role/*",
+        "app/views/admin-role/users/*",
+        "app/views/admin-role/admin-invoices/*",
+        "app/views/admin-role/credit-notes/*",
+        "app/views/admin-role/debit-notes/*",
+        "app/views/admin-role/roles/*",
+        "app/views/admin-role/receipt-vouchers/*",
+        "app/views/admin-role/coupons/*",
+        "app/views/admin-role/admin-payment-links/*",
+        "app/views/admin-role/quotations/*",
+        "app/views/admin-role/templates/*",
+        "app/views/admin-role/Revenues/*",
+        "app/views/admin-role/contact-us-messages/*",
+        "app/views/admin-role/blogs/*",
+        "app/views/admin-role/activities/*",
+        "app/views/admin-role/cities/*",
+        "app/views/admin-role/general-settings/*",
+        "app/views/admin-role/entities/*",
+        "app/views/admin-role/categories-list/*",
+        "app/views/admin-role/subscription-plans/*",
+        "app/views/admin-role/admin-control-board/*",
+        "app/views/admin-role/adminReports/*",
+        // "app/views/*"
+        "app/core/models/*",
+        
+        
+      ],
+      "@services/*": ["app/core/services/*"],
+      "@models/*": ["app/core/models/*"],
+      "@shared/*":["app/core/shared"],
+      "@environments/*":["environments/*"],
+      "@interceptors/*":["app/core/interceptors/*"]
+    },
+    "outDir": "./dist/out-tsc",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2020",
+    "module": "es2020",
+    "lib": [
+      "es2020",
+      "dom"
+    ]
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
+}

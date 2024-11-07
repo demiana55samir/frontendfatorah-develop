@@ -1,0 +1,15 @@
+
+.rtl{
+    .p-paginator .p-paginator-first {
+        transform: rotateY(180deg) !important;
+    }
+    .p-paginator .p-paginator-prev{
+        transform: rotateY(180deg) !important;
+    }
+    .p-paginator .p-paginator-next {
+        transform: rotateY(180deg) !important;
+    }
+    .p-paginator .p-paginator-last {
+        transform: rotateY(180deg) !important;
+    }
+}

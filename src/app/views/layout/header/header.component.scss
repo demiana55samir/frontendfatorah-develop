@@ -1,0 +1,27 @@
+.logout.dropdown-item:hover{
+    background-color: #5C60F5;
+}
+.pe-4-lg{
+    padding-left: 1.5rem;
+@media screen and (max-width:426px) {
+    padding-left: 0 !important;
+}
+}
+.btn{
+    @media screen and (max-width:321px) {
+        font-size: smaller;
+    }
+}
+
+@-moz-document url-prefix() {
+     .mainDiv{
+       padding-left: 0px !important;
+     }
+  }
+
+
+.navDiv{
+    @media screen and (max-width:425px) {
+        margin-top: 17px !important;
+    }
+}

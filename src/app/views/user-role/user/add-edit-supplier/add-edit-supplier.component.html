@@ -1,0 +1,60 @@
+<!-- ui_fix -->
+<div class="row w-100 m-auto  p-2 p-md-0 ps-md-5 pe-md-5">
+  <div class="col-md-12 title mb-2"> 
+     <h2 *ngIf="Type=='add'"> {{'SUPPLIER.ADDNEWUSER'|translate}} </h2>
+     <h2 *ngIf="Type=='edit'" > {{'SUPPLIER.EDITSUPPLIER'|translate}} </h2>
+  </div>
+  <div class="card borderRadius_20px p-2 p-md-5">
+    <div class="cardTitle">
+      <h5 class="fw-bold">  {{'SUPPLIER.SUPPLIERDETAILS'|translate}}   </h5>
+    </div>
+
+
+   <form [formGroup]="addSupplierForm">
+    <div #form class="row w-100 m-auto">
+      <div class="col-md-6">
+
+        <div formGroupName="name">
+          <div class="col-12 col-md-10 col-lg-10 mx-0 my-3">
+            <label class="fw-bold mb-2"> {{'SUPPLIER.NAME'|translate}} - {{'COMMON.ARABIC' |translate}} <span style="color: red;">*</span> </label>
+            <input type="text" formControlName="ar"
+            [ngClass]="!addSupplierForm.get('name.ar')?.valid && addSupplierForm.get('name.ar')?.touched ?'errorInput' : ''"
+            placeholder="{{'SUPPLIER.NAME'|translate}}" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 ">
+            <app-Form-errors [control]="addSupplierForm.get('name.ar')"></app-Form-errors>
+          </div>  
+
+          <div class="col-12 col-md-10 col-lg-10 mx-0 my-3">
+            <label class="fw-bold mb-2"> {{'SUPPLIER.NAME'|translate}} - {{'COMMON.ENGLISH' |translate}} <span style="color: red;">*</span> </label>
+            <input type="text" formControlName="en" 
+            [ngClass]="!addSupplierForm.get('name.ar')?.valid && addSupplierForm.get('name.ar')?.touched ?'errorInput' : ''"
+            placeholder="{{'SUPPLIER.NAME'|translate}}" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 ">
+            <app-Form-errors [control]="addSupplierForm.get('name.en')"></app-Form-errors>
+          </div>  
+
+        </div>
+
+        <!-- <div formGroupName="name">
+          <div class="col-12 col-md-10 col-lg-10 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1"> {{'SUPPLIER.NAME'|translate}} <span style="color: red;">*</span> </label>
+            <input type="text" formControlName="ar" placeholder=" {{'SUPPLIER.NAME'|translate}}"
+              class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+            <app-Form-errors [control]="addSupplierForm.get('name.ar')"></app-Form-errors>
+          </div>
+        </div> -->
+        <div class="col-12 col-md-10 col-lg-10 fullScreenWidth mx-0 my-3">
+          <label class="form-label  fw-bold mb-1">{{'SUPPLIER.TAXNUMBER'|translate}}</label>
+          <input  formControlName="tax_number" type="number" OnlyNumberDirective placeholder="{{'SUPPLIER.TAXNUMBER'|translate}}" 
+          class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100">
+          <app-Form-errors [control]="addSupplierForm.controls['tax_number']"></app-Form-errors>
+
+        </div>    
+    </div>
+     
+      <div class="col-md-12 d-flex justify-content-center justify-content-md-end">
+        <app-button-comp *ngIf="Type=='add'" [btnType]="'main'" (click)="addProduct()" style="width: 120px;"  [name]="'COMMON.ADD'|translate" [background_color]="'#1B1464'" ></app-button-comp>
+        <app-button-comp *ngIf="Type=='edit'" [btnType]="'main'" (click)="editProduct()" style="width: 120px;"  [name]="'USERPROFILE.EDIT'|translate" [background_color]="'#1B1464'" ></app-button-comp>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,68 @@
+<!-- ui_fix -->
+<div class="divCont p-0 ps-5 pe-5">
+  <div class="title mb-5 p-2">
+    <h2 class="fw-bold">{{'MESSAGES.TITLE'|translate}}</h2>
+  </div>
+  <div class="card p-2 border-0 borderRadius_10px">
+    <div class="title mb-2 p-2">
+      <h5 class="fw-bold">{{'MESSAGES.DETAILSSUBTITLE'|translate}}</h5>
+    </div>
+    <div class="topCards p-3 d-flex flex-wrap gap-4 mb-1">
+      <div class="h-90px width-325 d-flex flex-row justify-content-between   boxShadow-25 borderRadius_20px p-3 card">
+          <div class="d-flex flex-column">
+             <span class="text-secondary fs-17 fw-400">{{'MESSAGES.SENDERNAME'|translate}}</span>
+             <span class="fw-400 fs-20 fw-bold">{{message.name}}</span>
+          </div>
+  
+      </div>
+      <div class="h-90px width-325 d-flex flex-row justify-content-between   boxShadow-25 borderRadius_20px p-3 gap-2 card">
+        <div class="d-flex flex-column">
+           <span  class="text-secondary fs-17 fw-400"> {{'MESSAGES.EMAIL'|translate}}</span>
+           <span  class="fw-bold fs-20 fw-400">{{message.email}}</span>
+        </div>
+  
+    </div>
+    <div class="h-90px width-325 d-flex justify-content-between   flex-row  boxShadow-25 borderRadius_20px p-3 gap-2 card">
+      <div class="d-flex flex-column">
+         <span class="text-secondary fs-17 fw-400">{{'MESSAGES.CREATEDAT'|translate}}</span>
+         <span class="fw-bold fs-19 fw-400">{{message.created_at}}</span>
+      </div>
+  
+  </div>
+
+  </div>
+  
+  <div class="d-flex w-100 p-3">
+    <div class="card boxShadow-25 p-3 borderRadius_20px main-info-card">
+      <div class="pb-4 f-felx flex-column">
+        <div class="">
+          <p class="text-secondary fw-400">{{'MESSAGES.SUBJECT'|translate}}</p>
+        </div>
+        <div>
+          <span class="fw-bolder fs-24 ">
+            {{message.subject}} 
+          </span>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+
+  <div class="d-flex w-100 p-3">
+    <div class="card boxShadow-25 p-3 borderRadius_20px main-info-card">
+      <div class="pb-4 f-felx flex-column">
+        <div class="">
+          <p class="text-secondary fw-400">{{'MESSAGES.CONTENT'|translate}}</p>
+        </div>
+        <div>
+          <span class="fw-bolder fs-24 ">
+            {{message.message}} 
+          </span>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+
+  </div>
+</div>

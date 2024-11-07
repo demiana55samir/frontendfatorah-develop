@@ -1,0 +1,550 @@
+<!-- ui_fix -->
+<div class="ReportCont p-0 ps-5 pe-5">
+  <div>
+    <h3 class="fw-bolder fw-600 mb-3" *ngIf="Type == 'add' && !viewOnly">{{'TAXREPORT.ADDTAXREPORT' |translate}}</h3>
+    <h3 class="fw-bolder fw-600 mb-3" *ngIf="Type != 'add' || viewOnly">{{'TAXREPORT.VIEWTAXREPORT' |translate}}</h3>
+  </div>
+
+  <div class="card borderRadius_20px boxShadow-10" *ngIf="Type == 'add' && !viewOnly">
+    <div class="p-4">
+  
+      <div class="topPart h-100 d-flex flex-wrap  align-items-center gap-3 justify-content-between">
+        <!-- report type -->
+        <div class="col-12 col-md-6 pe-5">
+          <label class="form-label fw-bolder mt-2 mb-0">{{'TAXREPORT.REPORTTYPE' |translate}}</label>
+          <div class="mx-0">
+            <p-dropdown *ngIf="language=='ar'" #durationDropDown  [options]="reportType"
+            placeholder="{{'TAXREPORT.REPORTTYPE' |translate}}"
+              [(ngModel)]="currentreportType" placeholder=" " class="my-1 mx-0 h-60px  d-flex py-2 generateDiv w-100"
+              optionLabel="nameAr" optionValue="val"></p-dropdown>
+            <p-dropdown *ngIf="language=='en'" #durationDropDown  [options]="reportType"
+            placeholder="{{'TAXREPORT.REPORTTYPE' |translate}}"
+              [(ngModel)]="currentreportType" placeholder=" " class="my-1 mx-0 h-60px  d-flex py-2 generateDiv w-100"
+              optionLabel="nameEn" optionValue="val"></p-dropdown>
+          </div>
+        </div>
+        <!-- time frame -->
+         <div class="row w-100 justify-content-between" *ngIf="currentreportType">
+          <div class="col-12 col-md-6 pe-5" *ngIf="currentreportType == 'quarter'">
+            <div>
+              <label class="form-label fw-bolder mt-2 mb-0">{{'TAXREPORT.QUARTERTYPE' |translate}}</label>
+              <div class="mx-0">
+                <p-dropdown *ngIf="language=='ar'" #durationDropDown  [options]="quarters" 
+                   placeholder="{{'TAXREPORT.QUARTERTYPE' |translate}}"
+                  [(ngModel)]="currentquarter" placeholder=" " class="my-1 mx-0 h-60px  d-flex py-2 generateDiv"
+                  optionLabel="nameAr" optionValue="val"></p-dropdown>
+
+                <p-dropdown *ngIf="language=='en'" #durationDropDown  [options]="quarters"
+                  placeholder="{{'TAXREPORT.QUARTERTYPE' |translate}}"
+                  [(ngModel)]="currentquarter" placeholder=" " class="my-1 mx-0 h-60px  d-flex py-2 generateDiv"
+                  optionLabel="nameEn" optionValue="val"></p-dropdown>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 pe-5" *ngIf="currentreportType == 'monthly'">
+            <div>
+              <label class="form-label fw-bolder mt-2 mb-0">{{'TAXREPORT.MONTH' |translate}}</label>
+              <div class="mx-0">
+                <p-dropdown *ngIf="language=='ar'" #durationDropDown  [options]="months"
+                placeholder="{{'TAXREPORT.MONTH' |translate}}"
+                  [(ngModel)]="currentmonth" placeholder=" " class="my-1 mx-0 h-60px  d-flex py-2 generateDiv"
+                  optionLabel="nameAr" optionValue="val"></p-dropdown>
+                <p-dropdown *ngIf="language=='en'" #durationDropDown  [options]="months"
+                placeholder="{{'TAXREPORT.MONTH' |translate}}"
+                  [(ngModel)]="currentmonth" placeholder=" " class="my-1 mx-0 h-60px  d-flex py-2 generateDiv"
+                  optionLabel="nameEn" optionValue="val"></p-dropdown>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 pe-5">
+            <div>
+              <label class="form-label fw-bolder mt-2 mb-0">{{'TAXREPORT.YEAR' |translate}}</label>
+              <div class="mx-0">
+                <p-dropdown *ngIf="language=='ar'" #durationDropDown  [options]="years"
+                placeholder="{{'TAXREPORT.YEAR' |translate}}"
+                  [(ngModel)]="currentyear" placeholder=" " class="my-1 mx-0 h-60px  d-flex py-2 generateDiv"></p-dropdown>
+                <p-dropdown *ngIf="language=='en'" #durationDropDown  [options]="years"
+                placeholder="{{'TAXREPORT.YEAR' |translate}}"
+                  [(ngModel)]="currentyear" placeholder=" " class="my-1 mx-0 h-60px  d-flex py-2 generateDiv"></p-dropdown>
+              </div>
+            </div>
+          </div>
+         
+         </div>
+      
+         <!-- invoice issued -->
+
+         <div class="d-flex gap-3" *ngIf="currentreportType">
+          <div class="mx-3 my-auto col-7 col-md-10">
+           <p>
+            {{'TAXREPORT.OPTIONI' |translate}}
+          </p>
+          </div>
+  
+          <p-inputSwitch  (onChange)="change_5_perc()"></p-inputSwitch>
+
+          <!-- <label class="switch">
+            <input type="checkbox" >
+            <span class="slider round" (click)="change_5_perc()"></span>
+          </label> -->
+  
+         </div>
+         <!-- invoice issued -->
+       
+            <div class="d-flex gap-3" *ngIf="currentreportType">
+              <div class="mx-3 my-auto">
+                <p class="m-0"> {{'ADMINREPORTS.INVOICECREATED' | translate}} </p>
+              </div>
+              <p-inputSwitch  (onChange)="changeInvoiceIssues($event)"></p-inputSwitch>
+      
+              <!-- <label class="switch">
+                <input type="checkbox" >
+                <span class="slider round" (click)="changeInvoiceIssues($event)"></span>
+              </label>
+                -->
+             </div>
+
+             <div class="alert alert-primary col-12 mt-2 invoiceIssuedDiv py-0" *ngIf="invoiceIssuedBool" role="alert">
+              <h6> {{'TAXREPORT.INVOICEISSUED' | translate}} </h6>
+            </div>
+         
+        
+        
+      </div>
+      <!-- <div class="alert alert-warning col-12 mt-2" *ngIf="invoiceIssuedBool" role="alert">
+        <h6> {{'TAXREPORT.INVOICEISSUED' | translate}} </h6>
+      </div> -->
+    </div>
+     
+
+  </div>
+
+  <!-- <div class="card borderRadius_20px boxShadow-10 my-4" *ngIf="Type == 'add' && !viewOnly"> -->
+  <div class="card borderRadius_20px boxShadow-10 my-4" *ngIf="Type == 'add' && !viewOnly && (currentreportType && (currentmonth || currentquarter) && currentyear)">
+    <div class="p-4">
+      <div class="alert alert-warning col-12 mt-2" role="alert">
+        <img src="./assets/images/settings/caution.png" width="30" alt="">
+        <span> {{'TAXREPORT.TAXWARN' | translate}} </span>
+      </div>
+
+      <div class="w-100 d-flex bottons justify-content-center" 
+           [ngClass]="(currentreportType && (currentmonth || currentquarter) && currentyear)? '':'disabledDiv'">
+        <app-button-comp [btnType]="'main'" [style.width.px]="400" (click)="StartTaxReport()"
+        class="me-3 botton" [name]="'TAXREPORT.AGREE'|translate"  [background_color]="'#5C60F5'" ></app-button-comp>
+
+    </div>
+    </div>
+  </div>
+
+  <div *ngIf="startReport || Type != 'add' || viewOnly">
+
+    <!-- tax report template -->
+    <div class="reportDiv rtl" id="taxReport" >
+
+      <!--================ header ================-->
+        <div class="taxCont">
+          <!-- <img src="./assets/images/tax-report/main-logo-transformed.png" class="headerLogo" alt=""> -->
+        </div>
+        <hr class="horizLine">
+      <!--================ end of header ================ -->
+      <!--================ report form  ================-->
+      <div class="report_form">
+        <h6>نموذج الإقرار الضريبي</h6>
+        <hr class="hrII">
+
+        <!-- <img src="./assets/images/tax-report/unnamed-QsSDu0CSm-transformed.png" class="bgImg" alt=""> -->
+
+        <!-- <div class="question-section">
+          <p>هل لديك مبيعات او مشتريات خاضعة لنسبة ٥% وفقاً للأحكام الانتقالية أو مبيعات او مشتريات أو استيرادات أو تعديلاتها
+            خاضعة لنسبة ٥% وتود الإقرار عنها خلال هذه الفترة؟</p>
+          <label >
+            <input type="radio" name="taxable-sales-purchases" [disabled]="viewOnly" [value]="true" (ngModelChange)="updateTaxValues()" [(ngModel)]="has_5_perc" /> نعم
+          </label>
+          <label>
+            <input type="radio" name="taxable-sales-purchases" [disabled]="viewOnly" [value]="false" (ngModelChange)="updateTaxValues()" [(ngModel)]="has_5_perc" /> لا
+          </label>
+        </div> -->
+
+        <!-- <div class="question-section">
+          <p>هل لديك توريدات خاضعة للضريبة بالنسبة الأساسية للجهات الحكومية وفق نظام المنافسات المشتريات الحكومية؟</p>
+          <label>
+            <input type="radio" name="gov-taxable-supplies"  [disabled]="viewOnly" [value]="true" (ngModelChange)="updateTaxValues()" [(ngModel)]="has_basic_taxable_supplies" /> نعم
+          </label>
+          <label>
+            <input type="radio" name="gov-taxable-supplies" [disabled]="viewOnly"  [value]="false" (ngModelChange)="updateTaxValues()" [(ngModel)]="has_basic_taxable_supplies" /> لا
+          </label>
+        </div> -->
+        <div class="titles">
+
+        </div>
+      <!-- sales part  -->
+        <div class="financial-section">
+          <table>
+            <colgroup>
+              <col style="width: 32%;">
+              <col style="width: 23.3%;">
+              <col style="width: 23.3%;">
+              <col style="width: 23.3%;">
+            </colgroup>
+            <thead>
+              <tr>
+                <th></th>
+                <th>المبلغ  <br> (ريال)</th>
+                <th>مبلغ التعديل <br> (ريال)</th>
+                <th>مبلغ ضريبة القيمة المضافة   <br>(ريال)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="ColTitle">ضريبة القيمة المضافة على المبيعات</td>
+              </tr>
+              <tr>
+                <td> 1. المبيعات الخاضعة للنسبة الأساسية (١٥%)</td>
+                <td> 
+                  <input *ngIf="!viewOnly" type="text" class="w-100"   (ngModelChange)="updateTaxValues()" [(ngModel)]="total_for_tax_15">
+                  <div *ngIf="viewOnly" class="viewInput"> {{ total_for_tax_15 }} </div>
+                </td>
+                <td> 
+                  <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="total_creditNote_tax_15">
+                  <div *ngIf="viewOnly" class="viewInput"> {{ total_creditNote_tax_15 }} </div>
+                 </td>
+                <td> 
+                  <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="total_sales_for_tax_15" disabled>
+                  <div *ngIf="viewOnly" class="viewInput"> {{ total_sales_for_tax_15 }} </div>
+                 </td>
+              </tr>
+              <tr *ngIf="has_5_perc">
+                <td> 1.1 المبيعات الخاضعة لنسبة  (٥%)</td>
+               
+                <td> 
+                  <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="total_for_tax_05">
+                  <div *ngIf="viewOnly" class="viewInput"> {{ total_for_tax_05 }} </div>
+                </td>
+
+                <td> 
+                  <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="total_creditNote_tax_05">
+                  <div *ngIf="viewOnly" class="viewInput"> {{ total_creditNote_tax_05 }} </div>
+                </td>
+
+                <td> 
+                  <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="total_sales_for_tax_05" disabled>
+                  <div *ngIf="viewOnly" class="viewInput"> {{ total_sales_for_tax_05 }} </div>
+                </td>
+
+              </tr>
+              <!-- <tr *ngIf="has_basic_taxable_supplies">
+                <td> 1.2  المبيعات للجهات الحكوميةالخاضعة بالنسبة الأساسية (١٥%)</td>
+              
+                <td> 
+                  <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()">
+                  <div *ngIf="viewOnly" class="viewInput"></div>
+                </td>
+
+                <td> 
+                  <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()">
+                  <div *ngIf="viewOnly" class="viewInput">  </div>
+                </td>
+
+                <td> 
+                  <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" disabled>
+                  <div *ngIf="viewOnly" class="viewInput"> </div>
+                </td>
+
+              </tr> -->
+            
+              <tr>
+                <td> 2. المبيعات التي تتحمل الدولة ضريبتها</td>
+                <td>
+                    <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="total_for_citizaen">
+                    <div *ngIf="viewOnly" class="viewInput"> {{ total_for_citizaen }} </div>
+                </td>
+                <td>
+                    <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="total_creditNote_for_citizaen">
+                    <div *ngIf="viewOnly" class="viewInput"> {{ total_creditNote_for_citizaen }} </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td> 3. المبيعات المحلية الخاضعة للنسبة الصفرية</td>
+                <td>
+                    <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="total_for_local">
+                    <div *ngIf="viewOnly" class="viewInput"> {{ total_for_local }} </div>
+                </td>
+                <td>
+                    <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="total_creditNote_local">
+                    <div *ngIf="viewOnly" class="viewInput"> {{ total_creditNote_local }} </div>
+                </td>
+            </tr>
+            
+            <tr>
+              <td> 4. الصادرات </td>
+              <td>
+                  <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="total_for_exports">
+                  <div *ngIf="viewOnly" class="viewInput"> {{ total_for_exports }} </div>
+              </td>
+              <td>
+                  <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="total_creditNote_exports">
+                  <div *ngIf="viewOnly" class="viewInput"> {{ total_creditNote_exports }} </div>
+              </td>
+          </tr>
+          
+          <tr>
+              <td> 5. المبيعات المعفاة من الضريبة</td>
+              <td>
+                  <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="total_for_exempt">
+                  <div *ngIf="viewOnly" class="viewInput"> {{ total_for_exempt }} </div>
+              </td>
+              <td>
+                  <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="total_creditNote_exempt">
+                  <div *ngIf="viewOnly" class="viewInput"> {{ total_creditNote_exempt }} </div>
+              </td>
+          </tr>
+          
+          <tr>
+              <td>6. إجمالي المبيعات</td>
+              <td>
+                  <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="total_sales" disabled>
+                  <div *ngIf="viewOnly" class="viewInput"> {{ total_sales }} </div>
+              </td>
+              <td>
+                  <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="total_sales_tax" disabled>
+                  <div *ngIf="viewOnly" class="viewInput"> {{ total_sales_tax }} </div>
+              </td>
+              <td>
+                  <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="total_sales_with_tax" disabled>
+                  <div *ngIf="viewOnly" class="viewInput"> {{ total_sales_with_tax }} </div>
+              </td>
+          </tr>
+          
+
+
+              <!-- المشتريات -->
+              <tr>
+                <td class="ColTitle">ضريبة القيمة المضافة على المشتريات</td>
+              </tr>
+              <tr>
+                <td> 7. المشتريات الخاضعة للنسبة الأساسية (١٥%)</td>
+                <td>
+                    <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="purchasings_not_imported_15">
+                    <div *ngIf="viewOnly" class="viewInput"> {{ purchasings_not_imported_15 }} </div>
+                </td>
+                <td>
+                    <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="purchasings_canceled_not_imported_15">
+                    <div *ngIf="viewOnly" class="viewInput"> {{ purchasings_canceled_not_imported_15 }} </div>
+                </td>
+                <td>
+                    <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="purchasings_not_imported_15_withTax" disabled>
+                    <div *ngIf="viewOnly" class="viewInput"> {{ purchasings_not_imported_15_withTax }} </div>
+                </td>
+            </tr>
+            
+            <tr *ngIf="has_5_perc">
+                <td> 7.1 المشتريات الخاضعة للنسبة الأساسية (٥%)</td>
+                <td>
+                    <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="purchasings_not_imported_05">
+                    <div *ngIf="viewOnly" class="viewInput"> {{ purchasings_not_imported_05 }} </div>
+                </td>
+                <td>
+                    <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="purchasings_canceled_not_imported_05">
+                    <div *ngIf="viewOnly" class="viewInput"> {{ purchasings_canceled_not_imported_05 }} </div>
+                </td>
+                <td>
+                    <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="purchasings_not_imported_05_withTax" disabled>
+                    <div *ngIf="viewOnly" class="viewInput"> {{ purchasings_not_imported_05_withTax }} </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td> 8. الاستيرادات الخاضعة لضريبة القيمة المضافة بالنسبة الأساسية والمدفوعة عند الإستيراد (١٥%)</td>
+                <td>
+                    <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="purchasings_imported_has_invoice_15">
+                    <div *ngIf="viewOnly" class="viewInput"> {{ purchasings_imported_has_invoice_15 }} </div>
+                </td>
+                <td>
+                    <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="purchasings_canceled_imported_has_invoice_15">
+                    <div *ngIf="viewOnly" class="viewInput"> {{ purchasings_canceled_imported_has_invoice_15 }} </div>
+                </td>
+            </tr>
+            
+            <tr *ngIf="has_5_perc">
+                <td> 8.1 الاستيرادات الخاضعة لضريبة القيمة المضافة بالنسبة الأساسية والمدفوعة عند الإستيراد (٥%)</td>
+                <td>
+                    <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="purchasings_imported_has_invoice_05">
+                    <div *ngIf="viewOnly" class="viewInput"> {{ purchasings_imported_has_invoice_05 }} </div>
+                </td>
+                <td>
+                    <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="purchasings_canceled_imported_has_invoice_05">
+                    <div *ngIf="viewOnly" class="viewInput"> {{ purchasings_canceled_imported_has_invoice_05 }} </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td> 9. الاستيرادات الخاضعة لضريبة القيمة المضافة التي تطبق عليها آلية الاحتساب العكسي (١٥%)</td>
+                <td>
+                    <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="purchasings_imported_not_has_invoice_15">
+                    <div *ngIf="viewOnly" class="viewInput"> {{ purchasings_imported_not_has_invoice_15 }} </div>
+                </td>
+                <td>
+                    <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="purchasings_canceled_imported_not_has_invoice_15">
+                    <div *ngIf="viewOnly" class="viewInput"> {{ purchasings_canceled_imported_not_has_invoice_15 }} </div>
+                </td>
+            </tr>
+            
+            <tr *ngIf="has_5_perc">
+                <td> 9.1 الاستيرادات الخاضعة لضريبة القيمة المضافة التي تطبق عليها آلية الاحتساب العكسي (٥%)</td>
+                <td>
+                    <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="purchasings_imported_not_has_invoice_05">
+                    <div *ngIf="viewOnly" class="viewInput"> {{ purchasings_imported_not_has_invoice_05 }} </div>
+                </td>
+                <td>
+                    <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="purchasings_canceled_imported_not_has_invoice_05">
+                    <div *ngIf="viewOnly" class="viewInput"> {{ purchasings_canceled_imported_not_has_invoice_05 }} </div>
+                </td>
+            </tr>
+            <tr>
+              <td> 10. المشتريات الخاضعة للنسبة الصفرية </td>
+              <td>
+                  <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="purchasings_0_tax">
+                  <div *ngIf="viewOnly" class="viewInput"> {{ purchasings_0_tax }} </div>
+              </td>
+              <td>
+                  <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="purchasings_canceled_0_tax">
+                  <div *ngIf="viewOnly" class="viewInput"> {{ purchasings_canceled_0_tax }} </div>
+              </td>
+          </tr>
+          
+          <tr>
+              <td> 11. المشتريات المعفاة من الضريبة</td>
+              <td>
+                  <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="purchasings_exempt">
+                  <div *ngIf="viewOnly" class="viewInput"> {{ purchasings_exempt }} </div>
+              </td>
+              <td>
+                  <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="purchasings_canceled_exempt">
+                  <div *ngIf="viewOnly" class="viewInput"> {{ purchasings_canceled_exempt }} </div>
+              </td>
+          </tr>
+          
+          <tr>
+              <td>12. إجمالي المشتريات</td>
+              <td>
+                  <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="total_purchasings" disabled>
+                  <div *ngIf="viewOnly" class="viewInput"> {{ total_purchasings }} </div>
+              </td>
+              <td>
+                  <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="total_purchasings_canceled" disabled>
+                  <div *ngIf="viewOnly" class="viewInput"> {{ total_purchasings_canceled }} </div>
+              </td>
+              <td>
+                  <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="total_purchasings_withTax" disabled>
+                  <div *ngIf="viewOnly" class="viewInput"> {{ total_purchasings_withTax }} </div>
+              </td>
+          </tr>
+          
+              <!-- ================= -->
+              
+              <tr>
+                <td>13. إجمالي ضريبة القيمة المضافة المستحقة للفترة الحالة</td>
+                <td></td>
+                <td></td>
+                <td>
+                    <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="total_vat_due_current_period" disabled>
+                    <div *ngIf="viewOnly" class="viewInput"> {{ total_vat_due_current_period }} </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>14. تصحيحات من الفترات السابقة (بين &plusmn; 15,000 ريال)</td>
+                <td></td>
+                <td></td>
+                <td>
+                    <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="corrections_previous_periods">
+                    <div *ngIf="viewOnly" class="viewInput"> {{ corrections_previous_periods }} </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>15. ضريبة القيمة المضافة التي تم ترحيلها من الفترة / الفترات السابقة</td>
+                <td></td>
+                <td></td>
+                <td>
+                    <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="vat_carried_forward_previous_periods">
+                    <div *ngIf="viewOnly" class="viewInput"> {{ vat_carried_forward_previous_periods }} </div>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>16. صافي الضريبة المستحق (او المستعادة)</td>
+                <td></td>
+                <td></td>
+                <td>
+                    <input *ngIf="!viewOnly" type="text" class="w-100"  (ngModelChange)="updateTaxValues()" [(ngModel)]="net_vat_due_or_refunded" disabled>
+                    <div *ngIf="viewOnly" class="viewInput"> {{ net_vat_due_or_refunded }} </div>
+                </td>
+            </tr>
+            
+            </tbody>
+          </table>
+
+
+        </div>
+      
+        
+      
+      
+      </div>
+
+        <!-- <form [formGroup]="TaxReportForm">
+
+        </form> -->
+      <!--================ end of report form ================ -->
+
+      <!--================ footer ================-->
+      <div style="display: flex; align-items: center; justify-content: center; flex-direction: column; height: 50px;">
+        <!-- <img src="./assets/images/tax-report/Picture1.png" class="footerLogo" alt=""> -->
+      </div>
+      <!--================ end of footer ================ -->
+    </div>
+
+    <div class="w-100 d-flex bottons justify-content-center py-4" *ngIf="Type == 'add' && !viewOnly">
+      <app-button-comp [btnType]="'main'" [style.width.px]="400" (click)="GenerateReport()" image="./assets/images/invoices/add.svg"
+      class="me-3 botton" [name]="'TAXREPORT.ADDTAXREPORT' |translate"  [background_color]="'#5C60F5'" ></app-button-comp>
+
+  </div>
+ </div>
+ 
+
+ <div class="w-100 d-flex bottons justify-content-center py-4" *ngIf="Type != 'add' || viewOnly">
+    <app-button-comp [btnType]="''" [style.width.px]="400" (click)="saveReport()" image="./assets/images/invoices/download.svg"
+    class="me-3 botton" [name]="'TAXREPORT.DOWNLOAD'|translate"  [background_color]="'#11c387'" ></app-button-comp>
+</div>
+
+
+<!-- <button (click)="saveDivAsPDF('taxReport')"> pdf</button> -->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- <button (click)="printDiv('taxReport')">print</button>
+  <button (click)="saveDivAsPDF('taxReport')"> pdf</button> -->

@@ -1,0 +1,442 @@
+.dashboard-container{
+    padding: 2% 3%;
+    .pageTitle{
+        font-weight: 600;
+        font-size: 20px;
+
+    }
+    .cards{
+        @media screen and (max-width:768px){
+            justify-content: center;
+        }
+        .infoCards{
+            height: 270px;
+            width: 170px;
+
+            width: 220px;
+            border-radius: 10px;
+            @media screen and (max-width:768px){
+                width: 100%;
+            }
+            .cardTitle{
+                font-weight: 500;
+                font-size: 18px;
+            }
+            .num{
+                font-weight: 700;
+                font-size: 30px;
+            }
+            .price{
+                display: flex;
+                justify-content: center;
+                font-weight: 700;
+                font-size: 26px;
+                word-break: break-all;
+                text-align: center;
+            }
+        }
+    }
+    .chart{
+        ::ng-deep .apexcharts-legend.apx-legend-position-bottom.apexcharts-align-center{
+            display: none;
+        }
+        ::ng-deep .p-card{
+            box-shadow: 10px 10px 80px rgba(63, 39, 102, 0.1) !important;
+        border-radius: 24px !important;
+        }  
+        ::ng-deep .apexcharts-toolbar{
+            display: none;
+        }  
+    }
+    .secIII{
+
+        .cardsII{
+            height: 417px;
+            overflow: auto;
+            width: 45%;
+            //width: 35.8vw;
+            height: 400px;
+            background: #FFFFFF;
+            border-radius: 17.0118px;
+            padding: 20px;
+            @media screen and (max-width:768px){
+                width: 100%;
+            }
+            .more{
+                font-weight: 500;
+                font-size: 14.01px;
+                color: #667FFE;
+            }
+        }
+        .bottomSecII{
+            .num{
+                font-weight: 500 !important;
+                font-size: 24px !important;
+                //display: flex;
+                align-items: center;
+            }
+            .name{
+                font-weight: 500 !important;
+                font-size: 15px !important;
+                //display: flex;
+                margin-top: 8px;
+                align-items: center;
+            }
+            span{
+                font-weight: 400;
+                font-size: 12px;
+            }
+        }
+    }
+    .text{
+        font-weight: 500;
+        font-size: 16.0111px;
+        color: #000000;
+    }
+}
+
+::ng-deep .apexcharts-yaxis-texts-g{
+   margin-right: 20px !important;
+}
+
+::ng-deep{
+   [dir='rtl'] .apexcharts-yaxis {
+        transform: translate(-0.125px, 0px) !important;
+    }
+}
+.partI{
+    .secI{
+        // height: 480px;
+        // @media screen and (max-width:768px){
+        //     height: 100%;
+        // }
+        .doughnut{
+            // height: 417px;
+            overflow: auto;
+            width: 35%;
+            // height: 400px;
+            // height: 100%;
+            // height: 480px;
+            background: #FFFFFF;
+            border-radius: 17.0118px;
+            padding: 20px;
+            @media screen and (max-width:768px){
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            .doughnutChart{
+                ::ng-deep {
+                    canvas{
+                        width: 240px !important;
+                        height: 240px !important; 
+                    }
+                }                    
+            }
+            .color{
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+            }
+        }
+        .bar{
+            // height: 417px;
+            // overflow: auto;
+            width: 63%;
+            // height: 400px;
+            // height: 100%;
+
+            // height: 480px;
+            background: #FFFFFF;
+            border-radius: 17.0118px;
+            padding: 20px;
+            @media screen and (max-width:768px){
+                width: 100%;
+            }
+            .barChart{
+                ::ng-deep {
+                    canvas{
+                        margin-top: 20px;
+                        width: 90% !important;
+                        height: 80% !important; 
+                        @media screen and (max-width:426px) {
+                            width: 100% !important;
+                            height: 311px !important;
+                        }
+                    }
+                }    
+            }
+
+        }
+       
+    }
+}
+.partII{
+    .secII{
+    
+        .lastTrans{
+            height: 417px;
+            overflow: auto;
+            width: 35%;
+            //width: 35.8vw;
+            height: 400px;
+            background: #FFFFFF;
+            border-radius: 17.0118px;
+            padding: 20px;
+            @media screen and (max-width:768px){
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            .more{
+                font-weight: 500;
+                font-size: 14.01px;
+                color: #667FFE;
+            }
+            .bottomSecII{
+                .num{
+                    font-weight: 500 !important;
+                    font-size: 24px !important;
+                    //display: flex;
+                    align-items: center;
+                }
+                .name{
+                    font-weight: 500 !important;
+                    font-size: 15px !important;
+                    //display: flex;
+                    margin-top: 8px;
+                    align-items: center;
+                }
+                span{
+                    font-weight: 400;
+                    font-size: 12px;
+                }
+            }
+        }
+        .invoiceChart{
+            height: 417px;
+            overflow: auto;
+            width: 63%;
+            //width: 35.8vw;
+            height: 400px;
+            background: #FFFFFF;
+            border-radius: 17.0118px;
+            padding: 20px;
+            @media screen and (max-width:768px){
+                width: 100%;
+            }
+            .more{
+                font-weight: 500;
+                font-size: 14.01px;
+                color: #667FFE;
+            }
+        }
+   
+    }
+
+}
+.partIII{
+    .secII{
+    
+        .chartI{
+            height: 417px;
+            overflow: auto;
+            // width: 48%;/
+             width: 49%;
+            //width: 35.8vw;
+            height: 400px;
+            background: #FFFFFF;
+            border-radius: 17.0118px;
+            padding: 10px;
+            @media screen and (max-width:1024px){
+                padding: 5px;
+            }
+            @media screen and (max-width:768px){
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            .more{
+                font-weight: 500;
+                font-size: 14.01px;
+                color: #667FFE;
+            }
+            .bottomSecII{
+                .num{
+                    font-weight: 500 !important;
+                    font-size: 24px !important;
+                    //display: flex;
+                    align-items: center;
+                }
+                .name{
+                    font-weight: 500 !important;
+                    font-size: 15px !important;
+                    //display: flex;
+                    margin-top: 8px;
+                    align-items: center;
+                }
+                span{
+                    font-weight: 400;
+                    font-size: 12px;
+                }
+            }
+        }
+
+    }
+
+}
+
+.tabs{
+.active{
+background-color: #6759FF;
+color: white;
+}
+.tab{
+    height: 39px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+}
+.chart{
+    ::ng-deep .apexcharts-legend.apx-legend-position-bottom.apexcharts-align-center{
+        display: none;
+    }
+    ::ng-deep .p-card{
+        box-shadow: 10px 10px 80px rgba(63, 39, 102, 0.1) !important;
+    border-radius: 24px !important;
+    }  
+    ::ng-deep .apexcharts-toolbar{
+        display: none;
+    }  
+}
+// .table{
+//     ::ng-deep .p-datatable table{
+//         max-width: 100%;
+//     }
+//     @media only screen and (max-width: 960px) {
+//         ::ng-deep .p-dropdown {
+//             width: 70% ;
+//         }
+//         ::ng-deep .p-datatable .p-datatable-tbody > tr > td{
+//             border: 1px solid #dee2e6 !important;
+//             border-width: 0 0 1px 0 !important; 
+//         }
+//         ::ng-deep .p-datatable-thead > tr > th, .p-datatable-tfoot > tr > td {
+//          display: table-cell !important;
+//         }
+    
+//     }
+//     ::ng-deep .p-datatable-wrapper{
+//         overflow-x: scroll;
+//     }
+//     @media screen and (max-width: 960px){
+//         ::ng-deep .p-datatable-tbody > tr > td {
+//            display:table-cell !important;
+//         //    width: 40% !important;
+//         }
+ 
+
+//     }
+//     ::ng-deep .p-datatable .p-datatable-thead > tr > th{
+//         text-align: center !important;
+//         border-left:1px solid #dee2e6 !important;
+//    }
+//    ::ng-deep .p-datatable .p-datatable-tbody > tr > td{
+//         text-align: center !important;
+//         border-left:1px solid #dee2e6 !important;
+//    }
+// }
+
+
+.chart-container {
+    width: 100%;
+  }
+
+
+::ng-deep {
+  
+        .p-dropdown.p-component, .p-calendar .p-inputtext, .p-calendar , textarea{
+            background: #FFFFFF;
+            border-radius: 10px !important;
+            width: 100% ;
+        }
+        .dashboard_date  .p-calendar .p-datepicker{
+            width: 100% !important;
+        }
+}
+
+  
+#chooseTimeModel{
+    .modal-dialog{
+        padding-top: 4% !important;
+        max-width: 70vw !important;
+        @media only screen and (max-width:768px){
+            max-width: 100% !important;
+           margin: 4% auto !important;
+    }
+        .modal-content{
+            border-radius: 30px !important;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+            .modal-header{
+                border-bottom: none;
+            }
+            .modal-body{
+                padding: 0% 5% 5vh 5%;
+                .Title{
+                    width: 100%;
+                    text-align: center;
+                }
+
+
+            }
+        }
+    }
+
+}
+
+#chooseTimeModelI{
+    .modal-dialog{
+        padding-top: 4% !important;
+        max-width: 70vw !important;
+        @media only screen and (max-width:768px){
+            max-width: 100% !important;
+           margin: 4% auto !important;
+    }
+        .modal-content{
+            border-radius: 30px !important;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+            .modal-header{
+                border-bottom: none;
+            }
+            .modal-body{
+                padding: 0% 5% 5vh 5%;
+                .Title{
+                    width: 100%;
+                    text-align: center;
+                }
+
+
+            }
+        }
+    }
+
+}
+.chooseDuration{
+    @media only screen and (max-width:768px){
+        width: 100%;
+    }
+}
+.generateBtn{
+    width: 25%;
+    @media only screen and (max-width:768px){
+        width: 100%;
+    }
+}
+
+.dateClass{
+    font-size: clamp(13px, 1.2vw, 16px);
+}
+
+::ng-deep .rtl .p-datepicker .p-datepicker-header .p-datepicker-prev  {
+    transform: rotateY(180deg);
+  }
+::ng-deep .rtl .p-datepicker .p-datepicker-header .p-datepicker-next {
+    transform: rotateY(180deg);
+  }

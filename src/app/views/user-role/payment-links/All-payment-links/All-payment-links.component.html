@@ -1,0 +1,89 @@
+<!-- ui_fix -->
+<div class="row div-container p-0 ps-5 pe-5">
+  <div class="col-md-12 d-flex justify-content-start title">
+   <h2 class="ms-4">{{'PAYMENTLINKS.TITLE' | translate}}</h2>
+  </div>
+  <div class="card invoice-card mt-3">
+   <div class="px-3 pb-3 d-flex flex-wrap justify-content-between">
+     <div class=" cardTitle ">
+       <p>{{'PAYMENTLINKS.SUBTITLE' | translate}}</p>
+     </div>
+   </div>
+
+    <div class="col-md-12 d-flex justify-content-between px-3 py-3">
+       <div class="search">
+        <span class="me-2 my-auto">{{'CREDITNOTICE.SEARCH' | translate}}</span>
+         <input type="text"(keyup.enter)="search()"
+         placeholder="{{'USERPROFILE.EMAIL'|translate}}"
+         [(ngModel)]="searchWord" (input)="search()">
+       </div>
+    </div>
+    <div class="col-md-12">
+      <app-table-comp 
+      [columnsArray]="columnsArray"
+      [columnsNames]="columnsNames"
+      [RowsData] = "paymentLinks"
+      [controlArray]="controlArray">
+      </app-table-comp>
+
+
+      <p-paginator (onPageChange)="onPageChange($event)"  #paginator
+       [first]="1" [rows]="perPage" [totalRecords]="totalPage" 
+      ></p-paginator> 
+
+      
+     <!-- <p-table [responsive]="true" [value]="paymentLinks">
+       <ng-template pTemplate="header">
+           <tr>
+             <th>فاتورة </th>
+             <th>الدفع لفائدة</th>
+             <th>الايميل</th>
+             <th> المبلغ</th>
+             <th> المبلغ المدفوع</th>
+             <th> المبلغ المستحق</th>
+             <th> حالة الربط</th>
+             <th> تاريخ الانشاء</th>
+             <th>صالح إلي</th>
+             <th>تحكم</th>
+           </tr>
+       </ng-template>
+       <ng-template pTemplate="body" let-link>
+           <tr>
+               <td>{{ link.inoice_number }}</td>
+               <td style="width: 100px;" class="color-lightBlue">
+                <span style="width: 150px;" class="limit_text">{{ link.user }}</span>
+              </td>
+               <td>{{ link.email }}</td>
+               <td> {{ link.amount }}</td>
+               <td> {{ link.paid_amount }}</td>
+               <td> {{ link.received_amount }}</td>
+               <td> {{ link.state }}</td>
+               <td> {{ link.generated_at }}</td>
+               <td> {{ link.active_until }}</td>
+               <td>
+
+                <div class="btn-group dropend">
+                  <button type="button" class="btn btn-secondary dropdown-toggle"
+                  id="dropdownMenuButton1" 
+                   data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-ellipsis-v" style="color: #000000;"></i>
+                  </button>
+                  <ul  class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li [routerLink]="'/payment-links/payment-link-details/'+link.uuid"
+                    class="p-2 cursor-pointer">
+                      <span>رؤية رابط الدفع</span>
+                    </li>
+
+                  </ul>
+                </div>
+
+              </td>
+
+           </tr>
+       </ng-template>
+   </p-table> -->
+    </div>
+</div>
+</div>
+
+

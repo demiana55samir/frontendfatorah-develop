@@ -1,0 +1,101 @@
+<!-- ui_fix -->
+<div class="allPurchasesContainer p-0 ps-5 pe-5">
+  <div class="d-flex mb-2 justify-content-start title">
+    <h2>{{'PURCHASE.TITLE' | translate}}</h2>
+  </div>
+  <div class="card  py-4 mainCard borderRadius_20px mb-5">
+    <div class="row  px-3 mb-3 flex-wrap d-flex justify-content-between">
+      <div class="col-md-3 cardTitle">
+        <span>{{'PURCHASE.SUBTITLE' | translate}}</span>
+      </div>
+      <div class="col-md-8 d-flex flex-wrap gap-1 d-flex justify-content-end  bottons justify-content-end">
+        <app-button-comp [btnType]="'main'" routerLink="/user/purchases/add-purchases" style="width: 250px;" class="botton" [image]="'./assets/images/invoices/add.svg'"  [name]="'ADDPURCHASE.ADDPRURCHASEANDEXPENSE' | translate" [background_color]="'#5C60F5'" ></app-button-comp>
+        <app-button-comp [btnType]="'secondary'" (click)="navigate('/user/purchases/canceled-purchases')" style="width: 200px;" class="botton" [image]="'./assets/logo/x.svg'"  [name]="'PURCHASE.CANDELLEDPURCHASE' | translate" [background_color]="'#F44545'" ></app-button-comp>
+      </div>
+    </div>
+
+    <div class="px-3" *ngIf="Purchases">
+      <div class="col-md-12 tabs mb-3" >
+        <p-tabMenu [model]="items" [activeItem]="activeItem">
+          <ng-template pTemplate="item" let-item let-i="index">
+           <span class="tab_text">{{item.label}}</span>  
+           <!-- <span class="text-center tab_text" style="width:35px;background: #E0E1FF;border-radius:10px;">{{numberArray[i]}}</span> -->
+        </ng-template>
+        </p-tabMenu>
+       </div>
+       <div class="fs-16 fw-400 mx-0 my-3" *ngIf="tab == 2">
+        <label class="form-label fs-16 fw-400 mb-1"> {{'ADDPURCHASE.PURCHASETYPE'|translate}} </label>
+        <div class="dropDownWidth">
+          <p-dropdown  [options]="purchase" [(ngModel)]="expenses_type"  (ngModelChange)="chooseExpenseType()"  placeholder="{{'ADDPURCHASE.PURCHASETYPE'|translate}}" 
+          class="my-1 mx-0 py-2  w-100 " optionLabel="name" optionValue="id"></p-dropdown> 
+        </div>
+      </div>
+       <div class="fs-16 fw-400 mx-0 my-3" *ngIf="tab == 4">
+        <label class="form-label fs-16 fw-400 mb-1"> {{'ADDPURCHASE.EXPENSESTYPE'|translate}} </label>
+        <div class="dropDownWidth">
+          <p-dropdown  [options]="expenses" [(ngModel)]="expenses_type"  (ngModelChange)="chooseExpenseType()"  placeholder="{{'ADDPURCHASE.EXPENSESTYPE'|translate}}" 
+          class="my-1 mx-0 py-2  w-100 " optionLabel="name" optionValue="id"></p-dropdown> 
+        </div>
+      </div>
+    </div>
+
+    <div class="row px-3 mb-3 col-12 col-md-2 col-lg-2 w-100">
+     
+
+      <div class="col-md-12  d-flex flex-wrap">
+        <p class="me-3 my-auto">{{'CREDITNOTICE.SEARCH' | translate}}</p>
+        <input type="text" placeholder="{{'PURCHASE.PURCHASENUM' | translate}} , {{'ADDPURCHASE.INVOICE_NUMBER'|translate}} , {{'ADDPURCHASE.RECIPIENTNAME'|translate}} , {{'ADDPURCHASE.PURCHASEDATE'|translate}}"  (keyup.enter)="search()"
+        [(ngModel)]="searchWord" (input)="search()">
+      </div>
+    </div>
+    <div class="row">
+       <div class="col-md-12">
+
+        <app-table-comp 
+        [columnsArray]="columnsArray"
+        [columnsNames]="columnsNames"
+        [RowsData] = "Purchases"
+        [type]="'Purchase'"
+        [controlArray]="controlArray">
+        </app-table-comp>
+  
+  
+        <p-paginator (onPageChange)="onPageChange($event)" #paginator
+         [first]="1" [rows]="perPage" [totalRecords]="totalPage" 
+        ></p-paginator> 
+
+        <!-- <p-table [responsive]="true" [value]="Purchases">
+          <ng-template pTemplate="header">
+              <tr>
+                  <th>رقم المشتري</th>
+                  <th>رقم الكود</th>
+                  <th>تحميل</th>
+                  <th>المبلغ</th>
+                  <th>اسم المستلم</th>
+                  <th>تاريخ الشراء</th>
+                  <th>تحكم</th>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-Purchases>
+              <tr>
+                  <td>{{ Purchases.number }}</td>
+                  <td style="color: #679FDB;" class="cursor-pointer">{{ Purchases.code_number}}</td>
+                  <td>
+                    <div class="cursor-pointer download">
+                      <button style="border-radius: 20px;" class="prodBtn px-3 py-1 fw-semibold green_Color_BG  border-0 text-white my-auto mx-0">
+                          <span> تحميل</span>
+                      </button>
+                    </div>
+                  </td>
+                  <td>{{ Purchases.currency }}</td>
+                  <td>{{ Purchases.recipient }}</td>
+                  <td>{{ Purchases.date }}</td>
+                  <td><i class="fas fa-ellipsis-v" style="color: #000000;"></i></td>
+              </tr>
+          </ng-template>
+      </p-table> -->
+       </div>
+    </div>
+  </div>
+</div>
+

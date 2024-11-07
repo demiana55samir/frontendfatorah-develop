@@ -1,0 +1,38 @@
+<!-- ui_fix -->
+<div class="row main-container p-0 ps-5 pe-5">
+  <div class="col-md-12 d-flex justify-content-start title">
+   <h2 class="ms-4">{{'SUBSCRIPTIONPLANS.DISPLAY' | translate}}</h2>
+  </div>
+  <div class="card main-card mt-3">
+   <div class="px-3 pb-3 d-flex flex-wrap justify-content-between">
+     <div class=" cardTitle ">
+       <p>{{'SUBSCRIPTIONPLANS.LIST' | translate}}</p>
+     </div>
+     <div class="addBtn" >
+
+       <app-button-comp class="Btn" routerLink="/admin/subscription-plans/plan-details/add/null"  [btnType]="'main'" image="../../../../assets/images/invoices/add.svg"    [name]="'SUBSCRIPTIONPLANS.ADD' | translate " [background_color]="'#1B1464'" ></app-button-comp>
+
+     </div>
+
+   </div>
+
+
+    <div class="col-md-12">
+
+      <app-table-comp 
+      [columnsArray]="columnsArray"
+      [columnsNames]="columnsNames"
+      [RowsData] = "plans"
+      [controlArray]="controlArray">
+      </app-table-comp>
+
+
+      <p-paginator (onPageChange)="onPageChange($event)" #paginator
+       [first]="1" [rows]="perPage" [totalRecords]="totalPage" 
+      ></p-paginator> 
+
+
+    </div>
+</div>
+</div>
+

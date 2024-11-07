@@ -1,0 +1,53 @@
+<!-- ui_fix -->
+<div class="row main-container p-0 ps-5 pe-5" >
+  <div class="col-md-12 d-flex justify-content-start title">
+   <h2 class="ms-4">{{'BLOGS.DETAILS' | translate}}</h2>
+  </div>
+  <div class="card main-card mt-3">
+   <!-- <div class="px-3 d-flex flex-wrap justify-content-between">
+     <div class=" cardTitle ">
+       <p>{{'BLOGS.SUBTITLE' | translate}}</p>
+     </div>
+
+
+   </div> -->
+   <div class="row p-3" *ngIf="article">
+
+    <div class="col-md-12  my-3 ">
+      <div class="card p-3 borderRadius_10px boxShadow-10 d-flex ">
+         <span>{{'BLOGS.BLOGTITLE' |translate}} : {{article.title}}</span>
+      </div>
+    </div>
+    <div class="col-md-12  my-3">
+      <div class="card p-3 boxShadow-10 borderRadius_10px d-flex ">
+         <span>{{'BLOGS.ARCHIVETITLEDETAILS' |translate}} : {{article.slug}}</span>
+      </div>
+    </div>
+    <div class="col-md-12  my-3">
+      <div class="card p-3 boxShadow-10 borderRadius_10px d-flex flex-wrap flex-row gap-2">
+         <span>{{'BLOGS.CATEGORIES' |translate}} : </span>
+         <div *ngFor="let tag of article.tags" class="gap-2 d-flex flex-wrap">
+          <div class="p-1 text-white borderRadius_10px main-purple-bg">
+            {{tag.name}}
+          </div>
+       </div>
+      </div>
+    </div>
+
+    <div class="col-md-12  my-3">
+      <div class="card p-3 boxShadow-10 borderRadius_10px d-flex ">
+         <span>{{'BLOGS.ADDTIME' |translate}} : {{article.created_at}}</span>
+      </div>
+    </div>
+    <div class="col-md-12  my-3">
+      <div class="card p-3 boxShadow-10 borderRadius_10px d-flex flex-column ">
+         <span>{{'BLOGS.BLOGCONTENT' |translate}} : </span>
+         <span [innerHTML]="article.content"></span>
+      </div>
+    </div>
+
+   </div>
+
+</div>
+</div>
+

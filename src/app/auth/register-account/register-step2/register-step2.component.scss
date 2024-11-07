@@ -1,0 +1,244 @@
+
+.register{
+    background-image: url('../../../../assets/images/login/vivid-blurred-colorful-background\ \(2\)\ 1.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: 3;
+}
+.ContDiv{
+    width: 75%;
+    height: 75%;
+    border-radius: 20px !important;
+    margin: auto;
+    min-height: 500px;
+    .background{
+        background-image: url('../../../../assets/images/login/loginBgcrpd.png');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        // background-size: cover;
+        width: 100%;
+        height: 100%;
+        padding: 3rem;
+        border-radius: 20px !important;
+        @media screen and (max-width:651px) {
+            padding: 0 !important;
+        }
+        @media screen and (max-width:768px) {
+            background-image: none !important;
+            background-color: #4E498D !important;
+        }
+        @media screen  and (max-width: 2560px) and (min-width:2000px){
+          position: relative !important;  
+          .registerBodyAR{
+            position: absolute !important;
+            left: 0;
+            right: 333px;
+            top: 97px;
+          }
+          .registerBodyEN{
+            position: absolute !important;
+            left: 309px;
+            right: 0px;
+            top: 172px;
+          }
+        }
+        .registerBody{
+
+            .title{
+             font-size: 34px;
+             font-weight: 600;
+             color: white;
+             @media screen and (max-width:769px) and (min-width:523px) {
+                font-size: 50px;
+             }
+             @media screen and (max-width:523px){
+                 font-size: 36px;
+             }
+            } 
+            .textInput{
+             background: #514B96 !important;
+             border: none;
+             border-radius: 4px;
+             color: white;
+                 text-align: justify;
+            //  input:focus {
+            //     background: #514B96 !important;
+            // }
+            &:focus,
+            &:valid {
+                background: #514B96 !important;
+            }
+            }
+     
+            .inputFieldLable{
+             padding: 0.5rem 0.75rem !important;
+            }
+            .form-control:focus{
+             box-shadow: none;
+             border: 1px solid #6A64AD;
+             box-shadow: 0px 0px 20px rgba(106, 100, 173, 0.3);
+            }
+            .forgetPassword{
+             color: white;
+             text-decoration: underline;
+            }
+            .loginBtn{
+             background-color: #6759FF;
+             color: white;
+             border-radius: 4px;
+             border: none;
+             width: 229px;
+             height: 46px;
+              @media screen and (max-width:376px) {
+                 width: 172px !important;
+              }
+            }
+            .checkbox{
+             background-color:transparent;
+            }
+            .hide {
+             display: none;
+           }
+           .inner-addon { 
+               position: relative; 
+           }
+           .inner-addon .far, .inner-addon .fas {
+             position: absolute;
+             padding: 10px 30px;
+             z-index: 100;
+             cursor: pointer;
+           }
+            @media screen and (max-width:375px) {
+             padding: 2rem!important;
+            }
+     
+            .far{
+             right:unset;
+             left: 0;
+             top: 5px;
+             .rtl{
+                 right:0;
+                 left:unset;
+                 top: 5px; 
+             }
+            }
+         }
+    }
+
+  
+}
+
+::ng-deep .register{
+.p-inputtext{
+    background: #514B96;
+    border: none;
+    border-radius: 4px;
+    color: white;
+        text-align: justify;
+    display: block;
+    width: 100%;
+   }
+   .p-inputtext:enabled:focus{
+    box-shadow: none;
+    border: 1px solid #6A64AD;
+    box-shadow: 0px 0px 20px rgba(106, 100, 173, 0.3);
+   }
+   .p-password{
+    width: 100%;
+
+   }
+}  
+
+::-ms-reveal {
+    display: none;
+}
+    
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #ffffff;
+    transition: background-color 5000s ease-in-out 0s;
+    box-shadow: inset 0 0 20px 20px #23232329;
+}
+
+.otpInputs{
+    height: 40px;
+    width: 40px;
+    padding: 2% 4%;
+    font-weight: 600;
+    font-size: 38px;
+    line-height: 73px;
+    caret-color: white;
+    color: white !important;
+    background-color: transparent !important;
+    @media only screen and (max-width: 1024px) {
+
+        font-size: 37px;
+        line-height: 78px;
+    }
+}
+
+.active{
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: white;
+    position: relative;
+    z-index: 1;
+}
+.notActive{
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #716DA3;
+    position: relative;
+    z-index: 1;
+
+
+}
+
+// .hLine {
+//     color: white !important;
+//     width: 2px;
+//     z-index: 0;
+//     rotate: 90deg;
+//     background-color: white;
+//     align-self: stretch;
+// }
+
+.hLine{
+    background: white;
+    color: white;
+    height: 2px;
+    z-index: 0;
+    width: 100%;
+    position: absolute;
+
+}
+
+.otp{
+    gap: 1.5rem;
+    @media only screen and (max-width: 1024px) {
+        gap: 0.8rem!important;
+        display: flex;
+    }
+}
+
+.desctext{
+    @media only screen and (max-width: 426px) {
+        font-size: x-small;
+
+    }
+}
+
+.err{
+    color: red;
+    font-size: 12px;
+}

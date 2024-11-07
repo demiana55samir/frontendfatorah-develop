@@ -1,0 +1,72 @@
+
+.ceditNotesContainer{
+    padding: 6% 3%;
+    @media screen and (max-width:1024px){
+        padding: 1% 1%;
+
+    }
+    .title{
+       h2{
+        font-weight: 600;
+        font-size: 32px;
+        @media only screen and (max-width: 769px) {
+            font-size: 25px;
+        }
+       }
+    }
+    .mainCard{
+        .cardTitle{
+            font-weight: 600;
+            font-size: 16px;
+            @media screen and (max-width:426px) {
+                margin-bottom: 10px;
+            }
+        }
+        input{
+            border: #B8B8B8 1px solid !important;
+            border-radius:10px;
+            height: 35px;
+            width: 45%;
+            @media screen and (max-width:426px){
+                 width: 100%;               
+             }
+        }
+        .addProdBtn{
+            display: flex;
+            margin: auto 0;
+            span{
+              font-size: 12px;
+            }
+            @media only screen and (max-width: 426px) {
+                margin-inline: auto;
+                margin-top: 6%;
+                text-align: center;
+                width: 200px;
+                }
+
+            .prodBtn{
+                border-radius: 15px;
+                width: 230px !important;
+                height: 50px;
+                img{
+                    width: 4vh;
+                    width: 15%;
+                }
+               }
+            }
+        
+        .download{
+            span{
+                @media only screen and (max-width: 769px) {
+                    font-size: 13px;
+                }
+            }
+        }
+      
+    }
+}
+
+::ng-deep .btn-secondary{
+    background-color: #FFFFFF !important;
+    border: none;
+}

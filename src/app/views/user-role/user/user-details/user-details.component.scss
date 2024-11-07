@@ -1,0 +1,69 @@
+.width-250{
+    width: 250px;
+}
+.fs-21{
+    font-size: 21px;
+}
+.fs-19{
+    font-size: 19px;
+}
+.topCards{
+    @media screen and (max-width:798px) {
+        justify-content: center;
+    }
+}
+
+.secIII{
+
+    .cardsII{
+        height: 417px;
+        //overflow: auto;
+        width: 45%;
+        //width: 35.8vw;
+        height: 400px;
+        background: #FFFFFF;
+        border-radius: 17.0118px;
+        //padding: 20px;
+        @media screen and (max-width:768px){
+            width: 100%;
+        }
+    }
+    ::ng-deep .p-card{
+   box-shadow: none;
+   padding: 0;
+    }
+    ::ng-deep .apexcharts-legend.apx-legend-position-bottom.apexcharts-align-center{
+        display: none;
+    }
+  
+    ::ng-deep .apexcharts-toolbar{
+        display: none;
+    }  
+    ::ng-deep apx-chart{
+        >div{
+            min-height: 135px !important;
+        }
+    }
+
+}
+.chartCard{
+    ::ng-deep .p-card .p-card-content{
+        padding: 0px !important;
+    } 
+    ::ng-deep .p-card{
+        border-radius: 20px;
+    }
+}
+
+.fs-33{
+font-size: 33px !important;
+}
+.fs-18{
+font-size: 18px !important;
+}
+
+::ng-deep{
+    [dir='rtl'] .apexcharts-yaxis {
+         transform: translate(-0.125px, 0px) !important;
+     }
+  }

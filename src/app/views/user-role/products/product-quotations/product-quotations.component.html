@@ -1,0 +1,49 @@
+<!-- ui_fix -->
+<div class="row invoices-container p-0 ps-5 pe-5">
+  <div class="col-md-12 d-flex justify-content-start title">
+   <h2 class="ms-4">{{'PRICELIST.TITLE' | translate}}</h2>
+  </div>
+  <div class="card invoice-card mt-3">
+   <div class="px-3 pb-3 d-flex flex-wrap justify-content-between">
+     <div class=" cardTitle ">
+       <p>{{'PRICELIST.SUBTITLE' | translate}}</p>
+     </div>
+     <div class="addProdBtn" >
+       <button routerLink="/user/prices/add-price-offer" class="prodBtn fw-semibold blue_Color_BG  border-0 text-white my-auto mx-0">
+           <img src="../../../../assets/images/invoices/add.svg" alt="">
+           <span >{{'PRICELIST.ADDPRICEOFFER' | translate}}</span>
+       </button>
+     </div>
+
+   </div>
+
+    <div class="col-md-12 d-flex justify-content-between px-3 py-3">
+       <div class="search">
+        <span class="me-2 my-auto">{{'CREDITNOTICE.SEARCH' | translate}}</span>
+         <input type="text"  placeholder="{{'ADDPRICEOFFER.PRICEOFFERNUM'|translate}} , {{'COMMON.CLIENT' |translate}}"
+          (keyup.enter)="search()"
+         [(ngModel)]="searchWord" (input)="search()">
+
+       </div>
+    </div>
+    <div class="col-md-12">
+
+      <app-table-comp 
+      [columnsArray]="columnsArray"
+      [columnsNames]="columnsNames"
+      [RowsData] = "prices"
+      [type]="'quotation'"
+      [controlArray]="controlArray">
+      </app-table-comp>
+
+
+      <p-paginator (onPageChange)="onPageChange($event)"  #paginator
+       [first]="1" [rows]="perPage" [totalRecords]="totalPage" 
+      ></p-paginator> 
+
+
+    </div>
+</div>
+
+</div>
+

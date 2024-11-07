@@ -1,0 +1,199 @@
+<!-- ui_fix -->
+<div class="divCont p-0 ps-5 pe-5">
+  <div class="topCards d-flex flex-wrap gap-3 mb-5">
+    <div class="h-119px width-250 d-flex flex-row justify-content-between   boxShadow-25 borderRadius_20px p-3 card">
+        <div class="d-flex flex-column">
+           <span class="text-secondary fs-21 fw-400">{{'DASHBOARD.INVOICES'|translate}}</span>
+           <span class="fs-48 fw-400">{{user?.invoices_count}}</span>
+        </div>
+        <div class="d-flex align-items-center">
+          <img src="../../../../assets/images/user/invoice.png" alt="">
+        </div>
+    </div>
+    <div class="h-119px width-250 d-flex flex-row justify-content-between  boxShadow-25 borderRadius_20px p-3 gap-2 card">
+      <div class="d-flex flex-column">
+         <span  class="text-secondary fs-21 fw-400"> {{'SIDENAV.CLIENTS'|translate}}</span>
+         <span  class="fs-48 fw-400">{{user?.clients_count}}</span>
+      </div>
+      <div class="d-flex align-items-center">
+        <img src="../../../../../assets/images/user/user-icon.png" alt="">
+      </div>
+  </div>
+  <div class="h-119px width-250 d-flex justify-content-between   flex-row  boxShadow-25 borderRadius_20px p-3 gap-2 card">
+    <div class="d-flex flex-column">
+       <span class="text-secondary fs-21 fw-400">{{'SIDENAV.PRODUCTS'|translate}}</span>
+       <span class="fs-48 fw-400">{{user?.products_count}}</span>
+    </div>
+    <div class="d-flex align-items-center">
+      <img src="../../../../assets/images/user/price-offers.png" alt="">
+    </div>
+</div>
+<div class="h-119px width-250 d-flex justify-content-between  flex-row  boxShadow-25 borderRadius_20px p-3 gap-2 card">
+  <div class="d-flex flex-column">
+     <span class="text-secondary fs-21 fw-400">{{'PLANS.PLAN'|translate}}</span>
+     <span  class="fs-19 fw-400">{{userPlan}}</span>
+  </div>
+  <div class=" d-flex align-items-center">
+    <img src="../../../../assets/images/user/total.png" alt="">
+  </div>
+</div>
+</div>
+
+<div class="secIII d-flex flex-wrap gap-5">
+  <div class="cardsII   d-flex flex-column  gap-4">
+    <div class="card border-0 h-45 infoCard">
+      <div class="mt-2 pb-1 ">
+        <div class="ps-3">
+          <p class="fw-bold">{{'ADDCLIENT.CLIENTINFO'|translate}}</p>
+        </div>
+        <div>
+          <div class="border-0  px-2 py-1">
+            <div class="d-flex">
+              <p>  {{'COMMON.CLIENTORCOMPANY'|translate}} : </p>
+              <p>{{user?.name}}</p>
+            </div>
+            <div class="d-flex">
+              <p>{{'LANDING.EMAIL'|translate}} :</p>
+              <p>{{user?.email}}</p>
+             </div>
+            <div class="d-flex row">
+              <div class="d-flex col-md-6 justify-content-start">
+                 <p> {{'COMMON.TELEPHONE'|translate}} :</p>              
+                 <p>{{user?.phone}}</p>
+                </div>
+            <div class="d-flex">
+               <p>{{'COMMON.ADDCLIENTDATE'|translate}} :  </p>             
+               <p>{{user?.created_at}}</p>
+            </div>
+          </div>
+  
+  
+        </div>
+      </div>
+    </div>
+
+    </div>
+    <div class="card border-0  flex-fill infoCard infoCardII">
+      <div class="mt-4 pb-4 ">
+        <div class="px-3">
+          <p class="fw-bold">{{'ADMIN-USER-DETAILS.TRANSDATE'|translate}}</p>
+
+          <div *ngFor="let item of user.payment_history ">
+            <div class="d-flex align-items-center ">
+              {{ item.plan}}  : &nbsp; &nbsp;  {{ item.date }}
+            </div>
+              <hr>
+          </div>
+        </div>
+        <div>
+
+      </div>
+    </div>
+
+    </div>
+  </div>
+  <div class="cardsIIbg borderRadius_20px">
+   <div>
+    <div class="mt-4 mx-3 pb-2">
+      <p class="fw-bold">{{'ADMIN-USER-DETAILS.CHANGEDATE' | translate}}</p>
+    </div>
+    <div> 
+      <form [formGroup]="userDetailsForm" (ngSubmit)="updatePlanData()">
+        <div class="mb-1 mx-3">
+          <p>{{'ADMIN-USER-DETAILS.AVAILABLEPLANS' | translate}}</p>
+        </div>
+        <div class="d-flex flex-wrap gap-3 justify-content-between fullScreenWidth mx-3 mx-0 mb-3 ">
+          <!-- <div> -->
+            <div class="d-flex gap-1 align-items-center" *ngFor="let plan of plans">
+              <input type="radio" formControlName="plan" name="plan"
+              [ngClass]="!userDetailsForm.controls['plan'].valid && userDetailsForm.controls['plan'].touched ?'errorInput' : ''"
+               class="form-check-input cursor-pointer" 
+               [ngStyle]="{'--checked-color': primaryColor}"
+               style="width: 1.5em; height: 1.5em;border-radius: 5px;" 
+               (change)="onPlanChange(plan)" [value]="plan.id"> 
+  
+                <!-- <input class="form-check-input cursor-pointer" style="width: 2.4em; height: 2.4em;border-radius: 10px;" formControlName="status"  type="checkbox" value="" id="flexCheckDefault">      -->
+                <!-- <app-Form-errors [control]="userDetailsForm.controls['role']"></app-Form-errors> -->
+                <span class="fs-14">
+                  <!-- {{ 'PLANS.BASIC' | translate }}  -->
+                  {{ plan.name }}</span>
+            </div>
+      
+          <!-- </div> -->
+          <!-- <div> -->
+            <!-- <div class="d-flex gap-1 align-items-center">
+              <input type="radio" formControlName="plan" name="plan" class="form-check-input cursor-pointer" 
+              style="width: 1.5em; height: 1.5em;border-radius:5px;"  [value]="2"> 
+               <span class="fs-14">{{ 'PLANS.BUSINESS' | translate }}</span>
+            </div> -->
+          <!-- </div> -->
+          <!-- <div> -->
+            <!-- <div class="d-flex gap-1 align-items-center">
+              <input type="radio" formControlName="plan" name="plan" class="form-check-input cursor-pointer" style="width: 1.5em; height: 1.5em;border-radius:5px;"  [value]="3"> 
+              
+               <span class="fs-14">{{ 'PLANS.PROFESSIONAL' | translate }}</span>
+            </div> -->
+          <!-- </div> -->
+        <app-Form-errors [control]="userDetailsForm.controls['plan']"></app-Form-errors>
+        </div>
+
+      
+
+        <div>
+
+        <!-- <div *ngIf="durations.length > 0">
+          <div class="mb-1 mx-3">
+            <p> {{'SUBSCRIPTIONPLANS.DURATIONTITLE' | translate}}</p>
+            </div>
+            <div class="mx-3 mt-2">
+            <p-dropdown  [options]="durations" formControlName="subscription_type" (onChange)="chooseDuration($event)"
+            placeholder="{{'SUBSCRIPTIONPLANS.DURATIONTITLE' | translate}}" class="my-1 mx-0 py-2 w-100" optionLabel="name" optionValue="slug"></p-dropdown>                           
+            <app-Form-errors [control]="userDetailsForm.controls['subscription_type']"></app-Form-errors>
+          </div> 
+        </div> -->
+         
+
+        <!-- *ngIf="durations.length > 0" -->
+         <div class="mb-1 mx-3">
+          <p> {{'ADMIN-USER-DETAILS.ENDPLANEDATE' | translate}}</p>
+         </div>
+         <div class="mx-3 mt-2">
+          <div class=" d-flex position-relative justify-content-end align-content-center flex-wrap w-100">
+            <p-calendar #calendar class="w-100" formControlName="end_at" 
+            [styleClass]="!userDetailsForm.controls['end_at'].valid && userDetailsForm.controls['end_at'].touched ?'errorInput' : ''"
+            dateFormat="dd-mm-yy"  placeholder="{{'COMMON.DATE'|translate}}  "></p-calendar>
+            <img class=" position-absolute p-3 cursor-pointer" src="../../../../../assets/images/user/calendar (2).png" alt="" (click)="calendar.toggle()">
+            
+          </div>
+          <app-Form-errors [control]="userDetailsForm.controls['end_at']"></app-Form-errors>
+        </div> 
+      </div>
+        <div>
+         <div class="mb-1 mx-3">
+          <p> {{ 'COMMON.AMOUNT' | translate }}</p>
+         </div>
+         <div class="mx-3 my-3 mb-5">
+          <div class="fullScreenWidth mx-0 mt-3">
+            <input type="number" formControlName="amount"
+            [ngClass]="!userDetailsForm.controls['amount'].valid && userDetailsForm.controls['amount'].touched ?'errorInput' : ''"
+            appOnlyNumber placeholder="{{ 'COMMON.AMOUNT' | translate }}" 
+            class="form-control h-48 defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100">
+            <!-- <app-Form-errors [control]="addUserForm.controls['email']"></app-Form-errors> -->
+            <app-Form-errors [control]="userDetailsForm.controls['amount']"></app-Form-errors>
+
+          </div> 
+
+        </div> 
+        <div class="w-100 d-flex mx-3 mt-1">
+          <app-button-comp   style="width: 93%;"  [name]=" 'COMMON.EDIT' | translate " [background_color]="btnColor" ></app-button-comp>
+        </div>
+      </div>
+    
+        
+
+      </form>
+    </div>
+   </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,681 @@
+<!-- ui_fix -->
+<div class="invoice-details-container position-relative p-0 ps-5 pe-5" *ngIf="invoice"> 
+  <div class="row w-100 m-auto">
+    <div class="col-md-9 flex-fill">
+      <div *ngIf="activeItem.id == '1' && !viewType" class="col-md-12 title pb-3 ms-2">
+        <h2>{{'ADDINVOICE.DISPLAYINVOICEDETAILS' | translate}} 
+          <img 
+          *ngIf="!myAngularxQrCode && invoice?.eligible_sending_zatca"
+          src="./assets/images/invoices/info-circle.svg" alt="" width="25"
+          [pTooltip]="'COMMON.NEEDROSENDZATCA'|translate" tooltipPosition="top">  
+        </h2>
+        
+      </div>
+      <div *ngIf="activeItem.id == '1' && viewType" class="col-md-12 title pb-3 ">
+        <h2>عرض تفاصيل الفاتورة</h2>
+      </div>
+
+      <div *ngIf="activeItem.id == '2' && !viewType" class="col-md-12 title pb-5">
+        <h2>{{'RECEIPTVOUCHER.TITLE' | translate}}</h2>
+        <!-- <span class="subTitle">{{'COMMON.SAR'|translate}} {{remainingAmount}} {{'ADDINVOICE.REMAINING'|translate}} {{invoice.number}} :{{'ADDINVOICE.INVOICENUMBER'|translate}}</span> -->
+        <span class="subTitle">{{'ADDINVOICE.INVOICENUMBER'|translate}}: {{invoice.number}} , {{'ADDINVOICE.REMAINING'|translate}} : {{remainingAmount}} {{'COMMON.SAR'|translate}} </span>
+      </div>
+      <div *ngIf="activeItem.id == '3' && !viewType" class="col-md-12 title pb-5">
+        <h2>{{'CREDITNOTICE.TITLE' | translate}}</h2>
+        <span class="subTitle">{{'ADDINVOICE.INVOICENUMBER'|translate}}: {{invoice.number}} , {{'ADDINVOICE.REMAINING'|translate}} : {{remainingAmount}} {{'COMMON.SAR'|translate}} </span>
+      </div>
+      <!-- ui_fix -->
+      <div #excludeMe *ngIf="activeItem.id == '1' && !viewType" 
+      class="row w-100 m-auto col-md-12 d-flex bottons gap-3 ms-3">
+       <div style="width: 175px;"  class=" botton">
+         <app-button-comp (click)="downloadPdf()"
+          class="w-100 me-3 fs-16" [name]="'COMMON.DOWNLOADINVOICE' | translate" image="./assets/logo/download.svg" background_color="#11C387" ></app-button-comp>
+       </div>
+        <div  style="width: 225px;" class=" botton">
+          <app-button-comp class="w-100 me-3 fs-16" (click)="openSendToClientModel($event)" [name]="'COMMON.SENDVIAEMAIL' | translate" image="./assets/images/invoices/mail.svg" background_color="#5C60F5" ></app-button-comp>
+
+        </div>
+        <!-- <div style="width: 225px;" class=" botton">
+          <app-button-comp class="w-100 me-3 fs-16"  (click)="opensendViaWhatsappModel($event)" [name]="'COMMON.SENDVIAWHATSAPP' | translate" image="./assets/images/user/whitewhats.svg" background_color="#0cc243" ></app-button-comp>
+        </div> -->
+         <div style="width: 175px;" class=" botton">
+           <app-button-comp class="w-100 me-3 fs-16"  (click)="openModal($event)" [name]="'COMMON.SHAREINVOICE' | translate" image="./assets/images/inputs/sendBtn.svg" background_color="var(--dashboredColor, #6759FF)" ></app-button-comp>
+
+         </div>
+         
+         <div style="width: 190px;" class=" botton" *ngIf="(invoice.zatca_send_status == 0 && invoice?.eligible_sending_zatca) ||
+          (invoice?.eligible_sending_zatca && invoice?.zatca_send_status == 1 && (invoice?.zatca_stage == 'simulation' || invoice?.zatca_stage == 'developer-portal' ))">
+           <app-button-comp class="w-100 me-3 fs-16"  (click)="submitToZatca()" [name]="'COMMON.SENDTOZATCA' | translate" image="./assets/images/inputs/shareBtn.svg" background_color="#4D4D4D" ></app-button-comp>
+         </div>
+        
+         <div style="width: 194px;" class="botton" *ngIf="InvoiceActive">
+          <app-button-comp class="w-100 me-3 fs-16" *ngIf="!viewType" (click)="openDeleteModel()"  [name]="'COMMON.DELETEINVOICE' | translate" image="./assets/logo/x.svg" background_color="#F44545" ></app-button-comp>
+         </div>
+
+      </div>
+    </div>
+    <div *ngIf="activeItem.id == '1'" class="col-md-3 QR">
+      <!-- {{ myAngularxQrCode }} -->
+      <qrcode [qrdata]="myAngularxQrCode" [width]="200" > </qrcode>
+
+      <!-- <p>{{ 'COMMON.NEEDROSENDZATCA'|translate }}</p> -->
+      <!-- <img src="../../../../assets/logo/websiteQRCode_noFrame 1.svg" alt=""> -->
+    </div>
+  </div>
+  <div class="row w-100 m-auto">
+    <div class="col-md-12" *ngIf="!viewType">
+      <p-tabMenu [model]="items" [activeItem]="activeItem">
+        <ng-template pTemplate="item" let-item let-i="index">
+          <span>{{item.label}}</span> 
+       </ng-template>
+      </p-tabMenu>
+    </div>
+  </div>
+  <!-- (activeItem.label=='تفاصيل الفاتورة' || activeItem.label=='Invoice details') -->
+  <!-- <div *ngIf="activeItem.id == '1'  && !viewType" class="row w-100 m-auto mt-5">
+     <div class="col-md-12 card links">
+       <div class="d-flex justify-content-between">
+           <h4>
+            {{'ADDINVOICE.INVOICEPAYMENTLINKS' | translate}}
+           </h4>
+
+           <app-button-comp (click)="opencreatePaymentLinkModel.openCreateLinkModel()" 
+            class="me-3 addBottons" [btnType]="'main'" *ngIf="!viewType && InvoiceActive" [name]="  'PAYMENTLINKS.CREATE' | translate" [background_color]="'#5C60F5'" ></app-button-comp>
+       </div>
+       <div>
+       </div>
+     </div>
+  </div> -->
+  <div *ngIf="activeItem.id == '2' && !viewType " class="row w-100 m-auto mt-5">
+     <div class="col-md-12 card links">
+       <div class="d-flex justify-content-between">
+           <h4>
+            {{'RECEIPTVOUCHER.RECEIPTVOUCHER' | translate}}
+           </h4>
+           <div>
+             <app-button-comp *ngIf="!viewType && InvoiceActive" style="width: 180px;" [btnType]="'main'" class="me-3 addBottons" 
+             [routerLink]="'/user/invoices/add-voucher/'+invoice.uuid"
+             [image]="'./assets/images/invoices/add.svg'" [name]="'RECEIPTVOUCHER.CREATE'|translate" [background_color]="'#5C60F5'" ></app-button-comp>
+           </div>
+
+          
+
+       </div>
+       <div class="col-md-12">
+
+        <app-table-comp 
+        [columnsArray]="columnsArray"
+        [columnsNames]="columnsNames"
+        [type]="'voucher'"
+        [RowsData] = "ReceiptVoucher"
+        [controlArray]="controlArray">
+        </app-table-comp>
+  
+  <!--       
+          <p-paginator (onPageChange)="onPageChange($event)" #paginator
+          [first]="1" [row w-100 m-autos]="perPage" [totalRecords]="totalPage" 
+          ></p-paginator>  -->
+  
+      </div>
+       <div>
+       </div>
+     </div>
+  </div>
+  <div *ngIf="activeItem.id == '3' && !viewType" class="row w-100 m-auto mt-5">
+    <div class="col-md-12 card links ">
+      <div class="d-flex justify-content-between mb-4">
+          <h4>{{'CREDITNOTICE.SUBTITLE' | translate}}</h4>
+  
+          <!-- && invoice.paid > 0 -->
+          <app-button-comp style="width: 180px;"  *ngIf="!viewType && InvoiceActive && invoice.can_create_credit_note" [btnType]="'main'"
+           [routerLink]="'/user/invoices/credit-note-details/create/'+invoice.uuid" class="me-3 addBottons" [image]="'./assets/images/invoices/add.svg'" [name]="'CREDITNOTICE.CREATE' | translate" [background_color]="'#5C60F5'" ></app-button-comp>
+         
+           <app-button-comp style="width: 180px;     opacity: 0.4;"  *ngIf="!viewType && InvoiceActive && !invoice.can_create_credit_note" [btnType]="'main'"
+           [pTooltip]=" ('TABLE.CANTCREATCREDIT'|translate )" 
+           class="me-3 addBottons" [image]="'./assets/images/invoices/add.svg'" [name]="'CREDITNOTICE.CREATE' | translate" [background_color]="'#5C60F5'" ></app-button-comp>
+
+      </div>
+
+      <div class="col-md-12 pe-3">
+
+        <app-table-comp 
+        [columnsArray]="CreditcolumnsArray"
+        [columnsNames]="CreditcolumnsNames"
+        [type]="'credit'"
+        [RowsData] = "crediteNotes"
+        [controlArray]="CreditcontrolArray">
+        </app-table-comp>
+
+
+        <!-- <p-paginator (onPageChange)="onPageChange($event)" #paginator
+         [first]="1" [row w-100 m-autos]="perPage" [totalRecords]="totalPage" 
+        ></p-paginator>  -->
+       
+    </div>
+
+      <div>
+      </div>
+    </div>
+ </div>
+ <!-- debit notes tab -->
+  <!-- <div *ngIf="activeItem.id == '4' && !viewType" class="row w-100 m-auto mt-5">
+    <div class="col-md-12 card links ">
+      <div class="d-flex justify-content-between mb-4">
+          <h4>{{'DEBITITNOTICE.SUBTITLE' | translate}}</h4>
+  
+          <app-button-comp style="width: 180px;"  *ngIf="!viewType && InvoiceActive" [btnType]="'main'"
+           [routerLink]="'/user/invoices/debit-note-details/create/'+invoice.uuid" class="me-3 addBottons" [image]="'./assets/images/invoices/add.svg'" [name]="'DEBITITNOTICE.CREATE' | translate" [background_color]="'#5C60F5'" ></app-button-comp>
+        
+      </div>
+
+      <div class="col-md-12 pe-3">
+
+        <app-table-comp 
+        [columnsArray]="DebitcolumnsArray"
+        [columnsNames]="DebitcolumnsNames"
+        [type]="'credit'"
+        [RowsData] = "debitNotes"
+        [controlArray]="DebitcontrolArray">
+        </app-table-comp>
+
+
+        <p-paginator (onPageChange)="onPageChange($event)" #paginator
+         [first]="1" [row w-100 m-autos]="perPage" [totalRecords]="totalPage" 
+        ></p-paginator> 
+       
+    </div>
+
+      <div>
+      </div>
+    </div>
+ </div> -->
+
+
+  <div *ngIf="activeItem.id == '1'" class="row w-100 m-auto mt-5">
+    <div class="col-md-12 card invoice-details">
+      <div class="row w-100 m-auto">
+        <div class="col-md-12 d-flex justify-content-between pb-3 title">
+            <h4 *ngIf="invoice?.number && !viewType">  {{'ADDINVOICE.INVOICEDETAILS' | translate}} {{invoice.number}} #</h4>
+            <h4 *ngIf="invoice?.number && viewType"> تفاصيل الفاتورة {{invoice.number}} #</h4>
+            <app-button-comp *ngIf="!viewType && InvoiceActive" class="me-3 addBottons" [btnType]="'main'" [routerLink]="'/user/invoices/add-voucher/'+invoice.uuid" [name]="'RECEIPTVOUCHER.CREATE' | translate" [background_color]="'#5C60F5'" ></app-button-comp>
+        </div>
+      </div>
+      <div class="row w-100 m-auto">
+        <div class="col-md-12 d-flex mt-3 justify-content-between">
+
+          <div class="d-flex flex-wrap">
+            <app-button-comp *ngIf="!viewType&& InvoiceActive" [btnType]="'main'" class="me-3 addBottons" [name]="'ADDINVOICE.TAXABLEINVOICE'|translate" [color]="'#5C60F5'"></app-button-comp>
+            <app-button-comp *ngIf="!viewType&& InvoiceActive && invoice?.eligible_sending_zatca && invoice?.zatca_send_status == 1 && invoice?.zatca_stage == 'core'" [btnType]="'main'" class="me-3 addBottons" [name]="'COMMON.ZATCASUBMITED'|translate" [color]="'#5C60F5'"></app-button-comp>
+            <app-button-comp *ngIf="!viewType&& InvoiceActive && invoice?.eligible_sending_zatca && invoice?.zatca_send_status == 1 && invoice?.zatca_stage == 'simulation'" [btnType]="'main'" class="me-3 addBottons" [name]="'COMMON.ZATCASIMULATION'|translate" [color]="'#5C60F5'"></app-button-comp>
+            <app-button-comp *ngIf="!viewType&& InvoiceActive && invoice?.eligible_sending_zatca && invoice?.zatca_send_status == 1 && invoice?.zatca_stage == 'developer-portal'" [btnType]="'main'" class="me-3 addBottons" [name]="'COMMON.ZATCASIMULATION'|translate" [color]="'#5C60F5'"></app-button-comp>
+            <app-button-comp *ngIf="!viewType&& InvoiceActive && invoice?.eligible_sending_zatca && invoice?.zatca_send_status == 0" [btnType]="'main'" class="me-3 addBottons" [name]="'COMMON.ZATCANOTSUBMITED'|translate" [color]="'#5C60F5'"></app-button-comp>
+            <app-button-comp [pTooltip]="'COMMON.CREATEDBEFOREZATCA'|translate" tooltipPosition="top" *ngIf="!viewType&& InvoiceActive && !invoice?.eligible_sending_zatca" [btnType]="'main'" class="me-3 addBottons" [name]="'COMMON.NOTCOMPWITHZATCA'|translate" [color]="'#5C60F5'"></app-button-comp>
+  
+            <div class="d-flex justify-content-center align-items-center cursor-pointer" 
+            *ngIf=" invoice?.zatca_send_status == 1 && invoice?.eligible_sending_zatca && invoice?.zatca_warnings && (invoice?.zatca_warnings?.length ?? 0)> 0"
+            (click)="showWarning = !showWarning;showErrors=false">
+              <img src="./assets/images/settings/caution.png" width="30" alt="">
+            </div>
+            <div class="d-flex justify-content-center align-items-center cursor-pointer" 
+            *ngIf=" invoice?.zatca_send_status == 0 && invoice?.eligible_sending_zatca  && invoice?.zatca_errors && (invoice?.zatca_errors?.length ?? 0)> 0"
+            (click)="showErrors = !showErrors;showWarning = false">
+              <img src="./assets/images/invoices/error.png" width="25" alt="">
+            </div>
+          </div>
+          <app-button-comp  *ngIf="!viewType" [btnType]="'main'"
+           (click)="downloadSimplePdf()" class="me-3 addBottons"
+            [name]="'ADDINVOICE.DOWNLOADSIPLEFIED'|translate" 
+            [background_color]="'#5C60F5'" >
+          </app-button-comp>
+          <app-button-comp *ngIf="viewType"  [btnType]="'main'" 
+          (click)="downloadSimplePdf()" class="me-3 addBottons" 
+          [name]="'تحميل كفاتورة مبسطة'" [background_color]="'#5C60F5'" ></app-button-comp>
+        </div> 
+      </div>
+     
+      <!-- warnings -->
+      <div class="alert alert-warning col-12 col-md-6 mt-4" *ngIf="showWarning && invoice?.zatca_warnings && (invoice?.zatca_warnings?.length ?? 0)> 0" role="alert">
+        <ul class="mb-0">
+          <li *ngFor="let warning of invoice?.zatca_warnings">{{ warning }}</li>
+        </ul>
+      </div>
+      <!--  -->
+    <!-- errors -->
+    <div class="alert alert-danger col-12 col-md-6 mt-4" *ngIf="showErrors && invoice?.zatca_errors && (invoice?.zatca_errors?.length ?? 0)> 0" role="alert">
+      <ul class="mb-0">
+        <li *ngFor="let error of invoice?.zatca_errors">{{ error }}</li>
+      </ul>
+    </div>
+    <!--  -->
+      <div class="row w-100 m-auto mt-4 pb-4 gap-6 border-bottom border-2">
+         <div class="col-md-5">
+            <div class="card infoCard p-3">
+              <div class="d-flex flex-wrap">
+                <p *ngIf="!viewType">{{'COMMON.ADDRESS'|translate}} :</p>
+                <p *ngIf="viewType">العنوان :</p>
+
+                <p>{{invoice.address}}</p>
+              </div>
+              <div class="d-flex flex-wrap">
+                <p *ngIf="!viewType"> {{'COMMON.TELEPHONE'|translate}} : </p>
+                <p *ngIf="viewType" > رقم الهاتف  : </p>
+                
+                <p>{{invoice.telephone}}</p>
+              </div>
+              <div class="d-flex flex-wrap">
+                <p *ngIf="!viewType"> {{'COMMON.FAXNUMBER'|translate}} : </p>
+                <p *ngIf="viewType" > رقم الفاكس : </p>
+
+                <p>{{ invoice.user_fax }}</p>
+              </div>
+              <div class="d-flex flex-wrap">
+                <p *ngIf="!viewType">  {{'COMMON.TAXIDENTNUMBER'|translate}} : </p>
+                <p *ngIf="viewType" > رقم التعريف الضريبي : </p>
+
+                <p>{{invoice.tax_number}}</p>
+              </div>
+            </div>
+         </div>
+         <div *ngIf="!viewType" class="col-md-6">
+           <div class="d-flex justify-content-center">
+             <div class="d-flex flex-column">
+              <p> {{'COMMON.LOGO'|translate}} </p>
+              <div class="d-flex flex-wrap align-items-center justify-content-center gap-6">
+                <img *ngIf="!companyLogo" [src]="currentCompanyLogo ? currentCompanyLogo : './assets/logo/logo2.svg'" style="object-fit: cover;width: 178px;height: 136px; border-radius: 20px; " alt="">
+                <img *ngIf="companyLogo" [src]="companyLogo ? companyLogo : './assets/logo/logo2.svg'" style="object-fit: cover;width: 178px;height: 136px; border-radius: 20px; " alt="">
+                <input type="file"  hidden #fileInput accept=".png, .jpg, .jpeg"  id="fileInput" (change)="validateImage($event)" style="display: none;">
+
+                <!-- ui_fix -->
+                <app-button-comp *ngIf="!viewType && InvoiceActive" 
+                [btnType]="'main'" [name]="'COMMON.ADDLOGO'|translate"
+                  (click)="fileInput.click()" image="./assets/logo/Group30.svg"
+                   background_color="#1B1464" class="me-0 ms-5" >
+                </app-button-comp>
+               </div>
+             </div>
+           </div>
+         </div>
+      </div>
+      <div class="row w-100 m-auto mt-4 pb-4 border-bottom border-2">
+        <div class="col-md-12">
+          <p *ngIf="!viewType">{{'COMMON.TO'|translate}}</p>
+          <p *ngIf="viewType" >الي</p>
+        </div>
+        <div class="col-md-5" *ngIf="!viewType">
+          <div class="card infoCard p-3">
+            <div class="d-flex flex-wrap">
+              <p>{{'COMMON.CLIENTORCOMPANY'|translate}} : </p>
+              <p>{{invoice.client}}</p>
+            </div>
+            <div class="d-flex flex-wrap">
+              <p>{{'COMMON.TAXIDENTNUMBER'|translate}} : </p>
+              <p>{{invoice.client_tax_number}}</p>
+            </div>
+            <div class="d-flex flex-wrap">
+               <p>{{'COMMON.ADDRESS'|translate}} :</p>              
+               <p>{{invoice.client_address}}</p>
+              </div>
+            <div class="d-flex flex-wrap">
+               <p>{{'COMMON.ISSUEDATE'|translate}}:</p>             
+               <p>{{invoice.date |date: "MM-dd-yyyy"}}</p>
+            </div>
+            <div class="d-flex flex-wrap">
+               <p>{{'COMMON.INVOICEDUE'|translate}} :</p>             
+               <p>{{invoice.invoice_due |date: "MM-dd-yyyy"}}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-5" *ngIf="viewType">
+          <div class="card infoCard p-3">
+            <div class="d-flex flex-wrap">
+              <p>اسم العميل / الشركة : </p>
+              <p>{{invoice.client}}</p>
+            </div>
+            <div class="d-flex flex-wrap">
+              <p>رقم التعريف الضريبي : </p>
+              <p>{{invoice.client_tax_number}}</p>
+            </div>
+            <div class="d-flex flex-wrap">
+               <p>العنوان :</p>              
+               <p>{{invoice.client_address}}</p>
+              </div>
+            <div class="d-flex flex-wrap">
+               <p>تاريخ الاصدار:</p>             
+               <p>{{invoice.date |date: "MM-dd-yyyy"}}</p>
+            </div>
+            <div class="d-flex flex-wrap">
+               <p>تاريخ الإستحقاق :</p>             
+               <p>{{invoice.invoice_due |date: "MM-dd-yyyy"}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!--  for wide Screen -->
+      <!-- ui_fix -->
+    <div class="me-4 mt-4  wideScreen d-flex align-items-center  border-2 gap-4 " *ngIf="!viewType">
+      <div class="width-20 ms-5 me-4">
+       <p>{{'COMMON.PRODUCTS'|translate}} </p>
+      </div>
+      <div class="width-8">
+        <p>{{'COMMON.QUANTITY'|translate}} </p>
+       </div>
+      <div class="width-8">
+       <p >{{'COMMON.PRICE'|translate}} </p>
+      </div>
+      <div class="width-12">
+        <p >{{'COMMON.DISCOUNTTYPE' | translate}}</p>
+       </div>
+      <div class="width-12">
+       <p>{{'COMMON.DISCOUNT'|translate}} </p>
+     </div>
+    
+      <div class="width-12">
+       <p>{{'COMMON.TAXABLEAMOUNT'|translate}} </p>
+      </div>
+      
+      <div class="width-8"> 
+       <p> {{'COMMON.TAX'|translate}} </p>
+      </div>
+      <div class="width-12">
+       <p>{{'COMMON.TOTAL'|translate}}   </p>
+      </div>
+     </div>
+
+    <div class="mx-3" >
+     <div class="me-4 mt-4 ms-4 wideScreen d-flex align-items-center border-2 " *ngIf="viewType">
+      <div class="width-20 ">
+       <p > المنتجات </p>
+      </div>
+      <div class="width-8">
+        <p > الكمية </p>
+       </div>
+      <div class="width-8">
+       <p >سعر الوحدة </p>
+      </div>
+      <div class="width-12">
+        <p class="ms-4"> نوع الخصم  </p>
+       </div>
+      <div class="width-8">
+       <p class="ms-4"> الخصم </p>
+     </div>
+      <div class="width-12">
+       <p> المبلغ الخاضع للضريبة </p>
+       </div>
+      <div class="width-12"> 
+       <p > الضريبة (%) </p></div>
+      <div class="width-12">
+       <p > الإجمالي  </p>
+      </div>
+     </div>
+</div>
+     <!-- labels inside white box for small Screen -->
+     <div *ngFor="let product of invoice.products">
+       <div class="me-4 mt-2 w-100 bg-white shadowCard d-flex align-items-center  border-2 gap-2 mb-5">
+         <div class="flex-fill">
+         <p class="smallScreen" *ngIf="!viewType">{{'COMMON.PRODUCTS'|translate}}</p>
+         <p class="smallScreen" *ngIf="viewType" >المنتجات</p>
+         <div class="card displayCard ">
+             {{product?.name}}
+         </div>
+         </div>
+         <div class="width-8">
+         <p class="smallScreen" *ngIf="!viewType">{{'COMMON.QUANTITY'|translate}}</p>
+         <p class="smallScreen" *ngIf="viewType" >الكمية</p>
+
+         <div class="card displayCard">
+          {{product?.quantity}}
+         </div>
+         </div>
+         <div class="width-8">
+         <p class="smallScreen" *ngIf="!viewType">{{'COMMON.PRICE'|translate}}</p>
+         <p class="smallScreen" *ngIf="viewType" >سعر الوحدة </p>
+
+         <div class="card displayCard">
+             {{product?.price}}
+         </div>
+         </div>
+         <div class="width-12">
+         <p class="smallScreen" *ngIf="!viewType">{{'COMMON.DISCOUNTTYPE'|translate}}</p>
+         <p class="smallScreen" *ngIf="viewType" > نوع الخصم </p>
+
+         <div class="card displayCard" *ngIf="product.discount_type == 1">
+          {{'COMMON.PERCENTAGE'|translate}}
+        </div>
+
+         <div class="card displayCard" *ngIf="product.discount_type != 1">
+          {{'COMMON.VALUE'|translate}}
+        </div>
+         </div>
+         <div class="width-12">
+         <p class="smallScreen" *ngIf="!viewType">{{'COMMON.DISCOUNT'|translate}}</p>
+         <p class="smallScreen" *ngIf="viewType" >الخصم</p>
+
+         <div class="card displayCard">
+          {{product?.discount_value}}
+         </div>
+       </div>
+         <div class="width-12">
+         <p class="smallScreen" *ngIf="!viewType">{{'COMMON.TAXABLEAMOUNT'|translate}}</p>
+         <p class="smallScreen" *ngIf="viewType" >المبلغ الخاضع للضريبة </p>
+
+           <div class="card displayCard">
+              {{(product.price*product.quantity)-product.discount}} 
+           </div>
+         </div>
+         <div class="width-8"> 
+           <p class="smallScreen"*ngIf="!viewType"> {{'COMMON.TAX'|translate}}  </p>
+           <p class="smallScreen"*ngIf="viewType" > الضريبة (%)</p>
+
+           <div class="card displayCard">
+            {{product?.tax}}
+
+           </div>
+         </div>
+         <div class="width-12">
+         <p class="smallScreen" *ngIf="!viewType">{{'COMMON.TOTAL'|translate}}   </p>
+         <p class="smallScreen" *ngIf="viewType" >الإجمالي   </p>
+         <div class="card displayCard">
+          {{product?.total}}
+         </div>
+         </div>
+       </div>
+  
+
+     
+
+     </div>
+
+     <!-- hide extra discount for now -->
+     <div class="width-45 p-1" style="display: none;">
+      <label class="form-label  fw-bold mb-1">  {{'ADDINVOICE.EXTRADISCOUNT' | translate}} </label>
+      <div class="width-45">
+        <div class="card displayCard ">
+         
+          {{invoice.total_discounts}}
+      </div>
+      </div>       
+          
+    </div> 
+    
+    <div class="p-4" *ngIf="invoice.tax_exemption_code && invoice.tax_exemption_reason"> 
+      <label class="form-label  fw-bold mb-1"> {{'COMMON.ZEROTAXCATG' | translate}} :  <span class="fw-semibold">{{ invoice.tax_exemption_reason  }}</span></label>
+    
+    </div>
+
+     <div class="mb-5">
+      <span *ngIf="!viewType">{{'COMMON.NOTES'|translate}}  :</span>
+      <span *ngIf="viewType" >ملاحظات  :</span>
+      <span>{{invoice.notes}}</span>
+    </div>
+
+<div class="HLine mb-2"></div>
+    <div class="row w-100 m-auto mt-4  cards  gap-5 mt-4 gap-7 pb-4  border-2 d-flex justify-content-around" *ngIf="!viewType">
+      <div style="background-color: #11C387;" class="totalCards card col-md-3 d-flex align-items-center justify-content-center">
+         <span class="text">{{'COMMON.TOTALTAXABLEAMOUNT'|translate}} </span><br>
+         <span class="num">{{'COMMON.SAR' |translate}} {{ totalWithoutTax  | number:'1.2-2' : ''}}</span>
+      </div>
+      <div style="background-color: #5C60F5;" class="totalCards card col-md-3 d-flex align-items-center justify-content-center">
+        <span class="text">{{'COMMON.TOTALTAX'|translate}}</span><br>
+        <span class="num">{{'COMMON.SAR' |translate}} {{ totalTax  | number:'1.2-2' : ''}}</span>
+      </div>
+      <div style="background-color: #4C4C4C;" class="totalCards card col-md-3 d-flex align-items-center justify-content-center">
+        <span class="text">{{'COMMON.TOTAL'|translate}}  </span><br>
+        <span class="num">{{'COMMON.SAR' |translate}} {{invoice.total  | number:'1.2-2' : ''}} </span>
+      </div>
+    </div>
+
+    <div class="row w-100 m-auto mt-4  cards  gap-5 mt-4 gap-7 pb-4  border-2 d-flex justify-content-around" *ngIf="viewType">
+      <div style="background-color: #11C387;" class="totalCards card col-md-3 d-flex align-items-center justify-content-center">
+         <span class="text">الإجمالي الخاضع للضريبة</span><br>
+         <span class="num">ريال سعودي {{ totalWithoutTax  | number:'1.2-2' : ''}}</span>
+      </div>
+      <div style="background-color: #5C60F5;" class="totalCards card col-md-3 d-flex align-items-center justify-content-center">
+        <span class="text">إجمالي الضريبة</span><br>
+        <span class="num">ريال سعودي {{ totalTax  | number:'1.2-2' : ''}}</span>
+      </div>
+      <div style="background-color: #4C4C4C;" class="totalCards card col-md-3 d-flex align-items-center justify-content-center">
+        <span class="text">الإجمالي </span><br>
+        <span class="num">ريال سعودي {{invoice.total  | number:'1.2-2' : ''}} </span>
+      </div>
+    </div>
+<div class="HLine mt-2"></div>
+  
+     <span class="my-3"*ngIf="!viewType">{{'COMMON.BANKACCOUNTS'|translate}}</span>
+     <span class="my-3"*ngIf="viewType" >الحسابات البنكية</span>
+
+      <div *ngFor="let bank of invoice.bank_accounts" class="row w-100 m-auto d-flex flex-column  mt-4 pb-4">
+        <div class="col-md-5 mb-3">
+          <div class="card infoCard p-3">
+            <div class="d-flex flex-wrap">
+              <p *ngIf="!viewType"> {{'COMMON.BANKNAME'|translate}} : </p>
+              <p *ngIf="viewType" > اسم البنك : </p>
+
+              <p>{{bank?.name}}</p>
+            </div>
+            <div class="d-flex flex-wrap">
+              <p *ngIf="!viewType"> {{'COMMON.BANKFULLNAME'|translate}} : </p>
+              <p *ngIf="viewType" > الاسم الكامل : </p>
+              <p>{{bank?.full_name}}</p>
+            </div>
+            <div class="d-flex flex-wrap">
+              <p *ngIf="!viewType"> {{'COMMON.IBANNUMBER'|translate}} : </p>
+              <p *ngIf="viewType" > رقم الايبان : </p>
+
+              <p>{{bank?.number}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+ </div>
+
+ <!-- <button hidden #downloadBtn type="button" (click)="InvoiceTemplate.downloadPDF()">
+
+ </button> -->
+ <!-- <button hidden #getLink type="button" (click)="InvoiceTemplate.generatePdf()">
+
+ </button> -->
+ <!-- <button hidden #downloadsimpleBtn type="button" (click)="SimpleInvoiceTemplate.downloadPDF()">
+
+ </button> -->
+
+    <!-- <app-invoice-template #InvoiceTemplate [logoUrl]="logo" [downloadBoolean]="downloadBoo" [tempType]="'invoice'"  [invoiceColor]="invoiceColor" [InvoiceType]="default_template_id" [invoice]="invoice" > </app-invoice-template>
+    <app-invoice-template #SimpleInvoiceTemplate [logoUrl]="logo" [downloadBoolean]="downloadBooSimple" [tempType]="'invoice'"  [invoiceColor]="invoiceColor" [InvoiceType]="7" [invoice]="invoice" > </app-invoice-template> -->
+<!-- 
+    <app-invoice-template #InvoiceTemplate [logoUrl]="logo"  [tempType]="'invoice'"  [invoiceColor]="invoiceColor" [InvoiceType]="default_template_id" [invoice]="invoice" > </app-invoice-template>
+    <app-invoice-template #SimpleInvoiceTemplate [logoUrl]="logo"  [tempType]="'simpleInvoiceTemplate'"  [invoiceColor]="invoiceColor" [InvoiceType]="default_template_id" [invoice]="invoice" > </app-invoice-template> -->
+    <!-- <app-invoice-template #SimpleInvoiceTemplate [logoUrl]="logo"  [tempType]="'invoice'"  [invoiceColor]="invoiceColor" [InvoiceType]="7" [invoice]="invoice" > </app-invoice-template> -->
+    <!-- <app-new-invoice-templates #SimpleInvoiceTemplate  [invoice]="invoice"></app-new-invoice-templates> -->
+
+</div>
+
+<!-- share  -->
+<button hidden #shareModel type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#shareModel"></button>
+ <div class="modal fade" id="shareModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="text-end">{{'COMMON.SHAREINVOICE'|translate}}</span>
+      </div>
+      <div class="modal-body">
+        <div class="input-group">
+          <div (click)="copyLink($event)" class="input-group-prepend">
+            <span class="btn input-group-text main-purple-bg badge-primary text-white" >{{'COMMON.COPYLINK'|translate}}</span>
+          </div> 
+          <input type="text" #textInput readonly="readonly" value="" class="form-control">
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
+
+<!-- send via whatsapp -->
+<button hidden #sendViaWhatsappModel type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#sendViaWhatsapp">
+</button>
+ <div class="modal fade" id="sendViaWhatsapp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <form [formGroup]="sendViaWhatsappForm" action="">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="text-end">{{'COMMON.SENDVIAWHATSAPP'|translate}}</span>
+        </div>
+        <div class="modal-body">
+          <div [ngClass]="{'disabled':disableEmail}">
+            <span> {{'LANDING.PHONE'|translate}}<span style="color:red">*</span></span>
+            <input  formControlName="phone" [readOnly]="disableEmail" type="text" value="" class="form-control">
+          </div>
+        </div>
+        <div class="modal-footer">
+        <app-button-comp [btnType]="'secondary'"   data-bs-dismiss="modal" aria-label="Close" #closePoPModal  [name]="'COMMON.CANCEL2'|translate" [color]="'#1B1464'"></app-button-comp>
+        <app-button-comp (click)="sendViaWhatsapp()"  [btnType]="'main'" [name]="'COMMON.SENDVIAWHATSAPP'|translate" [background_color]="'#1B1464'"></app-button-comp>
+        <i *ngIf="pdfLoader" class="pi pi-spin pi-spinner"></i>
+      
+      </div>
+      </div>
+    </div>
+  </form>
+</div> 
+
+<!-- send to client -->
+<button hidden #sendToClientModel type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#sendToClient">
+</button>
+ <div class="modal fade" id="sendToClient" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <form [formGroup]="sendToClientForm" action="">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="text-end">{{'COMMON.SENDTOCLIENT'|translate}}</span>
+        </div>
+        <div class="modal-body">
+          <div [ngClass]="{'disabled':disableEmail}">
+            <span> {{'LANDING.EMAIL'|translate}}<span style="color:red">*</span></span>
+            <input  formControlName="email" [readOnly]="disableEmail" type="text" value="" class="form-control">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <!-- <button type="button" data-bs-dismiss="modal" aria-label="Close" class="border-0 btn btn-sm btn-secondary">تراجع</button> 
+          <button type="submit" style="background-color: #5C60F5;" class="border-0 btn btn-sm">إرسال للعميل
+        </button> -->
+        <!-- <app-button-comp [btnType]="'secondary'"    [name]="'تراجع'" [color]="'#1B1464'"></app-button-comp> -->
+        <app-button-comp [btnType]="'secondary'"   data-bs-dismiss="modal" aria-label="Close" #closePoPModal  [name]="'COMMON.CANCEL2'|translate"  [color]="'#1B1464'"></app-button-comp>
+        <app-button-comp (click)="sendToclient()"  [btnType]="'main'" [name]="'COMMON.SENDTOCLIENT'|translate" [background_color]="'#1B1464'"></app-button-comp>
+        <i *ngIf="pdfLoader" class="pi pi-spin pi-spinner"></i>
+      
+      </div>
+      </div>
+    </div>
+  </form>
+</div> 
+
+<app-create-payment-link [invoiceUuid]="uuid" #opencreatePaymentLinkModel></app-create-payment-link>
+
+
+
+
+<button hidden  #openDeleteModal type="button" (click)="deletePopup.openModel()"></button>
+<button hidden  #closeDeleteModal type="button" (click)="deletePopup.closeModalClick()"></button>
+<app-delete-error-popup (ChoosenEvent)="deleteInvoice()"  #deletePopup></app-delete-error-popup>
+

@@ -1,0 +1,139 @@
+<!-- ui_fix -->
+<div class="salesReportCont p-0 ps-5 pe-5">
+  <div>
+    <h3 class="fw-bolder fw-600 mb-3">{{'SALESREPORT.REPORTS' |translate}}</h3>
+  </div>
+   <div class="card borderRadius_20px boxShadow-10">
+      <div class="p-4">
+        <div class="w-100">
+          <h4 class="fw-bold">{{'SALESREPORT.SALES_REPORT' |translate}}</h4>
+        </div>
+        <div class="topPart h-100 d-flex flex-wrap justify-content-between align-items-center">
+          <div class="mx-0 my-3"> 
+            <label class="form-label fw-bolder mb-2">{{'SALESREPORT.CHOOSE_REPORT_DURATION' |translate}}</label>
+            <p-dropdown *ngIf="language=='ar'" #durationDropDown (click)="openModelCheck()" [options]="duration" [(ngModel)]="currentDuration"  placeholder=" " class=" width-280px h-60px my-1 mx-0 py-2 d-flex" optionLabel="nameAR" optionValue="value"></p-dropdown>                             
+            <p-dropdown *ngIf="language=='en'" #durationDropDown (click)="openModelCheck()" [options]="duration" [(ngModel)]="currentDuration"  placeholder=" " class=" width-280px h-60px my-1 mx-0 py-2 d-flex" optionLabel="nameEN" optionValue="value"></p-dropdown>                             
+          </div> 
+
+          <div class="mx-0 my-3">
+            <label class="form-label fw-bolder mb-2">{{'PROFITLOSSREPORTS.CLIENT' | translate}}</label>
+            <p-dropdown [options]="clients"  [filter]="true"
+            placeholder=" " [(ngModel)]="client_id" 
+            class=" width-280px h-60px my-1 mx-0 py-2 d-flex" optionLabel="name" optionValue="client_id"></p-dropdown>                             
+          </div> 
+          <div class="mx-0 my-3">
+            <label class="form-label fw-bolder mb-2">{{'PROFITLOSSREPORTS.PRODUCT' | translate}}</label>
+            <p-dropdown [options]="products"  [filter]="true"
+            placeholder=" " [(ngModel)]="product_id" 
+            class=" width-280px h-60px my-1 mx-0 py-2 d-flex" optionLabel="name" optionValue="uuid"></p-dropdown>                             
+          </div> 
+
+          <div class="d-flex align-items-center">
+            <app-button-comp [btnType]="'main'" (click)="getSalesReport()"  type="submit"  [name]="'SALESREPORT.GENERATE' |translate" background_color="#1B1464"></app-button-comp>
+          </div>
+        </div>
+      </div>
+      <div class="HLine"></div>
+      <div class="p-4">
+        <app-reports-charts *ngIf="dataReady" [Data]="chartData" [name]="name"></app-reports-charts>
+      </div>
+      <div class="p-1">
+
+        <p-table [value]="reportsProduct" responsiveLayout="stack" [breakpoint]="'960px'"  [resizableColumns]="true"
+        styleClass="p-datatable-gridlines">
+          <ng-template pTemplate="header">
+              <tr>
+                  <th >{{'SALESREPORT.DATE_ISSUED' |translate}}</th>
+                  <th >{{'SALESREPORT.INVOICE_NUMBER' |translate}}</th>
+                  <th >{{'SALESREPORT.CLIENT' |translate}}</th>
+                  <th >{{'SALESREPORT.DESCRIPTION' |translate}}</th>
+                  <th >{{'SALESREPORT.TAX_NUMBER' |translate}}</th>
+                  <th >{{'SALESREPORT.TAX_PERCENTAGE' |translate}} </th>
+                  <th >{{'SALESREPORT.TAXABLE_AMOUNT' |translate}}</th>
+                  <th >{{'SALESREPORT.TAX_VALUE' |translate}}</th>
+                  <th >{{'SALESREPORT.GRAND_TOTAL' |translate}}</th>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-report>
+              <tr>
+                  <td > <span class="p-column-title"> {{'SALESREPORT.DATE_ISSUED' |translate}} </span>  {{report.date}}</td>
+                  <td > <span class="p-column-title"> {{'SALESREPORT.INVOICE_NUMBER' |translate}} </span>  {{report.number}}</td>
+                  <td > <span class="p-column-title"> {{'SALESREPORT.CLIENT' |translate}} </span>  {{report.client}}</td>
+                  <td > <span class="p-column-title"> {{'SALESREPORT.DESCRIPTION' |translate}} </span>  {{report.description}}</td>
+                  <td > <span class="p-column-title"> {{'SALESREPORT.TAX_NUMBER' |translate}} </span>  {{report.tax_number}}</td>
+                  <td > <span class="p-column-title"> {{'SALESREPORT.TAX_PERCENTAGE' |translate}} </span>  {{report.tax}}</td>
+                  <td > <span class="p-column-title"> {{'SALESREPORT.TAXABLE_AMOUNT' |translate}} </span>  {{report.taxable_amount}}</td>
+                  <td > <span class="p-column-title"> {{'SALESREPORT.TAX_VALUE' |translate}} </span>  {{report.tax_value}}</td>
+                  <td > <span class="p-column-title"> {{'SALESREPORT.GRAND_TOTAL' |translate}} </span>  {{report.total}}</td>
+              </tr>
+          </ng-template>
+          <ng-template class="footer" pTemplate="footer">
+            <tr>
+                <td  class="text-start" colspan="6">{{'SALESREPORT.GRAND_TOTAL' |translate}}</td>
+                <td  class="text-center">   {{total_taxable | number:'1.2-2'  }}  {{'COMMON.SAR' |translate}}</td>
+                <!-- <td *ngIf="language=='en'"  class="text-center">  {{total_taxable | number:'1.2-2'  }} SAR</td> -->
+
+                <td  class="text-center"> {{tax_value | number:'1.2-2' }} {{'COMMON.SAR' |translate}}</td>
+                <!-- <td *ngIf="language=='en'"  class="text-center"> {{tax_value | number:'1.2-2' }} SAR </td> -->
+                <td  class="text-center" >{{totals | number:'1.2-2' }}</td>
+            </tr>
+        </ng-template>
+      </p-table>
+
+      <div class="Mobilefooter">
+        
+          <div class="d-flex flex-column">
+            <span  class="text-center">  <span class="p-column-title fw-bold"> {{'SALESREPORT.TAXABLE_AMOUNT' |translate}} </span>  {{total_taxable | number:'1.2-2'  }}  {{'COMMON.SAR' |translate}}</span>
+            <!-- <td *ngIf="language=='en'"  class="text-center">  {{total_taxable | number:'1.2-2'  }} SAR</td> -->
+
+            <span  class="text-center"><span class="p-column-title fw-bold"> {{'SALESREPORT.TAX_VALUE' |translate}} </span> {{tax_value | number:'1.2-2' }} {{'COMMON.SAR' |translate}}</span>
+            <!-- <td *ngIf="language=='en'"  class="text-center"> {{tax_value | number:'1.2-2' }} SAR </td> -->
+            <span  class="text-center" > <span class="p-column-title fw-bold"> {{'SALESREPORT.GRAND_TOTAL' |translate}} </span>  {{totals | number:'1.2-2' }}</span>
+        </div>
+        
+       
+    </div>
+      </div>
+   </div>
+</div>
+
+
+<button hidden #calendarModel type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#chooseTimeModel">
+
+</button>
+
+<!-- Modal -->
+<div  class="modal fade" id="chooseTimeModel"  tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">{{'SALESREPORT.SELECT_DATE' |translate}}</h1>
+       
+      </div>
+      <div class="modal-body">
+        <div class="w-100 d-flex flex-wrap justify-content-between gap-3">
+           <div class="d-flex width-49 justify-content-start flex-column">
+               <h4>{{'SALESREPORT.START' |translate}}</h4>
+               <p-calendar class="max-w-full" [(ngModel)]="startDate" [inline]="true" [showWeek]="true" dateFormat="dd-mm-yy"></p-calendar>
+           </div>
+           <div class="d-flex width-49 justify-content-start flex-column">
+               <h4>{{'SALESREPORT.END' |translate}}</h4>
+               <p-calendar class="max-w-full" [(ngModel)]="endDate" [inline]="true" [showWeek]="true" dateFormat="dd-mm-yy"></p-calendar>
+           </div>
+        </div>
+
+
+
+
+        <div class="w-100 d-flex justify-content-center align-items-center mt-4">
+          <app-button-comp [btnType]="'main'"  class="width-210px d-flex  me-2" data-bs-dismiss="modal"
+          aria-label="Close" #closePoPModal  [name]="'SALESREPORT.SELECT' |translate" [color]="'#1B1464'"></app-button-comp>
+        </div>
+      
+      </div>
+
+      
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+.subscriptionBody{
+    .logo{
+        width: 274px;
+    height: 218px;
+    }
+    .blueText{
+        color: #5e85c0;
+    }
+    .bg-blue{
+        background-color: #5e85c0;
+    }
+    .gray-blue{
+        background-color: #dee2e6;
+    }
+    .box{
+        width:148px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .box2{
+        width:155px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @media screen and (max-width:426px){
+            width: 100% !important;
+        }
+    }
+    .box3{
+        width: 522px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.fs-14-sm{
+    @media screen and (max-width:321px) {
+        font-size: 14px;
+    }
+}

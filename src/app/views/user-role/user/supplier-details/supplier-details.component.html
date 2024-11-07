@@ -1,0 +1,40 @@
+<!-- ui_fix -->
+<div class="px-2 px-md-5 px-lg-5 divContainer p-0 ps-5 pe-5" [style.paddingTop.%]="7">
+
+  <div>
+    <div class="ps-3">
+      <h2>{{'SUPPLIER.SUPPLIERDETAILS' | translate}}</h2>
+    </div>
+    <div class="borderRadius_20px card firstCard px-4 py-3 boxShadow-10 mb-3 mt-4 ">
+
+        <div class="row mt-2 gap-3 w-100 m-auto">
+          <div class="col-12 col-md-12 col-lg-9 col-xl-9 h-69px d-flex justify-content-center card borderRadius_20px boxShadow-10">
+            <div class="d-flex px-3 flex-wrap">
+              <p class="fw-bold m-0 m-0"> {{'SUPPLIER.SUPPLIERID' | translate}} :</p>
+              <p class="m-0">{{supplierDetails.supplier_id}}</p>
+            </div>
+          </div>
+          <div class="col-12 col-md-12 col-lg-9 col-xl-9 h-69px d-flex justify-content-center card borderRadius_20px boxShadow-10">
+            <div class="d-flex px-3 flex-wrap">
+              <p class="fw-bold m-0">  {{'SUPPLIER.NAME' | translate}} :</p>
+              <p class="m-0">{{supplierDetails.name}}</p>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-12 col-lg-9 col-xl-9 h-69px d-flex justify-content-center card borderRadius_20px boxShadow-10">
+            <div class="d-flex px-3 flex-wrap">
+              <p class="fw-bold m-0">  {{'SUPPLIER.TAXNUMBER' | translate}} :</p>
+              <p class="m-0">{{supplierDetails.tax_number}}</p>
+            </div>
+          </div>
+
+        
+
+         </div>
+  </div>
+
+</div>
+
+
+
+

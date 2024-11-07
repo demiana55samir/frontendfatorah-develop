@@ -1,0 +1,88 @@
+<!-- ui_fix -->
+<div class="px-5 divContainer p-0 ps-5 pe-5" [style.paddingTop.%]="7">
+
+  <div>
+    <div class="ps-3">
+      <h2>{{'RECEITVOUCHERDETAILS.RECEITVOUCHERDETAILS'|translate}}</h2>
+    </div>
+    <div class="borderRadius_20px card firstCard px-4 py-3 boxShadow-10 mb-3 mt-4 ">
+        <div class="row">
+          
+          <div class="col-md-9 flex-fill">
+            <div class="col-md-12 title pb-3">
+              <h2>{{'RECEITVOUCHERDETAILS.RECITEVOUCHER'|translate}}</h2>
+            </div>
+
+            <div #excludeMe  class="row col-md-12 d-flex flex-wrap bottons">
+             <div style="width: 194px;"  class=" botton">
+               <app-button-comp (click)=" downloadPdf()" class="w-100 me-3 fs-16" [name]="'COMMON.DOWNLOAD'|translate" image="./assets/logo/download.svg" background_color="#11C387" ></app-button-comp>
+             </div>      
+            </div>
+          </div>
+
+        </div>
+        <div class="row mt-2 gap-3">
+          <div class="col-md-9 h-69px d-flex justify-content-center card borderRadius_20px boxShadow-10">
+            <div class="d-flex ps-3 flex-wrap">
+              <p class="m-0 fs-18 fw-bold">{{'RECEITVOUCHERDETAILS.VOUCHERNUMEBR'|translate}} :</p>
+              <p class="m-0">{{receipt.number}}</p>
+            </div>
+          </div>
+          <div class="col-md-9 h-69px d-flex justify-content-center card borderRadius_20px boxShadow-10">
+            <div class="d-flex ps-3 flex-wrap">
+              <p class="m-0 fs-18 fw-bold">{{'INVOICE.INVOICENUMBER'|translate}}  :</p>
+              <p class="m-0">{{receipt.invoice_number}}</p>
+            </div>
+          </div>
+          <div class="col-md-9 h-69px d-flex justify-content-center card borderRadius_20px boxShadow-10">
+            <div class="d-flex ps-3 flex-wrap">
+              <p class="m-0 fs-18 fw-bold"> {{'COMMON.AMOUNT'|translate}}  :  </p>
+              <p class="m-0"> {{receipt.amount}} </p>
+            </div>
+          </div>
+          <div class="col-md-9 h-69px d-flex justify-content-center card borderRadius_20px boxShadow-10">
+            <div class="d-flex ps-3 flex-wrap">
+              <p class="m-0 fs-18 fw-bold">{{'COMMON.RECEIVEDAT'|translate}}  :</p>
+              <p class="m-0"> {{receipt.received_at}} </p>
+            </div>
+
+          </div>
+          <div class="col-md-9 h-69px d-flex justify-content-center card borderRadius_20px boxShadow-10">
+            <div class="d-flex ps-3 flex-wrap">
+              <p class="m-0 fs-18 fw-bold">{{'COMMON.PAYMENTMETHOD'|translate}}  :</p>
+              <p class="m-0">{{receipt.payment_method}}</p>
+            </div>
+
+          </div>
+          <div class="col-md-9 h-69px d-flex justify-content-center card borderRadius_20px boxShadow-10">
+            <div class="d-flex ps-3 flex-wrap">
+              <p class="m-0 fs-18 fw-bold">{{'COMMON.DESCRIPTION'|translate}}  : </p>
+              <p class="m-0">{{receipt.description}}</p>
+            </div>
+
+          </div>
+          <div class="col-md-9 h-69px d-flex justify-content-center card borderRadius_20px boxShadow-10">
+            <div class="d-flex ps-3 flex-wrap">
+              <p class="m-0 fs-18 fw-bold">{{'COMMON.NOTES'|translate}}  : </p>
+              <p class="m-0">{{receipt.notes}}</p>
+            </div>
+
+          </div>
+
+    </div>
+  </div>
+
+<!-- -------------------------------------->
+
+
+</div>
+<button hidden #downloadBtn type="button" (click)="InvoiceTemplate.downloadPDF()">
+
+</button>
+
+   <app-invoice-template #InvoiceTemplate  [tempType]="'voucher'"  [invoiceColor]="invoiceColor" [InvoiceType]="1" [invoice]="receipt" > </app-invoice-template>
+</div>
+
+
+
+

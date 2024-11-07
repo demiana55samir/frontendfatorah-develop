@@ -1,0 +1,220 @@
+.subscription{
+    @media screen and (max-width:1025px) {
+        padding: 10px !important;
+
+    }
+    .mainPart{
+        @media screen and (max-width:1025px) {
+            display: flex;
+            flex-direction: column-reverse;
+    
+        }
+    }
+    .dataCard{
+        width: 165px;
+        height: 221px;
+        border-radius: 12px;
+    
+    }
+    .footer{
+        background-color: white;
+        border-bottom-left-radius: 19px;
+    border-bottom-right-radius: 19px;
+}
+.card-footer{
+    height: 100%;
+    // padding: 0 !important;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.cardImage{
+    width: 358px;
+    height: 221px;
+}
+.CardNum1{
+    position: absolute;
+    left: 25px;
+    top: 65px;
+    font-size: 15px;
+
+}
+.CardNum2{
+    position: absolute;
+    left: 80px;
+    top: 65px;
+    font-size: 15px;
+
+}
+.CardNum3{
+    position: absolute;
+    top: 65px;
+    left: 135px;
+    font-size: 15px;
+
+}
+.CardNum4{
+    position: absolute;
+    top: 65px;
+    left: 189px;
+    font-size: 15px;
+
+
+}
+.CardName{
+    position: absolute;
+    top: 143px;
+    left: 20px;
+    font-size: 12px;
+
+    word-wrap: break-word;
+    width: 34%;
+    line-height: 1;
+    text-align: start;
+    direction: ltr;
+}
+.CardExp{
+    position: absolute;
+    top: 140px;
+    left: 120px;
+    font-size: 15px;
+
+}
+
+}
+
+.creditCard{
+    background-position: center center;
+    max-width: 300px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 280px;
+    height: 175px;
+    direction: ltr;
+    
+    .cardActionButtons{
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        display: none;
+        gap: 11px;
+
+        img{
+            width: 20px;
+            height: 21px;
+        }
+    }
+    &:hover{
+        .cardActionButtons{
+            display: flex;
+        }
+    }
+}
+.creditCards {
+    .addedCard{
+       width: 45%;
+        @media screen  and (max-width:769px) and (min-width:426px){
+            width: 50%;
+        }
+        @media screen  and (max-width:426px){
+            padding: 0px;
+            width: 100%;
+        }
+        .cardnum{
+            @media screen  and (max-width:426px){
+                font-size: x-small !important;
+            }
+        }
+    }
+    @media screen  and (max-width:426px){
+        padding: 0px;
+    }
+
+   
+}
+.p-0-sm{
+    padding: 0 !important;
+}
+// .prevInvoices{
+//     .card{
+//         .card{
+//             height: 90px;
+//         }
+//     }
+// }
+.prevInvoiceCard{
+    min-height: 90px;
+    
+    @media screen and (max-width:376px) {
+        height: 120px;
+    }
+}
+.inputDiv{
+    background: #FFFFFF;
+    border: 1px solid #E8E8E8;
+    border-radius: 10px;
+}
+::ng-deep{
+    .p-progressbar .p-progressbar-value{
+        background-color: #dee2e6 !important;
+    }
+    .p-progressbar {
+        background-color: #FFA048 !important;
+        height: 0.5rem !important;
+    }
+    .p-progressbar-determinate .p-progressbar-label{
+        display: none !important;
+    }
+}
+.h-41{
+    height: 41px !important;
+}
+.br-5px{
+    border-radius: 5px !important;
+}
+
+::ng-deep{
+
+    .p-dropdown{
+        background: #FFFFFF;
+        border: 1px solid #DDDDDD;
+        border-radius: 5px !important;
+        width: 100% ;
+    }
+    p-dropdown.ng-dirty.ng-invalid > .p-dropdown {
+        border: 1px solid #DDDDDD;
+    }
+
+    .owl-carousel.owl-rtl .owl-item {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    .owl-carousel .owl-item {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    .rtl{
+        .owl-carousel .owl-dot, .owl-carousel .owl-nav .owl-next, .owl-carousel .owl-nav .owl-prev {
+            transform: rotateY(180deg);
+        }
+    }
+
+    .defaultCard{
+        border: 4px solid #6889db;
+        border-radius: 10px;
+    }
+}
+
+
+@media print {
+    /* Hide the component content when printing */
+    :host {
+      display: none;
+    }
+  }
+  
+ 

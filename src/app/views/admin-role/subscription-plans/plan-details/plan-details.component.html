@@ -1,0 +1,165 @@
+<!-- ui_fix -->
+<div class="row main-container p-0 ps-5 pe-5 w-100">
+  <div class="p-3" > 
+      <div #form class="row w-100">
+      <div class="col-md-12 my-3">
+        <div class="card d-flex p-2 borderRadius_10px">
+        <span>{{'EDITPLAN.NAME' |translate}} : {{plan.name}}</span>
+        </div>
+      </div>
+
+      <!-- todo to add translated name -->
+      <div class="col-md-12 my-3">
+        <div class="card d-flex p-2 borderRadius_10px">
+        <span>{{'EDITPLAN.NAME' |translate}} - {{'COMMON.ARABIC' |translate}} : {{plan.name_ar}}</span>
+        </div>
+      </div>
+
+      <div class="col-md-12 my-3">
+        <div class="card d-flex p-2 borderRadius_10px">
+        <span>{{'EDITPLAN.NAME' |translate}} - {{'COMMON.ENGLISH' |translate}} : {{plan.name_en}}</span>
+        </div>
+      </div>
+      <!-- --------------------------- -->
+
+      
+      <div class="col-md-12 my-3">
+        <div class="card p-2 borderRadius_10px d-flex ">
+           <span>{{'EDITPLAN.DISCRIPTION' |translate}} : {{plan.description}}</span>
+        </div>
+      </div>
+
+       <!-- todo to add translated description -->
+      <div class="col-md-12 my-3">
+        <div class="card p-2 borderRadius_10px d-flex ">
+           <span>{{'EDITPLAN.DISCRIPTION' |translate}} - {{'COMMON.ARABIC' |translate}} : {{plan.description_ar}}</span>
+        </div>
+      </div>
+
+      <div class="col-md-12 my-3">
+        <div class="card p-2 borderRadius_10px d-flex ">
+           <span>{{'EDITPLAN.DISCRIPTION' |translate}} - {{'COMMON.ENGLISH' |translate}} : {{plan.description_en}}</span>
+        </div>
+      </div>
+      <!-- ------------------- -->
+
+      <div class="col-md-12 my-3">
+        <div class="card p-2 borderRadius_10px d-flex ">
+           <span>{{'EDITPLAN.DURATIONS' |translate}} : {{plan.durations.name}}</span>
+        </div>
+      </div>
+        <div class="col-md-6">
+   
+          <div  class="col-12 fullScreenWidth mx-0 my-4">
+            <div class="card d-flex p-2 borderRadius_10px">
+              <span>{{'EDITPLAN.SLUG' |translate}} : {{plan.slug}}</span>
+            </div>
+          </div>    
+          <div class="col-12 fullScreenWidth mx-0 my-4">
+            <div class="card d-flex p-2 borderRadius_10px">
+              <span>{{'EDITPLAN.SUBSCRIPTIONPRICE' |translate}} : {{plan.price}}</span>
+            </div>
+
+
+          </div>    
+          <div class="col-12 fullScreenWidth mx-0 my-4">
+            <div class="card d-flex p-2 borderRadius_10px">
+              <span>{{'EDITPLAN.FREETRIALTIME' |translate}} : {{plan.trial_period}}</span>
+            </div>
+          </div>   
+          <div class="col-12 fullScreenWidth mx-0 my-4">
+            <div class="card d-flex p-2 borderRadius_10px">
+              <span>{{'EDITPLAN.INVOICEDUE' |translate}} : {{plan.invoice_period}}</span>
+            </div>
+          </div>   
+          <div class="col-12 fullScreenWidth mx-0 my-4">
+            <div class="card d-flex p-2 borderRadius_10px">
+              <span>{{'EDITPLAN.ALLOWTIME' |translate}} : {{plan.grace_period}}</span>
+            </div>
+          </div>   
+          <div class="col-12 fullScreenWidth mx-0 my-4">
+            <div class="card d-flex p-2 borderRadius_10px">
+              <span>{{'EDITPLAN.EXPANDDAY' |translate}} : {{plan.prorate_day}}</span>
+            </div>
+          </div>   
+          <div class="col-12 fullScreenWidth mx-0 my-4">
+            <div class="card d-flex p-2 borderRadius_10px">
+              <span>{{'EDITPLAN.EXTENDAMOUNT' |translate}} : {{plan.prorate_extend_due}}</span>
+            </div>
+
+          </div>   
+
+
+            <div   class="col-12 fullScreenWidth mx-0 my-4">
+              <div class="card d-flex p-2 borderRadius_10px">
+                <span>{{'EDITPLAN.SORT' |translate}} : {{plan.sort_order}}</span>
+              </div>
+            </div> 
+ 
+  
+      </div>
+        <div class="col-md-6">
+  
+          <div   class="col-12 fullScreenWidth mx-0 my-4">
+            <div class="card d-flex p-2 borderRadius_10px">
+              <span>{{'EDITPLAN.CURRENCY' |translate}} : {{plan.currency}}</span>
+            </div>
+
+
+          </div> 
+          <div   class="col-12 fullScreenWidth mx-0 my-4">
+            <div class="card d-flex p-2 borderRadius_10px">
+              <span>{{'EDITPLAN.REGISTERCURRENCY' |translate}} : {{plan.signup_fee}}</span>
+            </div>
+          </div> 
+  
+
+          <div class="col-12 fullScreenWidth mx-0 my-4">
+            <div class="card d-flex p-2 borderRadius_10px">
+              
+              <span *ngIf="plan.trial_interval=='hour'">{{'EDITPLAN.TIMEDIFFERANCE' |translate}} : {{'INTERVAL.HOUR' |translate}}</span>
+              <span *ngIf="plan.trial_interval=='day'">{{'EDITPLAN.TIMEDIFFERANCE' |translate}} : {{'INTERVAL.DAY' |translate}}</span>
+              <span *ngIf="plan.trial_interval=='week'">{{'EDITPLAN.TIMEDIFFERANCE' |translate}} : {{'INTERVAL.WEEK' |translate}}</span>
+              <span *ngIf="plan.trial_interval=='month'">{{'EDITPLAN.TIMEDIFFERANCE' |translate}} : {{'INTERVAL.MONTH' |translate}}</span>
+
+            </div>
+          </div>  
+ 
+          <div class="col-12 fullScreenWidth mx-0 my-4">
+            <div class="card d-flex p-2 borderRadius_10px">
+              <span *ngIf="plan.invoice_interval=='hour'">{{'EDITPLAN.TIMEDIFFERANCE' |translate}} : {{'INTERVAL.HOUR' |translate}}</span>
+              <span *ngIf="plan.invoice_interval=='day'">{{'EDITPLAN.TIMEDIFFERANCE' |translate}} : {{'INTERVAL.DAY' |translate}}</span>
+              <span *ngIf="plan.invoice_interval=='week'">{{'EDITPLAN.TIMEDIFFERANCE' |translate}} : {{'INTERVAL.WEEK' |translate}}</span>
+              <span *ngIf="plan.invoice_interval=='month'">{{'EDITPLAN.TIMEDIFFERANCE' |translate}} : {{'INTERVAL.MONTH' |translate}}</span>
+            </div>
+          </div>  
+          <div class="col-12 fullScreenWidth mx-0 my-4">
+            <div class="card d-flex p-2 borderRadius_10px">
+              <span *ngIf="plan.grace_interval=='hour'">{{'EDITPLAN.TIMEDIFFERANCE' |translate}} : {{'INTERVAL.HOUR' |translate}}</span>
+              <span *ngIf="plan.grace_interval=='day'">{{'EDITPLAN.TIMEDIFFERANCE' |translate}} : {{'INTERVAL.DAY' |translate}}</span>
+              <span *ngIf="plan.grace_interval=='week'">{{'EDITPLAN.TIMEDIFFERANCE' |translate}} : {{'INTERVAL.WEEK' |translate}}</span>
+              <span *ngIf="plan.grace_interval=='month'">{{'EDITPLAN.TIMEDIFFERANCE' |translate}} : {{'INTERVAL.MONTH' |translate}}</span>
+            </div>
+          </div>  
+  
+          <div   class="col-12 fullScreenWidth mx-0 my-4">
+            <div class="card d-flex p-2 borderRadius_10px">
+              <span>{{'EDITPLAN.EXPANDDUE' |translate}} : {{plan.prorate_period}}</span>
+            </div>
+          </div> 
+          <div   class="col-12 fullScreenWidth mx-0 my-4">
+            <div class="card d-flex p-2 borderRadius_10px">
+              <span>{{'EDITPLAN.MAXACTIVATED' |translate}} : {{plan.active_subscribers_limit}}</span>
+            </div>
+          </div> 
+          <div class="col-12 mx-0 my-4">
+            <div class="card d-flex p-2 borderRadius_10px">
+              <span *ngIf="plan.is_active">{{ 'EDITPLAN.PLANSTATUS' | translate }} : {{ 'TABLE.VERIFIED' | translate }}</span>
+              <span *ngIf="!plan.is_active">{{ 'EDITPLAN.PLANSTATUS' | translate }} : {{ 'TABLE.NOTVERIFIED' | translate }}</span>
+            </div>
+            </div>
+        </div>
+
+      </div>
+  </div>
+</div>

@@ -1,0 +1,704 @@
+<!-- ui_fix -->
+<div class="dashboard-container p-0 ps-5 pe-5">
+  <div *ngIf="name" class="pageTitle">
+    <h4  class="pb-2">{{'COMMON.WELCOME' |translate}} {{name}}</h4>
+    <h6> {{ todayDate  | date:'EEEE d, MMMM y':undefined:language }} </h6> 
+
+  </div>  
+  <div  class="cards d-flex flex-wrap gap-3">
+      <!-- old users for user -->
+      <!-- <div *ngIf="userRole != 'admin' " style="background-color: #F0DAE9;" class="infoCards pt-2 d-flex flex-column justify-content-start align-items-center">
+        <img src="../../../../assets/images/dashboard/dashboard1.svg" alt="">
+        <span class="cardTitle">{{'DASHBOARD.USERS' |translate}}</span>
+        <span class="num">{{CardsData?.users[0]?.count+CardsData?.users[1]?.count  }}</span>
+        <span class="cardTitle">{{CardsData?.users[0]?.count  }}  {{'DASHBOARD.TAX' |translate}}</span>
+        <span class="cardTitle">{{CardsData?.users[1]?.count  }}  {{'DASHBOARD.NONTAX' |translate}}</span>
+
+      </div>  -->
+
+      <!-- for not admins (support) -->
+
+      <div *ngIf="userRole != 'admin' " style="background-color: #F0DAE9;" class="infoCards pt-2 d-flex flex-column justify-content-start align-items-center">
+        <img src="../../../../assets/images/dashboard/dashboard1.svg" alt="">
+        <span class="cardTitle">{{'DASHBOARD.USERS' |translate}}</span>
+        <span class="cardTitle"> {{'DASHBOARD.ACTIVE' |translate}}</span>
+        <span class="num">{{CardsData?.total_active_users  }}</span>
+        <span class="cardTitle">{{CardsData?.active_users[0]?.count ? CardsData?.active_users[0]?.count : 0  }}  {{'DASHBOARD.TAX' |translate}}</span>
+        <span class="cardTitle">{{CardsData?.active_users[1]?.count ? CardsData?.active_users[1]?.count :0  }}  {{'DASHBOARD.NONTAX' |translate}}</span>
+
+      </div>
+
+      <div *ngIf="userRole != 'admin' " style="background-color: #F0DAE9;" class="infoCards pt-2 d-flex flex-column justify-content-start align-items-center">
+        <img src="../../../../assets/images/dashboard/dashboard1.svg" alt="">
+        <span class="cardTitle">{{'DASHBOARD.USERS' |translate}}</span>
+        <span class="cardTitle">{{'DASHBOARD.INACTIVE' |translate}}</span>
+        <span class="num">{{CardsData?.total_inactive_users }}</span>
+        <span class="cardTitle">{{CardsData?.inactive_users[0]?.count ? CardsData?.inactive_users[0]?.count : 0  }}  {{'DASHBOARD.TAX' |translate}}</span>
+        <span class="cardTitle">{{CardsData?.inactive_users[1]?.count ? CardsData?.inactive_users[1]?.count : 0  }}  {{'DASHBOARD.NONTAX' |translate}}</span>
+
+      </div>
+
+
+      <!-- ------ 2 more users card ------ -->
+
+      <div *ngIf="userRole != 'admin' " style="background-color: #F0DAE9;" class="infoCards pt-2 d-flex flex-column justify-content-start align-items-center">
+        <img src="../../../../assets/images/dashboard/dashboard1.svg" alt="">
+        <span class="cardTitle">{{'DASHBOARD.USERS' |translate}}</span>
+        <span class="cardTitle"> {{'DASHBOARD.ACTIVESUBS' |translate}}</span>
+        <span class="num">{{CardsData?.total_active_subscriptions  }}</span>
+        <span class="cardTitle">{{CardsData?.active_subscriptions[0]?.count ? CardsData?.active_subscriptions[0]?.count : 0  }}  {{'DASHBOARD.TAX' |translate}}</span>
+        <span class="cardTitle">{{CardsData?.active_subscriptions[1]?.count ? CardsData?.active_subscriptions[1]?.count : 0  }}  {{'DASHBOARD.NONTAX' |translate}}</span>
+
+      </div>
+
+      <div *ngIf="userRole != 'admin' " style="background-color: #F0DAE9;" class="infoCards pt-2 d-flex flex-column justify-content-start align-items-center">
+        <img src="../../../../assets/images/dashboard/dashboard1.svg" alt="">
+        <span class="cardTitle">{{'DASHBOARD.USERS' |translate}}</span>
+        <span class="cardTitle">{{'DASHBOARD.INACTIVESUBS' |translate}}</span>
+        <span class="num">{{CardsData?.total_inactive_subscriptions  }}</span>
+        <span class="cardTitle">{{CardsData?.inactive_subscriptions[0]?.count ? CardsData?.inactive_subscriptions[0]?.count : 0  }}  {{'DASHBOARD.TAX' |translate}}</span>
+        <span class="cardTitle">{{CardsData?.inactive_subscriptions[1]?.count ? CardsData?.inactive_subscriptions[1]?.count : 0 }}  {{'DASHBOARD.NONTAX' |translate}}</span>
+
+      </div>
+      <!-- ------------ -->
+
+      <!--  -->
+      <!-- old users for user -->
+      <!-- <div *ngIf="userRole != 'admin' " style="background-color: #F0DAE9;" class="infoCards pt-2 d-flex flex-column justify-content-start align-items-center">
+        <img src="../../../../assets/images/dashboard/dashboard1.svg" alt="">
+        <span class="cardTitle">{{'DASHBOARD.USERS' |translate}}</span>
+        <span class="num">{{CardsData?.users[0]?.count+CardsData?.users[1]?.count  | numberFormat}}</span>
+        <span class="cardTitle">{{CardsData?.users[0]?.count | numberFormat }}  {{'DASHBOARD.TAX' |translate}}</span>
+        <span class="cardTitle">{{CardsData?.users[1]?.count | numberFormat }}  {{'DASHBOARD.NONTAX' |translate}}</span>
+
+      </div> -->
+      
+      <!-- users cards for admin -->
+
+      <div *ngIf="userRole == 'admin' " style="background-color: #F0DAE9;" class="infoCards pt-2 d-flex flex-column justify-content-start align-items-center">
+        <img src="../../../../assets/images/dashboard/dashboard1.svg" alt="">
+        <span class="cardTitle">{{'DASHBOARD.USERS' |translate}}</span>
+        <span class="cardTitle"> {{'DASHBOARD.ACTIVE' |translate}}</span>
+        <span class="num">{{CardsData?.total_active_users  }}</span>
+        <span class="cardTitle">{{CardsData?.active_users[0]?.count ? CardsData?.active_users[0]?.count : 0  }}  {{'DASHBOARD.TAX' |translate}}</span>
+        <span class="cardTitle">{{CardsData?.active_users[1]?.count ? CardsData?.active_users[1]?.count : 0  }}  {{'DASHBOARD.NONTAX' |translate}}</span>
+
+      </div>
+
+      <div *ngIf="userRole == 'admin' " style="background-color: #F0DAE9;" class="infoCards pt-2 d-flex flex-column justify-content-start align-items-center">
+        <img src="../../../../assets/images/dashboard/dashboard1.svg" alt="">
+        <span class="cardTitle">{{'DASHBOARD.USERS' |translate}}</span>
+        <span class="cardTitle">{{'DASHBOARD.INACTIVE' |translate}}</span>
+        <span class="num">{{CardsData?.total_inactive_users }}</span>
+        <span class="cardTitle">{{CardsData?.inactive_users[0]?.count ? CardsData?.inactive_users[0]?.count : 0 }}  {{'DASHBOARD.TAX' |translate}}</span>
+        <span class="cardTitle">{{CardsData?.inactive_users[1]?.count ? CardsData?.inactive_users[1]?.count : 0  }}  {{'DASHBOARD.NONTAX' |translate}}</span>
+
+      </div>
+
+
+      <!-- ------ 2 more users card ------ -->
+
+      <div *ngIf="userRole == 'admin' " style="background-color: #F0DAE9;" class="infoCards pt-2 d-flex flex-column justify-content-start align-items-center">
+        <img src="../../../../assets/images/dashboard/dashboard1.svg" alt="">
+        <span class="cardTitle">{{'DASHBOARD.USERS' |translate}}</span>
+        <span class="cardTitle"> {{'DASHBOARD.ACTIVESUBS' |translate}}</span>
+        <span class="num">{{CardsData?.total_active_subscriptions }}</span>
+        <span class="cardTitle">{{CardsData?.active_subscriptions[0]?.count ? CardsData?.active_subscriptions[0]?.count : 0  }}  {{'DASHBOARD.TAX' |translate}}</span>
+        <span class="cardTitle">{{CardsData?.active_subscriptions[1]?.count ? CardsData?.active_subscriptions[1]?.count : 0  }}  {{'DASHBOARD.NONTAX' |translate}}</span>
+
+      </div>
+
+      <div *ngIf="userRole == 'admin' " style="background-color: #F0DAE9;" class="infoCards pt-2 d-flex flex-column justify-content-start align-items-center">
+        <img src="../../../../assets/images/dashboard/dashboard1.svg" alt="">
+        <span class="cardTitle">{{'DASHBOARD.USERS' |translate}}</span>
+        <span class="cardTitle">{{'DASHBOARD.INACTIVESUBS' |translate}}</span>
+        <span class="num">{{CardsData?.total_inactive_subscriptions  }}</span>
+        <span class="cardTitle">{{CardsData?.inactive_subscriptions[0]?.count ? CardsData?.inactive_subscriptions[0]?.count : 0  }}  {{'DASHBOARD.TAX' |translate}}</span>
+        <span class="cardTitle">{{CardsData?.inactive_subscriptions[1]?.count ? CardsData?.inactive_subscriptions[1]?.count : 0  }}  {{'DASHBOARD.NONTAX' |translate}}</span>
+
+      </div>
+      <!-- ------------ -->
+      <div *ngIf="userRole == 'admin' " style="background-color: #DAEDFE;" class="infoCards pt-2 d-flex flex-column justify-content-start align-items-center">
+        <img src="../../../../assets/images/dashboard/dashboard2.svg" alt="">
+        <span class="cardTitle">{{'DASHBOARD.INVOICES' |translate}}</span>
+        <span class="num">{{CardsData?.total_invoices  }}</span>
+        <span class="cardTitle">{{CardsData?.invoices[0]?.count ? CardsData?.invoices[0]?.count : 0  }}  {{'DASHBOARD.TAX' |translate}}</span>
+        <span class="cardTitle">{{CardsData?.invoices[1]?.count ? CardsData?.invoices[1]?.count : 0 }}  {{'DASHBOARD.NONTAX' |translate}}</span>
+      </div>
+      <div *ngIf="userRole == 'admin' " style="background-color:#F3F0F9;" class="infoCards pt-2 d-flex flex-column justify-content-start align-items-center">
+        <img src="../../../../../assets/images/admin-dashboard/sales.png" alt="">
+        <span class="cardTitle text-center">{{'COMMON.TOTALINVOICESAMOUNT' |translate}}</span>
+        <span class="price">{{CardsData?.sales }}</span>
+        <span>{{'COMMON.SAR' |translate}}</span>  
+      </div>
+      <div *ngIf="userRole == 'admin' " style="background-color:#C0E1FF;" class="infoCards pt-2 d-flex flex-column justify-content-start align-items-center">
+        <img src="../../../../../assets/images/admin-dashboard/products.png" alt="">
+        <span class="cardTitle">{{'COMMON.PRODUCTS' |translate}}</span>
+        <span class="num">{{CardsData?.products }}</span>
+      </div>
+      <div *ngIf="userRole == 'admin' " style="background-color:#E9DAF0;" class="infoCards pt-2 d-flex flex-column justify-content-start align-items-center">
+        <img src="../../../../../assets/images/admin-dashboard/users.png" alt="">
+        <span class="cardTitle">{{'DASHBOARD.CLIENTS' |translate}}</span>
+        <span class="num">{{CardsData?.clients }}</span>
+      </div>
+
+      <div *ngIf="userRole == 'admin' " style="background-color:#DAF0E7;" class="infoCards pt-2 d-flex flex-column justify-content-start align-items-center">
+        <img src="../../../../assets/images/dashboard/dashboard6.svg" alt="">
+        <span class="cardTitle">{{'RECEIPTVOUCHER.RECEIPTVOUCHER' |translate}}</span>
+        <span class="num">{{CardsData?.receipts }}</span>
+      </div>
+      <div *ngIf="userRole == 'admin' " style="background-color:#DAF0DF;" class="infoCards pt-2 d-flex flex-column justify-content-start align-items-center">
+        <img src="../../../../../assets/images/admin-dashboard/price_offers.png" alt="">
+        <span class="cardTitle">{{'PRICELIST.PRICEOFFER' |translate}}</span>
+        <span class="num">{{CardsData?.quotations }}</span>
+      </div>
+      <div style="background-color:#DAE7F0;" class="infoCards pt-2 d-flex flex-column justify-content-start align-items-center">
+        <img src="../../../../../assets/images/admin-dashboard/reciepts_amount.png" alt="">
+        <span class="cardTitle">{{'COMMON.RECEIPTSAMOUNT' |translate}}</span>
+        <span class="price">{{CardsData?.profits }}</span>
+        <span>{{'COMMON.SAR' |translate}}</span>
+
+      </div>
+
+      <div *ngIf="userRole == 'admin' " style="background-color: #DAEDFE;" class="infoCards pt-2 d-flex flex-column justify-content-start align-items-center">
+        <img src="../../../../assets/images/dashboard/dashboard2.svg" alt="">
+        <span class="cardTitle">{{'DASHBOARD.ZATCAINTEGRATION' |translate}}</span>
+        <span class="num">{{CardsData?.total_zatca_stage  }}</span>
+        <span class="cardTitle" *ngIf="CardsData?.zatca_settings_stage['developer-portal']">{{CardsData?.zatca_settings_stage['developer-portal'] ? CardsData?.zatca_settings_stage['developer-portal'] : 0  }}  {{'DASHBOARD.SIMZATCA' |translate}}</span>
+        <span class="cardTitle" *ngIf="CardsData?.zatca_settings_stage?.simulation">{{CardsData?.zatca_settings_stage?.simulation ? CardsData?.zatca_settings_stage?.simulation : 0  }}  {{'DASHBOARD.SIMZATCA' |translate}}</span>
+        <span class="cardTitle" *ngIf="CardsData?.zatca_settings_stage?.live">{{CardsData?.zatca_settings_stage?.live ? CardsData?.zatca_settings_stage?.live : 0 }}  {{'DASHBOARD.LIVEZATCA' |translate}}</span>
+      </div>
+
+  </div>
+  <div>
+
+  <div class="partI mt-3  position-relative">
+    <div class="secI d-flex flex-wrap justify-content-between position-relative">
+      <div class="doughnut boxShadow-10 position-relative">
+        <div class="my-2">
+          <p>{{'DASHBOARD.PLANS'|translate}}</p>
+        </div>
+        <!-- <div class="doughnutChart d-flex justify-content-center pt-4">
+          <p-chart type="doughnut" 
+          [data]="plansChart"
+          [options]="chartOptions"></p-chart>
+      </div> -->
+
+      <div *ngIf="chartOptionsready" id="chart" class="doughnutChart d-flex justify-content-center pt-4 chart-container">
+        <apx-chart
+          [series]="chartOptions.series"
+          [chart]="chartOptions.chart"
+          [labels]="chartOptions.labels"
+          [legend]="chartOptions.legend"
+          [responsive]="chartOptions.responsive"
+          [colors]="chartOptions.colors"
+        ></apx-chart>
+      </div>
+
+      </div> 
+      <div class="bar boxShadow-10 position-relative">
+        <div class="tabs d-flex flex-wrap gap-2">
+          <div (click)="changeTabs(0,1)" [ngClass]="{'active':cardTabs1[0]}" class="tab p-2">
+            {{'DASHBOARD.PLANSSTATISTICS'|translate}}
+          </div>
+          <div (click)="changeTabs(1,1)" [ngClass]="{'active':cardTabs1[1]}" class="tab p-2">
+            {{'DASHBOARD.REVENUESTATISTICS'|translate}}
+          </div>
+        </div>
+        <div class="barChart h-100" >
+
+          <div class="w-100" style=" overflow-x: auto;">
+            <div class="topPart h-100 d-flex flex-wrap  align-items-center gap-3" *ngIf="cardTabs1[0]">
+              <label class="form-label fw-bolder mt-2 mb-0 chooseDuration">{{'SALESREPORT.CHOOSE_DURATION' |translate}}</label>
+              <div class="mx-0 generateBtn"> 
+             
+                <p-dropdown *ngIf="language=='ar'" #durationDropDown (click)="openModelCheck()" [options]="duration" [(ngModel)]="currentDuration"  placeholder=" " class="my-1 mx-0 h-60px  d-flex py-2 generateDiv" optionLabel="nameAR" optionValue="value"></p-dropdown>                             
+                <p-dropdown *ngIf="language=='en'" #durationDropDown (click)="openModelCheck()" [options]="duration" [(ngModel)]="currentDuration"  placeholder=" " class="my-1 mx-0 h-60px  d-flex py-2 generateDiv" optionLabel="nameEN" optionValue="value"></p-dropdown>                             
+              </div> 
+              <div class="d-flex align-items-center mx-auto mx-lg-1">
+                <app-button-comp [btnType]="'main'" [style.width.px]="200"  type="button"  (click)="changeDate()" [name]="'ADMINREPORTS.GENERATE' |translate" background_color="#1B1464"></app-button-comp>
+              </div>
+            </div>
+            <div class="d-flex gap-2" *ngIf="cardTabs1[0]">
+              <div> <h6 class="dateClass">{{'SALESREPORT.START' |translate}} :{{ startDate }}</h6> </div> -
+              <div><h6 class="dateClass">{{'SALESREPORT.END' |translate}} :{{ endDate }}</h6></div>
+            </div>
+            <div  id="chartColumn" style=" min-width: 400px;  " *ngIf="cardTabs1[0] && chartOptionsIIReady">
+              <apx-chart
+                [series]="chartOptionsII.series"
+                [chart]="chartOptionsII.chart"
+                [dataLabels]="chartOptionsII.dataLabels"
+                [plotOptions]="chartOptionsII.plotOptions"
+                [yaxis]="chartOptionsII.yaxis"
+                [xaxis]="chartOptionsII.xaxis"
+                [fill]="chartOptionsII.fill"
+                [title]="chartOptionsII.title"
+              ></apx-chart>
+            </div>
+
+          
+
+
+          </div>
+          
+          <div class="w-100" style=" overflow-x: auto;">
+            <div id="chartColumn"  style=" min-width: 550px;  " *ngIf="cardTabs1[1]">
+              <!-- ---- -->
+              <div class="topPart h-100 d-flex flex-wrap  align-items-center gap-3" *ngIf="cardTabs1[1]">
+                <label class="form-label fw-bolder mt-2 mb-0 chooseDuration">{{'SALESREPORT.CHOOSE_DURATION' |translate}}</label>
+                <div class="mx-0 generateBtn"> 
+               
+                  <p-dropdown *ngIf="language=='ar'" #durationDropDownI (click)="openModelCheckI()" [options]="duration" [(ngModel)]="currentDurationRevenues"  placeholder=" " class="my-1 mx-0 h-60px  d-flex py-2 generateDiv" optionLabel="nameAR" optionValue="value"></p-dropdown>                             
+                  <p-dropdown *ngIf="language=='en'" #durationDropDownI (click)="openModelCheckI()" [options]="duration" [(ngModel)]="currentDurationRevenues"  placeholder=" " class="my-1 mx-0 h-60px  d-flex py-2 generateDiv" optionLabel="nameEN" optionValue="value"></p-dropdown>                             
+                </div> 
+                <div class="d-flex align-items-center mx-auto mx-lg-1">
+                  <app-button-comp [btnType]="'main'" [style.width.px]="200"  type="button"  (click)="changeDateProfits()" [name]="'ADMINREPORTS.GENERATE' |translate" background_color="#1B1464"></app-button-comp>
+                </div>
+              </div>
+              <div class="d-flex gap-2" *ngIf="cardTabs1[1]">
+                <div> <h6 class="dateClass">{{'SALESREPORT.START' |translate}} :{{ startDateRevenues }}</h6> </div> -
+                <div><h6 class="dateClass">{{'SALESREPORT.END' |translate}} :{{ endDateRevenues }}</h6></div>
+              </div>
+           
+              <!-- ---- -->
+              <apx-chart
+                *ngIf="chartOptionsIIIReady"
+                [series]="chartOptionsIII.series"
+                [chart]="chartOptionsIII.chart"
+                [dataLabels]="chartOptionsIII.dataLabels"
+                [plotOptions]="chartOptionsIII.plotOptions"
+                [yaxis]="chartOptionsIII.yaxis"
+                [xaxis]="chartOptionsIII.xaxis"
+                [fill]="chartOptionsIII.fill"
+                [title]="chartOptionsIII.title"
+              ></apx-chart>
+  
+            </div>
+          </div>
+        
+
+          <!-- <p-chart *ngIf="cardTabs1[0]" class="chart" type="bar" [data]="plansStatisticsBarChart"
+          [options]="barchartOptions"></p-chart> -->
+          <!-- <p-chart *ngIf="cardTabs1[1]" class="chart" type="bar" [data]="reportsStatisticsBarChart"
+          [options]="barchartOptions"></p-chart> -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div *ngIf="userRole == 'admin' " class="partII mt-3 position-relative">
+    <div class="secII d-flex flex-wrap justify-content-between position-relative">
+      <div class="lastTrans boxShadow-10 position-relative">
+        <div class="d-flex justify-content-between pb-3">
+          <p>{{'DASHBOARD.LASTTRANS'|translate}}</p>
+          <span routerLink="/admin/users/All-users" class="more cursor-pointer">{{'COMMON.VIEWALL' |translate}}</span>
+        </div>
+       <div *ngIf="last_events" class="bottomSecII d-flex flex-column justify-content-center gap-3">
+         <div *ngFor="let event of last_events;let i=index" class="d-flex align-items-center justify-content-between border border-2 px-2 rounded py-3">
+            <div style="width: 70%;" class="d-flex justify-content-center">
+                <span class="num">{{i+1}}</span>
+                <span class="w-100  ms-2 name ">
+                  <span *ngIf="!event?.resource?.includes('User')">  
+                    {{'DASHBOARD.CREATEDI'|translate}}
+                  </span>
+                  <span *ngIf="event?.resource?.includes('User')">  
+                    {{'DASHBOARD.CREATEDII'|translate}}
+                  </span>
+                <span *ngIf="!event?.resource?.includes('User')" [routerLink]="'/admin/users/user-details/'+event?.user_uuid" class="text-decoration-underline cursor-pointer">
+                  #{{event?.name}}
+                </span> 
+
+                <span *ngIf="event?.resource?.includes('User')" [routerLink]="'/admin/users/user-details/'+event?.resource_uuid" class="text-decoration-underline cursor-pointer">
+                  #{{event?.name}}
+                </span> 
+
+                <span *ngIf="!event?.resource?.includes('User')">  
+                  {{'DASHBOARD.CREATED'|translate}}
+                </span>
+                <span *ngIf="event?.resource?.includes('Invoice')" >
+                  {{'DASHBOARD.INVOICE'|translate}}
+                  <span *ngIf="language=='ar'">{{'DASHBOARD.NEW1'|translate}}</span>
+                  <span [routerLink]="'/admin/users/invoice-details/'+event?.resource_uuid" class="text-decoration-underline cursor-pointer"> #{{event?.number}}</span>
+                </span>
+                <!-- <span *ngIf="event?.resource?.includes('User')" >
+                  {{'DASHBOARD.USER'|translate}}
+                  <span *ngIf="language=='ar'">{{'DASHBOARD.NEW2'|translate}}</span>
+                </span> -->
+                <span>
+                </span>
+                </span>
+            </div>
+            <div style="background-color:#D1E4FA; border-radius: 4px;" class="px-2 py-1 d-flex align-items-center justify-content-center">
+                <span> {{event?.date}}</span>
+            </div>
+         </div>
+       </div>
+
+
+      </div>
+
+
+      <div  class="invoiceChart boxShadow-10 position-relative"  style="overflow: hidden;">
+        <div class="tabs d-flex flex-wrap gap-2">
+          <div (click)="changeTabs(0,2)" [ngClass]="{'active':cardTabs2[0]}" class="tab p-2">
+            {{'DASHBOARD.INVOICESREPORTS'|translate}}
+          </div>
+          <div (click)="changeTabs(1,2)" [ngClass]="{'active':cardTabs2[1]}" class="tab p-2">
+            {{'DASHBOARD.SALESREPORTS'|translate}}
+          </div>
+        </div>
+        <div class="w-100" style=" overflow-x: auto; overflow-y: hidden;">
+          <div class="chart" style="min-width: 600px;">
+            <!-- invoices -->
+              <apx-chart *ngIf="cardTabs2[0] && chartInvoicesOptionsReady" [series]="$any(chartInvoicesOptions.series)" [chart]="$any(chartInvoicesOptions.chart)"
+                  [xaxis]="$any(chartInvoicesOptions.xaxis)" 
+                  [dataLabels]="$any(chartInvoicesOptions.dataLabels)" [grid]="$any(chartInvoicesOptions.grid)"
+                  [stroke]="$any(chartInvoicesOptions.stroke)" [title]="$any(chartInvoicesOptions.title)"
+                  [colors]="['#000000']"></apx-chart>
+              <!-- sales -->
+              <apx-chart *ngIf="cardTabs2[1] && chartSalesOptionsReady" [series]="$any(chartSalesOptions.series)" [chart]="$any(chartSalesOptions.chart)"
+                  [xaxis]="$any(chartSalesOptions.xaxis)" 
+                  [dataLabels]="$any(chartSalesOptions.dataLabels)" [grid]="$any(chartSalesOptions.grid)"
+                  [stroke]="$any(chartSalesOptions.stroke)" [title]="$any(chartSalesOptions.title)"
+                  [colors]="['#000000']"></apx-chart>
+        
+          </div>
+        </div>
+       
+
+      </div>
+
+    </div>
+  </div>
+
+  <div *ngIf="userRole == 'admin' " class="partII mt-3 position-relative">
+    <div class="secII d-flex flex-wrap justify-content-between">
+      <div class="lastTrans boxShadow-10">
+        <div class="d-flex justify-content-between pb-3">
+          <p>{{'DASHBOARD.ACTIVEUSERS'|translate}}</p>
+          <span routerLink="/admin/users/All-users" class="more cursor-pointer">{{'COMMON.VIEWALL' |translate}}</span>
+       </div>
+
+       <div *ngIf="top_clients" class="bottomSecII d-flex flex-column justify-content-center gap-3">
+         <div *ngFor="let client of top_clients;let i=index" class="d-flex align-items-center justify-content-between border border-2 px-2 rounded py-3">
+            <div style="width: 70%;" class="d-flex justify-content-center">
+                <span class="num">{{i+1}}</span>
+                <span  class="w-100 limit_text ms-2 name ext-decoration-underline">{{client.name}}</span>
+            </div>
+            <div style="background-color:#D1E4FA; border-radius: 4px;" class="px-2 py-1 d-flex align-items-center justify-content-center">
+                <span>  {{'DASHBOARD.INVOICES' |translate}} {{client.invoices_count}}</span>
+            </div>
+         </div>
+       </div>
+
+
+      </div>
+
+      <div class="invoiceChart boxShadow-10" style="overflow: hidden;">
+        <div class="tabs d-flex flex-wrap gap-2">
+          <div (click)="changeTabs(0,4)" [ngClass]="{'active':cardTabs4[0]}" class="tab p-2">
+            {{'DASHBOARD.RECEIPTSREPORTS'|translate}}
+          </div>
+          <div (click)="changeTabs(1,4)" [ngClass]="{'active':cardTabs4[1]}" class="tab p-2">
+            {{'DASHBOARD.PROFITSREPORTS'|translate}}
+          </div>
+        </div>
+        <div class="w-100" style=" overflow-x: auto; overflow-y: hidden;">
+          <div class="chart" style="min-width: 600px;">
+            <!-- invoices -->
+              <apx-chart *ngIf="cardTabs4[0] && receiptsOptionsReady" [series]="$any(receiptsOptions.series)" [chart]="$any(receiptsOptions.chart)"
+                  [xaxis]="$any(receiptsOptions.xaxis)" 
+                  [dataLabels]="$any(receiptsOptions.dataLabels)" [grid]="$any(receiptsOptions.grid)"
+                  [stroke]="$any(receiptsOptions.stroke)" [title]="$any(receiptsOptions.title)"
+                  [colors]="['#000000']"></apx-chart>
+              <!-- sales -->
+              <apx-chart *ngIf="cardTabs4[1] && revenuesOptionsReady" [series]="$any(revenuesOptions.series)" [chart]="$any(revenuesOptions.chart)"
+                  [xaxis]="$any(revenuesOptions.xaxis)" 
+                  [dataLabels]="$any(revenuesOptions.dataLabels)" [grid]="$any(revenuesOptions.grid)"
+                  [stroke]="$any(revenuesOptions.stroke)" [title]="$any(revenuesOptions.title)"
+                  [colors]="['#000000']"></apx-chart>
+        
+          </div>
+        </div>
+       
+
+      </div>
+
+    </div>
+  </div>
+
+ <!-- in support role -->
+  <div *ngIf="userRole == 'support' " class="partII mt-3 position-relative" >
+    <div class="secII d-flex flex-wrap position-relative" style="gap: 2%;">
+      <div class="lastTrans boxShadow-10 position-relative">
+        <div class="d-flex justify-content-between pb-3">
+          <p>{{'DASHBOARD.LASTTRANS'|translate}}</p>
+          <span routerLink="/admin/users/All-users" class="more cursor-pointer">{{'COMMON.VIEWALL' |translate}}</span>
+        </div>
+       <div *ngIf="last_events" class="bottomSecII d-flex flex-column justify-content-center gap-3">
+         <div *ngFor="let event of last_events;let i=index" class="d-flex align-items-center justify-content-between border border-2 px-2 rounded py-3">
+            <div style="width: 70%;" class="d-flex justify-content-center">
+                <span class="num">{{i+1}}</span>
+                <span class="w-100  ms-2 name ">
+                  <span *ngIf="!event?.resource?.includes('User')">  
+                    {{'DASHBOARD.CREATEDI'|translate}}
+                  </span>
+                  <span *ngIf="event?.resource?.includes('User')">  
+                    {{'DASHBOARD.CREATEDII'|translate}}
+                  </span>
+                <span *ngIf="!event?.resource?.includes('User')" [routerLink]="'/admin/users/user-details/'+event?.user_uuid" class="text-decoration-underline cursor-pointer">
+                  #{{event?.name}}
+                </span> 
+
+                <span *ngIf="event?.resource?.includes('User')" [routerLink]="'/admin/users/user-details/'+event?.resource_uuid" class="text-decoration-underline cursor-pointer">
+                  #{{event?.name}}
+                </span> 
+
+                <span *ngIf="!event?.resource?.includes('User')">  
+                  {{'DASHBOARD.CREATED'|translate}}
+                </span>
+                <span *ngIf="event?.resource?.includes('Invoice')" >
+                  {{'DASHBOARD.INVOICE'|translate}}
+                  <span *ngIf="language=='ar'">{{'DASHBOARD.NEW1'|translate}}</span>
+                  <span [routerLink]="'/admin/users/invoice-details/'+event?.resource_uuid" class="text-decoration-underline cursor-pointer"> #{{event?.number}}</span>
+                </span>
+                <!-- <span *ngIf="event?.resource?.includes('User')" >
+                  {{'DASHBOARD.USER'|translate}}
+                  <span *ngIf="language=='ar'">{{'DASHBOARD.NEW2'|translate}}</span>
+                </span> -->
+                <span>
+                </span>
+                </span>
+            </div>
+            <div style="background-color:#D1E4FA; border-radius: 4px;" class="px-2 py-1 d-flex align-items-center justify-content-center">
+                <span> {{event?.date}}</span>
+            </div>
+         </div>
+       </div>
+
+
+      </div>
+
+      <div class="lastTrans boxShadow-10">
+        <div class="d-flex justify-content-between pb-3">
+          <p>{{'DASHBOARD.ACTIVEUSERS'|translate}}</p>
+          <span routerLink="/admin/users/All-users" class="more cursor-pointer">{{'COMMON.VIEWALL' |translate}}</span>
+       </div>
+
+       <div *ngIf="top_clients" class="bottomSecII d-flex flex-column justify-content-center gap-3">
+         <div *ngFor="let client of top_clients;let i=index" class="d-flex align-items-center justify-content-between border border-2 px-2 rounded py-3">
+            <div style="width: 70%;" class="d-flex justify-content-center">
+                <span class="num">{{i+1}}</span>
+                <span  class="w-100 limit_text ms-2 name ext-decoration-underline">{{client.name}}</span>
+            </div>
+            <div style="background-color:#D1E4FA; border-radius: 4px;" class="px-2 py-1 d-flex align-items-center justify-content-center">
+                <span>  {{'DASHBOARD.INVOICES' |translate}} {{client.invoices_count}}</span>
+            </div>
+         </div>
+       </div>
+
+
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <div *ngIf="userRole == 'admin' " class="partIII mt-3 position-relative">
+    <div class="secII d-flex flex-wrap justify-content-between ">
+      <div class="chartI boxShadow-10" style="overflow: hidden;">
+        <div class="tabs d-flex flex-wrap gap-2">
+          <div class="tab active p-2">
+            {{'DASHBOARD.USERSREPORTS'|translate}}
+          </div>
+        </div>
+        <div class="w-100" style=" overflow-x: auto; overflow-y: hidden;">
+          <div class="chart" style="min-width: 600px;">
+            <apx-chart *ngIf="usersOptionsReady" [series]="$any(usersOptions.series)" [chart]="$any(usersOptions.chart)"
+                [xaxis]="$any(usersOptions.xaxis)" 
+                [dataLabels]="$any(usersOptions.dataLabels)" [grid]="$any(usersOptions.grid)"
+                [stroke]="$any(usersOptions.stroke)" [title]="$any(usersOptions.title)"
+                [colors]="['#000000']"></apx-chart>
+        </div>
+      </div>
+      </div>
+
+      <div  class="chartI boxShadow-10" style="overflow: hidden;">
+        <div class="tabs d-flex flex-wrap gap-2">
+          <div class="tab active p-2">
+            {{'DASHBOARD.PRICEOFFERSREPORTS'|translate}}
+          </div>
+        </div>
+        <div class="w-100" style=" overflow-x: auto; overflow-y: hidden;">
+          <div class="chart" style="min-width: 600px;">
+            <apx-chart *ngIf="quotationsOptionsReady" [series]="$any(quotationsOptions.series)" [chart]="$any(quotationsOptions.chart)"
+                [xaxis]="$any(quotationsOptions.xaxis)" 
+                [dataLabels]="$any(quotationsOptions.dataLabels)" [grid]="$any(quotationsOptions.grid)"
+                [stroke]="$any(quotationsOptions.stroke)" [title]="$any(quotationsOptions.title)"
+                [colors]="['#000000']"></apx-chart>
+
+        </div>
+      </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="card mt-3 border-0 boxShadow-10 borderRadius_10px position-relative">
+    <div class="top p-3 d-flex justify-content-between">
+      <div class="tabs d-flex flex-wrap gap-2">
+        <div (click)="changeTabs(0,3)" [ngClass]="{'active':cardTabs3[0]}" class="tab p-2">
+          {{'DASHBOARD.ABOUTTOEXPIRE'|translate}}({{aboutToExpire?.length}})
+        </div>
+        <div (click)="changeTabs(1,3)" [ngClass]="{'active':cardTabs3[1]}" class="tab p-2">
+          {{'DASHBOARD.EXPIRED'|translate}}({{expired?.length}}) 
+        </div>
+      </div>
+      <div>
+        <!-- <span style="color: #667FFE;"  class="more cursor-pointer">{{'COMMON.VIEWALL' |translate}}</span> -->
+      </div>
+    </div>
+    <!-- class="table" -->
+    <div >
+      <app-table-comp *ngIf="cardTabs3[0]"
+      [columnsArray]="columnsArraySubscriptions"
+      [columnsNames]="columnsNamesSubscriptions"
+      [RowsData] = "aboutToExpire"
+      [controlArray]="controlArraySubscriptions">
+      </app-table-comp>
+      
+      <app-table-comp *ngIf="cardTabs3[1]"
+      [columnsArray]="columnsArraySubscriptions"
+      [columnsNames]="columnsNamesSubscriptions"
+      [RowsData] = "expired"
+      [controlArray]="controlArraySubscriptions">
+      </app-table-comp>
+    </div>
+
+  </div>
+  <div class="card mt-3 border-0 boxShadow-10 borderRadius_10px">
+    <div class="top p-3 d-flex justify-content-between">
+      <div class="tabs d-flex flex-wrap gap-2">
+        <div class="tab p-2 fw-bold">
+         <h4>{{'DASHBOARD.PAYMENTHISTORY'|translate}}</h4>
+        </div>
+      </div>
+      <div>
+        <!-- <span style="color: #667FFE;"  class="more cursor-pointer">{{'COMMON.VIEWALL' |translate}}</span> -->
+      </div>
+    </div>
+    <div class="table">
+      <app-table-comp 
+      [columnsArray]="columnsArrayPayment"
+      [columnsNames]="columnsNamesPayment"
+      [RowsData] = "paymentHistory"
+      [type]="'subsInvoice'"
+      [controlArray]="controlArrayPayment"
+      >
+      </app-table-comp>
+
+       <p-paginator #paginator (onPageChange)="onPageChange($event)"
+        [first]="1"  [rows]="perPage" [totalRecords]="totalPage" 
+        ></p-paginator> 
+    </div>
+
+  </div>
+
+
+  </div>
+
+
+</div>
+
+
+
+
+
+
+<button hidden #calendarModel type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#chooseTimeModel">
+
+</button>
+
+<!-- Modal -->
+<div  class="modal fade dashboard_date" id="chooseTimeModel"  tabindex="-1" aria-labelledby="staticBackdropLabelI" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabelI">{{'SALESREPORT.SELECT_DATE' |translate}}</h1>
+       
+      </div>
+      <div class="modal-body">
+        <div class="w-100 d-flex flex-wrap justify-content-between gap-3">
+           <div class="d-flex width-49 justify-content-start flex-column">
+               <h4>{{'SALESREPORT.START' |translate}}</h4>
+               <p-calendar class="max-w-full" [(ngModel)]="startDate" [inline]="true" [showWeek]="true" dateFormat="dd-mm-yy"></p-calendar>
+           </div>
+           <div class="d-flex width-49 justify-content-start flex-column">
+               <h4>{{'SALESREPORT.END' |translate}}</h4>
+               <p-calendar class="max-w-full" [(ngModel)]="endDate"  [inline]="true" [showWeek]="true" dateFormat="dd-mm-yy"></p-calendar>
+           </div>
+        </div>
+
+
+
+
+        <div class="w-100 d-flex justify-content-center align-items-center mt-4">
+          <app-button-comp [btnType]="'main'" (click)="changeDate()"  class="width-210px d-flex  me-2" data-bs-dismiss="modal"
+          aria-label="Close" #closePoPModal  [name]="'SALESREPORT.SELECT' |translate" [color]="'#1B1464'"></app-button-comp>
+        </div>
+      
+      </div>
+
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- second calender -->
+<button hidden #calendarModelI type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#chooseTimeModelI">
+
+</button>
+
+<!-- Modal -->
+<div  class="modal fade dashboard_date" id="chooseTimeModelI"  tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">{{'SALESREPORT.SELECT_DATE' |translate}}</h1>
+       
+      </div>
+      <div class="modal-body">
+        <div class="w-100 d-flex flex-wrap justify-content-between gap-3">
+           <div class="d-flex width-49 justify-content-start flex-column">
+               <h4>{{'SALESREPORT.START' |translate}}</h4>
+               <!-- (ngModelChange)="handleDateI(startDateRevenues,1)"  -->
+               <p-calendar class="max-w-full" [(ngModel)]="startDateRevenues"[inline]="true" [showWeek]="true" dateFormat="dd-mm-yy"></p-calendar>
+           </div>
+           <div class="d-flex width-49 justify-content-start flex-column">
+               <h4>{{'SALESREPORT.END' |translate}}</h4>
+               <!-- (ngModelChange)="handleDateI(endDateRevenues,2)" -->
+               <p-calendar class="max-w-full" [(ngModel)]="endDateRevenues"  [inline]="true" [showWeek]="true" dateFormat="dd-mm-yy"></p-calendar>
+           </div>
+        </div>
+
+
+
+
+        <div class="w-100 d-flex justify-content-center align-items-center mt-4">
+          <app-button-comp [btnType]="'main'" (click)="changeDateProfits()"  class="width-210px d-flex  me-2" data-bs-dismiss="modal"
+          aria-label="Close" #closePoPModal  [name]="'SALESREPORT.SELECT' |translate" [color]="'#1B1464'"></app-button-comp>
+        </div>
+      
+      </div>
+
+      
+
+    </div>
+  </div>
+</div>

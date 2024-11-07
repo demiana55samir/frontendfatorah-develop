@@ -1,0 +1,47 @@
+.color-picker{
+    width: 70px !important;
+    height: 70px !important;
+}
+.secIII{
+justify-content: flex-end !important;
+@media screen and (max-width:426px) {
+    justify-content: center !important;
+}
+    .cardsII{
+        height: 340px;
+        overflow: auto;
+        width: 55%;
+       //width: 35.8vw;
+        // height: 480px;
+        background: #FFFFFF;
+        border-radius: 17.0118px;
+        // padding: 20px;
+        @media screen and (max-width:768px){
+            width: 100%;
+        }
+    }
+    @media screen and (max-width:768px){
+        row-gap: 25px;
+    }
+
+}
+.uploadedImage{
+    width:190px ;
+    height: 190px;
+    border-radius: 50%;
+}
+.clearBtn{
+    left: 186px;
+    bottom: 66px;
+}
+.left-58px{
+left: -58px !important;
+}
+
+.colorDiv{
+    width: 40%;
+    @media screen and (max-width:375px){
+        width: 100%;
+        align-items: center;
+    }
+}

@@ -1,0 +1,159 @@
+<!-- ui_fix -->
+<div class="customerStatmentReportCont p-0 ps-5 pe-5">
+  <div>
+    <h3 class="fw-bolder fw-600 mb-3">{{'CUSTOMERACCOUNTREPORT.REPORTS' | translate}}</h3>
+  </div>
+   <div class="card borderRadius_20px boxShadow-10">
+      <div class="p-4">
+        <div class="w-100">
+          <h4 class="fw-bold">{{'CUSTOMERACCOUNTREPORT.COLLECTION_REPORT' | translate}}</h4>
+        </div>
+        <div class="topPart h-100 d-flex flex-wrap justify-content-between align-items-center">
+          <div class="d-flex flex-wrap gap-3">
+            <div class="mx-0 my-3">
+              <label class="form-label fw-bolder mb-2">{{'CUSTOMERACCOUNTREPORT.TO' | translate}}</label>
+              <p-dropdown [options]="clients"  [filter]="true"
+              placeholder=" " [(ngModel)]="client_id" 
+              class=" width-280px h-60px my-1 mx-0 py-2 d-flex" optionLabel="name" optionValue="id"></p-dropdown>                             
+            </div> 
+            <div class="mx-0 my-3">
+              <label class="form-label fw-bolder mb-2">{{'CUSTOMERACCOUNTREPORT.CHOOSE_REPORT_DURATION' | translate}}</label>
+              <p-dropdown *ngIf="language=='ar'" (click)="openModelCheck()" #durationDropDown [options]="duration" [(ngModel)]="currentDuration"  placeholder=" "  class="width-280px h-60px d-flex my-1 mx-0 py-2 " optionLabel="nameAR" optionValue="value"></p-dropdown>   
+              <p-dropdown *ngIf="language=='en'" (click)="openModelCheck()" #durationDropDown [options]="duration" [(ngModel)]="currentDuration"  placeholder=" "  class="width-280px h-60px d-flex my-1 mx-0 py-2 " optionLabel="nameEN" optionValue="value"></p-dropdown>   
+                                        
+            </div> 
+
+          </div>
+          <div class="d-flex align-items-center">
+            <app-button-comp [btnType]="'main'" (click)="getReport()" type="submit"  [name]="'CUSTOMERACCOUNTREPORT.GENERATE' | translate" [background_color]="'#1B1464'"></app-button-comp>
+          </div>
+        </div>
+      </div>
+      <div class="HLine"></div>
+      <div class="p-4">
+        <div class="chart mt-4 mb-5 ">
+          <div>
+              <div class=" card boxShadow-10 borderRadius_20px">
+                <div class="p-4 w-100 mb-3 d-flex flex-wrap justify-content-between align-items-center">
+                  <div>
+                    <p class="text">
+                      {{'CUSTOMERACCOUNTREPORT.COLLECTION_REPORT' | translate}}
+                        <button type="button" class="btn me-2 border-0" placement="top"
+                            ngbTooltip="total number of leads">
+                            <i class="fa-solid fa-circle-info"></i>
+                        </button>
+                    </p>
+                  </div>
+                  <div>
+                    <app-button-comp [btnType]="'main'" (click)="downloadCSV()" style="width: 190px;" type="button"  [name]="'CUSTOMERACCOUNTREPORT.PDF' | translate" [background_color]="'#5C60F5'"></app-button-comp>
+                  </div>
+        
+                </div>
+                <div class="HLine mb-3"></div>
+                <div class="p-1 m-3">
+                  <p-table [value]="ReportData" responsiveLayout="stack" [breakpoint]="'960px'"  [resizableColumns]="true"
+                  styleClass="p-datatable-gridlines">
+
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>{{'CUSTOMERACCOUNTREPORT.TYPE' | translate}}</th>
+                            <th>{{'CUSTOMERACCOUNTREPORT.NUMBER' | translate}}</th>
+                            <th>{{'CUSTOMERACCOUNTREPORT.DATE' | translate}}</th>
+                            <th>{{'CUSTOMERACCOUNTREPORT.DUE_DATE' | translate}}</th>
+                            <th>{{'CUSTOMERACCOUNTREPORT.DESCRIPTION' | translate}}</th>
+                            <th>{{'CUSTOMERACCOUNTREPORT.DEBIT' | translate}}</th>
+                            <th>{{'CUSTOMERACCOUNTREPORT.CREDIT' | translate}}</th>
+                            <th>{{'CUSTOMERACCOUNTREPORT.BALANCE' | translate}}</th>
+          
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-report>
+                        <tr>
+                            <td> <span class="p-column-title"> {{'CUSTOMERACCOUNTREPORT.TYPE' |translate}} </span>  {{report.title}}</td>
+                            <td> <span class="p-column-title"> {{'CUSTOMERACCOUNTREPORT.NUMBER' |translate}} </span> {{report.number}}</td>
+                            <td> <span class="p-column-title"> {{'CUSTOMERACCOUNTREPORT.DATE' |translate}} </span> {{report.date }}</td>
+                            <td> <span class="p-column-title"> {{'CUSTOMERACCOUNTREPORT.DUE_DATE' |translate}} </span> {{report.due_date }}</td>
+                            <td> <span class="p-column-title"> {{'CUSTOMERACCOUNTREPORT.DESCRIPTION' |translate}} </span> {{report.desciption}}</td>
+                            <td> <span class="p-column-title"> {{'CUSTOMERACCOUNTREPORT.DEBIT' |translate}} </span> {{report.debtor}}</td>
+                            <td> <span class="p-column-title"> {{'CUSTOMERACCOUNTREPORT.CREDIT' |translate}} </span> {{report.creditor}}</td>
+                            <td> <span class="p-column-title"> {{'CUSTOMERACCOUNTREPORT.BALANCE' |translate}} </span> {{report.total}}</td>
+            
+                        </tr>
+                    </ng-template>
+                    <ng-template class="footer" pTemplate="footer">
+                      <tr>
+                          <td class="text-start" colspan="5">{{'COLLECTIONREPORT.TOTAL' | translate}}</td>
+
+                          <td  class="text-center">{{totalDebit}}  {{'COMMON.SAR' |translate}}</td>
+
+                          <td  class="text-center"> {{totalCredit }}  {{'COMMON.SAR' |translate}}</td>
+
+                          <td  class="text-center" >{{total}}  {{'COMMON.SAR' |translate}}</td>
+                      </tr>
+                  </ng-template>
+                </p-table>
+
+                <div class="Mobilefooter">
+      
+                  <div class="d-flex flex-column">
+
+                    <span  class="text-center"> <span class="p-column-title fw-bold"> {{'CUSTOMERACCOUNTREPORT.DEBIT' |translate}} </span> {{totalDebit}}  {{'COMMON.SAR' |translate}}</span>
+ 
+                    <span  class="text-center"> <span class="p-column-title fw-bold"> {{'CUSTOMERACCOUNTREPORT.CREDIT' |translate}} </span>  {{totalCredit }}  {{'COMMON.SAR' |translate}}</span>
+ 
+                    <span  class="text-center"> <span class="p-column-title fw-bold"> {{'CUSTOMERACCOUNTREPORT.BALANCE' |translate}} </span> {{total}}  {{'COMMON.SAR' |translate}}</span>
+
+              
+                  </div>
+                
+              </div>
+
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+ 
+   </div>
+</div>
+
+
+<button hidden #calendarModel type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#chooseTimeModel">
+
+</button>
+
+<!-- Modal -->
+<div  class="modal fade" id="chooseTimeModel"  tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">{{'SALESREPORT.SELECT_DATE' |translate}}</h1>
+       
+      </div>
+      <div class="modal-body">
+        <div class="w-100 d-flex flex-wrap justify-content-between gap-3">
+           <div class="d-flex width-49 justify-content-start flex-column">
+               <h4>{{'SALESREPORT.START' |translate}}</h4>
+               <p-calendar class="max-w-full" [(ngModel)]="startDate" [inline]="true" [showWeek]="true" dateFormat="dd-mm-yy"></p-calendar>
+           </div>
+           <div class="d-flex width-49 justify-content-start flex-column">
+               <h4>{{'SALESREPORT.END' |translate}}</h4>
+               <p-calendar class="max-w-full" [(ngModel)]="endDate" [inline]="true" [showWeek]="true" dateFormat="dd-mm-yy"></p-calendar>
+           </div>
+        </div>
+
+
+
+
+        <div class="w-100 d-flex justify-content-center align-items-center mt-4">
+          <app-button-comp [btnType]="'main'"  class="width-210px d-flex  me-2" data-bs-dismiss="modal"
+          aria-label="Close" #closePoPModal  [name]="'SALESREPORT.SELECT' |translate" [color]="'#1B1464'"></app-button-comp>
+        </div>
+      
+      </div>
+
+      
+
+    </div>
+  </div>
+</div>

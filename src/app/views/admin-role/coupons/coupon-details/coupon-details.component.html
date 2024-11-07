@@ -1,0 +1,77 @@
+<!-- ui_fix -->
+<div class="divCont p-0 ps-5 pe-5">
+  <div class="title mb-5 p-2">
+    <h2 class="fw-bold">{{'ADDCOUPON.EDITCOUPONDETAILS'|translate}}</h2>
+  </div>
+  <div class="topCards d-flex flex-wrap gap-4 mb-5">
+    <div class="h-119px width-250 d-flex flex-row justify-content-between   boxShadow-25 borderRadius_10px p-3 card">
+        <div class="d-flex flex-column">
+           <span class="text-secondary fs-21 fw-400">{{'ADDCOUPON.NUMBEROFUSE'|translate}}</span>
+           <span class="fs-48 fw-400">{{coupon.used_times}}</span>
+        </div>
+
+    </div>
+    <div class="h-119px width-250 d-flex flex-row justify-content-between   boxShadow-25 borderRadius_10px p-3 gap-2 card">
+      <div class="d-flex flex-column">
+         <span [ngClass]="{'fs-18':language=='en'}" class="text-secondary fs-21 fw-400"> {{'COUPONDETAILS.COUPONAMOUNT'|translate}}</span>
+         <span [ngClass]="{'fs-33':language=='en'}" class="fs-48 fw-400">{{coupon.discount_amount}}</span>
+      </div>
+
+  </div>
+  <div class="h-119px width-250 d-flex justify-content-between   flex-row  boxShadow-25 borderRadius_10px p-3 gap-2 card">
+    <div class="d-flex flex-column">
+       <span class="text-secondary fs-21 fw-400">{{'COUPONDETAILS.INCOME'|translate}}</span>
+       <span class="fs-48 fw-400">{{coupon.incomes}}</span>
+    </div>
+
+</div>
+<div class="h-119px width-250 d-flex justify-content-between  flex-row  boxShadow-25 borderRadius_10px p-3 gap-2 card">
+  <div class="d-flex flex-column">
+     <span class="text-secondary fs-21 fw-400">{{'COUPONDETAILS.ALLSUBSCRIPTION'|translate}}</span>
+     <span  class="fs-19 fw-400 d-flex align-items-end h-100">{{coupon.plan_name}}</span>
+  </div>
+
+</div>
+</div>
+
+<div class="d-flex w-100">
+  <div class="card borderRadius_20px main-info-card">
+    <div class="mt-4 pb-4 ">
+      <div class="ps-3">
+        <p class="fw-bold">{{'ADDCOUPON.EDITCOUPONDETAILS'|translate}}</p>
+      </div>
+      <div>
+        <div class="card border-0 infoCard p-3">
+          <div class="d-flex">
+            <p>  {{'ADDCOUPON.NUMBEROFUSE'|translate}} : </p>
+            <p>{{coupon.used_times}}</p>
+          </div>
+          <div class="d-flex">
+            <p>{{'ADDCOUPON.DISCOUNTAMOUNT'|translate}} :</p>
+            <p>{{coupon.discount_value}}</p>
+           </div>
+          <div class="d-flex">
+            <p>{{'ADDCOUPON.STARTDATE'|translate}} : </p>
+            <p>{{coupon.starts_at}}</p>
+          </div>
+          <div class="d-flex">
+            <p>{{'ADDCOUPON.ENDDATE'|translate}} : </p>
+            <p>{{coupon.expires_at}}</p>
+          </div>
+          <div class="d-flex">
+            <p>{{'ADDCOUPON.COUPONSTATUS'|translate}} : </p>
+            <p *ngIf="coupon.is_active==1 && language=='ar'">مفعل</p>
+            <p *ngIf="coupon.is_active==1 && language=='en'">Active</p>
+            <p *ngIf="coupon.is_active==0 && language=='ar'">غير مفعل</p>
+            <p *ngIf="coupon.is_active==0 && language=='en'">Inactive</p>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>

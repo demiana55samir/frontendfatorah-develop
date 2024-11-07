@@ -1,0 +1,218 @@
+<form action="" [formGroup]="addClientForm">
+  <!-- ui_fix -->
+  <div class="addUserContainer p-0 ps-5 pe-5">
+   <div class="title mb-4">
+     <h2>{{'ADDCLIENT.ADDCLIENT'|translate}}</h2>
+   </div>
+   <div class="d-flex flex-column justify-content-between gap-4">
+     <div class="card dataCards w-100">
+      <div class="row w-100 mb-3">
+        <div class="col-md-12 cardTitle">
+          <h4>{{'ADDCLIENT.CLIENTINFO'|translate}}</h4>
+        </div>
+
+        <h4 class="fs-16 fw-bold mt-3">{{'COMMON.CLIENTTYPE'|translate}}</h4>
+        <div class="Types  gap-4">
+          <div class="Type" *ngFor="let type of client_types; let i = index">
+            <label class=" rounded-3 ">
+               <input type="radio"  [attr.id]="'class'+i"  [value]="type.id"
+               [checked]="type.id === selectedTypes"
+               (change)="selectedTypes = type.id;">
+               <div class="typeBody rounded-3">
+                <img [src]="type?.img" alt="">
+                </div>
+               
+            </label>
+            <div *ngIf="language=='ar'" class="pt-3 fw-bold"> {{ type.name_ar }} </div>
+            <div *ngIf="language=='en'" class="pt-3 fw-bold"> {{ type.name_en }} </div>
+         </div>
+
+        </div>
+
+   
+
+      </div>
+      <div class="row w-100 cardBody mb-3">
+        <div class="col-md-6">
+          <div formGroupName="name">
+            <div class="col-12 col-md-10 col-lg-10 mx-0 my-3">
+              <label class="fw-bold mb-2"> {{'COMMON.CLIENTORCOMPANY'|translate}} - {{'COMMON.ARABIC' |translate}} <span style="color: red;">*</span> </label>
+              <input type="text" formControlName="ar" placeholder="{{'COMMON.CLIENTORCOMPANY'|translate}}" 
+              [ngClass]="!addClientForm.get('name.ar')?.valid && addClientForm.get('name.ar')?.touched ?'errorInput' : ''"
+              class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 ">
+              <app-Form-errors [control]="addClientForm.get('name.ar')"></app-Form-errors>
+            </div>  
+
+            <div class="col-12 col-md-10 col-lg-10 mx-0 my-3">
+              <label class="fw-bold mb-2"> {{'COMMON.CLIENTORCOMPANY'|translate}} - {{'COMMON.ENGLISH' |translate}} </label>
+              <input type="text" formControlName="en" 
+              [ngClass]="!addClientForm.get('name.en')?.valid && addClientForm.get('name.en')?.touched ?'errorInput' : ''"
+              placeholder="{{'COMMON.CLIENTORCOMPANY'|translate}}" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 ">
+              <app-Form-errors [control]="addClientForm.get('name.en')"></app-Form-errors>
+            </div>  
+
+          </div>
+         
+          
+      </div>
+        <div class="col-md-6">
+          <div class="col-12 col-md-10 col-lg-10 mx-0 my-3">
+            <label class="fw-bold mb-2"> {{'LANDING.EMAIL'|translate}} </label>
+            <input type="text" formControlName="email" 
+            [ngClass]="!addClientForm.controls['email'].valid && addClientForm.controls['email'].touched ?'errorInput' : ''"
+            placeholder="{{'LANDING.EMAIL'|translate}}" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 ">
+            <app-Form-errors [control]="addClientForm.controls['email']"></app-Form-errors>
+          </div> 
+          
+          <div class="col-12 col-md-10 col-lg-10 mx-0 my-3" *ngIf="selectedTypes == 1">
+            <label class="fw-bold mb-2">{{'COMMON.TAXREGNUMBER'|translate}}</label>
+            <input  formControlName="tax_number" type="text"
+            [ngClass]="!addClientForm.controls['tax_number'].valid && addClientForm.controls['tax_number'].touched ?'errorInput' : ''"
+
+             placeholder="{{'COMMON.TAXREGNUMBER'|translate}}" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 ">
+            <app-Form-errors [control]="addClientForm.controls['tax_number']"></app-Form-errors>
+
+          </div> 
+        </div>   
+      </div>
+      </div>
+     
+     <div class="card dataCards w-100">
+      <div class="row w-100 mb-3">
+        <div class="col-md-12 cardTitle">
+          <h4> {{'COMMON.ADDRESS'|translate}}</h4>
+        </div>
+      </div>
+      <div class="row w-100 cardBody mb-3">
+        <div class="col-md-6">
+          <div class="col-12 col-md-10 col-lg-10 mx-0 my-3">
+            <label class="fw-bold mb-2">  {{'COMMON.ADDRESS'|translate}}</label>
+            <input type="text" formControlName="address" 
+            [ngClass]="!addClientForm.controls['address'].valid && addClientForm.controls['address'].touched ?'errorInput' : ''"
+            placeholder=" {{'COMMON.ADDRESS'|translate}}" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 ">
+        </div>   
+          <div class="col-12 col-md-10 col-lg-10 mx-0 my-3" *ngIf="selectedTypes == 1">
+            <label class="fw-bold mb-2">  {{'COMMON.STREETNAME'|translate}} <span style="color: red;">*</span></label>
+            <input type="text" formControlName="street_name" 
+            [ngClass]="!addClientForm.controls['street_name'].valid && addClientForm.controls['street_name'].touched ?'errorInput' : ''"
+            placeholder=" {{'COMMON.STREETNAME'|translate}}" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 ">
+
+            <app-Form-errors [control]="addClientForm.controls['street_name']"></app-Form-errors>
+        </div>   
+          <div class="col-12 col-md-10 col-lg-10 mx-0 my-3">
+            <label class="fw-bold mb-2"> {{'ADDCLIENT.POSTALCODE'|translate}} <span style="color: red;">*</span></label>
+          <input formControlName="postal_code" 
+          [ngClass]="!addClientForm.controls['postal_code'].valid && addClientForm.controls['postal_code'].touched ?'errorInput' : ''"
+          placeholder="{{'ADDCLIENT.POSTALCODE'|translate}}" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 ">
+          <app-Form-errors [control]="addClientForm.controls['postal_code']"></app-Form-errors>
+
+        </div>   
+
+        <div class="col-12 col-md-10 col-lg-10 mx-0 my-3" *ngIf="selectedTypes == 1">
+          <label class="fw-bold mb-2"> {{'COMMON.BUILDINGNUMBER'|translate}} <span style="color: red;">*</span></label>
+        <input formControlName="building_number" 
+        [ngClass]="!addClientForm.controls['building_number'].valid && addClientForm.controls['building_number'].touched ?'errorInput' : ''"
+        placeholder="{{'COMMON.BUILDINGNUMBER'|translate}}" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 ">
+        <app-Form-errors [control]="addClientForm.controls['building_number']"></app-Form-errors>
+
+      </div>   
+        <div class="col-12 col-md-10 col-lg-10 mx-0 my-3" *ngIf="selectedTypes == 1">
+          <label class="fw-bold mb-2"> {{'COMMON.REGION'|translate}} <span style="color: red;">*</span></label>
+        <input formControlName="region" 
+        [ngClass]="!addClientForm.controls['region'].valid && addClientForm.controls['region'].touched ?'errorInput' : ''"
+        placeholder="{{'COMMON.REGION'|translate}}" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 ">
+        <app-Form-errors [control]="addClientForm.controls['region']"></app-Form-errors>
+
+      </div>   
+
+      </div>
+      <div class="col-md-6">
+        <div class="col-12 col-md-10 col-lg-10 mx-0 my-3">
+          <label class="fw-bold mb-2"> {{'COMMON.CITY'|translate}} <span style="color: red;">*</span></label>
+          <input type="text" formControlName="city"
+          [ngClass]="!addClientForm.controls['city'].valid && addClientForm.controls['city'].touched ?'errorInput' : ''"
+          placeholder=" {{'COMMON.CITY'|translate}}" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 ">
+          <app-Form-errors [control]="addClientForm.controls['city']"></app-Form-errors>
+      </div>   
+        <div class="col-12 col-md-10 col-lg-10 mx-0 my-3" *ngIf="selectedTypes == 1">
+          <label class="fw-bold mb-2"> {{'COMMON.PLOTID'|translate}} <span style="color: red;">*</span></label>
+          <input type="text" formControlName="plot_identification"
+          [ngClass]="!addClientForm.controls['plot_identification'].valid && addClientForm.controls['plot_identification'].touched ?'errorInput' : ''"
+          placeholder=" {{'COMMON.PLOTID'|translate}}" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 ">
+          <app-Form-errors [control]="addClientForm.controls['plot_identification']"></app-Form-errors>
+      </div>   
+        <div class="col-12 col-md-10 col-lg-10 mx-0 my-3" *ngIf="selectedTypes == 1">
+          <label class="fw-bold mb-2"> {{'COMMON.COMMREGNUMBER'|translate}} <span style="color: red;">*</span></label>
+          <input type="text" formControlName="commercial_record_number"
+          [ngClass]="!addClientForm.controls['commercial_record_number'].valid && addClientForm.controls['commercial_record_number'].touched ?'errorInput' : ''"
+           placeholder="{{'COMMON.COMMREGNUMBER'|translate}}" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 ">
+          <app-Form-errors [control]="addClientForm.controls['commercial_record_number']"></app-Form-errors>
+      </div>   
+    </div>
+     </div>
+   </div>
+  
+   <div class="card dataCards w-100">
+    <div class="row w-100 mb-3">
+      <div class="col-md-12 cardTitle">
+        <h4>{{'ADDCLIENT.DELIVERYDATA'|translate}}</h4>
+      </div>
+    </div>
+    <div class="row w-100 cardBody mb-3">
+      <div class="col-md-6">
+        <div class="col-12 col-md-10 col-lg-10 mx-0 my-3">
+          <label class="fw-bold mb-2">{{'COMMON.FAXNUMBER'|translate}}</label>
+          <!-- <input type="number" formControlName="fax" placeholder="966 XX XXX XXXX" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 "> -->
+
+          <!-- ui_fix -->
+          <input type="text" formControlName="fax"  
+          [ngClass]="!addClientForm.controls['fax'].valid && addClientForm.controls['fax'].touched ?'errorInput' : ''"
+          placeholder=" 00966126572010" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 ">
+
+          <!-- <p-inputMask formControlName="fax"   mask="966*********"   placeholder="(966) 000-000-000" 
+        styleClass="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 "
+       ></p-inputMask> -->
+
+          <app-Form-errors [control]="addClientForm.controls['fax']"></app-Form-errors>
+        </div>   
+        <div class="col-12 col-md-10 col-lg-10 mx-0 my-3">
+          <label class="fw-bold mb-2">{{'COMMON.PHONE'|translate}}</label>
+        <!-- <input type="number" formControlName="mobile" placeholder="966 XX XXX XXXX" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 "> -->
+        <!-- ui_fix -->
+        <input type="text" formControlName="mobile" 
+        [ngClass]="!addClientForm.controls['mobile'].valid && addClientForm.controls['mobile'].touched ?'errorInput' : ''"
+        placeholder="+966 011 124 5684 " class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 ">
+        <!-- <p-inputMask formControlName="mobile"   mask="966*********"   placeholder="(966) 000-000-000"
+        styleClass="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 "
+       ></p-inputMask> -->
+
+        <app-Form-errors [control]="addClientForm.controls['mobile']"></app-Form-errors>
+      </div>   
+    </div>
+    <div class="col-md-6">
+      <div class="col-12 col-md-10 col-lg-10 mx-0 my-3">
+        <label class="fw-bold mb-2">{{'COMMON.TELEPHONE'|translate}} </label>
+        <!-- class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 " -->
+        
+        <!-- ui_fix -->
+        <input type="text" formControlName="phone" 
+        [ngClass]="!addClientForm.controls['phone'].valid && addClientForm.controls['phone'].touched ?'errorInput' : ''"
+        placeholder=" 058 254 3564 " class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 ">
+        <!-- <p-inputMask formControlName="phone"   mask="966*********"   placeholder="(966) 000-000-000"
+        styleClass="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 "
+       ></p-inputMask> -->
+        <app-Form-errors [control]="addClientForm.controls['phone']"></app-Form-errors>
+        <!-- <input type="number" formControlName="phone" placeholder="966 XX XXX XXXX" 
+        class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 "> -->
+    </div>      
+  </div>
+  <div class="col-md-12 d-flex justify-content-center justify-content-md-end">
+    <app-button-comp [btnType]="'main'" (click)="addClient()" class="sumbitBtn"   [name]="'COMMON.ADD'|translate" [background_color]="'#1B1464'" ></app-button-comp>
+  </div>
+   </div>
+  </div>
+  
+  </div>
+  </div>
+
+</form>

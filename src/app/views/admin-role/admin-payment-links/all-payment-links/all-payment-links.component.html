@@ -1,0 +1,76 @@
+<!-- ui_fix -->
+<div class="row invoices-container p-0 ps-5 pe-5">
+  <div class="col-md-12 d-flex justify-content-start title">
+    <h2 class="ms-4">{{'PAYMENTLINKS.TITLE' | translate}}</h2>
+  </div>
+  <div class="card invoice-card">
+   <div class="px-2 py-3 d-flex flex-wrap justify-content-between">
+     <div class=" cardTitle ">
+      <p>{{'PAYMENTLINKS.SUBTITLE' | translate}}</p>
+    </div>
+
+
+   </div>
+
+    <div class="col-md-12 d-flex justify-content-between px-2 py-3">
+       <div class="search">
+        <span class="me-2 my-auto">{{'CREDITNOTICE.SEARCH' | translate}}</span>
+         <input placeholder="{{'PAYMENTLINKDETAILS.PAYMENTFOR'|translate}} , {{'LANDING.EMAIL'|translate}}" type="text" (keyup.enter)="search()"
+         [(ngModel)]="searchWord" (input)="search()">
+       </div>
+    </div>
+    <div class="col-md-12">
+      
+      <app-table-comp 
+      [columnsArray]="columnsArray"
+      [columnsNames]="columnsNames"
+      [RowsData] = "invoices"
+      [type]="'AdminInvoice'"
+
+      [controlArray]="controlArray">
+      </app-table-comp>
+
+
+      <p-paginator (onPageChange)="onPageChange($event)"  #paginator
+       [first]="1" [rows]="perPage" [totalRecords]="totalPage" 
+      ></p-paginator> 
+
+     <!-- <p-table [responsive]="true" [value]="invoices">
+       <ng-template pTemplate="header">
+           <tr>
+             <th>رقم الفاتورة</th>
+             <th>العميل</th>
+             <th>تحميل</th>
+             <th> نوع الفاتورة</th>
+               <th>المبلغ المحصل</th>
+               <th>الاجمالي</th>
+               <th>تحكم</th>
+           </tr>
+       </ng-template>
+       <ng-template pTemplate="body" let-invoices>
+           <tr>
+               <td>{{ invoices.number }}</td>
+               <td>{{ invoices.client }}</td>
+               <td>
+                <div class="download">
+                  <button style="border-radius: 20px;" class="prodBtn px-3 py-1 fw-semibold green_Color_BG  border-0 text-white my-auto mx-0">
+                      <span> تحميل</span>
+                  </button>
+                </div>
+               </td>
+               <td>
+                <div class="download">
+                  <button style="border-radius: 20px; cursor:auto;" class="prodBtn px-3 py-1 fw-semibold lightBlue_Color_BG  border-0 text-white my-auto mx-0">
+                      <span class="darkBlue-text"> {{ invoices.invoice_title}}</span>
+                  </button>
+                </div>
+               </td>
+               <td>{{ invoices.paid }}</td>
+               <td>{{ invoices.total }}</td>
+               <td><i class="fas fa-ellipsis-v" style="color: #000000;"></i></td>
+           </tr>
+       </ng-template>
+   </p-table> -->
+    </div>
+</div>
+</div>

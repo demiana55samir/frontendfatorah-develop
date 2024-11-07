@@ -1,0 +1,129 @@
+<!-- ui_fix -->
+<div class="row main-container p-0 ps-5 pe-5">
+  <div class="col-md-12 title mb-2"> 
+     <h2 *ngIf="type=='add'">{{'COUPONS.ADDCOUPON' |translate}}</h2>
+     <h2 *ngIf="type=='edit'">{{'ADDCOUPON.EDITCOUPON' |translate}}</h2>
+  </div>
+  <div class="card borderRadius_20px p-3">
+    <div class="cardTitle">
+      <h5 *ngIf="type=='add'">{{'ADDCOUPON.COUPONDETAILS' |translate}}</h5>
+      <h5 *ngIf="type=='edit'">{{'ADDCOUPON.EDITCOUPONDETAILS' |translate}}</h5>
+    </div>
+    <form [formGroup]="couponDataForm" action="">
+      <div #form class="row w-100 m-auto">
+        <div class="col-md-6">
+  
+          <div  class="col-11 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1">{{'ADDCOUPON.DISCOUNTCOUPN' |translate}} <span style="color:red">*</span></label>
+            <input type="text" [ngClass]="{'direction':language=='ar'}"
+            [ngClass]="!couponDataForm.controls['code'].valid && couponDataForm.controls['code'].touched ?'errorInput' : ''"
+            formControlName="code" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+            <app-Form-errors [control]="couponDataForm.controls['code']"></app-Form-errors>
+
+          </div>   
+          <div class="col-11 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1">{{'ADDCOUPON.STARTDATE' |translate}}  </label>
+            <div class=" d-flex position-relative justify-content-end align-content-center flex-wrap w-100">
+              <p-calendar #startedAtCal class="w-100"
+              [styleClass]="!couponDataForm.controls['starts_at'].valid && couponDataForm.controls['starts_at'].touched ?'errorInput' : ''"
+              dateFormat="yy-mm-dd" formControlName="starts_at"   placeholder=" "></p-calendar>
+              <img (click)="startedAtCal.toggle()" class=" position-absolute p-3" src="../../../../../assets/images/user/calendar (2).png" alt="">
+              
+            </div>
+            <app-Form-errors [control]="couponDataForm.controls['starts_at']"></app-Form-errors>
+
+          </div>   
+          <div class="col-11 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1">{{'ADDCOUPON.DISCOUNTTYPE' |translate}} <span style="color:red">*</span></label>
+                                    
+            <p-dropdown *ngIf="language=='ar'"  
+            [styleClass]="!couponDataForm.controls['type'].valid && couponDataForm.controls['type'].touched ?'errorInput' : ''"
+            [options]="DiscountType" formControlName="type"  placeholder=" " class="my-1 mx-0 py-2 w-100" optionLabel="nameAR" optionValue="value"></p-dropdown>                           
+           
+            <p-dropdown *ngIf="language=='en'"
+             [styleClass]="!couponDataForm.controls['type'].valid && couponDataForm.controls['type'].touched ?'errorInput' : ''"
+              [options]="DiscountType" formControlName="type"  placeholder=" " class="my-1 mx-0 py-2 w-100" optionLabel="nameEN" optionValue="value"></p-dropdown>                           
+            <app-Form-errors [control]="couponDataForm.controls['type']"></app-Form-errors>
+          </div>   
+
+          <div class="col-11 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1">{{'ADDCOUPON.SUBSCRIPTIONTYPE' |translate}}</label>
+
+             <!-- <p-dropdown  [options]="durations" formControlName="plan_id"  placeholder=" " class="my-1 mx-0 py-2 w-100" optionLabel="name" optionValue="slug"></p-dropdown>  -->
+             <p-dropdown [options]="durations" formControlName="subscription" 
+             [styleClass]="!couponDataForm.controls['subscription'].valid && couponDataForm.controls['subscription'].touched ?'errorInput' : ''"
+             placeholder=" " class="my-1 mx-0 py-2 w-100" optionLabel="name" optionValue="slug" (onChange)="chooseDurationFilter($event.value)"></p-dropdown>                           
+
+            <!-- <p-dropdown *ngIf="language=='ar'"  [options]="subscriptionType" formControlName="subscription"  placeholder=" " class="my-1 mx-0 py-2 w-100" optionLabel="nameAR" optionValue="value"></p-dropdown>                           
+            <p-dropdown *ngIf="language=='en'" [options]="subscriptionType" formControlName="subscription"  placeholder=" " class="my-1 mx-0 py-2 w-100" optionLabel="nameEN" optionValue="value"></p-dropdown>                            -->
+            <app-Form-errors [control]="couponDataForm.controls['subscription']"></app-Form-errors>
+          </div>   
+  
+      </div>
+        <div class="col-md-6">
+  
+          <div   class="col-11 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1">{{'ADDCOUPON.NUMBEROFUSE' |translate}} </label>
+            <input type="number" [ngClass]="{'direction':language=='ar'}"
+            [ngClass]="!couponDataForm.controls['using_times'].valid && couponDataForm.controls['using_times'].touched ?'errorInput' : ''"
+            appOnlyNumber formControlName="using_times" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+            <app-Form-errors [control]="couponDataForm.controls['using_times']"></app-Form-errors>
+
+          </div> 
+  
+          <div class="col-11 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1">{{'ADDCOUPON.ENDDATE' |translate}}  </label>
+            <div class=" d-flex position-relative justify-content-end align-content-center flex-wrap w-100">
+              <p-calendar #expiredAtCal class="w-100"
+              [styleClass]="!couponDataForm.controls['expires_at'].valid && couponDataForm.controls['expires_at'].touched ?'errorInput' : ''"
+              dateFormat="yy-mm-dd"  formControlName="expires_at"   placeholder=" "></p-calendar>
+              <img (click)="expiredAtCal.toggle()" class=" position-absolute p-3" src="../../../../../assets/images/user/calendar (2).png" alt="">
+              
+            </div>
+            <app-Form-errors [control]="couponDataForm.controls['expires_at']"></app-Form-errors>
+
+          </div>
+  
+          <div  class="col-11 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1">{{'ADDCOUPON.DISCOUNTAMOUNT' |translate}} <span style="color:red">*</span></label>
+            <input type="text" [ngClass]="{'direction':language=='ar'}" 
+            [ngClass]="!couponDataForm.controls['discount'].valid && couponDataForm.controls['discount'].touched ?'errorInput' : ''"
+            formControlName="discount" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+            <app-Form-errors [control]="couponDataForm.controls['discount']"></app-Form-errors>
+
+          </div>  
+
+          <div class="col-11 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1">{{'ADDCOUPON.PLANETYPE' |translate}}</label>
+          
+           
+
+            <p-dropdown  [options]="subscriptionPlanes" formControlName="plan_id"  
+            [styleClass]="!couponDataForm.controls['plan_id'].valid && couponDataForm.controls['plan_id'].touched ?'errorInput' : ''"
+            placeholder=" " class="my-1 mx-0 py-2 w-100" optionLabel="name" optionValue="id"></p-dropdown>                           
+
+            <!-- <p-dropdown *ngIf="language=='ar'"  [options]="PlanType" formControlName="plan_id"  placeholder=" " class="my-1 mx-0 py-2 w-100" optionLabel="nameAR" optionValue="value"></p-dropdown>                           
+            <p-dropdown *ngIf="language=='en'"  [options]="PlanType" formControlName="plan_id"  placeholder=" " class="my-1 mx-0 py-2 w-100" optionLabel="nameEN" optionValue="value"></p-dropdown>                            -->
+            <app-Form-errors [control]="couponDataForm.controls['plan_id']"></app-Form-errors>
+          </div>  
+  
+        </div>
+        <div class="col-md-11 mx-0 my-3">
+          <label class="form-label  fw-bold mb-1">{{ 'ADDCOUPON.COUPONSTATUS' | translate }} </label>
+          <div class="d-flex gap-1 align-items-center">
+             <input class="form-check-input cursor-pointer"
+             [ngStyle]="{'--checked-color': primaryColor}"
+             [ngClass]="!couponDataForm.controls['is_active'].valid && couponDataForm.controls['is_active'].touched ?'errorInput' : ''"
+              style="width: 2.4em; height: 2.4em;border-radius: 10px;" formControlName="is_active"  type="checkbox" value="" id="flexCheckDefault">     
+              <app-Form-errors [control]="couponDataForm.controls['is_active']"></app-Form-errors>
+              <span>{{ 'TABLE.VERIFIED' | translate }}</span>
+          </div>
+        </div>
+        <div class="col-md-12 d-flex justify-content-center justify-content-md-end">
+          <app-button-comp *ngIf="type=='add'" (click)="addCoupon()" [btnType]="'main'" style="width: 120px;"  [name]="'COMMON.ADD' |translate" [background_color]="'#1B1464'" ></app-button-comp>
+          <app-button-comp *ngIf="type=='edit'" (click)="editCoupon()" [btnType]="'main'" style="width: 120px;"  [name]="'COMMON.EDIT' |translate" [background_color]="'#1B1464'" ></app-button-comp>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

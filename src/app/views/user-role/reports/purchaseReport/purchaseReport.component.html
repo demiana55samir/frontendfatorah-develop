@@ -1,0 +1,138 @@
+<!-- ui_fix -->
+<div class="customerStatmentReportCont p-0 ps-5 pe-5">
+  <div>
+    <h3 class="fw-bolder fw-600 mb-3">{{'CUSTOMERACCOUNTREPORT.REPORTS' | translate}}</h3>
+  </div>
+   <div class="card borderRadius_20px boxShadow-10">
+      <div class="p-4">
+        <div class="w-100">
+          <h4 class="fw-bold">{{'SIDENAV.PURCHASEREPORTS' | translate}}</h4>
+        </div>
+        <div class="topPart h-100 d-flex flex-wrap justify-content-between align-items-center">
+          <div class="d-flex flex-wrap gap-3">
+            <div class="mx-0 my-3">
+              <label class="form-label fw-bolder mb-2">{{'SUPPLIER.SUPPLIERS' | translate}}</label>
+              <p-dropdown [options]="suppliers"  [filter]="true"
+              placeholder=" " [(ngModel)]="supplier_id" 
+              class=" width-280px h-60px my-1 mx-0 py-2 d-flex" optionLabel="name" optionValue="id"></p-dropdown>                             
+            </div> 
+            <div class="mx-0 my-3">
+              <label class="form-label fw-bolder mb-2">{{'CUSTOMERACCOUNTREPORT.CHOOSE_REPORT_DURATION' | translate}}</label>
+              <p-dropdown *ngIf="language=='ar'" (click)="openModelCheck()" #durationDropDown [options]="duration" [(ngModel)]="currentDuration"  placeholder=" "  class="width-280px h-60px d-flex my-1 mx-0 py-2 " optionLabel="nameAR" optionValue="value"></p-dropdown>   
+              <p-dropdown *ngIf="language=='en'" (click)="openModelCheck()" #durationDropDown [options]="duration" [(ngModel)]="currentDuration"  placeholder=" "  class="width-280px h-60px d-flex my-1 mx-0 py-2 " optionLabel="nameEN" optionValue="value"></p-dropdown>   
+                                        
+            </div> 
+            <div class="mx-0 my-3">
+              <label class="form-label fw-bolder mb-2">{{'COMMON.CHOOSE_PURCHASE_TYPE' | translate}}</label>
+              <p-dropdown *ngIf="language=='ar'" (click)="openModelCheck()" #durationDropDown [options]="purchaseTypes" [(ngModel)]="currentStatus"  placeholder=" "  class="width-280px h-60px d-flex my-1 mx-0 py-2 " optionLabel="nameAr" optionValue="status"></p-dropdown>   
+              <p-dropdown *ngIf="language=='en'" (click)="openModelCheck()" #durationDropDown [options]="purchaseTypes" [(ngModel)]="currentStatus"  placeholder=" "  class="width-280px h-60px d-flex my-1 mx-0 py-2 " optionLabel="nameEn" optionValue="status"></p-dropdown>   
+            </div> 
+
+            <div class="fs-16 fw-400 mx-0 my-3" *ngIf="currentStatus == 1">
+              <label class="form-label fw-bolder mb-2"> {{'ADDPURCHASE.PURCHASETYPE'|translate}} </label>
+              <div class="dropDownWidth">
+                <p-dropdown  [options]="purchase" [(ngModel)]="expenses_type"  placeholder="{{'ADDPURCHASE.PURCHASETYPE'|translate}}" 
+                class="width-280px h-60px d-flex my-1 mx-0 py-2" optionLabel="name" optionValue="id"></p-dropdown> 
+              </div>
+            </div>
+             <div class="fs-16 fw-400 mx-0 my-3" *ngIf="currentStatus == 0">
+              <label class="form-label fw-bolder mb-2"> {{'ADDPURCHASE.EXPENSESTYPE'|translate}} </label>
+              <div class="dropDownWidth">
+                <p-dropdown  [options]="expenses" [(ngModel)]="expenses_type"  placeholder="{{'ADDPURCHASE.EXPENSESTYPE'|translate}}" 
+                class="width-280px h-60px d-flex my-1 mx-0 py-2 " optionLabel="name" optionValue="id"></p-dropdown> 
+              </div>
+            </div>
+
+          </div>
+          <div class="d-flex align-items-center">
+            <app-button-comp [btnType]="'main'" (click)="getReport()" type="submit"  [name]="'CUSTOMERACCOUNTREPORT.GENERATE' | translate" [background_color]="'#1B1464'"></app-button-comp>
+          </div>
+        </div>
+      </div>
+      <div class="HLine"></div>
+      <div class="p-4">
+        <div class="chart mt-4 mb-5 ">
+          <div>
+              <div class=" card boxShadow-10 borderRadius_20px">
+                <div class="p-4 w-100 mb-3 d-flex flex-wrap justify-content-between align-items-center">
+                  <div>
+                    <p class="text">
+                      {{'SIDENAV.PURCHASEREPORTS' | translate}}
+                        <button type="button" class="btn me-2 border-0" placement="top"
+                            ngbTooltip="total number of leads">
+                            <i class="fa-solid fa-circle-info"></i>
+                        </button>
+                    </p>
+                  </div>
+                  <div>
+                    <app-button-comp [btnType]="'main'" (click)="downloadCSV()" style="width: 190px;" type="button"  [name]="'CUSTOMERACCOUNTREPORT.PDF' | translate" [background_color]="'#5C60F5'"></app-button-comp>
+                  </div>
+        
+                </div>
+                <div class="HLine mb-3"></div>
+
+                <div class="row">
+                  <div class="col-md-12">
+           
+                   <app-table-comp 
+                   [columnsArray]="columnsArray"
+                   [columnsNames]="columnsNames"
+                   [RowsData] = "Purchases"
+                   [type]="'Purchase'"
+                   [controlArray]="controlArray">
+                   </app-table-comp>
+             
+                   <p-paginator (onPageChange)="onPageChange($event)" #paginator
+                    [first]="1" [rows]="perPage" [totalRecords]="totalPage" 
+                   ></p-paginator> 
+                  </div>
+               </div>
+
+              </div>
+          </div>
+        </div>
+      </div>
+ 
+   </div>
+</div>
+
+
+<button hidden #calendarModel type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#chooseTimeModel">
+
+</button>
+
+<!-- Modal -->
+<div  class="modal fade" id="chooseTimeModel"  tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">{{'SALESREPORT.SELECT_DATE' |translate}}</h1>
+       
+      </div>
+      <div class="modal-body">
+        <div class="w-100 d-flex flex-wrap justify-content-between gap-3">
+           <div class="d-flex width-49 justify-content-start flex-column">
+               <h4>{{'SALESREPORT.START' |translate}}</h4>
+               <p-calendar class="max-w-full" [(ngModel)]="startDate" [inline]="true" [showWeek]="true" dateFormat="dd-mm-yy"></p-calendar>
+           </div>
+           <div class="d-flex width-49 justify-content-start flex-column">
+               <h4>{{'SALESREPORT.END' |translate}}</h4>
+               <p-calendar class="max-w-full" [(ngModel)]="endDate" [inline]="true" [showWeek]="true" dateFormat="dd-mm-yy"></p-calendar>
+           </div>
+        </div>
+
+
+
+
+        <div class="w-100 d-flex justify-content-center align-items-center mt-4">
+          <app-button-comp [btnType]="'main'"  class="width-210px d-flex  me-2" data-bs-dismiss="modal"
+          aria-label="Close" #closePoPModal  [name]="'SALESREPORT.SELECT' |translate" [color]="'#1B1464'"></app-button-comp>
+        </div>
+      
+      </div>
+
+      
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<!-- ui_fix -->
+<div class="invoices-container p-0 ps-5 pe-5">
+  <div class="col-md-12 d-flex justify-content-start title">
+   <h2>{{'CITIES.DELETEDCITIESTITLE' | translate}}</h2>
+  </div>
+  <div class="card mb-5 invoice-card">
+   <div class="row px-2 py-3 d-flex flex-row justify-content-between">
+     <div class="col-md-3 cardTitle">
+       <p> {{'CITIES.SUBTITLE' | translate}}</p>
+     </div>
+     <div class="col-md-3 d-flex bottons justify-content-end">
+         <app-button-comp   
+         class="me-3 botton" routerLink="/admin/settings/cities/All-cities" [name]="'CITIES.ALLCITIESTITLE'|translate"  [background_color]="'#5C60F5'" ></app-button-comp>
+
+     </div>
+
+   </div>
+
+    
+   <div class="col-md-12 d-flex justify-content-between px-3 py-3">
+    <div class="search">
+     <span class="me-2 my-auto">{{'CREDITNOTICE.SEARCH' | translate}}</span>
+      <input placeholder="{{'COMMON.NAME'|translate}} , {{'TEMPLATES.SLAG'|translate}}" type="text"(keyup.enter)="search()"
+      [(ngModel)]="searchWord" (input)="search()">
+    </div>
+ </div>
+    <div class="col-md-12">
+
+     <app-table-comp 
+     [columnsArray]="columnsArray"
+     [columnsNames]="columnsNames"
+     [RowsData] = "cities"
+     [type]="'AdminInvoice'"
+     [controlArray]="controlArray">
+     </app-table-comp>
+
+
+     <p-paginator #paginator (onPageChange)="onPageChange($event)"
+     [first]="1"  [rows]="perPage" [totalRecords]="totalPage" 
+     ></p-paginator> 
+
+    </div>
+  </div>
+</div>
+
+

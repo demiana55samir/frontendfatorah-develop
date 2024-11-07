@@ -1,0 +1,16 @@
+::ng-deep {
+    .p-tabmenu .p-tabmenu-nav {
+        background-color:transparent !important;
+    }
+    .p-menuitem-link{
+        background-color:transparent !important;
+    }
+    .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link:not(.p-disabled):focus{
+        box-shadow: none !important;
+       }
+
+    .p-tabmenu-nav a {
+    height: 103%;
+    }
+}
+

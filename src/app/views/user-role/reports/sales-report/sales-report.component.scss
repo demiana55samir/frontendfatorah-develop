@@ -1,0 +1,148 @@
+.salesReportCont{
+    padding: 6% 3%;
+    // @media screen and (max-width:1024px){
+    //     padding: 1% 1%;
+    
+    // }
+.topPart{
+    @media screen and (max-width:425px){
+        display: flex;
+        flex-direction: column;
+        justify-content: center !important;
+    }
+}
+}
+
+::ng-deep{
+    .p-dropdown, .p-calendar .p-inputtext, .p-calendar , textarea{
+        background: #FFFFFF;
+        border-radius: 10px !important;
+        width: 100% ;
+    }
+    .p-dropdown {
+        width: 100%;
+    }
+    .p-dropdown .p-dropdown-panel {
+        min-width: 100%;
+        max-width: 280px;
+    }
+     .p-datatable .p-datatable-tbody > tr > td{
+        text-align: center !important;
+        background-color: white;
+    }
+   
+
+    @media only screen and (max-width: 768px) {
+        .p-datatable .p-datatable-tbody > tr > td{
+            // border: 1px solid #dee2e6 !important;
+            // border-width: 0 0 1px 0 !important; 
+            // border: 1px solid #dee2e6 !important;
+   
+        }
+        .p-datatable-thead > tr > th, .p-datatable-tfoot > tr > td {
+        //  display: table-cell !important;
+        //  font-size: 13px;
+        //  border: 1px solid #dee2e6 !important;
+   
+        }
+    
+    }
+    .p-datatable-wrapper{
+        overflow-x: scroll;
+    }
+
+    @media screen and (max-width: 960px){
+        .p-datatable-tbody > tr > td {
+        //    display:table-cell !important;
+        //    width: 40% !important;
+        //    border: 1px solid #dee2e6 !important;
+            // border: none !important;
+        }
+  
+    // }
+    // .footer .p-datatable .p-datatable-tfoot > tr > td{
+    //     text-align: right !important;
+    }
+}
+
+#chooseTimeModel{
+    .modal-dialog{
+        padding-top: 4% !important;
+        max-width: 70vw !important;
+        @media only screen and (max-width:768px){
+            max-width: 100% !important;
+           margin: 4% auto !important;
+    }
+        .modal-content{
+            border-radius: 30px !important;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+            .modal-header{
+                border-bottom: none;
+            }
+            .modal-body{
+                padding: 0% 5% 5vh 5%;
+                .Title{
+                    width: 100%;
+                    text-align: center;
+                }
+
+
+            }
+        }
+    }
+
+}
+
+::ng-deep .p-calendar .p-datepicker{
+    width: 100% !important;
+}
+
+::ng-deep{
+    [dir='rtl'] .apexcharts-yaxis {
+         transform: translate(-0.125px, 0px) !important;
+     }
+  }
+
+//   ::ng-deep{
+//     .p-datepicker .p-datepicker-prev {
+//       order: 3 !important;
+//     }
+//   .p-datepicker .p-datepicker-title {
+//       order: 2 !important;
+//     }
+  
+//   .p-datepicker .p-datepicker-next {
+//     order: 1 !important;
+//     }
+//   }
+
+  ::ng-deep{
+    .rtl{
+        .p-datepicker .p-datepicker-prev ,.p-datepicker .p-datepicker-next {
+            transform: rotateY(180deg);
+        }
+        .p-dropdown-panel .p-dropdown-header .p-dropdown-filter {
+            padding-right: 0.75rem;
+            padding-left: unset;
+        }
+        .p-dropdown-panel .p-dropdown-header .p-dropdown-filter-icon {
+            left: 0.75rem;
+            right: unset;
+        }
+
+        .p-dropdown-panel .p-dropdown-header .p-dropdown-filter {
+            padding-left: 1.75rem !important;
+            margin-left: -1.75rem !important;
+            padding-right: unset !important;
+            margin-right: unset !important;
+            padding-inline-start: 7% !important;
+        }
+    }}
+
+    .Mobilefooter{
+        display: none;
+        @media only screen and (max-width: 960px) {
+            display: block;
+        }
+
+    }

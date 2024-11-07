@@ -1,0 +1,97 @@
+<!-- ui_fix -->
+<div class="divCont px-5 p-0 ps-5 pe-5 ">
+  <div class="pb-3">
+    <h3>{{'BALANCETRANSERREQUESTS.TITLE' | translate}}</h3>
+  </div>
+  <div class="card mainCard boxShadow-10 borderRadius_20px py-3">
+   <div class="header px-5  d-flex justify-content-between flex-wrap">
+      <div class="width-50">
+        <span class="fs-16 fw-bold">{{'BALANCETRANSERREQUESTS.SUBTITLE' | translate}}</span>
+      </div>
+      <div class="popupBtn">
+        <app-button-comp [btnType]="'main'" (click)="openModal()" class="btn borderRadius_10px" image="./assets/images/invoices/add.svg" [name]="'BALANCETRANSERREQUESTS.ADDBALANCETRANCFERREQUEST' | translate" [background_color]="'#5C60F5'"></app-button-comp>
+      </div>
+   </div>
+   <div class="w-100 mt-2">
+    <app-table-comp 
+    [columnsArray]="columnsArray"
+    [columnsNames]="columnsNames"
+    [RowsData] = "BalanceTransferRequests"
+    [controlArray]="controlArray">
+    </app-table-comp>
+
+
+    <p-paginator #paginator (onPageChange)="onPageChange($event)"
+    [first]="1"  [rows]="perPage" [totalRecords]="totalPage" 
+    ></p-paginator> 
+   </div>
+  </div>
+</div>
+
+
+<button hidden #createBalanceTransferRequestModel  id="createBalanceTransferRequestModel" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModel">
+
+</button>
+<div class="modal fade" tabindex="-1" id="addModel" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="text-end fw-bolder">{{'ADDBALANCETRANSFER.ADD_BALANCE_TRANSFER_REQUEST'|translate}}</span>
+      </div>
+      <div class="modal-body">
+          <!-- form  -->
+        <form [formGroup]="addBalanceTransferRequestsForm" class="row g-3 needs-validation ContactForm" novalidate>
+                <div>
+                  <span class="mb-1">  {{'ADDBALANCETRANSFER.TRANSFER_FEE'|translate}}:- </span>
+                  <br>
+                  <span class="mb-1">
+                     -{{'ADDBALANCETRANSFER.WITHDRAWAL_DETAILS'|translate}}
+                  </span>
+                </div>
+          <div class="col-12">
+              <label for="validationCustomPhone" class="form-label">{{'ADDBALANCETRANSFER.ACCOUNT_HOLDER_NAME'|translate}}</label>
+              <input type="text" class="form-control" formControlName="account_name" placeholder="{{'ADDBALANCETRANSFER.ACCOUNT_HOLDER_NAME'|translate}}" id="validationCustomPhone" aria-describedby="inputGroupPrepend" required>
+              <app-Form-errors [control]="addBalanceTransferRequestsForm.controls['account_name']"></app-Form-errors>
+
+              <span class="light-purple-text">{{'ADDBALANCETRANSFER.MATCH_ACCOUNT_NAME'|translate}} </span>
+          </div>
+
+          <div class="col-12">
+              <label for="validationCustomPhone" class="form-label"> {{'ADDBALANCETRANSFER.BANK_NAME'|translate}}</label>
+              <input type="text" class="form-control"  formControlName="bank_name"  placeholder="{{'ADDBALANCETRANSFER.BANK_NAME'|translate}}" id="validationCustomPhone" aria-describedby="inputGroupPrepend" required>
+              <app-Form-errors [control]="addBalanceTransferRequestsForm.controls['bank_name']"></app-Form-errors>
+
+            </div>
+
+          
+          <div class="col-12">
+            <label for="validationTextarea" class="form-label">{{'ADDBALANCETRANSFER.IBAN_NUMBER'|translate}}</label>
+            <input type="text" class="form-control" formControlName="iban"   placeholder="{{'ADDBALANCETRANSFER.IBAN_NUMBER'|translate}}" id="validationCustomPhone" aria-describedby="inputGroupPrepend" required>
+            <app-Form-errors [control]="addBalanceTransferRequestsForm.controls['iban']"></app-Form-errors>
+            <span class="light-purple-text">{{'ADDBALANCETRANSFER.ENSURE_IBAN_NUMBER'|translate}}</span>
+
+          </div>
+
+          <div class="col-12">
+            <label for="validationTextarea" class="form-label">{{'ADDBALANCETRANSFER.AMOUNT'|translate}}</label>
+            <input type="text" class="form-control"  formControlName="amount"  placeholder="{{'ADDBALANCETRANSFER.AMOUNT'|translate}}" id="validationCustomPhone" aria-describedby="inputGroupPrepend" required>
+            <app-Form-errors [control]="addBalanceTransferRequestsForm.controls['amount']"></app-Form-errors>
+
+            <span class="light-purple-text">{{'ADDBALANCETRANSFER.MINIMUM_WITHDRAWAL_AMOUNT'|translate}}</span>
+
+          </div>
+
+      <div class="col-12">
+        <div class="d-flex justify-content-end">
+          <app-button-comp [btnType]="'secondary'"  class="me-2" (click)="closeModalClick()" data-bs-dismiss="modal"
+          aria-label="Close" #closePoPModal  [name]="'COMMON.CANCEL'|translate" [color]="'#1B1464'"></app-button-comp>
+          <app-button-comp [btnType]="'main'"  (click)="addBalanceTransferRequest()" class="me-2" [name]="'ADDBALANCETRANSFER.BALANCE_TRANSFER_REQUEST'|translate" background_color="#1B1464"></app-button-comp>
+        </div>
+      </div>
+      </form>
+        <!-- ------ -->
+      </div>
+
+    </div>
+  </div>
+</div>

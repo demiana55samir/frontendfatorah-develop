@@ -1,0 +1,199 @@
+<!-- ui_fix -->
+<form action="" [formGroup]="editClientForm">
+  <div class="addUserContainer p-0 ps-5 pe-5">
+   <div class="title mb-4">
+     <h2>{{'ADDCLIENT.EDITCLIENT'|translate}}</h2>
+   </div>
+   <div class="d-flex flex-column justify-content-between gap-4">
+     <div class="card dataCards w-100">
+      <div class="row mb-3">
+        <div class="col-md-12 cardTitle">
+          <h4>{{'ADDCLIENT.CLIENTINFO'|translate}}</h4>
+        </div>
+
+        <h4 class="fs-16 fw-bold mt-3">{{'COMMON.CLIENTTYPE'|translate}}</h4>
+        <div class="Types  gap-4">
+          <div class="Type" *ngFor="let type of client_types; let i = index">
+            <label class=" rounded-3 ">
+               <input type="radio"  [attr.id]="'class'+i" formControlName="status"   [value]="type.id"
+               [checked]="type.id === selectedTypes"
+               (change)="selectedTypes = type.id;clientStatusChanged = true">
+               <div class="typeBody rounded-3">
+                <img [src]="type?.img" alt="">
+                </div>
+               
+            </label>
+            <div *ngIf="language=='ar'" class="pt-3 fw-bold"> {{ type.name_ar }} </div>
+            <div *ngIf="language=='en'" class="pt-3 fw-bold"> {{ type.name_en }} </div>
+         </div>
+
+        </div>
+      </div>
+      <div class="row cardBody mb-3">
+        <div class="col-md-6">
+        
+          <div formGroupName="name">
+        
+            <div class="col-10 mx-0 my-3">
+              <label class="fw-bold mb-2"> {{'COMMON.CLIENTORCOMPANY'|translate}} - {{'COMMON.ARABIC' |translate}} <span style="color: red;">*</span></label>
+              <input type="text" formControlName="ar" 
+              [ngClass]="!editClientForm.get('name.ar')?.valid && editClientForm.get('name.ar')?.touched ?'errorInput' : ''"
+              placeholder="{{'COMMON.CLIENTORCOMPANY'|translate}}"
+                class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 ">
+
+                <app-Form-errors [control]="editClientForm.get('name.ar')"></app-Form-errors>
+            </div>
+        
+            <div class="col-12 col-md-10 col-lg-10 mx-0 my-3">
+              <label class="fw-bold mb-2"> {{'COMMON.CLIENTORCOMPANY'|translate}} - {{'COMMON.ENGLISH' |translate}}  </label>
+              <input type="text" formControlName="en"
+              [ngClass]="!editClientForm.get('name.en')?.valid && editClientForm.get('name.en')?.touched ?'errorInput' : ''"
+              placeholder="{{'COMMON.CLIENTORCOMPANY'|translate}}"
+                class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 ">
+                <app-Form-errors [control]="editClientForm.get('name.en')"></app-Form-errors>
+            </div>
+          </div>
+        
+        
+        </div>
+        <div class="col-md-6">
+          <div class="col-10 mx-0 my-3">
+            <label class="fw-bold mb-2"> {{'LANDING.EMAIL'|translate}}  </label>
+            <input type="text" formControlName="email" 
+            [ngClass]="!editClientForm.controls['email'].valid && editClientForm.controls['email'].touched ?'errorInput' : ''"
+            placeholder="{{'LANDING.EMAIL'|translate}} " class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 ">
+            <app-Form-errors [control]="editClientForm.controls['email']"></app-Form-errors>
+        </div>   
+
+        <div class="col-10 mx-0 my-3" *ngIf="selectedTypes == 1">
+          <label class="fw-bold mb-2">{{'COMMON.TAXIDENTNUMBER'|translate}}</label>
+          <input type="text" formControlName="tax_number"
+          [ngClass]="!editClientForm.controls['tax_number'].valid && editClientForm.controls['tax_number'].touched ?'errorInput' : ''"
+          placeholder="{{'COMMON.TAXIDENTNUMBER'|translate}}" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 ">
+          <app-Form-errors [control]="editClientForm.controls['tax_number']"></app-Form-errors>
+      </div>  
+        </div>   
+      </div>
+      </div>
+     
+     <div class="card dataCards w-100">
+      <div class="row mb-3">
+        <div class="col-md-12 cardTitle">
+          <h4> {{'COMMON.ADDRESS'|translate}}</h4>
+        </div>
+      </div>
+      <div class="row cardBody mb-3">
+        <div class="col-md-6">
+          <div class="col-10 mx-0 my-3">
+            <label class="fw-bold mb-2"> {{'COMMON.ADDRESS'|translate}}</label>
+            <input type="text" formControlName="address" 
+            [ngClass]="!editClientForm.controls['address'].valid && editClientForm.controls['address'].touched ?'errorInput' : ''"
+            placeholder="{{'COMMON.ADDRESS'|translate}}" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 ">
+        </div>   
+        <div class="col-12 col-md-10 col-lg-10 mx-0 my-3" *ngIf="selectedTypes == 1">
+          <label class="fw-bold mb-2">  {{'COMMON.STREETNAME'|translate}} <span style="color: red;">*</span></label>
+          <input type="text" formControlName="street_name" 
+          [ngClass]="!editClientForm.controls['street_name'].valid && editClientForm.controls['street_name'].touched ?'errorInput' : ''"
+          placeholder=" {{'COMMON.STREETNAME'|translate}}" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 ">
+
+          <app-Form-errors [control]="editClientForm.controls['street_name']"></app-Form-errors>
+      </div>   
+          <div class="col-10 mx-0 my-3">
+            <label class="fw-bold mb-2">{{'ADDCLIENT.POSTALCODE'|translate}} <span style="color: red;">*</span></label>
+          <input type="text" formControlName="postal_code"
+          [ngClass]="!editClientForm.controls['postal_code'].valid && editClientForm.controls['postal_code'].touched ?'errorInput' : ''"
+          placeholder="{{'ADDCLIENT.POSTALCODE'|translate}}" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 ">
+          <app-Form-errors [control]="editClientForm.controls['postal_code']"></app-Form-errors>
+        </div>  
+        
+        <div class="col-12 col-md-10 col-lg-10 mx-0 my-3" *ngIf="selectedTypes == 1">
+          <label class="fw-bold mb-2"> {{'COMMON.BUILDINGNUMBER'|translate}} <span style="color: red;">*</span></label>
+        <input formControlName="building_number" 
+        [ngClass]="!editClientForm.controls['building_number'].valid && editClientForm.controls['building_number'].touched ?'errorInput' : ''"
+        placeholder="{{'COMMON.BUILDINGNUMBER'|translate}}" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 ">
+        <app-Form-errors [control]="editClientForm.controls['building_number']"></app-Form-errors>
+
+      </div>   
+        <div class="col-12 col-md-10 col-lg-10 mx-0 my-3" *ngIf="selectedTypes == 1">
+          <label class="fw-bold mb-2"> {{'COMMON.REGION'|translate}} <span style="color: red;">*</span></label>
+        <input formControlName="region" 
+        [ngClass]="!editClientForm.controls['region'].valid && editClientForm.controls['region'].touched ?'errorInput' : ''"
+        placeholder="{{'COMMON.REGION'|translate}}" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 ">
+        <app-Form-errors [control]="editClientForm.controls['region']"></app-Form-errors>
+
+      </div>   
+
+
+      </div>
+      <div class="col-md-6">
+        <div class="col-10 mx-0 my-3">
+          <label class="fw-bold mb-2">  {{'COMMON.CITY'|translate}} <span style="color: red;">*</span></label>
+          <input type="text" formControlName="city" 
+          [ngClass]="!editClientForm.controls['city'].valid && editClientForm.controls['city'].touched ?'errorInput' : ''"
+          placeholder=" {{'COMMON.CITY'|translate}}" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 ">
+          <app-Form-errors [control]="editClientForm.controls['city']"></app-Form-errors>
+      </div>   
+      <div class="col-12 col-md-10 col-lg-10 mx-0 my-3" *ngIf="selectedTypes == 1">
+        <label class="fw-bold mb-2"> {{'COMMON.PLOTID'|translate}} <span style="color: red;">*</span></label>
+        <input type="text" formControlName="plot_identification"
+        [ngClass]="!editClientForm.controls['plot_identification'].valid && editClientForm.controls['plot_identification'].touched ?'errorInput' : ''"
+        placeholder=" {{'COMMON.PLOTID'|translate}}" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 ">
+        <app-Form-errors [control]="editClientForm.controls['plot_identification']"></app-Form-errors>
+    </div>   
+   
+
+        <div class="col-10 mx-0 my-3" *ngIf="selectedTypes == 1">
+          <label class="fw-bold mb-2">{{'ADDCLIENT.COMMERCIALREGNUM'|translate}}</label>
+          <input type="text" formControlName="commercial_record_number"
+          [ngClass]="!editClientForm.controls['commercial_record_number'].valid && editClientForm.controls['commercial_record_number'].touched ?'errorInput' : ''"
+          placeholder="{{'ADDCLIENT.COMMERCIALREGNUM'|translate}}" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 ">
+
+          <app-Form-errors [control]="editClientForm.controls['commercial_record_number']"></app-Form-errors>
+      </div>   
+    </div>
+     </div>
+   </div>
+  
+   <div class="card dataCards w-100">
+    <div class="row mb-3">
+      <div class="col-md-12 cardTitle">
+        <h4>{{'ADDCLIENT.DELIVERYDATA'|translate}}</h4>
+      </div>
+    </div>
+    <div class="row cardBody mb-3">
+      <div class="col-md-6">
+        <div class="col-10 mx-0 my-3">
+          <label class="fw-bold mb-2">{{'COMMON.FAXNUMBER'|translate}}</label>
+          <input type="text" formControlName="fax" 
+          [ngClass]="!editClientForm.controls['fax'].valid && editClientForm.controls['fax'].touched ?'errorInput' : ''"
+          placeholder="{{'COMMON.FAXNUMBER'|translate}}" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 ">
+          <app-Form-errors [control]="editClientForm.controls['fax']"></app-Form-errors>
+      </div>   
+        <div class="col-10 mx-0 my-3">
+          <label class="fw-bold mb-2">{{'COMMON.PHONE'|translate}}</label>
+        <input type="text" formControlName="mobile" 
+        [ngClass]="!editClientForm.controls['mobile'].valid && editClientForm.controls['mobile'].touched ?'errorInput' : ''"
+        placeholder="{{'COMMON.PHONE'|translate}}" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 ">
+        <app-Form-errors [control]="editClientForm.controls['mobile']"></app-Form-errors>
+      </div>   
+    </div>
+    <div class="col-md-6">
+      <div class="col-10 mx-0 my-3">
+        <label class="fw-bold mb-2"> {{'COMMON.TELEPHONE'|translate}} </label>
+        <input type="text" formControlName="phone"
+        [ngClass]="!editClientForm.controls['phone'].valid && editClientForm.controls['phone'].touched ?'errorInput' : ''"
+        placeholder="{{'COMMON.TELEPHONE'|translate}}" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 ">
+        <app-Form-errors [control]="editClientForm.controls['phone']"></app-Form-errors>
+    </div>      
+  </div>
+  <div class="col-md-12 d-flex justify-content-center justify-content-md-end">
+    <app-button-comp [btnType]="'main'" (click)="editClient()" class="sumbitBtn"   [name]="'COMMON.EDIT'|translate" [background_color]="'#1B1464'" ></app-button-comp>
+  </div>
+   </div>
+  </div>
+  
+  </div>
+  </div>
+
+</form>
+

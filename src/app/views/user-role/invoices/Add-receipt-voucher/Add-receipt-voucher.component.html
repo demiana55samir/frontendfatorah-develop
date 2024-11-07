@@ -1,0 +1,153 @@
+<!-- ui_fix -->
+<div class="row receipt-Voucher-container p-0 ps-5 pe-5">
+  <div class="col-md-12 title mb-2"> 
+     <h2>{{'RECEIPTVOUCHER.CREATE' |translate}}</h2>
+  </div>
+  <div class="card borderRadius_20px p-3">
+    <div class="cardTitle d-flex justify-content-between flex-wrap">
+      <h5>{{'RECEIPTVOUCHER.DETAILS' |translate}}</h5>
+      
+      <div>
+        <h6> {{'RECEIPTVOUCHER.TOTALINVOICE' |translate}} :  <span> {{ totalInvoice }} </span> {{'COMMON.SAR' |translate}} </h6>
+        <h6> {{'RECEIPTVOUCHER.PAIDINVOICE' |translate}} :  <span> {{ paidInvoice }} </span> {{'COMMON.SAR' |translate}} </h6>
+        <h6> {{'RECEIPTVOUCHER.UNPAIDINVOICE' |translate}} :  <span> {{ unpaidInvoice }} </span> {{'COMMON.SAR' |translate}} </h6>
+      </div>
+      
+    </div>
+    <form [formGroup]="addVoucherForm" action="">
+      <div #form class="row">
+        <div class="col-md-6">
+  
+          <div  [ngClass]="{'disabled':disable}" class="col-10 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1">{{'RECEIPTVOUCHER.VOUCHERNUMBER' |translate}}</label>
+            <!-- placeholder="{{'RECEIPTVOUCHER.VOUCHERNUMBER' |translate}}" -->
+            <input [ngClass]="{'direction':language=='ar'}" [readOnly]="disable" 
+            [ngClass]="!addVoucherForm.controls['number'].valid && addVoucherForm.controls['number'].touched ?'errorInput' : ''"
+            formControlName="number" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+            <app-Form-errors [control]="addVoucherForm.controls['number']"></app-Form-errors>
+
+          </div>   
+          <div class="col-10 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1">{{'COMMON.AMOUNT' |translate}} <span style="color:red">*</span> </label>
+            <input [ngClass]="{'direction':language=='ar'}" type="text" appOnlyNumber  
+            [ngClass]="!addVoucherForm.controls['amount'].valid && addVoucherForm.controls['amount'].touched ?'errorInput' : ''"
+            (change)="checkNegativeValue()" formControlName="amount" placeholder="{{'COMMON.AMOUNT' |translate}}" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100">
+            <app-Form-errors [control]="addVoucherForm.controls['amount']"></app-Form-errors>
+
+          </div>   
+          <div class="col-10 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1">{{'COMMON.PAYMENTMETHOD' |translate}} <span style="color:red">*</span></label>
+            <p-dropdown *ngIf="language=='ar'"  [options]="paymentType" formControlName="payment_method" 
+            [styleClass]="!addVoucherForm.controls['payment_method'].valid && addVoucherForm.controls['payment_method'].touched ?'errorInput' : ''"
+            placeholder="{{'COMMON.PAYMENTMETHOD' |translate}}" class="my-1 mx-0 py-2 w-100" optionLabel="name_ar" optionValue="name"></p-dropdown>   
+
+            <p-dropdown *ngIf="language=='en'"  [options]="paymentType" 
+            [styleClass]="!addVoucherForm.controls['payment_method'].valid && addVoucherForm.controls['payment_method'].touched ?'errorInput' : ''"
+            formControlName="payment_method"  placeholder="{{'COMMON.PAYMENTMETHOD' |translate}}" class="my-1 mx-0 py-2 w-100" optionLabel="name_en" optionValue="name"></p-dropdown>     
+
+            <app-Form-errors [control]="addVoucherForm.controls['payment_method']"></app-Form-errors>
+          </div>   
+  
+      </div>
+        <div class="col-md-6">
+  
+          <div class="col-md-10  mx-0 my-3">
+            <label class="form-label  fw-bold mb-1"> {{'COMMON.RECEIVEDAT' |translate}} <span style="color:red">*</span></label>
+            <div class=" d-flex position-relative justify-content-end align-content-center flex-wrap w-100">
+              <p-calendar class="w-100"  [showIcon]="true" 
+              [styleClass]="!addVoucherForm.controls['received_at'].valid && addVoucherForm.controls['received_at'].touched ?'errorInput' : ''"
+
+              [showClear]="addVoucherForm.controls['received_at'].value" dateFormat="dd-mm-yy"
+              formControlName="received_at"   [minDate]="invoiceDate" dateFormat="dd-mm-yy"   placeholder="{{'COMMON.DATE' |translate}}"></p-calendar>
+              <!-- [showIcon]="true" [showClear]="addVoucherForm.controls['received_at'].value" -->
+              <!-- <img class=" position-absolute p-3" src="./assets/images/inputs/calender.svg" alt=""> -->
+            </div>
+            <app-Form-errors [control]="addVoucherForm.controls['received_at']"></app-Form-errors>
+
+        </div> 
+  
+        <div class="col-10 fullScreenWidth mx-0 my-3">
+          <label class="form-label  fw-bold mb-1">{{'COMMON.TOBANK' |translate}} </label>
+          <p-dropdown  [options]="banks" formControlName="bank_id"
+          [styleClass]="!addVoucherForm.controls['bank_id'].valid && addVoucherForm.controls['bank_id'].touched ?'errorInput' : ''"
+          placeholder="{{'COMMON.TOBANK' |translate}}" class="my-1 mx-0 py-2  w-100" optionLabel="full_name" optionValue="uuid"></p-dropdown>                           
+          <app-Form-errors [control]="addVoucherForm.controls['bank_id']"></app-Form-errors>
+
+        </div> 
+  
+        <div formGroupName="description">
+          <div class="col-10 fullScreenWidth  mx-0 my-3" *ngIf="this.language == 'ar'">
+            <label class="form-label  fw-bold mb-1">{{'COMMON.DESCRIPTION' |translate}}</label>
+            <input type="text" formControlName="ar"
+            [ngClass]="!addVoucherForm.get('name.ar')?.valid && addVoucherForm.get('name.ar')?.touched ?'errorInput' : ''"
+            placeholder="{{'COMMON.DESCRIPTION' |translate}}" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2  w-100">
+          </div> 
+
+          <div class="col-10 fullScreenWidth  mx-0 my-3 d-none" >
+            <label class="form-label  fw-bold mb-1">{{'COMMON.DESCRIPTION' |translate}}</label>
+            <input type="text" formControlName="en"
+            [ngClass]="!addVoucherForm.get('name.en')?.valid && addVoucherForm.get('name.en')?.touched ?'errorInput' : ''"
+            placeholder="{{'COMMON.DESCRIPTION' |translate}}" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2  w-100">
+          </div> 
+        </div>
+
+        </div>
+
+        <div formGroupName="notes">
+          <div class="col-md-11 mx-0 my-3">
+            <label class="form-label  fw-bold mb-1">{{'COMMON.NOTES' |translate}}</label>
+            <textarea class="form-control " formControlName="ar" placeholder="{{'COMMON.NOTES' |translate}}"  style="height: 160px; resize: none;" id="validationTextarea"></textarea>
+        </div>
+        <div class="col-md-11 mx-0 my-3 d-none">
+          <label class="form-label  fw-bold mb-1">{{'COMMON.NOTES' |translate}}</label>
+          <textarea class="form-control " formControlName="en" placeholder="{{'COMMON.NOTES' |translate}}"  style="height: 160px; resize: none;" id="validationTextarea"></textarea>
+      </div>
+
+        </div>
+       
+        <div class="col-md-12 d-flex justify-content-end">
+          <app-button-comp (click)="addVoucher()" [btnType]="'main'" style="width: 120px;"  [name]="'COMMON.SUBMIT' |translate" [background_color]="'#1B1464'" ></app-button-comp>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+<!-- ---------------choose invoice modal-------------------- -->
+
+
+<button hidden #InvoiceModal type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+
+</button>
+
+<!-- Modal -->
+<div  class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel"> {{'RECEIPTVOUCHER.CREATE'|translate}}</h1>
+       
+      </div>
+      <div class="modal-body">
+        {{'RECEIPTVOUCHER.ADDDESC'|translate}}
+        <br>
+        <label class="form-label  fw-bold mb-1 mt-3">  {{'INVOICE.INVOICENUMBER'|translate}} </label>
+            <div> 
+                <p-dropdown
+                 [options]="Allinvoices" [style.width.%]="100" 
+                 (onChange)="chooseInovice($event)"
+                  placeholder=" {{'INVOICE.INVOICENUMBER'|translate}} " class="my-1 mx-0 py-2 py-2"
+                  optionLabel="number" optionValue="uuid"></p-dropdown>        
+            </div>       
+      </div>
+      <div class="modal-footer">
+        <app-button-comp [btnType]="'main'"  (click)="ChooseInvoiceNumber() "  [style.width.%]="40" [name]="'RECEIPTVOUCHER.CREATE'|translate" [background_color]="'#1B1464'"></app-button-comp>
+        <app-button-comp [btnType]="'secondary'"  (click)="Back()"  
+         data-bs-dismiss="modal" aria-label="Close" #closePoPModal  [name]="'RECEIPTVOUCHER.BACK'|translate" [color]="'#1B1464'"></app-button-comp>
+        <button hidden  #closeModal type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+</div>

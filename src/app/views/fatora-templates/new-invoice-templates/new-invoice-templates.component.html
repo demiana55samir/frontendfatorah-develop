@@ -1,0 +1,84 @@
+<!-- header -->
+{{invoiceService.downloadShow}}
+<div  *ngIf="invoiceService.downloadShow && invoice"
+[ngClass]="{
+  'd-block ':invoiceService.downloadShow,
+  'd-none': !invoiceService.downloadShow
+  
+}" 
+
+class="simplified_template pageBreak" #toDownload >
+  <div class="header">
+    <div dir="ltr" style="padding-top: 5% !important">
+    <small class="smallwb" style="padding-top: 10px !important">{{invoice.time | date:'yyyy-MM-dd HH:mm:ss'}}  </small>
+  </div>
+  <div class="row text-center">
+    <div class="col-xs-12">
+        <h3 class="text-primary">{{'ADDINVOICE.SIMPLIFIEDINVOICE'|translate}}</h3>
+    <h4>{{ invoice.client_name }}</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-5">
+        <small class="smallwb"><b>{{'COMMON.ADDRESS'|translate}}</b> : {{ invoice.client_address }}</small><br>
+        <small class="smallwb"><b> {{'COMMON.TAXNUMBER'|translate}}</b> : {{invoice?.client_tax_number}}</small>
+    </div>
+    <div class="col-xs-5">
+        <small class="smallwb"><b>{{'INVOICE.INVOICENUMBER'|translate}}</b> : {{invoice?.invoice_number}}</small><br>
+        <small class="smallwb"><b>{{'COMMON.ISSUEDATE'|translate}} </b> : {{invoice?.created_at | date:'Y-m-d'}} </small>
+    </div>
+    <div class="col-xs-2" style="margin-right: -2%">
+      <qrcode [qrdata]="myAngularxQrCode" class="QRcode" [width]="100" [allowEmptyString]="true"></qrcode>
+    </div>
+  
+  </div>
+  </div>
+  <!-- body -->
+    <div class="main_body">
+      <div class="preview">
+        <div>
+
+            <table class="table">
+                <thead class="">
+                    <tr class="row">
+                        <th class="col-xs-8">
+                            <small class="smallwb">{{'PRODUCTS.DESCRIPTION'|translate }}</small>
+                        </th>
+                        <th class="col-xs-2">
+                            <small class="smallwb">{{'COMMON.QUANTITY'|translate}}</small>
+                        </th>
+                        <th class="col-xs-2">
+                            <small class="smallwb">{{'COMMON.PRICE'|translate}}</small>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <tr class="row" *ngFor="let product of invoice.products">
+                      <th class="col-xs-8" scope="row"><p class="smallb">{{ product.name }}</p></th>
+                      <td class="col-xs-2"><p class="smallwb">{{ product.quantity }}</p></td>
+                      <td class="col-xs-2"><p class="smallwb">{{ product.total }}</p></td>
+                  </tr>
+              </tbody>
+            </table>
+            <table class="table">
+              <tfoot>
+                <tr class="row">
+                    <th class="col-xs-10">
+                        <small class="smallwb"> ({{ invoice.user.currency }})</small>
+                    </th>
+                    <th class="col-xs-2"><small class="smallwb">{{ invoice.total }}</small></th>
+                </tr>
+                <tr class="row" *ngIf="invoice.isTaxable">
+                    <th class="col-xs-10">
+                        <small class="smallwb"> Include Tax ({{ invoice.products[0].tax }}%):</small>
+                    </th>
+                    <th class="col-xs-2">
+                        <small class="smallwb"> {{ totalTaxes }}</small>
+                    </th>
+                </tr>
+            </tfoot>
+            </table>
+        </div>
+    </div>
+    </div>
+</div>

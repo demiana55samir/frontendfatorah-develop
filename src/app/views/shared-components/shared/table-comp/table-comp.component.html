@@ -1,0 +1,864 @@
+
+
+<!-- columnResizeMode="expand" responsiveLayout="scroll" [breakpoint]="'960px'" styleClass="p-datatable-gridlines" -->
+
+<p-table [value]="RowsData" [columns]="columnsArray"  [ngClass]="{'max-width-style': (columnsArray.length < 6)}"
+responsiveLayout="stack" [breakpoint]="'960px'"   [resizableColumns]="true"
+styleClass="p-datatable-gridlines"
+>
+  <!-- [scrollable]="true" [resizableColumns]="true"  -->
+  <ng-template pTemplate="header" let-columns>
+      <tr>
+        <!-- [ngStyle]="i === 0 ? {'max-width': '70px', 'width': '10%'} : {}" 
+        style="display: table-cell !important;"
+        style="display: table-cell !important;"
+        -->
+          <th   *ngFor="let colItem of columns">
+            <div *ngIf="language=='ar'">
+              {{ colItem.nameAR }} 
+            </div>
+            <div *ngIf="language=='en'">
+              {{ colItem.nameEN }} 
+            </div>
+            </th>
+          <th  *ngIf="controlArray.length>0"> 
+            
+            <span *ngIf="language=='ar'">تحكم </span>
+            <span *ngIf="language=='en'">Control </span>
+            </th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-tableData let-columns="columns" let-i="index" let-rowIndex="rowIndex">
+      <tr>
+        <td  *ngFor="let columnValue of columnsNames;let i=index">
+          <span class="fs-19 fw-bold p-column-title" *ngIf="language=='ar'">
+            {{ columns[i]?.nameAR }} 
+          </span>
+          <span class="fs-19 fw-bold p-column-title" *ngIf="language=='en'">
+            {{ columns[i]?.nameEN }} 
+          </span>
+
+          <div *ngIf="columnValue.type == 'normal'" > {{ tableData[columnValue.name]  }}</div>
+          <div *ngIf="columnValue.type == 'whatsapp'" > 
+            <span class="d-flex whatsappColumn">
+              <img src="./assets/images/user/brand-whatsapp.svg" width="17" alt="">
+              <a [href]="'https://wa.me/'+tableData[columnValue.name] +'?text='" target="_blank" class="cursor-pointer" style="color:#0cc243;">  {{ tableData[columnValue.name]  }} </a>
+            </span>
+           </div>
+          <div *ngIf="columnValue.type == 'normal-number'"> {{tableData['currency']}} {{ tableData[columnValue.name] | number:'1.2-2' }} </div>
+          <div *ngIf="columnValue.type == 'SAR-number'"> {{'COMMON.SAR' | translate}} {{ tableData[columnValue.name] | number:'1.2-2' }} </div>
+          <div *ngIf="columnValue.type == 'table-normal-number'">  {{ tableData[columnValue.name] | number:'1.2-2' }} {{tableData['currency']}} </div>
+          <div *ngIf="columnValue.type == 'check'"><p-checkbox  [value]="tableData" name="group" (ngModelChange) ="setCancelledInvoice($event)" [(ngModel)]="selectedInvoices" [inputId]="tableData.uuid"></p-checkbox></div>
+          <div *ngIf="columnValue.type == 'blueBG'" class="download">
+            <button style="border-radius: 20px; cursor:auto;" class="prodBtn px-3 py-1 fw-semibold lightBlue_Color_BG  border-0 text-white my-auto mx-0">
+              <span class="darkBlue-text"> {{tableData[columnValue.name]}}</span>
+            </button>
+          </div> 
+          <div *ngIf="columnValue.type == 'blueClient'" [routerLink]="'/user/users/user-details/'+tableData['uuid']" class="color-lightBlue cursor-pointer break_word"> {{ tableData[columnValue.name]  }}</div>
+          <div *ngIf="columnValue.type == 'blueUserId'" [routerLink]="'/user/users/user-details/'+tableData['user_uuid']" class="color-lightBlue cursor-pointer break_word"> {{ tableData[columnValue.name]  }}</div>
+          <div *ngIf="columnValue.type == 'blueClientRefresh'" (click)="navigateToClient(tableData['client_id'])" class="color-lightBlue cursor-pointer break_word"> {{ tableData[columnValue.name]  }}</div>
+          <div *ngIf="columnValue.type == 'blueClientId'" [routerLink]="'/user/users/user-details/'+tableData['client_id']" 
+          [ngClass]="{'min-width-column': (columnsArray.length >= 6)}"
+          class="color-lightBlue cursor-pointer break_word"> {{ tableData[columnValue.name]  }}</div>
+          <div *ngIf="columnValue.type == 'blueClientQuotations'" [routerLink]="'/user/users/user-details/'+tableData['client_uuid']" class="color-lightBlue cursor-pointer break_word"> {{ tableData[columnValue.name]  }}</div>
+          <div *ngIf="columnValue.type == 'blue'"  class="break_word color-lightBlue cursor-pointer"> {{ tableData[columnValue.name]  }}</div>
+          <div *ngIf="columnValue.type == 'blueProduct'" [routerLink]="'/user/products/product-details/'+tableData['uuid']"  class="break_word color-lightBlue cursor-pointer "> {{ tableData[columnValue.name]  }}</div>
+          <div *ngIf="columnValue.type == 'blue-no-Click'" class="color-lightBlue"> {{ tableData[columnValue.name]  }}</div>
+          <div *ngIf="columnValue.type == 'bluePurchaseNew' && tableData['status'] != 0" [routerLink]="'/user/purchases/purchases-details/new/'+tableData['uuid']" class="color-lightBlue cursor-pointer"> {{ tableData[columnValue.name]  }}</div>
+          <div *ngIf="columnValue.type == 'bluePurchaseNew' && tableData['status'] == 0" [routerLink]="'/user/purchases/purchases-details/new/'+tableData['uuid']" class="color-lightBlue cursor-pointer purple_BG text-white p-1 rounded-4"> {{'TABLE.EXPENSE' | translate}}</div>
+          <div *ngIf="columnValue.type == 'bluePurchaseCancelled'" [routerLink]="'/user/purchases/purchases-details/cancelled/'+tableData['uuid']" class="color-lightBlue cursor-pointer"> {{ tableData[columnValue.name]  }}</div>
+
+
+         
+
+          <!-- class="d-flex w-100 " -->
+          <div *ngIf="columnValue.type == 'normal-horizontal-add'"  >
+
+            <div>
+              <span class="me-2">{{tableData[columnValue.name]}}</span> 
+            </div>
+            <div class="cursor-pointer download">
+              <button  (click)="goToAddInvoice('client',tableData['uuid'])" style="border-radius: 20px;width: max-content;" class="prodBtn px-3 py-1 fw-semibold light-green-BG  border-0 text-white my-auto mx-0">
+                  <span class="green_Color_text">{{'TABLE.ADDNEWINVOICE' | translate}}</span>
+              </button>
+            </div>
+          </div>
+
+
+          <div (click)="downloadPdf(tableData['uuid'])" class="cursor-pointer download" *ngIf="this.type!='taxReports' && columnValue.type == 'download'">
+            <button style="border-radius: 20px;width: 100px;" [ngClass]="{'w-100':language=='en'}" class="prodBtn px-3 py-1 fw-semibold green_Color_BG  border-0 text-white my-auto mx-0">
+                <span> {{'TABLE.DOWNLOAD' | translate}}</span>
+            </button>
+          </div>
+          <div (click)="downloadPdf(tableData['id'])" class="cursor-pointer download" *ngIf="this.type=='taxReports' && columnValue.type == 'download'">
+            <button style="border-radius: 20px;width: 100px;" [ngClass]="{'w-100':language=='en'}" class="prodBtn px-3 py-1 fw-semibold green_Color_BG  border-0 text-white my-auto mx-0">
+                <span> {{'TABLE.DOWNLOAD' | translate}}</span>
+            </button>
+          </div>
+          
+          <div  class="cursor-pointer download" 
+          [routerLink]="'/user/invoices/add-voucher/'+tableData['uuid']"
+            *ngIf="columnValue.type == 'add_receipts'">
+            <button style="border-radius: 20px;width: 150px;" [ngClass]="{'w-100':language=='en'}" class="prodBtn px-3 py-1 fw-semibold green_Color_BG  border-0 text-white my-auto mx-0">
+                <span> {{'TABLE.ADDRECEIPTS' | translate}}</span>
+            </button>
+          </div>
+          <!-- [ngClass]="tableData['can_create_credit_note']? '':'disabledDiv'"  -->
+          <div  class="cursor-pointer download" 
+            [routerLink]="'/user/invoices/credit-note-details/create/'+tableData['uuid']"
+            *ngIf="columnValue.type == 'add_credit_notes' && tableData['can_create_credit_note']">
+            <button style="border-radius: 20px;width: 150px;" [ngClass]="{'w-100':language=='en'}" class="prodBtn px-3 py-1 fw-semibold green_Color_BG  border-0 text-white my-auto mx-0">
+                <span> {{'TABLE.ADDCREDIT' | translate}}</span>
+            </button>
+          </div>
+          <!-- toDo: handle routing -->
+          <div  class="cursor-pointer download" 
+            [routerLink]="'/user/invoices/credit-note-details/create/'+tableData['uuid']"
+            *ngIf="columnValue.type == 'add_debit_notes'">
+            <button style="border-radius: 20px;width: 150px;" [ngClass]="{'w-100':language=='en'}" class="prodBtn px-3 py-1 fw-semibold green_Color_BG  border-0 text-white my-auto mx-0">
+                <span> {{'TABLE.ADDDEBIT' | translate}}</span>
+            </button>
+          </div>
+
+          <div  class="cursor-pointer download" 
+            *ngIf="columnValue.type == 'add_credit_notes' && !tableData['can_create_credit_note']"  
+            [pTooltip]=" ('TABLE.CANTCREATCREDIT'|translate )"     >
+            <button style="border-radius: 20px;width: 150px;opacity: 0.4;" [ngClass]="{'w-100':language=='en'}" class="prodBtn px-3 py-1 fw-semibold green_Color_BG  border-0 text-white my-auto mx-0">
+                <span> {{'TABLE.ADDCREDIT' | translate}}</span>
+            </button>
+          </div>
+         
+
+          <div (click)="downloadPaymentPdf(tableData['payment_uuid'],tableData['user_id'])" class="cursor-pointer download" *ngIf="columnValue.type == 'downloadPayment'">
+            <button style="border-radius: 20px;width: 130px;" [ngClass]="{'w-100':language=='en'}" class="prodBtn px-3 py-1 fw-semibold green_Color_BG  border-0 text-white my-auto mx-0">
+                <span> {{'TABLE.DOWNLOADINVOICE' | translate}}</span>
+            </button>
+          </div>
+
+          <div *ngIf="columnValue.type == 'normal-add'">
+            <div>
+              <span class="me-2">{{ tableData[columnValue.name]  }}</span>
+            </div>
+            <!-- uuid of quotation  [routerLink]="'/user/invoices/Add-invoices/'+tableData['uuid']"-->
+            <div  class="cursor-pointer download">
+              <button (click)="goToAddInvoice('quotation',tableData['uuid'])"  style="border-radius: 20px;width: 130px;" class="prodBtn px-3 py-1 fw-semibold light-green-BG  border-0 text-white my-auto mx-0">
+                  <span class="green_Color_text">{{'TABLE.ADDNEWINVOICE' | translate}}</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- admin -->
+          
+          <div *ngIf="columnValue.type == 'checkTax'"  class="download" > 
+            <button style="border-radius: 20px; cursor:auto;"
+            [ngClass]="tableData[columnValue.name]==0 ? 'badge-primary':'badge-danger'"
+            class="prodBtn px-3 py-1 fw-semibold   border-0  my-auto mx-0">
+              <span *ngIf="tableData[columnValue.name]==1">{{'COMMON.WITHTAX'|translate}}</span>
+              <span *ngIf="tableData[columnValue.name]==0">{{'COMMON.WITHOUTTAX'|translate}}</span>
+            </button>
+          </div>
+
+          <div *ngIf="columnValue.type == 'expenseTax'"  class="download" > 
+            <button style="border-radius: 20px; cursor:auto;"
+            [ngClass]="tableData[columnValue.name]==0 ? 'badge-primary':'badge-danger'"
+            class="prodBtn px-3 py-1 fw-semibold   border-0  my-auto mx-0">
+              <span *ngIf="tableData[columnValue.name]==1">{{'COMMON.EXPENSETAX'|translate}}</span>
+              <span *ngIf="tableData[columnValue.name]==0">{{'COMMON.EXPENSEWITHOUTTAX'|translate}}</span>
+            </button>
+          </div>
+
+          
+          <div *ngIf="columnValue.type == 'expenseType'"  class="download" > 
+            <button style="border-radius: 20px; cursor:auto;"
+           
+            class="prodBtn px-3 py-1 fw-semibold   border-0  my-auto mx-0">
+              <span *ngIf="tableData[columnValue.name]=='expense'"> مصروفات </span>
+              <span *ngIf="tableData[columnValue.name]=='purchase'"> مشتريات </span>
+            </button>
+          </div>
+
+
+          
+          <div *ngIf="columnValue.type == 'checkStatus'"  class="download" > 
+            <button style="border-radius: 20px; cursor:auto;"
+            [ngClass]="tableData[columnValue.name]==0 ? 'badge-primary':'badge-danger'"
+            class="prodBtn px-3 py-1 fw-semibold border-0 ] my-auto mx-0">
+              <span *ngIf="tableData[columnValue.name]==0">{{'COMMON.ACTIVEINVOICE'|translate}}</span>
+              <span *ngIf="tableData[columnValue.name]==1">{{'COMMON.NOTACTIVEINVOICE'|translate}}</span>
+            </button>
+          </div>
+          <!-- <div *ngIf="columnValue.type == 'blueBG'" class="download">
+            <button style="border-radius: 20px; cursor:auto;" class="prodBtn px-3 py-1 fw-semibold lightBlue_Color_BG  border-0 text-white my-auto mx-0">
+              <span class="darkBlue-text"> {{tableData[columnValue.name]}}</span>
+            </button>
+          </div>  -->
+          <div *ngIf="columnValue.type == 'check_tax_noBg'"  >
+            <span *ngIf="tableData[columnValue.name]==1">{{'COMMON.WITHTAX'|translate}}</span>
+            <span *ngIf="tableData[columnValue.name]==0">{{'COMMON.WITHOUTTAX'|translate}}</span>
+          </div>
+          <div *ngIf="columnValue.type == 'tax_report_type'"  >
+            <span *ngIf="tableData[columnValue.name]=='monthly'">{{'TAXREPORT.MONTHLY'|translate}}</span>
+            <span *ngIf="tableData[columnValue.name]=='quarter'">{{'TAXREPORT.QUARTER'|translate}}</span>
+          </div>
+          <div *ngIf="columnValue.type == 'normal_with_currancy'"  > {{ tableData[columnValue.name] }} {{tableData['currency']}} </div>
+          <div *ngIf="columnValue.type == 'invoiceCount' && tableData[columnValue.name]>0"  > {{ tableData[columnValue.name]  }}</div>
+          <div *ngIf="columnValue.type == 'invoiceCount' && tableData[columnValue.name]<=0 && language=='ar'"   > لا توجد أي فاتورة</div>
+          <div *ngIf="columnValue.type == 'invoiceCount' && tableData[columnValue.name]<=0 && language=='en'"   >No invoice exists </div>
+          <div *ngIf="columnValue.type == 'blueAdminUser'" [routerLink]="'/admin/user-details/'+tableData['uuid']"  class="color-lightBlue cursor-pointer"> {{ tableData[columnValue.name]  }}</div>
+          <div *ngIf="columnValue.type == 'blueAdminUserReport'" [routerLink]="'/admin/user-details/'+tableData['user_uuid']"  class="color-lightBlue cursor-pointer"> {{ tableData[columnValue.name]  }}</div>
+          <div *ngIf="columnValue.type == 'blueAdminUserId'" [routerLink]="'/admin/user-details/'+tableData['user_uuid']"  class="color-lightBlue cursor-pointer"> {{ tableData[columnValue.name]  }}</div>
+          <div *ngIf="columnValue.type == 'puple-login'" (click)="openUser(tableData['uuid'])" class="purple_text cursor-pointer">{{'TABLE.ENTER'|translate}}</div>
+          <div *ngIf="columnValue.type == 'blue-login'" (click)="openUser(tableData['uuid'])" class="color-lightBlue cursor-pointer">{{'TABLE.ENTER'|translate}}</div>
+          <!-- (click)="openUser(tableData['uuid'])" -->
+          <div *ngIf="columnValue.type == 'blue-plans-featurs'" [routerLink]="'/admin/subscription-plans/General-plan-details/features/'+tableData['id']" class="color-lightBlue cursor-pointer">{{'TABLE.PLANFEATURES'|translate}}</div>
+          
+          <div  class=" download" *ngIf="columnValue.type == 'isActice' ">
+             <button style="border-radius: 20px;width: 85px;" [ngClass]="{'w-100':language=='en'}" class="prodBtn px-3 py-1 fw-semibold purple_BG  border-0 text-white my-auto mx-0">
+                   <span *ngIf="tableData[columnValue.name] == 1"> {{'TABLE.VERIFIED' | translate}}</span>
+                   <span *ngIf="tableData[columnValue.name] == 0"> {{'TABLE.NOTVERIFIED' | translate}}</span>
+             </button>
+           </div>
+           
+          <div  class=" download" *ngIf="columnValue.type == 'zatca_status' ">
+
+             <button style="border-radius: 20px;width: 124px;" [ngClass]="{'w-100':language=='en'}" class=" zatcaDiv prodBtn px-3 py-1 fw-semibold purple_BG  border-0 text-white my-auto mx-0">
+                   <span *ngIf="tableData['eligible_sending_zatca'] && tableData['zatca_stage'] == 'core' && tableData[columnValue.name] == 1"> {{'COMMON.ZATCASUBMITED' | translate}} </span>
+                   <span *ngIf="tableData['eligible_sending_zatca'] && tableData['zatca_stage'] == 'simulation' && tableData[columnValue.name] == 1"> {{'COMMON.ZATCASIMULATION' | translate}} </span>
+                   <span *ngIf="tableData['eligible_sending_zatca'] && tableData['zatca_stage'] == 'developer-portal' && tableData[columnValue.name] == 1"> {{'COMMON.ZATCASIMULATION' | translate}} </span>
+                   <span *ngIf="tableData['eligible_sending_zatca'] &&tableData[columnValue.name] == 0">{{'COMMON.ZATCANOTSUBMITED' | translate}} </span>
+                   <span *ngIf="!tableData['eligible_sending_zatca']" [pTooltip]="'COMMON.CREATEDBEFOREZATCA'|translate">{{'COMMON.NOTCOMPWITHZATCA' | translate}} </span>
+             </button>
+           </div>
+          <div  class=" download" *ngIf="columnValue.type == 'puple-verified' && tableData[columnValue.name]">
+
+            <button style="border-radius: 20px;width: 85px;" [ngClass]="{'w-100':language=='en'}" class="prodBtn px-3 py-1 fw-semibold purple_BG  border-0 text-white my-auto mx-0">
+                  <span> {{'TABLE.VERIFIED' | translate}}</span>
+            </button>
+          </div>
+          <div  class=" download" *ngIf="columnValue.type == 'puple-status' && tableData[columnValue.name]==1">
+            <button style="border-radius: 20px;width: 90px;cursor:auto;" [ngClass]="{'w-100':language=='en'}" class="prodBtn px-3 py-1 fw-semibold purple_BG fs-14 border-0 text-white my-auto mx-0">
+                  <span> {{'TABLE.VERIFIED' | translate}}</span>
+            </button>
+          </div>
+          <div  class=" download" *ngIf="columnValue.type == 'puple-status' && tableData[columnValue.name]==0">
+            <button style="border-radius: 20px;width: 90px;cursor:auto;" [ngClass]="{'w-100':language=='en'}" class="prodBtn px-3 py-1 fw-semibold bg-secondary fs-14 border-0 text-white my-auto mx-0">
+                  <span> {{'TABLE.NOTVERIFIED' | translate}}</span>
+            </button>
+          </div>
+          <div  style="background-color: transparent !important;"  class="cursor-pointer" *ngIf="columnValue.type == 'puple-verified' && !tableData[columnValue.name]">
+            <div *ngIf="tableData['uuid']!=clickedUuid"  [ngClass]="{'w-100':language=='en'}" class="d-flex gap-1  py-1   border-0  my-auto mx-0">
+                  <span> {{'TABLE.NOTVERIFIED' | translate}}</span>  <span (click)="verifayAccount(tableData['uuid'])" class="purple_text"> {{'TABLE.VERIFY' | translate}}</span> 
+            </div>
+            <div *ngIf="tableData['uuid']==clickedUuid" class="download" >
+              <button style="border-radius: 20px;width: 85px;" [ngClass]="{'w-100':language=='en'}" class="prodBtn px-3 py-1 fw-semibold purple_BG  border-0 text-white my-auto mx-0">
+                    <span> {{'TABLE.VERIFIED' | translate}}</span>
+              </button>
+            </div>
+          </div>
+         
+
+        </td>
+
+          <td *ngIf="controlArray.length>0 " >
+            <span class="fs-19 fw-bold p-column-title" *ngIf="language=='ar'">تحكم </span>
+            <span class="fs-19 fw-bold p-column-title" *ngIf="language=='en'">Control </span>
+            <div *ngIf="tableData['name']!='admin' && tableData['name']!='user'" class="btn-group dropend">
+              <button type="button" class="btn btn-secondary dropdown-toggle"
+              id="dropdownMenuButton1" 
+               data-bs-toggle="dropdown" aria-expanded="false">
+                <!-- <i class="fas fa-ellipsis-v" style="color: #000000;"></i> -->
+                <img src="./assets/images/invoices/3dots.png" width="3.4" alt="">
+              </button>
+              
+              <ul  class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <div *ngIf="language=='en'">
+                  <div  *ngFor="let controlItem of controlArray">
+                    <!--  && (controlItem.route.path.includes('invoices/add-voucher') && tableData['uuid']) -->
+                    <li *ngIf="controlItem.route.path && !controlItem.popUp"
+                 
+                    [routerLink]="controlItem.route.path + tableData[controlItem.route.attribute]"
+                    class="p-2 cursor-pointer">
+                      <span>  {{ controlItem.nameEN }} </span>
+                    </li>
+                    <li *ngIf="controlItem.popUp && controlItem.popUp=='opencreatePaymentLinkModel'"
+                   (click)="opencreatePaymentLinkModel.openCreateLinkModel()"
+                    class="p-2 cursor-pointer">
+                      <span>  {{ controlItem.nameEN }} </span>
+                    </li>
+
+                    <li *ngIf="controlItem.popUp && controlItem.popUp=='addPayment' && tableData['status'] == 1 && this.tableData['unpaid_converted'] > 0"
+                    (click)="fillPaymentFormData(tableData); "
+                      data-bs-toggle="modal" data-bs-target="#addNewModal" 
+                        class="p-2 cursor-pointer">
+                        <span>  {{ controlItem.nameEN }} </span>
+                    </li>
+
+                    <li *ngIf="controlItem.popUp && controlItem.popUp=='restoreUser'"
+                   (click)="restoreUser(tableData[controlItem.route.attribute])"
+                    class="p-2 cursor-pointer">
+                      <span>  {{ controlItem.nameEN }} </span>
+                    </li>
+                    <li *ngIf="controlItem.popUp && controlItem.popUp=='restoreInvoice'"
+                   (click)="restoreInvoice(tableData[controlItem.route.attribute])"
+                    class="p-2 cursor-pointer">
+                      <span>  {{ controlItem.nameEN }} </span>
+                    </li>
+                    <!-- (click)="deleteProduct(tableData[controlItem.route.attribute])" -->
+                    <!-- (click)="openModel(tableData[controlItem.route.attribute],'deletePurchaseUser')" -->
+                    <li *ngIf="controlItem.popUp && controlItem.popUp=='deletePurchaseUser'"
+                   
+                    (click)="openPurchaseModel(tableData[controlItem.route.attribute],'deletePurchaseUser')"
+                     class="p-2 cursor-pointer">
+                       <span>  {{ controlItem.nameEN }} </span>
+                     </li>
+                    <li *ngIf="controlItem.popUp && controlItem.popUp=='DeleteProduct'"
+                    (click)="openModel(tableData[controlItem.route.attribute],'DeleteProduct')"
+                    class="p-2 cursor-pointer">
+                      <span>  {{ controlItem.nameEN }} </span>
+                    </li>
+
+                    <li *ngIf="controlItem.popUp && controlItem.popUp=='CancelInvoice'"
+                    (click)="openModel(tableData[controlItem.route.attribute],'CancelInvoice')"
+                    class="p-2 cursor-pointer">
+                      <span>  {{ controlItem.nameEN }} </span>
+                    </li>
+
+                    <li *ngIf="controlItem.popUp && controlItem.popUp=='DeleteAdminUser'"
+                    (click)="openModel(tableData[controlItem.route.attribute],'DeleteAdminUser')"
+                    class="p-2 cursor-pointer">
+                      <span>  {{ controlItem.nameEN }} </span>
+                    </li>
+                    <li *ngIf="controlItem.popUp && controlItem.popUp=='DeleteAdminCoupon'"
+                    (click)="openModel(tableData[controlItem.route.attribute],'DeleteAdminCoupon')"
+                    class="p-2 cursor-pointer">
+                      <span>  {{ controlItem.nameEN }} </span>
+                    </li>
+                    <li *ngIf="controlItem.popUp && controlItem.popUp=='DeleteAdminSubscription'"
+                    (click)="openModel(tableData[controlItem.route.attribute],'DeleteAdminSubscription')"
+                     class="p-2 cursor-pointer">
+                       <span>  {{ controlItem.nameEN }} </span>
+                     </li>
+                    <li *ngIf="controlItem.popUp && controlItem.popUp=='DeleteAdminRole'"
+                    (click)="openModel(tableData[controlItem.route.attribute],'DeleteAdminRole')"
+                     class="p-2 cursor-pointer">
+                       <span>  {{ controlItem.nameEN }} </span>
+                     </li>
+                    <li *ngIf="controlItem.popUp && controlItem.popUp=='DeleteAdminPlan'"
+                    (click)="openModel(tableData[controlItem.route.attribute],'DeleteAdminPlan')"
+                     class="p-2 cursor-pointer">
+                       <span>  {{ controlItem.nameEN }} </span>
+                     </li>
+                    <li *ngIf="controlItem.popUp && controlItem.popUp=='DeleteAdminFeature'"
+                    (click)="openModel(tableData[controlItem.route.attribute],'DeleteAdminFeature')"
+                     class="p-2 cursor-pointer">
+                       <span>  {{ controlItem.nameEN }} </span>
+                     </li>
+                     <li *ngIf="controlItem.popUp && controlItem.popUp=='DeleteAdminDuration'"
+                     (click)="openModel(tableData[controlItem.route.attribute],'DeleteAdminDuration')"
+                      class="p-2 cursor-pointer">
+                        <span>  {{ controlItem.nameEN }} </span>
+                      </li>
+                    <li *ngIf="controlItem.popUp && controlItem.popUp=='DeleteAdminTemplates'"
+                    (click)="openModel(tableData[controlItem.route.attribute],'DeleteAdminTemplates')"
+                     class="p-2 cursor-pointer">
+                       <span>  {{ controlItem.nameEN }} </span>
+                     </li>
+                     <li *ngIf="controlItem.popUp && controlItem.popUp=='DeleteAdminArticle'"
+                     (click)="openModel(tableData[controlItem.route.attribute],'DeleteAdminArticle')"
+                      class="p-2 cursor-pointer">
+                        <span>  {{ controlItem.nameEN }} </span>
+                      </li>
+                     <li *ngIf="controlItem.popUp && controlItem.popUp=='DeleteAdminCity'"
+                     (click)="openModel(tableData[controlItem.route.attribute],'DeleteAdminCity')"
+                      class="p-2 cursor-pointer">
+                        <span>  {{ controlItem.nameEN }} </span>
+                      </li>
+
+                      <li *ngIf="controlItem.popUp && controlItem.popUp=='DeleteAdminDurations'"
+                      (click)="openModel(tableData[controlItem.route.attribute],'DeleteAdminDurations')"
+                       class="p-2 cursor-pointer">
+                         <span>  {{ controlItem.nameEN }} </span>
+                       </li>
+
+                      <li *ngIf="controlItem.popUp && controlItem.popUp=='DeleteAdminCategory'"
+                        (click)="openModel(tableData[controlItem.route.attribute],'DeleteAdminCategory')"
+                         class="p-2 cursor-pointer">
+                           <span>  {{ controlItem.nameEN }} </span>
+                      </li>
+
+                      <li *ngIf="controlItem.popUp && controlItem.popUp=='DeleteAdminActivities'"
+                      (click)="openModel(tableData[controlItem.route.attribute],'DeleteAdminActivities')"
+                       class="p-2 cursor-pointer">
+                         <span>  {{ controlItem.nameEN }} </span>
+                       </li>
+                      <li *ngIf="controlItem.popUp && controlItem.popUp=='DeleteAdminEntities'"
+                      (click)="openModel(tableData[controlItem.route.attribute],'DeleteAdminEntities')"
+                       class="p-2 cursor-pointer">
+                         <span>  {{ controlItem.nameEN }} </span>
+                       </li>
+                    <li *ngIf="controlItem.popUp && controlItem.popUp=='deleteClinet'"
+                    (click)="openModel(tableData[controlItem.route.attribute],'deleteClinet')"
+                     class="p-2 cursor-pointer">
+                       <span>  {{ controlItem.nameEN }} </span>
+                     </li>
+                     <li *ngIf="controlItem.popUp && controlItem.popUp=='deleteSupplier'"
+                    (click)="openModel(tableData[controlItem.route.attribute],'deleteSupplier')"
+                     class="p-2 cursor-pointer">
+                       <span>  {{ controlItem.nameEN }} </span>
+                     </li>
+
+                     <!-- && tableData['paid']!=tableData['total'] -->
+                     <li *ngIf="controlItem.popUp && controlItem.popUp=='showReceiptVoucher' "
+                     [routerLink]="controlItem.route.path + tableData[controlItem.route.attribute]"
+                     class="p-2 cursor-pointer">
+                       <span>  {{ controlItem.nameEN }} </span>
+                     </li>
+
+                     <!-- &&  tableData['paid'] != 0" -->
+                     <li *ngIf="controlItem.popUp && controlItem.popUp=='showCreditNotice' && tableData['can_create_credit_note']"
+                     [routerLink]="controlItem.route.path + tableData[controlItem.route.attribute]"
+                      class="p-2 cursor-pointer">
+                        <span>  {{ controlItem.nameEN }} </span>
+                      </li>
+
+                      <li *ngIf="controlItem.popUp && controlItem.popUp=='showCreditNotice' && !tableData['can_create_credit_note']"
+                      [pTooltip]=" ('TABLE.CANTCREATCREDIT'|translate )" 
+                       class="p-2 cursor-pointer" style="opacity: 0.4;">
+                         <span>  {{ controlItem.nameEN }} </span>
+                       </li>
+
+                     <li *ngIf="controlItem.popUp && controlItem.popUp=='showDebitNotice' "
+                     [routerLink]="controlItem.route.path + tableData[controlItem.route.attribute]"
+                      class="p-2 cursor-pointer">
+                        <span>  {{ controlItem.nameEN }} </span>
+                      </li>
+                     <li *ngIf="controlItem.popUp && controlItem.popUp=='deleteBank'"
+                     (click)="openModel(tableData[controlItem.route.attribute],'deleteBank')"
+                      class="p-2 cursor-pointer">
+                        <span>  {{ controlItem.nameEN }} </span>
+                      </li>
+
+                      <!-- zatca send -->
+                       
+                     <li *ngIf="controlItem.popUp && controlItem.popUp=='submitToZatca' && 
+                      (tableData['zatca_send_status'] == 0 && tableData['eligible_sending_zatca'] || 
+                       tableData['zatca_send_status'] == 1 && tableData['eligible_sending_zatca'] && (tableData['zatca_stage'] == 'simulation' || tableData['zatca_stage'] == 'developer-portal')
+                      )"
+                     (click)="submitToZatca(tableData[controlItem.route.attribute],rowIndex)"
+                      class="p-2 cursor-pointer">
+                        <span>  {{ controlItem.nameEN }} </span>
+                      </li>
+
+                       <!-- zatca Credit-->
+                     <!-- && tableData[controlItem.route.attribute]?.zatca_send_status == 0 -->
+                     <li *ngIf="controlItem.popUp && controlItem.popUp=='submitToZatcaCredit' && 
+                     (tableData['zatca_send_status'] == 0 && tableData['eligible_sending_zatca'] || 
+                      tableData['zatca_send_status'] == 1 && tableData['eligible_sending_zatca'] && (tableData['zatca_stage'] == 'simulation' || tableData['zatca_stage'] == 'developer-portal')
+                     )"
+                      (click)="submitToZatcaCredit(tableData[controlItem.route.attribute],rowIndex)"
+                     class="p-2 cursor-pointer">
+                       <span>  {{ controlItem.nameEN }} </span>
+                     </li>
+
+                     <button hidden  #openDeleteModal type="button" (click)="deletePopup.openModel()"></button>
+                     <button hidden  #closeDeleteModal type="button" (click)="deletePopup.closeModalClick()"></button>
+                  </div>
+                </div>
+                <div *ngIf="language=='ar'">
+                  <div  *ngFor="let controlItem of controlArray">
+                    <li *ngIf="controlItem.route.path && !controlItem.popUp"
+                    [routerLink]="controlItem.route.path + tableData[controlItem.route.attribute]"
+                    class="p-2 cursor-pointer">
+                      <span>  {{ controlItem.nameAR }} </span>
+                    </li>
+                    <li *ngIf="controlItem.popUp && controlItem.popUp=='opencreatePaymentLinkModel'"
+                   (click)="opencreatePaymentLinkModel.openCreateLinkModel()"
+                    class="p-2 cursor-pointer">
+                      <span>  {{ controlItem.nameAR }} </span>
+                    </li>
+
+                    <li *ngIf="controlItem.popUp && controlItem.popUp=='addPayment' && tableData['status'] == 1 && this.tableData['unpaid_converted'] > 0"
+                    (click)="fillPaymentFormData(tableData); "
+                   
+                    data-bs-toggle="modal" data-bs-target="#addNewModal" 
+                      class="p-2 cursor-pointer">
+                        <span>  {{ controlItem.nameAR }} </span>
+                  </li>
+
+                    <li *ngIf="controlItem.popUp && controlItem.popUp=='restoreUser'"
+                   (click)="restoreUser(tableData[controlItem.route.attribute])"
+                    class="p-2 cursor-pointer">
+                      <span>  {{ controlItem.nameAR }} </span>
+                    </li>
+                    <li *ngIf="controlItem.popUp && controlItem.popUp=='restoreInvoice'"
+                    (click)="restoreInvoice(tableData[controlItem.route.attribute])"
+                     class="p-2 cursor-pointer">
+                       <span>  {{ controlItem.nameAR }} </span>
+                     </li>
+                     <li *ngIf="controlItem.popUp && controlItem.popUp=='DeleteProduct'"
+                     (click)="openModel(tableData[controlItem.route.attribute],'DeleteProduct')"
+                     class="p-2 cursor-pointer">
+                       <span>  {{ controlItem.nameAR }} </span>
+                     </li>
+                     <li *ngIf="controlItem.popUp && controlItem.popUp=='CancelInvoice'"
+                     (click)="openModel(tableData[controlItem.route.attribute],'CancelInvoice')"
+                     class="p-2 cursor-pointer">
+                       <span>  {{ controlItem.nameAR }} </span>
+                     </li>
+                     <li *ngIf="controlItem.popUp && controlItem.popUp=='deleteClinet'"
+                     (click)="openModel(tableData[controlItem.route.attribute],'deleteClinet')"
+                      class="p-2 cursor-pointer">
+                        <span>  {{ controlItem.nameAR }} </span>
+                      </li>
+                      <li *ngIf="controlItem.popUp && controlItem.popUp=='deleteSupplier'"
+                      (click)="openModel(tableData[controlItem.route.attribute],'deleteSupplier')"
+                       class="p-2 cursor-pointer">
+                         <span>  {{ controlItem.nameAR }} </span>
+                       </li>
+
+                       <!-- && tableData['paid']!=tableData['total']  -->
+                      <li *ngIf="controlItem.popUp && controlItem.popUp=='showReceiptVoucher' "
+                      [routerLink]="controlItem.route.path + tableData[controlItem.route.attribute]"
+                       class="p-2 cursor-pointer">
+                         <span>  {{ controlItem.nameAR }} </span>
+                       </li>
+
+                       <!-- &&  tableData['paid'] != 0 -->
+                      <li *ngIf="controlItem.popUp && controlItem.popUp=='showCreditNotice' && tableData['can_create_credit_note']"
+                      [routerLink]="controlItem.route.path + tableData[controlItem.route.attribute]"
+                       class="p-2 cursor-pointer">
+                         <span>  {{ controlItem.nameAR }} </span>
+                       </li>
+                      <li *ngIf="controlItem.popUp && controlItem.popUp=='showCreditNotice' && !tableData['can_create_credit_note']"
+                      [pTooltip]=" ('TABLE.CANTCREATCREDIT'|translate )" 
+                       class="p-2 cursor-pointer" style="opacity: 0.4;">
+                         <span>  {{ controlItem.nameAR }} </span>
+                       </li>
+
+                       <li *ngIf="controlItem.popUp && controlItem.popUp=='showDebitNotice'"
+                      [routerLink]="controlItem.route.path + tableData[controlItem.route.attribute]"
+                       class="p-2 cursor-pointer">
+                         <span>  {{ controlItem.nameAR }} </span>
+                       </li>
+
+                     <li *ngIf="controlItem.popUp && controlItem.popUp=='deletePurchaseUser'"
+                 
+                     (click)="openPurchaseModel(tableData[controlItem.route.attribute],'deletePurchaseUser')"
+                      class="p-2 cursor-pointer">
+                        <span>  {{ controlItem.nameAR }} </span>
+                      </li>
+                     <li *ngIf="controlItem.popUp && controlItem.popUp=='DeleteAdminUser'"
+                     (click)="openModel(tableData[controlItem.route.attribute],'DeleteAdminUser')"
+                      class="p-2 cursor-pointer">
+                        <span>  {{ controlItem.nameAR }} </span>
+                      </li>
+                      <li *ngIf="controlItem.popUp && controlItem.popUp=='DeleteAdminRole'"
+                      (click)="openModel(tableData[controlItem.route.attribute],'DeleteAdminRole')"
+                       class="p-2 cursor-pointer">
+                         <span>  {{ controlItem.nameAR }} </span>
+                       </li>
+                     <li *ngIf="controlItem.popUp && controlItem.popUp=='DeleteAdminSubscription'"
+                     (click)="openModel(tableData[controlItem.route.attribute],'DeleteAdminSubscription')"
+                      class="p-2 cursor-pointer">
+                        <span>  {{ controlItem.nameAR }} </span>
+                      </li>
+                      <li *ngIf="controlItem.popUp && controlItem.popUp=='DeleteAdminCoupon'"
+                      (click)="openModel(tableData[controlItem.route.attribute],'DeleteAdminCoupon')"
+                      class="p-2 cursor-pointer">
+                        <span>  {{ controlItem.nameAR }} </span>
+                      </li>
+                      <li *ngIf="controlItem.popUp && controlItem.popUp=='DeleteAdminPlan'"
+                      (click)="openModel(tableData[controlItem.route.attribute],'DeleteAdminPlan')"
+                       class="p-2 cursor-pointer">
+                         <span>  {{ controlItem.nameAR }} </span>
+                       </li>
+                      <li *ngIf="controlItem.popUp && controlItem.popUp=='DeleteAdminFeature'"
+                      (click)="openModel(tableData[controlItem.route.attribute],'DeleteAdminFeature')"
+                       class="p-2 cursor-pointer">
+                         <span>  {{ controlItem.nameAR }} </span>
+                       </li>
+
+                       <li *ngIf="controlItem.popUp && controlItem.popUp=='DeleteAdminDuration'"
+                       (click)="openModel(tableData[controlItem.route.attribute],'DeleteAdminDuration')"
+                        class="p-2 cursor-pointer">
+                          <span>  {{ controlItem.nameAR }} </span>
+                        </li>
+
+                       <li *ngIf="controlItem.popUp && controlItem.popUp=='DeleteAdminTemplates'"
+                       (click)="openModel(tableData[controlItem.route.attribute],'DeleteAdminTemplates')"
+                        class="p-2 cursor-pointer">
+                          <span>  {{ controlItem.nameAR }} </span>
+                        </li>
+                       <li *ngIf="controlItem.popUp && controlItem.popUp=='DeleteAdminArticle'"
+                       (click)="openModel(tableData[controlItem.route.attribute],'DeleteAdminArticle')"
+                        class="p-2 cursor-pointer">
+                          <span>  {{ controlItem.nameAR }} </span>
+                        </li>
+                        <li *ngIf="controlItem.popUp && controlItem.popUp=='DeleteAdminCity'"
+                        (click)="openModel(tableData[controlItem.route.attribute],'DeleteAdminCity')"
+                         class="p-2 cursor-pointer">
+                           <span>  {{ controlItem.nameAR }} </span>
+                         </li>
+
+
+                         <li *ngIf="controlItem.popUp && controlItem.popUp=='DeleteAdminDurations'"
+                        (click)="openModel(tableData[controlItem.route.attribute],'DeleteAdminDurations')"
+                         class="p-2 cursor-pointer">
+                           <span>  {{ controlItem.nameAR }} </span>
+                         </li>
+
+
+                         <li *ngIf="controlItem.popUp && controlItem.popUp=='DeleteAdminCategory'"
+                        (click)="openModel(tableData[controlItem.route.attribute],'DeleteAdminCategory')"
+                         class="p-2 cursor-pointer">
+                           <span>  {{ controlItem.nameAR }} </span>
+                         </li>
+
+                        <li *ngIf="controlItem.popUp && controlItem.popUp=='DeleteAdminActivities'"
+                        (click)="openModel(tableData[controlItem.route.attribute],'DeleteAdminActivities')"
+                         class="p-2 cursor-pointer">
+                           <span>  {{ controlItem.nameAR }} </span>
+                         </li>
+                         <li *ngIf="controlItem.popUp && controlItem.popUp=='DeleteAdminEntities'"
+                         (click)="openModel(tableData[controlItem.route.attribute],'DeleteAdminEntities')"
+                          class="p-2 cursor-pointer">
+                            <span>  {{ controlItem.nameAR }} </span>
+                          </li>
+                    <li *ngIf="controlItem.popUp && controlItem.popUp=='deleteBank'"
+                    (click)="openModel(tableData[controlItem.route.attribute],'deleteBank')"
+                     class="p-2 cursor-pointer">
+                       <span>  {{ controlItem.nameAR }} </span>
+                     </li>
+
+                     <!-- zatca -->
+                     <!-- && tableData[controlItem.route.attribute]?.zatca_send_status == 0 -->
+                     <li *ngIf="controlItem.popUp && controlItem.popUp=='submitToZatca' && 
+                     (tableData['zatca_send_status'] == 0 && tableData['eligible_sending_zatca'] || 
+                      tableData['zatca_send_status'] == 1 && tableData['eligible_sending_zatca'] && (tableData['zatca_stage'] == 'simulation' || tableData['zatca_stage'] == 'developer-portal')
+                     )"
+                      (click)="submitToZatca(tableData[controlItem.route.attribute],rowIndex)"
+                     class="p-2 cursor-pointer">
+                       <span>  {{ controlItem.nameAR }} </span>
+                     </li>
+
+
+                     <!-- zatca Credit-->
+                     <!-- && tableData[controlItem.route.attribute]?.zatca_send_status == 0 -->
+                     <li *ngIf="controlItem.popUp && controlItem.popUp=='submitToZatcaCredit' && 
+                     (tableData['zatca_send_status'] == 0 && tableData['eligible_sending_zatca'] || 
+                      tableData['zatca_send_status'] == 1 && tableData['eligible_sending_zatca'] && (tableData['zatca_stage'] == 'simulation' || tableData['zatca_stage'] == 'developer-portal')
+                     )"
+                      (click)="submitToZatcaCredit(tableData[controlItem.route.attribute],rowIndex)"
+                     class="p-2 cursor-pointer">
+                       <span>  {{ controlItem.nameAR }} </span>
+                     </li>
+
+                    
+
+                     <button hidden  #openDeleteModal type="button" (click)="deletePopup.openModel()"></button>
+                     <button hidden  #closeDeleteModal type="button" (click)="deletePopup.closeModalClick()"></button>
+                    
+                  </div>
+                </div>
+                
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <app-create-payment-link [invoiceUuid]="tableData['uuid']" #opencreatePaymentLinkModel></app-create-payment-link>
+  </ng-template>
+</p-table>
+
+<button hidden #downloadBtn type="button" (click)="Template.downloadPDF()"></button>
+<app-invoice-template  #Template [logoUrl]="this.authSer.getUserObj()?.media?.logo"  [tempType]="type" 
+ [invoiceColor]="invoiceColor" [InvoiceType]="InvoiceType" [invoice]="downloadedData" > </app-invoice-template>
+
+
+<app-delete-error-popup (ChoosenEvent)="deletePopupevent($event)"  #deletePopup></app-delete-error-popup>
+
+
+
+
+<div class="modal fade" id="addNewModal" tabindex="-1" aria-labelledby="addNewModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="text-end fw-bold"> {{'ADDPURCHASE.ADDNEWPAYMENT'|translate}} </span>
+       
+
+        <button type="button" class="btn-close m-0" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <!-- form  -->
+        <form [formGroup]="paymentForm" class="row g-3 needs-validation ContactForm" >
+          
+      
+          <span class="flex-fill" *ngIf="purchase_currency_is_sar != 1 "> <span class=" fw-bold"> {{'ADDPURCHASE.REMAININGAMOUNT'|translate}} ( {{ paymentCurrency }} ) </span> : {{ unpaid_converted_amount }} </span>
+          <span class="flex-fill"> <span class=" fw-bold"> {{'ADDPURCHASE.REMAININGAMOUNT'|translate}} ( {{'COMMON.SAR'|translate}} )</span>  : {{ Purchase_remaining_amount }} </span>
+          
+
+          <div class="col-12" formGroupName="name">
+              <label for="validationCustomPhone" class="form-label"> {{'ADDPURCHASE.PAYMENTNAME'|translate}} </label>
+              <input formControlName="ar" type="text" class="form-control"  placeholder="{{'ADDPURCHASE.PAYMENTNAME'|translate}}" id="validationCustomPhone" aria-describedby="inputGroupPrepend" required>
+              <app-Form-errors [control]="paymentForm.get('name.ar')"></app-Form-errors>
+            </div>
+
+            
+            <!-- <div class="col-12 currencyCol">
+                <label class="form-label fs-16 fw-400 mb-1">{{'ADDPURCHASE.CURRENCY'|translate}} <span style="color: red;">*</span></label>
+                <p-dropdown  [options]="currency" formControlName="currency" (ngModelChange)="updateTotalAmount();chooseCurrency($event)" 
+                [styleClass]="!paymentForm.controls['currency'].valid && paymentForm.controls['currency'].touched ?'errorInput' : ''"
+                placeholder="{{'ADDPURCHASE.CURRENCY'|translate}}" filterBy="name" [filter]="true"
+                 class="my-1 mx-0 py-2  w-100" optionLabel="name" optionValue="currency_code"></p-dropdown> 
+  
+                <app-Form-errors [control]="paymentForm.controls['currency']"></app-Form-errors>
+            </div> -->
+
+            <!-- <div class="col-12">
+                <label class="form-label  fs-16 fw-400 mb-1">{{'ADDPURCHASE.EXCHANGERATE'|translate}} <span style="color: red;">*</span></label>
+                <input type="text" appOnlyNumber placeholder="{{'ADDPURCHASE.EXCHANGERATE'|translate}} " [readOnly]="!rate_is_changed"
+                [ngClass]="!paymentForm.controls['conversion_rate'].valid && paymentForm.controls['conversion_rate'].touched ?'errorInput' : ''"
+                (ngModelChange)="updateExchangeAmount()" [(ngModel)]="conversion_rate"
+                formControlName="conversion_rate" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2  w-100">
+                <app-Form-errors [control]="paymentForm.controls['conversion_rate']"></app-Form-errors>
+    
+                <div class="d-flex gap-3">
+                  <div class="my-auto">
+                    <p class="m-0"> {{'ADDPURCHASE.EDITEXCHANGERATE' | translate}} </p>
+                  </div>
+          
+                  <label class="switch">
+                    <input type="checkbox" >
+                    <span class="slider round" (click)="changeExchangeRate($event)"></span>
+                  </label>
+          
+                 </div>
+                 <p class="text-warning" *ngIf="rate_is_changed"> {{'ADDPURCHASE.CHANGEEXCHANGERATEWARN' | translate}} </p>
+            
+            </div> -->
+
+            <!-- <div class="d-flex justify-content-between gap-2 flex-wrap"> -->
+
+              <div class="col-12">
+                <label for="validationCustomPhone" class="form-label"> {{'ADDPURCHASE.PAYMENTAMOUNT'|translate}} ( {{ paymentCurrency }} )</label>
+                <input formControlName="converted_amount" type="text" 
+                (ngModelChange)="updateTotalAmount()"
+                class="form-control" appOnlyNumber placeholder=" {{'ADDPURCHASE.PAYMENTAMOUNT'|translate}}" id="validationCustomPhone" aria-describedby="inputGroupPrepend" required>
+                <app-Form-errors [control]="paymentForm.controls['converted_amount']"></app-Form-errors>
+              </div>
+
+              <div class="col-12" *ngIf="purchase_currency_is_sar != 1 ">
+                <label for="validationCustomPhone" class="form-label"> {{'ADDPURCHASE.PAYMENTAMOUNT'|translate}} ( {{'COMMON.SAR'|translate}} )</label>
+                <input formControlName="paid_amount" [readOnly]="true" type="text" class="form-control" appOnlyNumber placeholder=" {{'ADDPURCHASE.PAYMENTAMOUNT'|translate}} ( {{'COMMON.SAR'|translate}} )" id="validationCustomPhone" aria-describedby="inputGroupPrepend" required>
+                <app-Form-errors [control]="paymentForm.controls['paid_amount']"></app-Form-errors>
+              </div>
+          <!-- </div> -->
+
+        
+
+      <div class="col-12">
+        <div class="d-flex justify-content-end">
+          <app-button-comp [btnType]="'main'" (click)="AddPayment()" data-bs-dismiss="modal" class="me-2" [name]="'COMMON.ADD'|translate" [background_color]="'#1B1464'"></app-button-comp>
+        </div>
+      </div>
+      </form>
+        <!-- ------ -->
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+<button hidden #DeletePurchaseModalBtn type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deletePurchaseModal">
+
+</button>
+
+<!-- Modal -->
+<div  class="modal fade "  id="deletePurchaseModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"  aria-hidden="true">
+  
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body d-flex justify-content-center align-items-center flex-column">
+        <h1 class="modal-title fs-5 " > {{'DELETEPOPUP.MESSAGE'|translate}}</h1>
+
+        <div class="col-md-12 text-start d-flex flex-column">
+          <div class="title mb-3">
+            <span class="fw-400 fs-20">{{'ADDPURCHASE.UPLOADRECEIPT'|translate}} </span>
+          </div>
+          <!-- <div class="imgUpload  d-flex flex-column justify-content-center align-items-center" style="width: 100%; height: 75%; justify-content: center;overflow: hidden;" (click)="fileInput.click()">
+           <div *ngIf="!fileUrl" class="d-flex flex-column justify-content-center align-items-center">
+            <svg width="78" height="61" viewBox="0 0 78 61" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M40.9505 14.8714L40.8663 14.8491C40.3588 14.7147 40.0407 14.2268 40.2041 13.7402C40.2041 13.7402 40.2041 13.7401 40.2041 13.7401L40.3463 13.7879L40.9505 14.8714ZM40.9505 14.8714L40.9536 14.8683M40.9505 14.8714L40.9536 14.8683M40.9536 14.8683C41.433 14.9533 41.9292 14.7041 42.0789 14.2554L40.9536 14.8683Z" fill="#483EA8" stroke="#F9FFF9" stroke-width="0.3"/>
+              <path d="M63.894 42.732H58.9153C58.4572 42.732 58.0855 42.4021 58.0855 41.9952C58.0855 41.5884 58.4571 41.2584 58.9153 41.2584H63.894C70.7568 41.2584 76.3407 36.3003 76.3407 30.2066C76.3407 24.1128 70.7568 19.1547 63.894 19.1547H63.7742C63.5336 19.1547 63.3048 19.062 63.1472 18.9005C62.9895 18.7389 62.9184 18.5247 62.9528 18.3131C63.0268 17.8542 63.0642 17.3932 63.0642 16.9443C63.0642 11.6631 58.2247 7.36593 52.2769 7.36593C49.963 7.36593 47.7564 8.00799 45.8952 9.22316C45.4862 9.48998 44.9054 9.37157 44.6689 8.97212C39.398 0.0601123 25.6311 -1.13668 18.4936 6.61599C15.4868 9.88207 14.3054 14.1307 15.2521 18.2716C15.3564 18.7289 14.9623 19.1552 14.4389 19.1552H14.1064C7.24355 19.1552 1.65965 24.1134 1.65965 30.2071C1.65965 36.3009 7.24355 41.259 14.1064 41.259H19.085C19.5432 41.259 19.9148 41.589 19.9148 41.9958C19.9148 42.4026 19.5432 42.7326 19.085 42.7326H14.1064C6.3283 42.7326 0 37.1135 0 30.2071C0 23.4944 5.97795 17.9979 13.455 17.6947C12.7527 13.3986 14.0957 9.06524 17.2086 5.68343C24.8503 -2.61758 39.495 -1.68715 45.6857 7.56908C47.6606 6.46967 49.9205 5.89293 52.2766 5.89293C59.4827 5.89293 65.1929 11.3389 64.6932 17.7016C72.1014 18.0705 78 23.538 78 30.2065C78 37.1135 71.6717 42.7321 63.8936 42.7321L63.894 42.732Z" fill="#483EA8"/>
+              <path d="M17.994 41.5802C17.994 51.8362 27.3847 60.1503 38.8889 60.1503C50.3933 60.1503 59.7837 51.8361 59.7837 41.5802C59.7837 31.3242 50.3933 23.0102 38.8889 23.0102C27.3845 23.0102 17.994 31.3243 17.994 41.5802ZM19.954 41.5802C19.954 32.3354 28.4311 24.7841 38.8889 24.7841C49.3466 24.7841 57.8238 32.3352 57.8238 41.5802C57.8238 50.825 49.3466 58.3763 38.8889 58.3763C28.4312 58.3763 19.954 50.8252 19.954 41.5802Z" fill="#483EA8" stroke="#F9FFF9" stroke-width="0.3"/>
+              <path d="M38.5111 48.9945C38.5111 49.3915 38.8676 49.684 39.2686 49.684C39.6696 49.684 40.0261 49.3919 40.0261 48.9945V34.9696C40.0261 34.5726 39.6696 34.2802 39.2686 34.2802C38.8676 34.2802 38.5111 34.5727 38.5111 34.9696V48.9945Z" fill="#483EA8" stroke="#483EA8" stroke-width="0.3"/>
+              <path d="M43.5991 39.78C43.7477 39.912 43.94 39.9758 44.1282 39.9759H44.1283C44.3162 39.9758 44.5086 39.9126 44.6574 39.78C44.962 39.5096 44.962 39.0633 44.6574 38.7928L39.7975 34.4775C39.5034 34.2164 39.0328 34.2163 38.739 34.4776L33.8792 38.7928C33.5746 39.0633 33.5746 39.5096 33.8792 39.78C34.1733 40.0412 34.6438 40.0413 34.9377 39.78L39.2683 35.9346L43.5991 39.78Z" fill="#483EA8" stroke="#483EA8" stroke-width="0.3"/>
+              </svg>
+              <div class="d-flex">
+                <span class="text-decoration-underline fw-bold color-darkPurple"> Browse </span>
+                <span class="fw-bold text-dark"> Drag & drop files or </span>
+              </div>
+              <span> jpeg,png,pdf </span>
+             
+           </div>
+         
+           <div *ngIf="fileUrl && fileType === 'image'" class="d-flex flex-column justify-content-center align-items-center position-relative p-3">
+            <button class="btn-close position-absolute top-0 end-0" (click)="removeItem()" aria-label="Close"></button>
+            <img [src]="fileUrl" alt="Image" style="object-fit: cover;" width="150" height="150">
+          </div>
+          
+          <div *ngIf="fileUrl && fileType === 'pdf'" class="d-flex flex-column justify-content-center align-items-center position-relative p-3">
+            <button class="btn-close position-absolute top-0 end-0" (click)="removeItem()" aria-label="Close"></button>
+              <p > {{ fileName }} </p>
+          </div>
+
+           <input class="file-input" type="file"  formControlName="image" #fileInput hidden (change)="onFileSelect($event)" 
+           (drop)="onDrop($event)" (dragover)="onDragOver($event)" />
+          </div> -->
+
+          <div class="imgUpload d-flex flex-column justify-content-center align-items-center"
+          style="width: 100%; height: 75%; justify-content: center;overflow: hidden;min-height: 150px;"
+          (click)="fileInput.click()" 
+          (drop)="onDrop($event)" 
+          (dragover)="onDragOver($event)" 
+          (dragleave)="onDragLeave($event)">
+          
+          <div *ngIf="!fileUrl" class="d-flex flex-column justify-content-center align-items-center">
+              <svg width="78" height="61" viewBox="0 0 78 61" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <!-- SVG content here -->
+              </svg>
+              <div class="d-flex">
+                  <span class="text-decoration-underline fw-bold color-darkPurple"> Browse </span>
+                  <span class="fw-bold text-dark"> Drag & drop files or </span>
+              </div>
+              <span> jpeg, png, pdf </span>
+          </div>
+          
+          <div *ngIf="fileUrl && fileType === 'image'" class="d-flex flex-column justify-content-center align-items-center position-relative p-3">
+              <button class="btn-close position-absolute top-0 end-0" (click)="removeItem()" aria-label="Close"></button>
+              <img [src]="fileUrl" alt="Image" style="object-fit: cover;" width="150" height="150">
+          </div>
+          
+          <div *ngIf="fileUrl && fileType === 'pdf'" class="d-flex flex-column justify-content-center align-items-center position-relative p-3">
+              <button class="btn-close position-absolute top-0 end-0" (click)="removeItem()" aria-label="Close"></button>
+              <p>{{ fileName }}</p>
+          </div>
+          
+          <input type="file" #fileInput hidden (change)="onFileSelect($event)" />
+      </div>
+      
+
+        </div>
+
+
+      </div>
+      <div class="modal-footer border-0 d-flex justify-content-center">
+        <app-button-comp (click)="deletePurchaseUser(uuidToDelete)"  [style.width.%]="40" [name]="'DELETEPOPUP.DELETE'|translate" [background_color]="'#ff0000'"></app-button-comp>
+        <app-button-comp [btnType]="'secondary'"  data-bs-dismiss="modal" aria-label="Close"  [style.width.%]="40" [name]="'DELETEPOPUP.CANCEL'|translate" [background_color]="'#1B1464'"></app-button-comp>
+        <button hidden  #closePurchaseModal type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+</div>

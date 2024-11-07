@@ -1,0 +1,167 @@
+<form [formGroup]="registerForm" (ngSubmit)="register()" autocomplete="off">
+  <div class="register position-absolute  d-flex flex-wrap align-items-center">
+    <div class="position-absolute top-0 ps-5 pt-1">
+      <img src="../../../assets/logo/logo 1.svg" width="70" alt="" >
+    </div>
+    <div class="ContDiv position-relative"> 
+      <div class="background">
+        <div [ngClass]="{
+          'registerBodyAR':language=='ar',
+          'registerBodyEN':language=='en'
+      }" class="registerBody w-100 h-100 text-start py-1 px-5">
+          <div class="d-flex flex-column justify-content-center h-100">
+             <h1 class="mb-2 title">{{'REGISTER.REGISTER'|translate}}</h1>
+             <div class="width-60 mb-3 d-flex justify-content-center">
+               <div class="w-50">
+                <div class="d-flex position-relative w-100 justify-content-between align-items-center ">
+                  <div class="hLine"></div>
+                  <div class="active"></div>
+                  <div class="notActive"></div>
+                  <div class="notActive"></div>
+                  <div class="notActive"></div>
+                </div>
+               </div>
+
+             </div>
+  
+             <div class="width-60 d-flex flex-wrap justify-content-between gap-3   mb-3">
+              <div class="width-46-lg form-floating">
+                <input type="text" formControlName="name" class="textInput w-100 h-46px form-control" id="floatingInput1" placeholder="name@example.com">
+                <label class="inputFieldLable text-white" for="floatingInput1">{{'COMMON.NAME'|translate}}<span style="color: red;">*</span></label>
+                <app-Form-errors [control]="registerForm.controls['name']"></app-Form-errors>
+              </div>
+              <div class="width-46-lg">
+  <!-- <input type="text" formControlName="phone" class="textInput w-100 h-46px form-control" id="floatingInput2" placeholder="name@example.com">
+                <label class="inputFieldLable text-white" for="floatingInput2">رقم الجوال</label>
+                <app-Form-errors [control]="registerForm.controls['phone']"></app-Form-errors> -->
+            
+                    <!-- <p-dropdown [options]="countryCodes" class="h-46px d-flex w-25" [(ngModel)]="selectedCountry" optionLabel="label"></p-dropdown>  -->
+
+                <!-- <div class="form-floating">
+                    <input pInputText type="text" formControlName="phone" class="textInput h-46px form-control" id="floatingInput2" placeholder="name@example.com">
+                    <label class="inputFieldLable text-white" for="floatingInput2">رقم الجوال</label>
+                    <app-Form-errors [control]="registerForm.controls['phone']"></app-Form-errors>
+                  
+                </div> -->
+                <div class="teleDiv h-46px" >
+                  <div [ngClass]="
+                  {
+                    'phoneInputAR':language=='ar',
+                    'phoneInputEN':language=='en'
+                }
+                  " class="input-group has-validation">
+
+                      <ngx-intl-tel-input 
+                       class="customngxTele" 
+                       id="phone"   formControlName="phoneObj"
+                      [preferredCountries]="preferredCountries"
+                      [enableAutoCountrySelect]="false" 
+                      [enablePlaceholder]="true" 
+                      [searchCountryFlag]="true"
+                      [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+                      [selectFirstCountry]="false" 
+                      [selectedCountryISO]="CountryISO.SaudiArabia"
+                      [maxLength]="9" 
+                      [minlength]="9"
+                      [phoneValidation]="true" 
+                      [separateDialCode]="true"
+                      customPlaceholder="{{'COMMON.PHONE'|translate}}"
+                    >
+                    </ngx-intl-tel-input>
+                    
+                  
+                  </div>
+              
+                  <app-Form-errors  [control]="registerForm.controls['phone']"></app-Form-errors>
+              </div>
+
+              </div>
+            </div>
+             <div class="width-60 form-floating mb-3">
+              <input  formControlName="email" class="textInput  h-46px form-control" id="floatingInput" placeholder="name@example.com">
+              <label class="inputFieldLable text-white"  onfocus="this.removeAttribute('readonly');" readonly   for="floatingInput">{{'LANDING.EMAIL'|translate}}<span style="color: red;">*</span></label>
+              <app-Form-errors [control]="registerForm.controls['email']"></app-Form-errors>
+            </div>
+  
+             <div class="width-60 form-floating mb-3 inner-addon right-addon">
+              <input formControlName="password" onfocus="this.removeAttribute('readonly');" readonly [type]="showPassword ? 'text' : 'password'" class="textInput h-46px form-control" id="floatingInput" placeholder="name@example.com">
+              <i [ngClass]="{'far-ltr':language=='en'}" alt="show" class="text-white far fa-eye eye-show" 
+              (click)="showPassword = !showPassword"
+              [class.hide]="showPassword"></i>
+              <i [ngClass]="{'far-ltr':language=='en'}" alt="hide" class="text-white far fa-eye-slash eye-hide" 
+              (click)="showPassword = !showPassword"
+              [class.hide]="!showPassword"></i> 
+              <label class="text-white inputFieldLable" for="floatingInput">{{'REGISTER.PASSWORD'|translate}} <span style="color: red;">*</span></label>
+              <app-Form-errors [control]="registerForm.controls['password']"></app-Form-errors>
+  
+            </div>
+             <div class="width-60 form-floating mb-3 inner-addon right-addon">
+              <input formControlName="password_confirmation" onfocus="this.removeAttribute('readonly');" readonly  [type]="showPasswordConf ? 'text' : 'password'" class="textInput h-46px form-control" id="floatingInput" placeholder="name@example.com">
+              <i [ngClass]="{'far-ltr':language=='en'}" alt="show" class="text-white far fa-eye eye-show" 
+              (click)="showPasswordConf = !showPasswordConf"
+              [class.hide]="showPasswordConf"></i>
+              <i [ngClass]="{'far-ltr':language=='en'}" alt="hide" class="text-white far fa-eye-slash eye-hide" 
+              (click)="showPasswordConf = !showPasswordConf"
+              [class.hide]="!showPasswordConf"></i> 
+              <label class="text-white inputFieldLable" for="floatingInput">{{'REGISTER.REENTERPASSWORD'|translate}} <span style="color: red;">*</span></label>
+              <app-Form-errors [control]="registerForm.controls['password_confirmation']"></app-Form-errors>
+              <app-Form-errors [control]="registerForm"></app-Form-errors>
+
+  
+            </div>
+            <div class="width-60 d-flex flex-wrap justify-content-between">
+              <div class="d-flex">
+                <input class="cursor-pointer checkbox form-check-input me-1" formControlName="accept_terms" type="checkbox" value="" id="flexCheckDefault">
+                <label data-bs-dismiss="offcanvas" data-bs-toggle="modal" data-bs-target="#PolicyModal" class="text-white">
+                  {{'REGISTER.AGREEON'|translate}}
+                        <span class="underLined-text cursor-pointer">{{'REGISTER.TEARMSANDCONDITIONS'|translate}} </span>
+                        <span style="color: red;">*</span>
+                </label>
+                <app-Form-errors [control]="registerForm.controls['accept_terms']"></app-Form-errors>
+
+              </div>
+            </div>
+            <div class="width-60 mt-4 text-center d-flex flex-column gap-1">
+              <div>
+                <button type="submit" class="loginBtn">{{'REGISTER.CREATENEWACCOUNT'|translate}}</button>
+              </div>
+              <div>
+                <span class="text-white fs-16 fw-300">{{'REGISTER.ACCOUNTEXIST'|translate}}</span>
+                <span routerLink="/auth/login" class="text-white underLined-text fs-16 fw-400 cursor-pointer"> {{'REGISTER.LOGIN'|translate}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+
+
+
+<div class="modal fade" id="PolicyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="Title mb-5">
+          <h4>  {{ 'TREARMSANDCONDITIONS.TITLE' | translate }} </h4>
+        </div>
+<!--         
+        <h5> {{ 'TREARMSANDCONDITIONS.SUBTITLE1' | translate }} </h5>
+        <p>
+          dasfasdfasdfasdf
+        </p> -->
+        <div *ngIf="termsAndCondtions" [innerHTML]="termsAndCondtions.value">
+
+        </div>
+        
+
+      </div>
+
+    </div>
+  </div>
+</div>

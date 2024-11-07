@@ -1,0 +1,107 @@
+<nav class="navbar navbar-expand-lg  fixed-top CustomNav font_Tajawal"   id="header" [ngClass]="{'menu_fixed animated fadeInDown':isScrolled}">
+  <div class="container-fluid  no-gutters justify-content-center">
+    <div class="col-lg-11 col-xl-10 d-flex w-100 navStyle" >
+      <div class="LogoImgDiv" style="height: 50px;width: 70px;">
+  
+        <div class="navbar-brand  text-center m-0 p-0" href="#" >
+          <img src="../../../../assets/logo/logo 1.svg" alt=""  
+            
+            class="d-inline-block w-100 h-100" >
+        </div>
+  
+      </div>
+        
+     
+      <div class="offcanvas offcanvas-top justify-content-center"  style="height: max-content;"
+      data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <a class="navbar-brand col-md-2 text-center m-0" href="#">
+            <img src="../../../../assets/logo/logo 1.svg" alt="" width="50vh"  class="d-inline-block align-text-top">
+          </a>
+  
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body mainOffcanvas main-menu-item justify-content-between">
+          
+  
+            <ul class="navbar-nav mb-2 mb-lg-0  mainNav" id="mainNav" >
+                <div class="linksDiv customBGDiv" id="linksDiv"> </div>
+              <li class="nav-item m-auto cursor-pointer" data-bs-dismiss="offcanvas">
+                <a class="nav-link" aria-current="page" (click)="scrollFunc('home')"   routerLinkActive="active" >{{ 'LANDING.HOME' | translate }}</a>
+              </li>
+              <li class="nav-item m-auto cursor-pointer" data-bs-dismiss="offcanvas" > 
+                <a class="nav-link" (click)="scrollFunc('whoContainer')" routerLinkActive="active" >  {{ 'LANDING.ABOUTUS' | translate }} </a>
+              </li> 
+              <li class="nav-item m-auto cursor-pointer" data-bs-dismiss="offcanvas">
+                <a class="nav-link" (click)="scrollFunc('FAQS')"   routerLinkActive="active" > {{ 'LANDING.FAQS' | translate }}</a>
+              </li>
+              <li class="nav-item m-auto cursor-pointer" data-bs-dismiss="offcanvas">
+                <a class="nav-link" (click)="scrollFunc('contact')"  routerLinkActive="active" > {{ 'LANDING.CONTACTUS' | translate }} </a>
+              </li>
+              <li class="nav-item m-auto cursor-pointer" >
+                <a *ngIf="language=='ar'" (click)="changeLang()" class="nav-link" >English  </a>
+                <a *ngIf="language=='en'" (click)="changeLang()" class="nav-link" >عربى  </a>
+              </li>
+           
+              
+            </ul>
+
+        </div>
+      </div> 
+  
+      <div  (click)="login()" class="nav-item justify-content-end" id="loginDiv">
+        <a *ngIf="!isAuth" class="btn btn-outline-primary ml-5 mr-5" > {{ 'LANDING.LOGIN' | translate }} </a>
+        <a *ngIf="isAuth" class="btn btn-outline-primary " > {{ 'SIDENAV.DASHBOARD' | translate }} </a>
+    </div>
+      <button class="navbar-toggler" id="navIcon" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+    </div>
+ 
+  </div>
+</nav>
+
+<!-- 
+<div class="row no-gutters justify-content-center">
+  <div class="col-lg-11 col-xl-10">
+      <nav class="navbar navbar-expand-lg navbar-light">
+          <a > <img style="height: 50px;width: 70px;" src="../../../../assets/logo/logo 1.svg" alt="logo"> </a>
+          <div class="collapse navbar-collapse main-menu-item" id="navbarSupportedContent">
+              <ul class="navbar-nav align-items-center">
+                <li class="nav-item" data-bs-dismiss="offcanvas">
+                  <a class="nav-link" aria-current="page" (click)="scrollFunc('home')"   routerLinkActive="active" >{{ 'LANDING.HOME' | translate }}</a>
+                </li>
+                <li class="nav-item"  > 
+                  <a class="nav-link" (click)="scrollFunc('whoContainer')" routerLinkActive="active" >  {{ 'LANDING.ABOUTUS' | translate }} </a>
+                </li> 
+                <li class="nav-item" data-bs-dismiss="offcanvas">
+                  <a class="nav-link" (click)="scrollFunc('FAQS')"   routerLinkActive="active" > {{ 'LANDING.FAQS' | translate }}</a>
+                </li>
+                <li class="nav-item" >
+                  <a class="nav-link" (click)="scrollFunc('contact')"  routerLinkActive="active" > {{ 'LANDING.CONTACTUS' | translate }} </a>
+                </li>
+                <li class="nav-item" >
+                  <a *ngIf="language=='ar'" (click)="changeLang()" class="nav-link" >English  </a>
+                  <a *ngIf="language=='en'" (click)="changeLang()" class="nav-link" >عربى  </a>
+                </li>
+              </ul>
+          </div>
+
+          <div class="nav-item justify-content-end" id="loginDiv">
+            <a *ngIf="!isAuth" class="btn btn-outline-primary ml-5 mr-5" > {{ 'LANDING.LOGIN' | translate }} </a>
+            <a *ngIf="isAuth" class="btn btn-outline-primary " > {{ 'SIDENAV.DASHBOARD' | translate }} </a>
+        </div>
+        
+         
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+           data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+          aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+      </nav>
+  </div>
+</div> -->
+
+

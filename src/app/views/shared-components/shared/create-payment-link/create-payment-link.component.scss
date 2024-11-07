@@ -1,0 +1,26 @@
+#createLinkModel{
+    .modal-dialog{
+        max-width: 25vw !important;
+        .modal-content{
+            border-radius: 30px !important;
+            .modal-header{
+                span{
+                    font-weight: 600 !important ;
+                    font-size: 18px !important;
+                }
+            }
+        }
+        @media only screen and (max-width:768px) and (min-width:426px) {
+            max-width: 50vw !important;
+           margin: 4% 20% auto !important;
+        }
+        @media only screen and (max-width:426px){
+            max-width: 65vw !important;
+           margin: 4% 20% auto !important;
+        }
+        label{
+            font-weight: 400;
+            font-size: 17px;
+        }
+    }
+}

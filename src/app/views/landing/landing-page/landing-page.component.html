@@ -1,0 +1,1189 @@
+<app-landing-header></app-landing-header>
+<!-- ui_fix -->
+<div #home id="home" class="landing font_Tajawal p-0 ps-5 pe-5">
+  <!-- <div class="landPage"> -->
+
+     <!-- banner part start-->
+     <section class="banner_part mb-3">
+      <div class="container">
+          <div class="row align-items-center m-auto">
+              <div class="col-lg-6 col-xl-6">
+                  <div class="banner_text">
+                      <div class="banner_text_iner">
+                          <h5>{{siteSettings.site_name}}</h5>
+                          <h1>{{siteSettings.keywords}} </h1>
+                          <p> {{siteSettings.description}} </p>
+                          <a (click)="navigateToDashbourd()"  class="btn text-white btn-primary">{{ 'LANDING.createFreeInvoice' | translate }}</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+  <!-- banner part start-->
+<!-- 
+    <div class="rightPart">
+      <div class="textPart">
+          <p>{{siteSettings.site_name}}</p>
+          <h1 class="MainTitle"> 
+            {{siteSettings.keywords}} 
+            </h1>
+          <p class="HomeDes"> 
+            {{siteSettings.description}} 
+          </p>
+          <div class="btnDiv">
+            <app-button-comp [name]="'LANDING.createFreeInvoice'|translate" (click)="navigateToDashbourd()" [color]="'#ffff'" [background_color]="'#5C60F5'"></app-button-comp>
+  
+          </div>
+      </div>
+    </div>
+    <div [ngClass]="{
+      'imgDivEn':language=='en',
+      'imgDiv':language=='ar'
+    }" >
+      <img src="../../../../assets/images/landing/landingImg.png" alt="">
+    </div> -->
+      
+  <!-- </div>  -->
+
+
+  <!-- feature_part start-->
+  <section class="feature_part member_counter" >
+    <div class="container">
+        <div class="row w-100 m-auto">
+            <div class="col-sm-6 col-xl-3 align-self-center">
+                <div class="single_feature_text ">
+                    <h2 class="text-white">{{ 'LANDING.FEATURES' | translate }}</h2>
+                    <p class="text-white">{{ 'LANDING.FEATURESDES' | translate }} </p>
+                    <!-- {{-- <a href="#" class="btn text-white btn-primary">Read More</a> --}} -->
+                </div>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+                <div class="single_feature">
+                    <div class="single_feature_part rounded">
+                        <span class="single_feature_icon"><i class="fas fa-magic"></i></span>
+                        <h4 class="text-white" *ngIf="language == 'ar'">سهولة التعامل</h4>
+                        <h4 class="text-white" *ngIf="language == 'en'">Easy to use</h4>
+                        <p class="text-white" *ngIf="language == 'ar'"> بإمكان المستخدم تسجيل حسابه وإدارة فواتيره بسهولة ويسر من خلال لوحة تحكم خاصة به.</p>
+                        <p class="text-white" *ngIf="language == 'en'">  The user can create new account and activate it, Then manage his invoices easily through his own control panel. </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+                <div class="single_feature">
+                    <div class="single_feature_part rounded">
+                        <span class="single_feature_icon"><i class="fas fa-save"></i></span>
+                        <h4 class="text-white" *ngIf="language == 'ar'"> سرعة الوصول </h4>
+                        <h4 class="text-white" *ngIf="language == 'en'"> Fast access</h4>
+
+                        <p class="text-white" *ngIf="language == 'ar'"> بالإمكان إدارة فواتير عملائك ومنتجاتك في صفحة واحدة من خلال لوحة تحكم احترافية. </p>
+                        <p class="text-white" *ngIf="language == 'en'"> You can manage the invoices of your customers and products on a professional control panel. </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+                <div class="single_feature">
+                    <div class="single_feature_part rounded single_feature_part_2">
+                        <span class="single_service_icon style_icon"><i class="fas fa-tachometer-alt"></i></span>
+                        <h4 class="text-white" *ngIf="language == 'ar'">إحصائيات عامة</h4>
+                        <h4 class="text-white" *ngIf="language == 'en'"> General statistics </h4>
+                        <p class="text-white"  *ngIf="language == 'ar'">يقدم لك فاتورة برو إحصائيات عن الفواتير والمنتجات والعملاء وحجم مبيعاتك خلال الأشهر. </p>
+                        <p class="text-white"  *ngIf="language == 'en'"> Fatorah Pro provides a statistics on your invoices, products, customers, and your sales during the months. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row w-100 m-auto">
+            <div class="col-sm-6 col-xl-3">
+                <div class="single_feature">
+                    <div class="single_feature_part rounded">
+                        <span class="single_feature_icon"><i class="fas fa-file-invoice"></i></span>
+                        <h4 class="text-white" *ngIf="language == 'ar'">فواتير أونلاين</h4>
+                        <h4 class="text-white" *ngIf="language == 'en'"> Online Invoices </h4>
+                        <p class="text-white"*ngIf="language == 'ar'">يمكِّنك فاتورة برو الحصول على تصميم فواتير مثالي، وطباعتها أو إرسالها لعملائك مباشرة ويغنيك عن الفواتير الورقية.</p>
+                        <p class="text-white"*ngIf="language == 'en'">Fatorah Pro enables you to get a perfect design of invoices, print or send them to your customers directly, without papers.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+                <div class="single_feature">
+                    <div class="single_feature_part rounded">
+                        <span class="single_feature_icon"><i class="fas fa-user-shield"></i></span>
+                        <h4 class="text-white" *ngIf="language == 'ar'">الأمان العالي</h4>
+                        <h4 class="text-white" *ngIf="language == 'en'">High secure</h4>
+                        <p class="text-white" *ngIf="language == 'ar'">فاتورة برو يقدم خدمة إدارة الفواتير على مستوى عالي من الأمن والحماية، معلوماتك وفواتيرك في سرية تامة.</p>
+                        <p class="text-white" *ngIf="language == 'en'">Fatorah Pro service provides a high security and protection, Your information and invoices are confidential.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xl-3">
+                <div class="single_feature">
+                    <div class="single_feature_part rounded single_feature_part_2">
+                        <span class="single_service_icon style_icon"><i class="fas fa-language"></i></span>
+                        <h4 class="text-white" *ngIf="language == 'ar'">تعدد اللغات</h4>
+                        <h4 class="text-white" *ngIf="language == 'en'"> Multi languages </h4>
+                        
+                        <p class="text-white" *ngIf="language == 'ar'">يتيج فاتورة برو تعدد اللغات في الموقع، و بإمكانك إنشاء فواتير لعملائك باللغتين العربية والإنجليزية.</p>
+                        <p class="text-white" *ngIf="language == 'en'">Fatorah Pro is multi language, you can create invoices for your customers in both Arabic and English Language.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+  <!-- <div style="margin-top: 46px;" class="advantage-container w-100 h-100 d-flex px-5 ">
+       <div class="title width-20 h-100 align-items-start">
+          <span class="fs-36 light-purple-text"> {{ 'LANDING.FEATURES' | translate }}</span>
+       </div>
+       <div class="d-flex flex-fill flex-wrap justify-content-around gap-2">
+        <div *ngFor="let item of items">
+
+          <app-dataCard [item]="item"></app-dataCard>
+        </div>
+       </div>
+  </div> -->
+
+  <!-- <div #whoContainer id="whoContainer" class="who-container ">
+    <div class="bg">
+      <img src="../../../../assets/images/landing/payroll-concept-3d-illustration-light-background 1.png" alt="">
+    </div>
+    <div class="text">
+       <div class="title">
+        <div class="mb-3">
+          <span class="fs-16"> {{ 'LANDING.ABOUTUS' | translate }}</span>
+          <div style="width: 30px;margin-top: 5px;">
+            <div class="HLine"></div>
+          </div>
+        </div>
+        <div>
+          <span class="fs-32 fw-600 mb-5">{{ 'LANDING.ABOUTFATORAHPRO' | translate }}</span>
+        </div>
+        <div class="body">
+          <div class="discr">
+            <span style="line-height: 21.78px;" class="fw-18">
+              {{ 'LANDING.ABOUTFATORAHPRODESC' | translate }}
+            </span>
+          </div>
+          <div>
+            <div class="d-flex align-items-center mt-5">
+              <svg width="44" class="me-3" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_616_818)">
+                <path d="M16.4999 12.8334H10.9999C10.0275 12.8334 9.09483 13.2197 8.40719 13.9073C7.71956 14.5949 7.33325 15.5276 7.33325 16.5V33C7.33325 33.9725 7.71956 34.9051 8.40719 35.5928C9.09483 36.2804 10.0275 36.6667 10.9999 36.6667H27.4999C28.4724 36.6667 29.405 36.2804 30.0926 35.5928C30.7803 34.9051 31.1666 33.9725 31.1666 33V27.5" stroke="white" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M16.5 27.5H22L37.5833 11.9167C38.3127 11.1873 38.7224 10.1981 38.7224 9.16668C38.7224 8.13522 38.3127 7.14602 37.5833 6.41668C36.854 5.68733 35.8648 5.27759 34.8333 5.27759C33.8019 5.27759 32.8127 5.68733 32.0833 6.41668L16.5 22V27.5Z" stroke="white" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M29.3333 9.16663L34.8333 14.6666" stroke="white" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+                <defs>
+                <clipPath id="clip0_616_818">
+                <rect width="44" height="44" fill="white"/>
+                </clipPath>
+                </defs>
+                </svg>
+                
+                <span>
+                  {{ 'LANDING.ABOUTUS1' | translate }}
+                </span>
+            </div>
+            <div class="d-flex align-items-center mt-5">
+              <svg width="44" height="44" class="me-3" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_616_823)">
+                <path d="M21.6242 38.5H9.16667C8.19421 38.5 7.26158 38.1137 6.57394 37.426C5.88631 36.7384 5.5 35.8058 5.5 34.8333V12.8333C5.5 11.8608 5.88631 10.9282 6.57394 10.2406C7.26158 9.55293 8.19421 9.16663 9.16667 9.16663H31.1667C32.1391 9.16663 33.0718 9.55293 33.7594 10.2406C34.447 10.9282 34.8333 11.8608 34.8333 12.8333V20.1666" stroke="white" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M33 25.6666V33H40.3333" stroke="white" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M33.0001 40.3333C37.0502 40.3333 40.3334 37.05 40.3334 33C40.3334 28.9499 37.0502 25.6666 33.0001 25.6666C28.95 25.6666 25.6667 28.9499 25.6667 33C25.6667 37.05 28.95 40.3333 33.0001 40.3333Z" stroke="white" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M27.5 5.5V12.8333" stroke="white" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12.8333 5.5V12.8333" stroke="white" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M5.5 20.1666H34.8333" stroke="white" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+                <defs>
+                <clipPath id="clip0_616_823">
+                <rect width="44" height="44" fill="white"/>
+                </clipPath>
+                </defs>
+                </svg>
+
+                <span>
+                  {{ 'LANDING.ABOUTUS2' | translate }}
+                </span>
+
+            </div>
+          </div>
+        </div>
+       </div>
+    </div>
+  </div> -->
+
+ <!-- learning part start-->
+ <section #whoContainer id="whoContainer" class="learning_part">
+  <div class="container">
+      <div class="row align-items-sm-center align-items-lg-stretch w-100 m-auto">
+          <div class="col-md-7 col-lg-7">
+              <div class="learning_img">
+                  <img src="./assets/images/newLanding/invoice-amico.svg" alt="">
+              </div>
+          </div>
+          <div class="col-md-5 col-lg-5">
+              <div class="learning_member_text">
+                  <h5>{{ 'LANDING.ABOUTUS' | translate }}</h5>
+                  <h2>{{ 'LANDING.ABOUTFATORAHPRO' | translate }}</h2>
+                  <p> {{ 'LANDING.ABOUTFATORAHPRODESC' | translate }}</p>
+                  <ul>
+                      <li><span class="fas fa-edit"></span> {{ 'LANDING.ABOUTUS1' | translate }}</li>
+                      <li><span class="fas fa-calendar"></span> {{ 'LANDING.ABOUTUS2' | translate }}</li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<!-- learning part end-->
+
+
+  <!-- <div style="margin-top: 46px;" class="count-container w-100 h-100 d-flex ">
+    <div class="d-flex flex-fill flex-wrap justify-content-around ">
+      <div *ngFor="let item of items1">
+        <app-dataCard [item1]="item"></app-dataCard>
+      </div>
+     </div>
+  </div> -->
+
+   <!-- member_counter counter start -->
+   <section class="member_counter mb-3">
+    <div class="container">
+        <div class="row w-100 m-auto">
+
+            <div class="col-lg-4 col-sm-6" *ngFor="let item of items1">
+                <div class="single_member_counter">
+                    <span class="counter">{{ item.number}}</span>
+                    <h4 *ngIf="language == 'ar'">{{ item.bodyAR }}</h4>
+                    <h4 *ngIf="language == 'en'">{{ item.bodyEN }}</h4>
+                </div>
+            </div>
+
+        </div>
+    </div>
+   </section>
+<!-- member_counter counter end -->
+
+
+  <!-- <div class="how-container ">
+ 
+    <div class="text">
+      <div class="title">
+        <div class="mb-3">
+          <span class="fs-16"> {{ 'LANDING.HOWWORKS' | translate }}</span>
+          <div style="width: 30px;margin-top: 5px;">
+            <div class="HLine"></div>
+          </div>
+        </div>
+        <div>
+          <span class="fs-32 fw-600 mb-5">{{ 'LANDING.HOWFATORAPROWORK' | translate }}</span>
+        </div>
+      </div>
+      <div class="body">
+        <div class="discr">
+            <span style="line-height: 21.78px;" class="fw-18">
+              {{ 'LANDING.HOWFATORAPROWORKDESC' | translate }}
+            </span>
+        </div>
+        <div class="d-flex mt-5 flex-wrap align-items-start justify-content-between">
+
+          <div style="width: 100px;" class="data d-flex flex-column justify-content-center">
+            <div class="w-100 text-center">
+              <div class="w-100 d-flex  justify-content-center">
+
+                <div class="img mt-3">
+                   <img src="../../../../assets/images/landing/Asset 1 1.png" alt="">
+                </div>
+
+              </div>
+              <div class="w-100">
+                <span class="fw-600 fs-16 mb-2 text-white text-center"> {{ 'LANDING.CREATEACOUNT' | translate }}</span><br>
+                <span class="mb-2 fs-14 text-white text-center">
+                  {{ 'LANDING.CREATEACOUNTDESC' | translate }}
+                </span>
+
+              </div>
+
+            </div>
+          </div>
+
+          <div style="width: 100px;" class="data d-flex flex-column justify-content-center">
+            <div class="w-100 text-center">
+              <div class="w-100 d-flex  justify-content-center">
+                <div class="img mt-3">
+                    <img src="../../../../assets/images/landing/client.png" alt="">
+                </div>
+              </div>
+              <div class="w-100">
+                <span class="fw-600 fs-16 mb-2 text-white text-center">{{ 'LANDING.ADDCUSTOMERS' | translate }}</span><br>
+                <span class="mb-2 fs-14 text-white text-center">{{ 'LANDING.ADDCUSTOMERSDESC' | translate }}</span>
+
+              </div>
+
+            </div>
+          </div>
+
+          <div style="width: 100px;" class="data d-flex flex-column justify-content-center">
+            <div class="w-100 text-center ">
+              <div class="w-100 d-flex  justify-content-center">
+                <div class="img mt-3">
+                   <img src="../../../../assets/images/landing/tax.png" alt="">
+                </div>
+
+              </div>
+              <div class="w-100">
+                <span class="fw-600 fs-16 mb-2 text-white text-center">{{ 'LANDING.CREATEINVOICE' | translate }}</span><br>
+                <span class="mb-2 fs-14 text-white text-center">{{ 'LANDING.CREATEINVOICEDESC' | translate }}</span>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bg">
+      <img src="../../../../assets/images/landing/13 1.png" alt="">
+    </div>
+  </div> -->
+
+  <!-- learning part start-->
+  <section class="advance_feature learning_part">
+    <div class="container">
+        <div class="row align-items-sm-center align-items-xl-stretch w-100 m-auto">
+            <div class="col-md-6 col-lg-6">
+                <div class="learning_member_text">
+                    <h5>{{ 'LANDING.HOWWORKS' | translate }}</h5>
+                    <h2>{{ 'LANDING.HOWFATORAPROWORK' | translate }}</h2>
+                    <p>{{ 'LANDING.HOWFATORAPROWORKDESC' | translate }}</p>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-4">
+                            <div class="learning_member_text_iner">
+                                <span class="fas fa-user"></span>
+                                <h4>{{ 'LANDING.CREATEACOUNT' | translate}}</h4>
+                                <p>{{ 'LANDING.CREATEACOUNTDESC' | translate }}</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-4">
+                            <div class="learning_member_text_iner">
+                                <span class="fas fa-users"></span>
+                                <h4>{{ 'LANDING.ADDCUSTOMERS' | translate }}</h4>
+                                <p>{{ 'LANDING.ADDCUSTOMERSDESC' | translate }}</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-4">
+                            <div class="learning_member_text_iner">
+                                <span class="fas fa-file-invoice"></span>
+                                <h4>{{ 'LANDING.CREATEINVOICE' | translate }}</h4>
+                                <p>{{ 'LANDING.CREATEINVOICEDESC' | translate }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="learning_img">
+                    <img src="./assets/images/newLanding/invoice-bro.svg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- learning part end-->
+
+
+  <!-- <div #FAQS id="FAQS" class="d-flex quest flex-column w-100 justify-content-center mb-5">
+    <div class="w-100 mb-5">
+      <div class="mb-3 d-flex justify-content-center">
+        <span style="font-size: 24px;" class=" light-purple-text">{{ 'LANDING.FAQS' | translate }}</span>
+      </div>
+      <div class="d-flex justify-content-center">
+         <h1 class="fw-bolder pb-4">{{ 'LANDING.REUEQUANTQUAST' | translate }}</h1>
+      </div>
+    </div>
+    <div class="w-100 d-flex justify-content-center">
+      <div class="w-75">
+        <p-accordion [activeIndex]="0">
+          <p-accordionTab>
+            <ng-template  pTemplate="header">
+              <div class="d-flex w-100 justify-content-between">
+                <h3 class="d-flex align-items-center"> <span class="quesNumber">01</span>{{ 'LANDING.QUEST1' | translate }}</h3>
+                <div>
+                  <div class="close" >
+                    <div style="width: 35px;height: 35px; border-radius: 50%;background-color: white; display: flex;justify-content: center; align-items: center;">
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0H6V6H0V8H6V14H8V8H14V6H8V0Z" fill="#1E1E20"/>
+                        </svg>
+                    </div>
+    
+                  </div>
+                  <div class="open"  >
+                    <div style="width: 35px;height: 35px; border-radius: 50%;background-color: black;display: flex;justify-content: center;align-items: center;">
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.6569 1.75744L10.2426 0.343227L6 4.58587L1.75736 0.343226L0.343146 1.75744L4.58579 6.00008L0.343146 10.2427L1.75736 11.6569L6 7.41429L10.2426 11.6569L11.6569 10.2427L7.41421 6.00008L11.6569 1.75744Z" fill="white"/>
+                        </svg>
+                    </div>
+    
+                  </div>
+
+              </div>
+
+              </div>
+          </ng-template>
+              <p>
+                {{ 'LANDING.ANSWER1' | translate }}
+              </p>
+          </p-accordionTab>
+          <p-accordionTab>
+            <ng-template pTemplate="header">
+              <div class="d-flex w-100 justify-content-between">
+                <h3 class="d-flex align-items-center">
+                  <span class="quesNumber">02</span>{{ 'LANDING.QUEST2' | translate }}</h3>
+                <div>
+                  <div class="close" >
+                    <div style="width: 35px;height: 35px; border-radius: 50%;background-color: white; display: flex;justify-content: center; align-items: center;">
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0H6V6H0V8H6V14H8V8H14V6H8V0Z" fill="#1E1E20"/>
+                        </svg>
+                    </div>
+    
+                  </div>
+                  <div class="open"  >
+                    <div style="width: 35px;height: 35px; border-radius: 50%;background-color: black;display: flex;justify-content: center;align-items: center;">
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.6569 1.75744L10.2426 0.343227L6 4.58587L1.75736 0.343226L0.343146 1.75744L4.58579 6.00008L0.343146 10.2427L1.75736 11.6569L6 7.41429L10.2426 11.6569L11.6569 10.2427L7.41421 6.00008L11.6569 1.75744Z" fill="white"/>
+                        </svg>
+                    </div>
+    
+                  </div>
+  
+                </div>
+
+              </div>
+          </ng-template>
+              <p>
+                {{ 'LANDING.ANSWER2' | translate }}
+              </p>
+          </p-accordionTab>
+          <p-accordionTab >
+            <ng-template pTemplate="header">
+              <div class="d-flex w-100 justify-content-between">
+                <h3 class="d-flex align-items-center">
+                   <span class="quesNumber">03</span>{{ 'LANDING.QUEST3' | translate }}</h3>
+                <div>
+                  <div class="close" >
+                    <div style="width: 35px;height: 35px; border-radius: 50%;background-color: white; display: flex;justify-content: center; align-items: center;">
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0H6V6H0V8H6V14H8V8H14V6H8V0Z" fill="#1E1E20"/>
+                        </svg>
+                    </div>
+    
+                  </div>
+                  <div class="open"  >
+                    <div style="width: 35px;height: 35px; border-radius: 50%;background-color: black;display: flex;justify-content: center;align-items: center;">
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.6569 1.75744L10.2426 0.343227L6 4.58587L1.75736 0.343226L0.343146 1.75744L4.58579 6.00008L0.343146 10.2427L1.75736 11.6569L6 7.41429L10.2426 11.6569L11.6569 10.2427L7.41421 6.00008L11.6569 1.75744Z" fill="white"/>
+                        </svg>
+                    </div>
+    
+                  </div>
+                </div>
+              </div>
+
+          </ng-template>
+              <p>
+                {{ 'LANDING.ANSWER3' | translate }}
+              </p>
+          </p-accordionTab>
+          <p-accordionTab>
+            <ng-template pTemplate="header">
+              <div class="d-flex w-100 justify-content-between">
+
+                <h3 class="d-flex align-items-center">
+                    <span class="quesNumber">04</span> {{ 'LANDING.QUEST4' | translate }} </h3>
+                <div>
+                  <div class="close" >
+                    <div style="width: 35px;height: 35px; border-radius: 50%;background-color: white; display: flex;justify-content: center; align-items: center;">
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0H6V6H0V8H6V14H8V8H14V6H8V0Z" fill="#1E1E20"/>
+                        </svg>
+                    </div>
+    
+                  </div>
+                  <div class="open"  >
+                    <div style="width: 35px;height: 35px; border-radius: 50%;background-color: black;display: flex;justify-content: center;align-items: center;">
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.6569 1.75744L10.2426 0.343227L6 4.58587L1.75736 0.343226L0.343146 1.75744L4.58579 6.00008L0.343146 10.2427L1.75736 11.6569L6 7.41429L10.2426 11.6569L11.6569 10.2427L7.41421 6.00008L11.6569 1.75744Z" fill="white"/>
+                        </svg>
+                    </div>
+    
+                  </div>
+                </div>
+              </div>
+
+          </ng-template>
+              <p>
+                {{ 'LANDING.ANSWER4' | translate }}              </p>
+          </p-accordionTab>
+          <p-accordionTab>
+            <ng-template pTemplate="header">
+              <div class="d-flex w-100 justify-content-between">
+
+                <h3 class="d-flex align-items-center"><span class="quesNumber">05</span>{{ 'LANDING.QUEST5' | translate }}</h3>
+                <div>
+                  <div class="close" >
+                    <div style="width: 35px;height: 35px; border-radius: 50%;background-color: white; display: flex;justify-content: center; align-items: center;">
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0H6V6H0V8H6V14H8V8H14V6H8V0Z" fill="#1E1E20"/>
+                        </svg>
+                    </div>
+    
+                  </div>
+                  <div class="open"  >
+                    <div style="width: 35px;height: 35px; border-radius: 50%;background-color: black;display: flex;justify-content: center;align-items: center;">
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M11.6569 1.75744L10.2426 0.343227L6 4.58587L1.75736 0.343226L0.343146 1.75744L4.58579 6.00008L0.343146 10.2427L1.75736 11.6569L6 7.41429L10.2426 11.6569L11.6569 10.2427L7.41421 6.00008L11.6569 1.75744Z" fill="white"/>
+                        </svg>
+                    </div>
+    
+                  </div>
+                </div>
+              </div>
+
+          </ng-template>
+              <p>
+                {{ 'LANDING.ANSWER5' | translate }}
+              </p>
+          </p-accordionTab>
+      </p-accordion>
+
+      </div>
+    </div>
+  </div> -->
+
+   <!--::review_part start::-->
+   <section  #FAQS id="FAQS" class="testimonial_part section_padding mb-3">
+    <div class="container-fluid">
+        <div class="row justify-content-center w-100 m-auto">
+            <div class="col-xl-5">
+                <div class="section_tittle text-center">
+                    <p>{{ 'LANDING.FAQS' | translate}}</p>
+                    <h2>{{ 'LANDING.REUEQUANTQUAST' | translate }}</h2>
+                </div>
+            </div>
+        </div>
+
+
+       <!-- <div class="container py-3">  -->
+            <div class="row w-100 m-auto">
+                <div class="col-12 col-md-10 col-lg-10 mx-auto">
+                    <div class="accordion" id="faqExample">
+                        <div class="accordion-item card">
+                            <div class="p-2"  id="headingOne" type="button" data-bs-toggle="collapse"  data-bs-target="#collapseOne" 
+                            aria-expanded="true" aria-controls="collapseOne">
+                                <h5 class="mb-0">
+                                    <a class="btn btn-link">
+                                        {{ 'LANDING.QUEST1' | translate  }}
+                                    </a>
+                                  </h5>
+                            </div>
+                           
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-bs-parent="#faqExample">
+                                <div class="card-body">
+                                    <b>{{ 'LANDING.ANSWER' | translate }} :</b>
+                                     {{ 'LANDING.ANSWER1' | translate  }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item card">
+                            <div class="p-2" id="headingTwo" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <h5 class="mb-0">
+                                <a class="btn btn-link collapsed">
+                                    {{ 'LANDING.QUEST2' | translate }}
+                                </a>
+                              </h5>
+                            </div>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqExample">
+                                <div class="card-body">
+                                    <!-- <b>{{ __('website.sections.faqs.answer') }} :</b>  -->
+                                    {{ 'LANDING.ANSWER2' | translate  }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="p-2" id="headingThree" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <h5 class="mb-0">
+                                    <a class="btn btn-link collapsed">
+                                        {{ 'LANDING.QUEST3' | translate  }}
+                                    </a>
+                                  </h5>
+                            </div>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqExample">
+                                <div class="card-body">
+                                   <b>{{ 'LANDING.ANSWER' | translate }} :</b>
+                                     {{ 'LANDING.ANSWER3' | translate }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="p-2" id="headingFour" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                <h5 class="mb-0">
+                                    <a class="btn btn-link collapsed">
+                                        {{ 'LANDING.QUEST4' | translate }}
+                                    </a>
+                                  </h5>
+                            </div>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqExample">
+                                <div class="card-body">
+                                   <b>{{ 'LANDING.ANSWER' | translate }} :</b>
+                                     {{ 'LANDING.ANSWER4' | translate }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="p-2" id="headingSix" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                <h5 class="mb-0">
+                                    <a class="btn btn-link collapsed">
+                                        {{ 'LANDING.QUEST5' | translate}}
+                                    </a>
+                                  </h5>
+                            </div>
+                            <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#faqExample">
+                                <div class="card-body">
+                                  <b>{{ 'LANDING.ANSWER' | translate }} :</b>
+                                    {{ 'LANDING.ANSWER5' | translate}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+    </div>
+</section>
+
+
+  <!-- <div class="subscription">
+    <div class="content p-5">
+      <div class="d-flex flex-column text-center">
+        <span class="fs-24 mb-3">{{ 'LANDING.SUBSCRIPTIONS' | translate }}</span>
+        <span class="fs-40">{{ 'LANDING.SUBSCRIPTIONPACKAGES' | translate }}</span>
+        <div class="d-flex mt-5 text-center justify-content-center">
+          <span>{{ 'LANDING.MONTHLY' | translate }}</span>
+          <p-inputSwitch class="mx-3 toggelSwitch" [(ngModel)]="monthly"></p-inputSwitch>
+
+          <span>{{ 'LANDING.YEARLY' | translate }}</span>
+        </div>
+      </div>
+   <div class="d-flex justify-content-center">
+     <div class="w-100 my-5 flex-wrap d-flex justify-content-center align-items-center gap-5">
+       <div>
+         <div class="card plans white-bg mt-5">
+           <div class="card-body text-center h-100 py-4">
+             <h4 class="card-title fw-bolder fw-800 mb-3 fs-21 light-purple-text">{{subscriptionPlanes[0]?.name}}</h4>
+             <div *ngFor="let item of cardOneData" class=" cardData">
+                 <div class="d-flex align-items-start justify-content-start mb-2">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <g clip-path="url(#clip0_616_545)">
+                     <path d="M6.80655 12C6.50233 12 6.2142 11.884 6.02958 11.684L3.53082 8.986C3.45356 8.90268 3.39716 8.80774 3.36484 8.70659C3.33252 8.60545 3.32491 8.50009 3.34244 8.39654C3.35998 8.29299 3.40232 8.19329 3.46704 8.10312C3.53176 8.01295 3.6176 7.93409 3.71964 7.87104C3.82165 7.80774 3.93794 7.7615 4.06185 7.73499C4.18576 7.70848 4.31486 7.70221 4.44174 7.71654C4.56862 7.73088 4.6908 7.76553 4.80126 7.81852C4.91172 7.87151 5.0083 7.9418 5.08546 8.02534L6.72962 9.79922L10.8634 4.37472C11.0005 4.19561 11.219 4.06826 11.4708 4.02058C11.7227 3.97291 11.9874 4.00881 12.2069 4.12041C12.6636 4.35243 12.8041 4.8439 12.5188 5.21765L7.63457 11.624C7.55119 11.7338 7.43627 11.8254 7.29978 11.8907C7.16328 11.956 7.00934 11.9932 6.85131 11.9989C6.83592 12 6.82193 12 6.80655 12Z" fill="#5C60F5"/>
+                     </g>
+                     <defs>
+                     <clipPath id="clip0_616_545">
+                     <rect width="9.92" height="8.32" fill="white" transform="translate(3.04004 3.83984)"/>
+                     </clipPath>
+                     </defs>
+                     </svg>
+                     <span class="fs-16 light-purple-text text-start">{{item}}</span>
+                 </div>
+              </div>
+             <div  class="mb-2" style="position: absolute;bottom: 0;">
+               <div *ngIf="language=='ar'">
+                
+                 <div class="d-flex mt-1 mb-3 ">
+                  
+                  <span *ngIf="monthly==true" class="fs-40 light-purple-text ">
+                    {{subscriptionPlanes[0]?.price}}
+    
+                   </span>
+                   <span *ngIf="monthly==false" class="fs-40 light-purple-text ">
+                    {{subscriptionPlanes[0]?.yearly_price}}
+                   </span>
+                   <span *ngIf="monthly==true && language =='ar'" class="fs-16 d-flex align-items-end light-purple-text">
+                     {{subscriptionPlanes[0]?.currency}} / شهرياً
+                   </span>
+                   <span *ngIf="monthly==false&& language=='ar'" class="fs-16 d-flex align-items-end light-purple-text">
+                     {{subscriptionPlanes[0]?.currency}} / سنويا
+                   </span>
+                   <span *ngIf="monthly==true && language=='en'" class="fs-16 d-flex align-items-end light-purple-text">
+                     {{subscriptionPlanes[0]?.currency}} / Month
+                   </span>
+                   <span *ngIf="monthly==false&& language=='en'" class="fs-16 d-flex align-items-end light-purple-text">
+                     {{subscriptionPlanes[0]?.currency}} / Year
+                   </span>
+                 </div>
+
+               </div>
+               <div *ngIf="language=='en'">
+                 <div class="d-flex mt-1 mb-3 ">
+                  
+                  <span *ngIf="monthly==false" class="fs-40 light-purple-text ">
+                    {{subscriptionPlanes[0]?.price}}
+    
+                   </span>
+                   <span *ngIf="monthly==true" class="fs-40 light-purple-text ">
+                    {{subscriptionPlanes[0]?.yearly_price}}
+                   </span>
+                   <span *ngIf="monthly==false && language=='ar'" class="fs-16 d-flex align-items-end light-purple-text">
+                     {{subscriptionPlanes[0]?.currency}} / شهرياً
+                   </span>
+                   <span *ngIf="monthly==true&& language=='ar'" class="fs-16 d-flex align-items-end light-purple-text">
+                     {{subscriptionPlanes[0]?.currency}} / سنويا
+                   </span>
+                   <span *ngIf="monthly==false && language=='en'" class="fs-16 d-flex align-items-end light-purple-text">
+                     {{subscriptionPlanes[0]?.currency}} / Month
+                   </span>
+                   <span *ngIf="monthly==true&& language=='en'" class="fs-16 d-flex align-items-end light-purple-text">
+                     {{subscriptionPlanes[0]?.currency}} / Year
+                   </span>
+                 </div>
+
+               </div>
+               <div>
+                 <app-button-comp (click)="checkAuth(subscriptionPlanes[0].id)" style="width: 180px;" class="d-flex"  [name]="'LANDING.SUBSCRIPTION' | translate"  background_color="#5C60F5" ></app-button-comp>
+ 
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+
+       <div>
+         <div class="card plans purple-bg">
+           <div class="card-body text-center py-3">
+             <h4 class="card-title fs-21">{{subscriptionPlanes[1]?.name}}</h4>
+             <div *ngFor="let item of cardTwoData" class=" cardData">
+               <div class="d-flex align-items-start justify-content-start mb-2">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                   <g clip-path="url(#clip0_616_545)">
+                   <path d="M6.80655 12C6.50233 12 6.2142 11.884 6.02958 11.684L3.53082 8.986C3.45356 8.90268 3.39716 8.80774 3.36484 8.70659C3.33252 8.60545 3.32491 8.50009 3.34244 8.39654C3.35998 8.29299 3.40232 8.19329 3.46704 8.10312C3.53176 8.01295 3.6176 7.93409 3.71964 7.87104C3.82165 7.80774 3.93794 7.7615 4.06185 7.73499C4.18576 7.70848 4.31486 7.70221 4.44174 7.71654C4.56862 7.73088 4.6908 7.76553 4.80126 7.81852C4.91172 7.87151 5.0083 7.9418 5.08546 8.02534L6.72962 9.79922L10.8634 4.37472C11.0005 4.19561 11.219 4.06826 11.4708 4.02058C11.7227 3.97291 11.9874 4.00881 12.2069 4.12041C12.6636 4.35243 12.8041 4.8439 12.5188 5.21765L7.63457 11.624C7.55119 11.7338 7.43627 11.8254 7.29978 11.8907C7.16328 11.956 7.00934 11.9932 6.85131 11.9989C6.83592 12 6.82193 12 6.80655 12Z" fill="#ffff"/>
+                   </g>
+                   <defs>
+                   <clipPath id="clip0_616_545">
+                   <rect width="9.92" height="8.32" fill="white" transform="translate(3.04004 3.83984)"/>
+                   </clipPath>
+                   </defs>
+                   </svg>
+                   <span class="fs-16 text-start">{{item}}</span>
+               </div>
+           </div>
+           <div class="mb-2" style="position: absolute;bottom: 0;">
+            <div *ngIf="language=='ar'">
+              <div class="mt-1 mb-3 d-flex">
+                <span *ngIf="monthly==true" class="fs-40 ">
+                 {{subscriptionPlanes[1]?.price}}
+ 
+                </span>
+                <span *ngIf="monthly==false" class="fs-40 ">
+                 {{subscriptionPlanes[1]?.yearly_price}}
+                </span>
+                <span *ngIf="monthly==true && language=='ar'" class="fs-16 d-flex align-items-end ">
+                  {{subscriptionPlanes[1]?.currency}} / شهرياً
+                </span>
+                <span *ngIf="monthly==false&& language=='ar'" class="fs-16 d-flex align-items-end ">
+                  {{subscriptionPlanes[1]?.currency}} / سنويا
+                </span>
+                <span *ngIf="monthly==true && language=='en'" class="fs-16 d-flex align-items-end ">
+                  {{subscriptionPlanes[1]?.currency}} / Month
+                </span>
+                <span *ngIf="monthly==false&& language=='en'" class="fs-16 d-flex align-items-end ">
+                  {{subscriptionPlanes[1]?.currency}} / Year
+                </span>
+              </div>
+
+            </div>
+            <div *ngIf="language=='en'">
+              <div class="mt-1 mb-3 d-flex">
+                <span *ngIf="monthly==false" class="fs-40 ">
+                 {{subscriptionPlanes[1]?.price}}
+ 
+                </span>
+                <span *ngIf="monthly==true" class="fs-40 ">
+                 {{subscriptionPlanes[1]?.yearly_price}}
+                </span>
+                <span *ngIf="monthly==false && language=='ar'" class="fs-16 d-flex align-items-end ">
+                  {{subscriptionPlanes[1]?.currency}} / شهرياً
+                </span>
+                <span *ngIf="monthly==true&& language=='ar'" class="fs-16 d-flex align-items-end ">
+                  {{subscriptionPlanes[1]?.currency}} / سنويا
+                </span>
+                <span *ngIf="monthly==false && language=='en'" class="fs-16 d-flex align-items-end ">
+                  {{subscriptionPlanes[1]?.currency}} / Month
+                </span>
+                <span *ngIf="monthly==true&& language=='en'" class="fs-16 d-flex align-items-end ">
+                  {{subscriptionPlanes[1]?.currency}} / Year
+                </span>
+              </div>
+
+            </div>
+             <div>
+               <app-button-comp (click)="checkAuth(subscriptionPlanes[1].id)" style="width: 180px;" class="d-flex" [name]="'LANDING.SUBSCRIPTION' | translate" [color]="'#5C60F5'" ></app-button-comp>
+
+             </div>
+           </div>
+           </div>
+         </div>
+       </div>
+
+       <div>
+         <div class="card plans white-bg mt-5">
+           <div class="card-body text-center pb-4 pt-3">
+             <h4 class="card-title fs-21 light-purple-text">{{subscriptionPlanes[2]?.name}}</h4>
+             <div *ngFor="let item of cardThreeData" class="cardData">
+               <div class="d-flex align-items-start justify-content-start mb-2">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                   <g clip-path="url(#clip0_616_545)">
+                   <path d="M6.80655 12C6.50233 12 6.2142 11.884 6.02958 11.684L3.53082 8.986C3.45356 8.90268 3.39716 8.80774 3.36484 8.70659C3.33252 8.60545 3.32491 8.50009 3.34244 8.39654C3.35998 8.29299 3.40232 8.19329 3.46704 8.10312C3.53176 8.01295 3.6176 7.93409 3.71964 7.87104C3.82165 7.80774 3.93794 7.7615 4.06185 7.73499C4.18576 7.70848 4.31486 7.70221 4.44174 7.71654C4.56862 7.73088 4.6908 7.76553 4.80126 7.81852C4.91172 7.87151 5.0083 7.9418 5.08546 8.02534L6.72962 9.79922L10.8634 4.37472C11.0005 4.19561 11.219 4.06826 11.4708 4.02058C11.7227 3.97291 11.9874 4.00881 12.2069 4.12041C12.6636 4.35243 12.8041 4.8439 12.5188 5.21765L7.63457 11.624C7.55119 11.7338 7.43627 11.8254 7.29978 11.8907C7.16328 11.956 7.00934 11.9932 6.85131 11.9989C6.83592 12 6.82193 12 6.80655 12Z" fill="#5C60F5"/>
+                   </g>
+                   <defs>
+                   <clipPath id="clip0_616_545">
+                   <rect width="9.92" height="8.32" fill="white" transform="translate(3.04004 3.83984)"/>
+                   </clipPath>
+                   </defs>
+                   </svg>
+                   <span [ngClass]="{'fs-14':language=='en'}" class="fs-16 light-purple-text text-start">{{item}}</span>
+               </div>
+           </div>
+           <div *ngIf="language=='ar'">
+             <div class="mt-1 mb-3 d-flex">
+              <span *ngIf="monthly==true" class="fs-40 light-purple-text">
+               {{subscriptionPlanes[2]?.price}}
+              </span>
+              <span *ngIf="monthly==false" class="fs-40 light-purple-text">
+               {{subscriptionPlanes[2]?.yearly_price}}
+              </span>
+              <span *ngIf="monthly==true && language=='ar'" class="fs-16 d-flex align-items-end light-purple-text">
+                {{subscriptionPlanes[2]?.currency}} / شهرياً
+              </span>
+              <span *ngIf="monthly==false&& language=='ar'" class="fs-16 d-flex align-items-end light-purple-text">
+                {{subscriptionPlanes[2]?.currency}} / سنويا
+              </span>
+              <span *ngIf="monthly==true && language=='en'" class="fs-16 d-flex align-items-end light-purple-text">
+                {{subscriptionPlanes[2]?.currency}} / Month
+              </span>
+              <span *ngIf="monthly==false&& language=='en'" class="fs-16 d-flex align-items-end light-purple-text">
+                {{subscriptionPlanes[2]?.currency}} / Year
+              </span>
+            </div>
+           </div>
+           <div class="mt-46px" *ngIf="language=='en'">
+            <div class="mt-1 mb-3 d-flex">
+             <span *ngIf="monthly==false" class="fs-40 light-purple-text">
+              {{subscriptionPlanes[2]?.price}}
+             </span>
+             <span *ngIf="monthly==true" class="fs-40 light-purple-text">
+              {{subscriptionPlanes[2]?.yearly_price}}
+             </span>
+             <span *ngIf="monthly==false && language=='ar'" class="fs-16 d-flex align-items-end light-purple-text">
+               {{subscriptionPlanes[2]?.currency}} / شهرياً
+             </span>
+             <span *ngIf="monthly==true&& language=='ar'" class="fs-16 d-flex align-items-end light-purple-text">
+               {{subscriptionPlanes[2]?.currency}} / سنويا
+             </span>
+             <span *ngIf="monthly==false && language=='en'" class="fs-16 d-flex align-items-end light-purple-text">
+               {{subscriptionPlanes[2]?.currency}} / Month
+             </span>
+             <span *ngIf="monthly==true&& language=='en'" class="fs-16 d-flex align-items-end light-purple-text">
+               {{subscriptionPlanes[2]?.currency}} / Year
+             </span>
+           </div>
+          </div>
+           <div>
+             <app-button-comp (click)="checkAuth(subscriptionPlanes[2].id)" style="width: 180px;" class="d-flex" [name]="'LANDING.SUBSCRIPTION' | translate"  background_color="#5C60F5" ></app-button-comp>
+
+           </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+
+    </div>
+  </div> -->
+
+  
+  <section class="subscriptions member_counter mt-3">
+    <div class="container">
+        <div class="row justify-content-center  w-100 m-auto">
+            <div class="col-xl-6">
+                <div class="section_tittle text-center">
+                    <p>{{ 'LANDING.SUBSCRIPTIONS' | translate}}</p>
+                    <h2>{{ 'LANDING.SUBSCRIPTIONPACKAGES' | translate }}</h2>
+                </div>
+                <div class="row justify-content-center m-auto w-100 ">
+                  <ul class="nav nav-tabs justify-content-center gap-2" role="tablist">
+                      <li class="nav-item ml-2" *ngFor="let duration of filteredDurations">
+                          <a class="nav-link " [ngClass]="(currentDuration == duration.id)?'active':''" href="#monthly" id="monthly-tab" 
+                              role="tab" data-bs-toggle="tab" aria-controls="monthly"
+                                aria-expanded="true" (shown.bs.tab)="onTabChange($event, 'monthly');chooseDurationFilter(duration.id)">
+                              {{ duration.name }}
+                          </a>
+                      </li>
+                     
+                  </ul>
+              </div>
+
+                <!-- <div class="row justify-content-center m-auto w-100 ">
+                    <ul class="nav nav-tabs justify-content-center gap-2" role="tablist">
+                        <li class="nav-item ml-2">
+                            <a class="nav-link active" href="#monthly" id="monthly-tab" 
+                                role="tab" data-bs-toggle="tab" aria-controls="monthly"
+                                  aria-expanded="true" (shown.bs.tab)="onTabChange($event, 'monthly')">
+                                {{  'LANDING.MONTHLY' | translate}}
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#yearly" role="tab"
+                             id="yearly-tab" data-bs-toggle="tab" aria-controls="yearly"
+                              aria-expanded="false" (shown.bs.tab)="onTabChange($event, 'yearly')">
+                                {{ 'LANDING.YEARLY' | translate }}
+                            </a>
+                        </li>
+                    </ul>
+                </div> -->
+
+            </div>
+        </div>
+        <div class="tab-content"> 
+          <!-- id="monthly" aria-labelledby="monthly-tab" aria-expanded="true" -->
+            <div role="tabpanel" class="tab-pane active">
+                <div class="row justify-content-center mt-3  w-100 m-auto">
+                  <ng-container *ngIf="owl">
+                    <owl-carousel-o [options]="customOptions">
+                      <ng-container class="col-sm-6 col-lg-4 col-xl-4 mb-3" *ngFor="let plan of subscriptionPlanes;let i=index" >
+                        <ng-template carouselSlide   style="width: 100px !important;">
+                        <div >
+                            <div class="card h-100 mb-3 min_height_100vh" style="min-width: 350px; max-width: 370px;" >
+                                <div class="card-header">
+                                    <h3 class="card-title text-center">{{ plan.name }}</h3>
+                                    <!-- @if(!$plan->isFree()) -->
+                                        <h6 class="card-text mt-2 text-center"><s>{{ plan?.full_price}} {{ plan.currency }} / {{ plan.plan_duration  }} </s></h6>
+                                    <!-- @endif -->
+                                    <h5 class="card-text mt-2 text-center">{{ plan?.price }} {{ plan.currency }} / {{ plan.plan_duration  }} </h5>
+                                </div>
+                                <div class="card-body">
+                                      <p class="feature-p" *ngFor="let feature of plan.features | sort: 'sort_order'">
+                                      <i class="fas fa-check-square"></i> {{ feature.description }}</p>
+                                 
+                                </div>
+                            </div>
+                        </div>
+                      </ng-template>
+                      </ng-container>
+                  </owl-carousel-o>
+                </ng-container>
+                </div>
+            </div>
+            <!-- <div role="tabpanel" class="tab-pane" id="yearly" aria-labelledby="yearly-tab" aria-expanded="true">
+                <div class="row justify-content-center mt-3  w-100 m-auto">
+                  <ng-container *ngIf="owl">
+                    <owl-carousel-o [options]="customOptions">
+                      <ng-container class="col-sm-6 col-lg-4 col-xl-4 mb-3" *ngFor="let plan of subscriptionPlanes;let i=index" >
+                        <ng-template carouselSlide   style="width: 100px !important;">
+                        <div >
+                            <div class="card h-100 mb-3 min_height_100vh">
+                                <div class="card-header">
+                                    <h3 class="card-title text-center">{{ plan.description }}</h3>
+                                  
+                                        <h6 class="card-text mt-2 text-center"><s>{{ plan.yearly_full_price}} {{ plan.currency }} / {{ 'LANDING.YEARLYDES' | translate }} </s></h6>
+                                
+                                    <h5 class="card-text mt-2 text-center">{{ plan.yearly_price }} {{ plan.currency }} / {{ 'LANDING.YEARLYDES' | translate }} </h5>
+                                </div>
+                                <div class="card-body">
+                                      <p class="feature-p" *ngFor="let feature of plan.features | sort: 'sort_order'">
+                                      <i class="fas fa-check-square"></i> {{ feature.description }}</p>
+                                 
+                                </div>
+                            </div>
+                        </div>
+                      </ng-template>
+                      </ng-container>
+                  </owl-carousel-o>
+                </ng-container>
+                </div>
+            </div> -->
+      
+          </div>
+        <div class="row justify-content-center pt-5  w-100 m-auto">
+            <h4 class="w-auto">
+                <a (click)="navigateToDashbourd()"class="nav-link rounded text-center bg-white btn_3 cursor-pointer ">{{'LANDING.CREATEINVOICEBTN' | translate }}</a>
+            </h4>
+        </div>
+    </div>
+  </section>
+
+  <!-- <div #contact id="contact" class="contactUs">
+    <div class="w-100 mb-5 d-flex flex-column justify-content-center">
+      <div class="mb-3 d-flex justify-content-center">
+        <span style="font-size: 24px;" class=" light-purple-text">{{ 'LANDING.CONTACTUS' | translate }}</span>
+      </div>
+      <div class="d-flex justify-content-center ">
+         <h1 class="fw-bolder pb-4">{{ 'LANDING.CONTACTUSFATORAHPRO' | translate }}</h1>
+      </div>
+    </div>
+     <div   class="w-100 d-flex flex-row justify-content-center align-items-center">
+      <div style="width: 85%;" class="contactUsContent justify-content-center d-flex">
+
+        <div class="inputtextPartCont d-flex justify-content-start align-items-center">
+          <div [ngClass]="{'left-33':language=='en'}" class="card p-5 boxShadow-10 inputtextPart">
+            <form [formGroup]="contactUsForm" action="">
+              <div class="w-100">
+                <span class="fs-40 fw-600 mb-5">{{ 'LANDING.ENTERYOURMESSAGE' | translate }}</span>
+                <div class="w-100 mx-0 my-3">
+                  <input formControlName="name" type="text" 
+                   placeholder="{{ 'LANDING.NAME' | translate }}" 
+                   class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2  w-100">
+                  <app-Form-errors [control]="contactUsForm.controls['name']"></app-Form-errors>
+                </div> 
+                <div class="w-100 mx-0 my-3">
+                  <input type="text" formControlName="email" 
+                   placeholder="{{ 'LANDING.EMAIL' | translate }}" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2  w-100">
+                  <app-Form-errors [control]="contactUsForm.controls['email']"></app-Form-errors>
+                </div> 
+                <div class="w-100 mx-0 my-3">
+                  <input type="text" formControlName="subject"  
+                  placeholder="{{ 'LANDING.SUBJECT' | translate }}"
+                   class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2  w-100">
+                  <app-Form-errors [control]="contactUsForm.controls['subject']"></app-Form-errors>
+                </div> 
+                <div class="w-100 mx-0 my-3">
+                  <textarea class="form-control " formControlName="message" placeholder="{{ 'LANDING.MESSAGE' | translate }}"  style="height: 160px" id="validationTextarea"></textarea>
+                  <app-Form-errors [control]="contactUsForm.controls['message']"></app-Form-errors>
+                </div>
+              <div class="w-100">
+                <app-button-comp (click)="contactUs()" class="d-flex"  [name]="'ارسال'"  background_color="#5C60F5" ></app-button-comp>
+  
+              </div>
+              </div>
+
+            </form>
+          </div>
+       </div>
+        
+          <div class="mailPartCont d-flex justify-content-end">
+            <div class="mailPart">
+                    <img src="../../../../assets/images/landing/mail_box_3d_icon_premium_psd 1.png" alt="">
+            </div>
+          </div>
+
+        
+
+
+      </div>
+     </div>
+  </div> -->
+
+  <br>
+  <section #contact id="contact" class="contact-section">
+      <div class="container">
+          <div class="row justify-content-center  w-100 m-auto">
+              <div class="col-xl-5">
+                  <div class="section_tittle text-center">
+                      <p>{{'LANDING.CONTACTUS' | translate }}</p>
+                      <h2>{{ 'LANDING.CONTACTUSFATORAHPRO' | translate}}</h2>
+                  </div>
+              </div>
+          </div>
+          <div class="row  w-100 m-auto">
+              <div class="col-12">
+              <h2 class="contact-title text-center text-lg-start text-md-start">{{ 'LANDING.ENTERYOURMESSAGE' | translate }}</h2>
+              </div>
+              <div class="col-lg">
+                <form class="form-contact contact_form" [formGroup]="contactUsForm" action="">
+              <!-- <form class="form-contact contact_form" action="{{ route('contact_us.store') }}" method="post" id="contactForm" novalidate="novalidate"> -->
+
+                  <!-- <input type="hidden" name="_recaptcha" id="recaptcha" formControlName="recaptcha"> -->
+                  <input type="hidden" name="_recaptcha" id="recaptcha" [value]="recaptchaToken">
+                  <div class="row  w-100 m-auto">
+                  <div class="col-sm-6">
+                      <div class="form-group">
+                          <input class="form-control"
+                          [ngClass]="!contactUsForm.controls['name'].valid && contactUsForm.controls['name'].touched ?'errorInput' : ''"
+                                 formControlName="name" type="text" 
+                                 placeholder = "{{'LANDING.NAME' | translate }}">
+                          <app-Form-errors [control]="contactUsForm.controls['name']"></app-Form-errors>
+                      </div>
+                  </div>
+                  <div class="col-sm-6">
+                      <div class="form-group">
+                          <input class="form-control" 
+                                 type="text" formControlName="email" 
+                                 [ngClass]="!contactUsForm.controls['email'].valid && contactUsForm.controls['email'].touched ?'errorInput' : ''"
+                                  placeholder = "{{'LANDING.EMAIL' | translate  }}">
+
+                          <app-Form-errors [control]="contactUsForm.controls['email']"></app-Form-errors>
+                      </div>
+                  </div>
+                  <div class="col-12">
+                      <div class="form-group">
+                          <input class="form-control"
+                                 type="text" formControlName="subject" 
+                                 [ngClass]="!contactUsForm.controls['subject'].valid && contactUsForm.controls['subject'].touched ?'errorInput' : ''"
+                                 placeholder="{{ 'LANDING.SUBJECT' | translate }}">
+                          <app-Form-errors [control]="contactUsForm.controls['subject']"></app-Form-errors>
+                      </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group">
+                        <input class="form-control"
+                               type="text" formControlName="phone" 
+                               [ngClass]="!contactUsForm.controls['phone'].valid && contactUsForm.controls['phone'].touched ?'errorInput' : ''"
+                               placeholder="{{ 'LANDING.PHONE' | translate }}">
+                        <app-Form-errors [control]="contactUsForm.controls['phone']"></app-Form-errors>
+                    </div>
+                </div>
+                  <div class="col-12">
+                      <div class="form-group">
+                          <textarea class="form-control "
+                            id="message" cols="30" rows="9" formControlName="message"
+                            [ngClass]="!contactUsForm.controls['message'].valid && contactUsForm.controls['message'].touched ?'errorInput' : ''"
+                            placeholder="{{ 'LANDING.MESSAGE' | translate }}"></textarea>
+                          <app-Form-errors [control]="contactUsForm.controls['message']"></app-Form-errors>
+                      </div>
+                  </div>
+                  </div>
+                  <div class="form-group mt-3">
+                  <button type="submit" (click)="contactUs()"
+                  class="button button-contactForm btn text-white btn-primary">
+                  {{ 'LANDING.SEND' | translate  }}</button>
+                  </div>
+              </form>
+              </div>
+              <!-- {{-- <div class="col-lg-4">
+              <div class="media contact-info">
+                  <span class="contact-info__icon"><i class="fas fa-home"></i></span>
+                  <div class="media-body">
+                  <h3>{{ __('website.sections.contact_us.address-1') }}</h3>
+                  </div>
+              </div>
+              <div class="media contact-info">
+                  <span class="contact-info__icon"><i class="fas fa-tablet"></i></span>
+                  <div class="media-body">
+                      <h3><a href="tel:{{ __('website.sections.contact_us.phone-1') }}">{{ __('website.sections.contact_us.phone-1') }}</a></h3>
+                  </div>
+              </div>
+              <div class="media contact-info">
+                  <span class="contact-info__icon"><i class="fas fa-at"></i></span>
+                  <div class="media-body">
+                      <h3><a href="mailto:{{ __('website.sections.contact_us.email-1') }}">{{ __('website.sections.contact_us.email-1') }}</a></h3>
+                      <p>{{ __('website.sections.contact_us.email-contact') }}</p>
+                  </div>
+              </div>
+              </div> --}} -->
+          </div>
+      </div>
+  </section>
+
+
+</div>
+<app-landing-footer></app-landing-footer>

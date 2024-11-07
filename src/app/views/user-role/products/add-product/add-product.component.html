@@ -1,0 +1,74 @@
+<!-- ui_fix -->
+ <div class="row w-100 m-auto  p-2 p-md-0 ps-md-5 pe-md-5">
+  <div class="col-md-12 title mb-2"> 
+     <h2 *ngIf="Type=='add'"> {{'ADDPRODUCT.ADDPRODUCT'|translate}} </h2>
+     <h2 *ngIf="Type=='edit'" > {{'ADDPRODUCT.EDITPRODUCT'|translate}} </h2>
+  </div>
+  <div class="card borderRadius_20px p-2 p-md-5">
+    <div class="cardTitle">
+      <h5 class="fw-bold">  {{'ADDPRODUCT.PRODUCTDETAILS'|translate}}   </h5>
+    </div>
+    <h6 class="mb-3 mt-4"> {{'COMMON.TYPE'|translate}} </h6>
+
+    <div class="Types  gap-4">
+      <div class="Type" *ngFor="let type of invoices_types; let i = index">
+          <label class=" rounded-3 ">
+             <input type="radio"  [attr.id]="'class'+i"  [value]="type.id"
+             [(ngModel)]="selectedTypes"
+             [checked]="type.id === selectedTypes"
+             (change)="selectedTypes = type.id" >
+             
+             <div class="typeBody rounded-3">
+              <img [src]="type?.img" alt="">
+              </div>
+             
+          </label>
+          <div *ngIf="language=='ar'" class="pt-3"> {{ type.name_ar }} </div>
+          <div *ngIf="language=='en'" class="pt-3"> {{ type.name_en }} </div>
+       </div>
+
+    </div>
+
+   <form [formGroup]="addProductForm">
+    <div #form class="row w-100 m-auto">
+      <div class="row w-100"></div>
+      <div class="col-md-6">
+
+        <div formGroupName="name">
+          <div class="col-12 col-md-10 col-lg-10 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1"> {{'COMMON.NAME'|translate}} - {{'COMMON.ARABIC'|translate}} <span style="color: red;">*</span> </label>
+
+            <input type="text" formControlName="ar"
+            [ngClass]="{'errorInput': !addProductForm.get('name.ar')?.valid && addProductForm.get('name.ar')?.touched}"
+             placeholder=" {{'COMMON.NAME'|translate}}"  class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+            <app-Form-errors [control]="addProductForm.get('name.ar')"></app-Form-errors>
+  
+          </div>   
+          <div class="col-12 col-md-10 col-lg-10 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1"> {{'COMMON.NAME'|translate}} - {{'COMMON.ENGLISH'|translate}}  </label>
+            <input type="text" formControlName="en" placeholder=" {{'COMMON.NAME'|translate}}" 
+            [ngClass]="{'errorInput': !addProductForm.get('name.en')?.valid && addProductForm.get('name.en')?.touched}"
+            class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+            <app-Form-errors [control]="addProductForm.get('name.en')"></app-Form-errors>
+  
+          </div>   
+        </div>
+       
+        <div class="col-12 col-md-10 col-lg-10 fullScreenWidth mx-0 my-3">
+          <label class="form-label  fw-bold mb-1">{{'ADDPRODUCT.PRICE'|translate}}</label>
+          <input  formControlName="price" type="text"
+          [ngClass]="{'errorInput': !addProductForm.controls['price'].valid && addProductForm.controls['price'].touched}"
+          OnlyNumberDirective placeholder="{{'ADDPRODUCT.PRICE'|translate}}" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100">
+          <app-Form-errors [control]="addProductForm.controls['price']"></app-Form-errors>
+
+        </div>    
+    </div>
+     
+      <div class="col-md-12 d-flex justify-content-center justify-content-md-end">
+        <app-button-comp *ngIf="Type=='add'" [btnType]="'main'" (click)="addProduct()" style="width: 120px;"  [name]="'COMMON.ADD'|translate" [background_color]="'#1B1464'" ></app-button-comp>
+        <app-button-comp *ngIf="Type=='edit'" [btnType]="'main'" (click)="editProduct()" style="width: 120px;"  [name]="'USERPROFILE.EDIT'|translate" [background_color]="'#1B1464'" ></app-button-comp>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>

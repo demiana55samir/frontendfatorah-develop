@@ -1,0 +1,449 @@
+<!-- ui_fix -->
+<div style="display: no;" class="subscription w-100 p-0 ps-5 pe-5">
+  <div class="mb-3 w-100">
+    <h5>{{'SUBSCRIPTION.SUBSCRIPTIONANDPAYMENT'|translate}}</h5>
+  </div>
+  <div class="mb-3 w-100 mainPart d-flex flex-wrap gap-3">
+    <div class="width-73">
+      <!-- <div *ngIf="paymentCards" class="d-flex gap-3  flex-wrap justify-content-center paymentCard">
+        <div class="visa position-relative d-flex justify-content-center">
+            <img class="cardImage" src="../../../../assets/images/subscription/visaNoData.png" alt="">
+            <span class="CardNum1 text-white fw-bold">4562 </span>
+            <span class="CardNum2 text-white fw-bold">4562</span>
+            <span class="CardNum3 text-white fw-bold">4562</span>
+            <span class="CardNum4 text-white fw-bold">4562</span>
+            <span class="CardName text-white fw-bold">Oussama</span>
+            <span class="CardExp text-white fw-bold">11/22</span> 
+
+        </div>
+        <div class="masterCard position-relative d-flex justify-content-center">
+          <img class="cardImage" src="../../../../assets/images/subscription/masterNoData.png" alt="">
+          <span class="CardNum1 text-white fw-bold">4562</span>
+          <span class="CardNum2 text-white fw-bold">4562</span>
+          <span class="CardNum3 text-white fw-bold">4562</span> 
+          <span class="CardNum4 text-white fw-bold">4562</span>
+          <span class="CardName text-white fw-bold">Oussama</span>
+          <span class="CardExp text-white fw-bold">11/22</span>
+        </div>
+      </div> -->
+
+      <div class="progressCard mb-4  w-100">
+        <div class="card w-100 p-3 borderRadius_10px boxShadow-10">
+          <div class="title d-flex justify-content-between flex-wrap">
+            <div class="d-flex flex-column">
+              <!-- <span class="fw-bold mb-1 fs-18" *ngIf="subscription?.current_plan_name=='monthly' "> {{'SUBSCRIPTION.MONTHLYSUB'|translate}} </span>
+              <span class="fw-bold mb-1 fs-18" *ngIf="subscription?.current_plan_name=='yearly' "> {{'SUBSCRIPTION.YEARLYSUB'|translate}} </span> -->
+              <span class="fw-bold mb-1 fs-18" >
+                 {{'SUBSCRIPTION.PACKAGE'|translate}}  {{ subscription?.current_plan_name }} </span>
+
+
+              <span class="text-secondary fs-14"> {{subscription?.current_plan}} </span>
+              <span class="text-secondary fs-14" *ngIf="planCreatedAt && planEndAt">  
+                {{'SUBSCRIPTION.CURRENTPLAN'|translate}}
+                {{'SUBSCRIPTION.FROM'|translate}}
+                {{ planCreatedAt | date:' d-MM-y'}}
+                {{'SUBSCRIPTION.TO'|translate}}
+                {{ planEndAt | date:' d-MM-y'}}
+              </span>
+                
+
+            </div>
+
+          
+            <div>
+              <span class="fw-800 fs-24">{{payAmount}}</span>
+              <!-- subscription?.current_plan_name=='monthly' &&
+subscription?.current_plan_name=='monthly'&&  -->
+              <span  class="text-secondary fs-14">{{'COMMON.SAR'|translate}}</span>
+              <!-- <span *ngIf="language=='en' " class="text-secondary fs-14">SAR/Month</span> -->
+              <!-- <span *ngIf="subscription?.current_plan_name=='yearly' && language=='ar'" class="text-secondary fs-14">ريال/سنوياً</span>
+              <span *ngIf="subscription?.current_plan_name=='yearly' && language=='en'" class="text-secondary fs-14">SAR/Year</span> -->
+            </div>
+          </div>
+
+          
+
+          <div class="body mt-3">
+            <div class="d-flex justify-content-between flex-wrap">
+              <span class="fw-bold mb-1 fs-16">{{subscription?.subscription_days}} {{'COMMON.DAY'|translate}}</span>
+              <span class="text-secondary fs-12">{{'COMMON.REMAINING'|translate}} {{subscription?.remaining_days}} {{'COMMON.DAY'|translate}}</span>
+            </div>
+            <div class="mt-1 mb-3">
+              <p-progressBar [value]="remainingPercent"></p-progressBar>
+            </div>
+            <div class="card-footer footer py-3 px-0 justify-content-end d-flex flex-wrap">
+              <app-button-comp (click)="renewSubscription()" *ngIf="subscription?.remaining_days == 0"  class="me-3 addBottons" [btnType]="'main'" [name]="'RENEWSUBSCRIPTION.CURRENTPLAN' | translate" [background_color]="'#CFCFCF'" ></app-button-comp>
+
+             <app-button-comp routerLink="/user/Subscription/change-plan"  class="me-3 addBottons" [btnType]="'main'" [name]="'SUBSCRIPTION.CHANGEPLAN'|translate" [color]="'#CFCFCF'" ></app-button-comp>
+            </div>
+
+      
+      
+          </div>
+
+     
+        </div>
+      </div>
+
+      <!-- Auto Renew -->
+      <div class="card w-100 p-3 borderRadius_10px boxShadow-10 my-4" *ngIf="cards && cards.length > 0 && CardDefault && CardDefault.length > 0">
+        <div >
+          <div
+            class="col-12 col-xs-12 col-sm-12 col-md-10 col-lg-10 col-xl-10  d-flex flex-wrap gap-5 justify-content-between fullScreenWidth mx-0 my-4 ">
+            <div class="">
+              <p class="fw-bold mb-1 fs-18"> {{'SUBSCRIPTION.AUTORENEWTITLE'|translate}}</p>
+              <p class="fw-semibold mb-1 fs-18"> {{'SUBSCRIPTION.AUTORENEWDES'|translate}} </p>
+              <span class="text-secondary fs-14"> ( {{'SUBSCRIPTION.USEDCARD'|translate}} {{ CardDefault}} )</span>
+              <div class="d-flex flex-wrap   fullScreenWidth gap-3 mx-0 mb-3 ">
+                <div class="statusClass">
+                  <div class="d-flex gap-1 align-items-center ">
+                    <span>{{ 'SUBSCRIPTION.ENABLE' | translate }}</span>
+                    <input type="radio" name="is_enable" (change)="changeAutoRenew($event)" [(ngModel)]="autoRenewVal"
+                      [ngStyle]="{'--checked-color': primaryColor}" class="form-check-input cursor-pointer"
+                      style="width: 2.5em; height: 2.5em;border-radius: 5px;" [value]="1">
+                  </div>
+      
+                </div>
+                <div class="statusClass">
+                  <div class="d-flex gap-1 align-items-center ">
+                    <span>{{ 'SUBSCRIPTION.DISABLE' | translate }}</span>
+                    <input type="radio" name="is_enable" (change)="changeAutoRenew($event)" [(ngModel)]="autoRenewVal"
+                      [ngStyle]="{'--checked-color': primaryColor}" class="form-check-input cursor-pointer"
+                      style="width: 2.5em; height: 2.5em;border-radius:5px;" [value]="0">
+                  </div>
+                </div>
+      
+              </div>
+      
+            </div>
+            <div>
+            </div>
+          </div>
+      
+        </div>
+      </div>
+   
+   
+      <!-- <div class="creditCards   w-100">
+        <div class="card w-100 p-3 borderRadius_10px boxShadow-10">
+          <div class="title justify-content-start mb-3 align-items-center d-flex flex-wrap">
+            <span class="fw-bold mb-1 fs-18">{{'SUBSCRIPTION.PAYMENTMETHODS'|translate}}</span>
+          </div>
+          <div *ngIf="cards" class="d-flex w-100 p-0-sm justify-content-between px-3 flex-wrap gap-4">
+            <div class="addedCard" *ngFor="let card of cards" >
+              <div style="height: 70px;" class="card   borderRadius_10px align-items-center flex-row">
+                <div class="me-5 ms-3">
+                  <div *ngIf="card.card_band!='masterCard'">
+                    <svg width="42" height="23" viewBox="0 0 42 23" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                      <rect y="-0.00012207" width="41.0714" height="23" fill="url(#pattern0)"/>
+                      <defs>
+                      <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+                      <use xlink:href="#image0_586_652" transform="scale(0.00333333 0.00595238)"/>
+                      </pattern>
+                      <image id="image0_586_652" width="300" height="168" xlink:href="data:image/png;base64,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"/>
+                      </defs>
+                      </svg>
+                  </div>
+                  <div *ngIf="card.card_band=='masterCard'">
+                    <svg width="34" height="25" viewBox="0 0 34 25" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                      <rect width="33.5156" height="25" fill="url(#pattern0)"/>
+                      <defs>
+                      <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+                      <use xlink:href="#image0_586_646" transform="scale(0.002331 0.003125)"/>
+                      </pattern>
+                      </defs>
+                      </svg>
+                  </div>
+
+                </div>
+                <div class="me-5 cardnum">
+                {{card.masked_pan}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- new credit cards -->
+      <div class="creditCards   w-100" >
+        <div class="card w-100 p-3 borderRadius_10px boxShadow-10">
+          <div class="title justify-content-between mb-5 align-items-center d-flex flex-wrap">
+            <span class="fw-bold mb-1 fs-18">{{'SUBSCRIPTION.PAYMENTMETHODS'|translate}}</span>
+            <!-- <app-button-comp data-bs-toggle="modal" data-bs-target="#addNewCard"  [style.width.px]="200" [btnType]="'main'" [name]="'SUBSCRIPTION.ADDNEWCARD'|translate" [background_color]="'#6889db'"></app-button-comp> -->
+          </div>
+
+          <ng-container *ngIf="owl && cards && cards.length > 0"> 
+            <owl-carousel-o 
+            [options]="customOptions"> 
+             
+              <ng-container *ngFor="let card of cards;let i=index" > 
+                <ng-template carouselSlide   style="width: 100px !important;" *ngIf="['visa','master','mada','amex'].includes(card?.card_band)">
+                  <div class="visa creditCard position-relative d-flex justify-content-center"
+                   [style.maxWidth.px]="300" 
+                   [ngClass]="{'defaultCard':card?.is_default}"
+                   [ngStyle]="{
+                    'background-image': getBackgroundImage(card?.card_band)
+                  }" >
+                 
+                    <span class="CardNum1 text-white fw-bold">XXXX </span>
+                    <span class="CardNum2 text-white fw-bold">XXXX</span>
+                    <span class="CardNum3 text-white fw-bold">XXXX</span>
+                    <span class="CardNum4 text-white fw-bold"> {{card?.masked_pan}} </span>
+                    <span class="CardName text-white fw-bold"> {{card?.name}} </span>
+                    <span class="CardExp text-white fw-bold">**/**</span> 
+        
+                    <div class="cardActionButtons">
+                       <img src="./assets/images/subscription/trash1.png" 
+                       [pTooltip]="'DELETEPOPUP.DELETE'|translate" tooltipPosition="top"
+                       (click)="deleteCard(card?.id)" class="cursor-pointer" alt="delete">
+
+                       <img src="./assets/images/subscription/flagCard.png" 
+                       [pTooltip]="'SUBSCRIPTION.SETDEFAULT'|translate" tooltipPosition="top"
+                       (click)="SetDefaultCard(card?.id)" class="cursor-pointer" alt="pin">
+                    </div>
+                </div>
+                </ng-template>
+              </ng-container>
+            </owl-carousel-o>
+          </ng-container>
+
+          <div class="text-center" *ngIf="!cards || cards.length == 0">
+              <h6>  {{'SUBSCRIPTION.NOCARDSEXISTS'|translate}} </h6>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="prevInvoices mt-4">
+
+            <div class="card w-100 p-3 borderRadius_10px boxShadow-10">
+              <div class="title justify-content-between mb-3 align-items-center d-flex flex-wrap">
+                <span class="fw-bold mb-1 fs-18">{{'SUBSCRIPTION.PREVINVOICES'|translate}}</span>
+              </div>
+              <div class="d-flex flex-column gap-3">
+                <div *ngFor="let invoice of invoices;let i=index" >
+                  <div  class="card prevInvoiceCard bg-light  borderRadius_10px">
+                    <div class="d-flex  flex-wrap justify-content-between align-items-center p-3">
+                      <div class="h-100 d-flex flex-column">
+                          <span class="fs-18 fw-bold fw-700">{{invoice.date}}</span>
+
+                          <div class="d-flex">
+                            <span class="text-secondary fw-bold fw-700 fs-16">{{'COMMON.NAME'|translate}} :</span>
+                            <span class="fs-18 fw-700 fw-bold"> 
+                              {{ invoice?.details?.plan_name }} </span>
+
+                         </div>
+
+                          <div class="d-flex">
+                            <span class="text-secondary fw-bold fw-700 fs-16">{{'COMMON.TYPE'|translate}} :</span>
+    
+                            <span class="fs-18 fw-700 fw-bold"> 
+                               {{'SUBSCRIPTION.PACKAGE'|translate}}  {{ invoice.subscription_type }} </span>
+
+                         </div>
+                          <div class="d-flex">
+                            <span class="text-secondary fw-bold fw-700 fs-16">{{'SUBSCRIPTION.ENDWITH'|translate}} :</span>
+                            <span class="fs-18 fw-700 fw-bold"> {{ invoice?.payment_method?.end_with }} </span>
+
+                         </div>
+                    </div>
+                    <div class="d-flex flex-row justify-content-end">
+                      <div class="edit f-flex  cursor-pointer">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <g clip-path="url(#clip0_586_783)">
+                          <path d="M3 15H15" stroke="#26EA06" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                          <path d="M9 10.5V3" stroke="#26EA06" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                          <path d="M9 10.5L12 7.5" stroke="#26EA06" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                          <path d="M9 10.5L6 7.5" stroke="#26EA06" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                          </g>
+                          <defs>
+                          <clipPath id="clip0_586_783">
+                          <rect width="18" height="18" fill="white"/>
+                          </clipPath>
+                          </defs>
+                          </svg>
+                        <span (click)="setDownloadedInvoice(invoice.uuid)" style="color: #26EA06;" class="fw-bold fs-16 cursor-pointer">{{'COMMON.DOWNLOAD'|translate}}</span>
+                      </div>
+                    </div>
+    
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+        </div>
+      </div>
+
+
+      <div>
+        <div class="card w-100 mt-3 p-3 borderRadius_10px boxShadow-10">
+          <div class="title justify-content-between mb-3 align-items-center d-flex flex-wrap">
+            <span class="fw-bold mb-1 fs-18">{{'ADDINVOICE.INVOICEDETAILS'|translate}}</span>
+          </div>
+          <div>
+          <form [formGroup]="invoiceDetailsForm" action="">
+            <div class="invoiceDetails d-flex flex-wrap">
+               <div class="w-100 mb-3 d-flex flex-wrap gap-4">
+                <div class="width-45">
+                  <label for="name" class="fw-semibold">{{'COMMON.NAME' | translate}}</label>
+                  <input  id="name" formControlName="name" placeholder="{{'COMMON.EX' | translate}} : {{'COMMON.OUSSAMA' | translate}}"
+                    class="form-control fw-semibold py-2 mt-2 inputDiv" type="text">
+
+                </div>
+                <div class="flex-fill">
+                  <label for="name" class="fw-semibold">{{'LANDING.EMAIL' | translate}}</label>
+                  <input  id="name" formControlName="email" placeholder="{{'LANDING.EMAIL' | translate}}"
+                    class="form-control fw-semibold py-2 mt-2 inputDiv" type="text">
+                </div>
+               </div>
+               <div class="w-100 mb-3 d-flex flex-wrap">
+                <div class="w-100">
+                  <label for="name" class="fw-semibold">{{'COMMON.ADDRESS' | translate}}</label>
+                  <input  id="name" formControlName="address" placeholder="{{'COMMON.ADDRESS' | translate}}"
+                    class="form-control fw-semibold py-2 mt-2 inputDiv" type="text">
+
+                </div>
+               </div>
+               <div class="w-100 mb-3 d-flex flex-wrap gap-3">
+                <div class="width-30">
+                  <label for="name" class="fw-semibold">{{'COMMON.COUNTRY' | translate}}</label>
+                  <input  id="name" [(ngModel)]="country"  [ngModelOptions]="{standalone:true}" placeholder="{{'COMMON.COUNTRY' | translate}}"
+                    class="form-control fw-semibold py-2 mt-2 inputDiv" type="text">
+
+                </div>
+                <div class="flex-fill">
+                  <label for="name" class="fw-semibold">{{'COMMON.CITY' | translate}}</label>
+                    <p-dropdown [options]="cities" id="name" formControlName="city_id"  class="mt-2 br-5px d-flex h-41" placeholder="{{'COMMON.CITY' | translate}}" optionValue="id" optionLabel="name"></p-dropdown> 
+
+                </div>
+                <div class=" width-30">
+                  <label for="name" class="fw-semibold">{{'SUPPLIER.TAXNUMBER' | translate}}</label>
+                  <input [readOnly]="!enableCode"  id="name" formControlName="tax_number" placeholder="{{'SUPPLIER.TAXNUMBER' | translate}}"
+                    class="form-control fw-semibold py-2 mt-2 inputDiv" type="text">
+
+                </div>
+                <div class="w-100 mb-3 mt-1 d-flex flex-wrap justify-content-end">
+                 <div class="d-flex flex-wrap gap-3">
+                   <app-button-comp (click)="cancleEdit()" style="width: 90px;"  class="me-3 addBottons" [btnType]="'secondary'" [name]="'COMMON.CANCEL' | translate" [color]="'#CFCFCF'" ></app-button-comp>
+                  <app-button-comp (click)="submitForm()" style="width: 90px;"  class="me-3 addBottons" [btnType]="'main'" [name]="'COMMON.SAVE' | translate" [background_color]="'#CFCFCF'" ></app-button-comp>
+                 </div>
+                </div>
+               </div>
+            </div>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="width-20-lg">
+      <div class="d-flex flex-wrap justify-content-center gap-3">
+        <div class="card dataCard boxShadow-10 ">
+          <div class="p-3 d-flex flex-column justify-content-center align-items-center">
+            <img src="../../../../assets/images/subscription/invoices.png" alt="">
+            <span class="text-center">{{'SUBSCRIPTION.INVOICEAMOUNT'|translate}}</span>
+              
+            </div>
+            <div class="card-footer footer p-0 w-100">
+            {{subscription?.monthly_bill_due}}
+            </div>
+        </div>
+        <div class="card dataCard boxShadow-10 ">
+          <div class="p-3 d-flex flex-column justify-content-center align-items-center">
+            <img src="../../../../assets/images/subscription/calendar.png" alt="">
+            <span class="text-center">  
+              {{'SUBSCRIPTION.RENEWDATE'|translate}}</span>
+              
+            </div>
+            <div class="card-footer footer p-0 w-100">
+              {{subscription?.next_payment_due}}
+            </div>
+        </div>
+        <div class="card dataCard boxShadow-10  ">
+          <div class="p-3 d-flex flex-column justify-content-center align-items-center">
+            <img src="../../../../assets/images/subscription/money.png" alt="">
+            <span class="text-center"> 
+              {{'SUBSCRIPTION.CURRENTPLANE'|translate}}</span>
+              
+            </div>
+            <div class="card-footer text text-center footer p-0 w-100">
+            {{subscription?.current_plan }}
+           </div>
+        </div>
+      
+      </div>
+    </div>
+
+  </div>
+  <button hidden #downloadBtn type="button" (click)="InvoiceTemplate.downloadPDF()">
+
+  </button>
+   <!-- <app-invoice-template #InvoiceTemplate  [downloadBoolean]="downloadBoo" [tempType]="'subsInvoice'"  [invoiceColor]="invoiceColor" [InvoiceType]="1" [invoice]="downloadedInvoice" > </app-invoice-template> -->
+     <app-invoice-template #InvoiceTemplate  [tempType]="'subsInvoice'"  [invoiceColor]="invoiceColor" [InvoiceType]="1" [invoice]="downloadedInvoice" > </app-invoice-template>
+</div>
+
+
+
+
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addNewCard">
+ 
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="addNewCard" tabindex="-1" aria-labelledby="addNewCardLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form [formGroup]="NewCardForm" (submit)="addNewCard()">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="addNewCardLabel"> {{ 'SUBSCRIPTION.ADDNEWCARD' | translate}} </h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+        <div class="col-12 col-md-12 col-lg-12 fullScreenWidth mx-0 my-3">
+          <label class="form-label  fw-bold mb-1">{{'SUBSCRIPTION.CARDNUMBER'|translate}}</label>
+          <input  formControlName="number" type="text" maxlength="16" minlength="15" appOnlyIntegersNumber  placeholder="{{'SUBSCRIPTION.CARDNUMBER'|translate}}" 
+          class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100">
+          <app-Form-errors [control]="NewCardForm.controls['number']"></app-Form-errors>
+        </div>  
+       
+        <div class="col-12 col-md-12 col-lg-12 fullScreenWidth mx-0 my-3">
+          <label class="form-label  fw-bold mb-1">{{'SUBSCRIPTION.CARDNAME'|translate}}</label>
+          <input  formControlName="name" type="text"  placeholder="{{'SUBSCRIPTION.CARDNAME'|translate}}" 
+          class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100">
+          <app-Form-errors [control]="NewCardForm.controls['name']"></app-Form-errors>
+        </div>   
+         
+        <div class="row justify-content-between">
+          <div class="col-12 col-sm-3  col-md-3 col-lg-3 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1">{{'SUBSCRIPTION.CARDMONTH'|translate}}</label>
+            <input  formControlName="month" type="text" minlength="1" maxlength="2" appOnlyIntegersNumber placeholder="{{'SUBSCRIPTION.CARDMONTH'|translate}}" 
+            class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100">
+            <app-Form-errors [control]="NewCardForm.controls['month']"></app-Form-errors>
+          </div> 
+          <div class="col-12 col-sm-3  col-md-3 col-lg-3 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1">{{'SUBSCRIPTION.CARDYEAR'|translate}}</label>
+            <input  formControlName="year" type="text" minlength="2" maxlength="4" appOnlyIntegersNumber placeholder="{{'SUBSCRIPTION.CARDYEAR'|translate}}" 
+            class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100">
+            <app-Form-errors [control]="NewCardForm.controls['year']"></app-Form-errors>
+          </div> 
+          <div class="col-12 col-sm-3  col-md-3 col-lg-3 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1">{{'SUBSCRIPTION.CARDCVC'|translate}}</label>
+            <input  formControlName="cvc" type="text"  minlength="3" maxlength="4" appOnlyIntegersNumber placeholder="{{'SUBSCRIPTION.CARDCVC'|translate}}" 
+            class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100">
+            <app-Form-errors [control]="NewCardForm.controls['cvc']"></app-Form-errors>
+          </div> 
+        </div>
+      </div>
+      <div class="justify-content-center justify-content-md-end modal-footer">
+        <button type="submit" class="btn btn-primary px-5">{{ 'COMMON.ADD' | translate }}</button>
+      </div>
+    </div>
+  </form>
+  </div>
+</div>
+

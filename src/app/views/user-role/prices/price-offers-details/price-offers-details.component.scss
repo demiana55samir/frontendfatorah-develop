@@ -1,0 +1,160 @@
+.divContainer{
+    @media screen and (max-width:426px){
+      padding-left: 10px !important;
+      padding-right: 10px !important;
+    }
+}
+.QR{
+    
+    @media screen and (max-width:769px){
+        display: flex;
+        justify-content: center !important;
+        margin-top: 15px;
+    }
+}
+.bottons{
+    @media screen and (max-width:768px){
+        justify-content: center;
+        margin-top: 15px;
+        
+    } 
+}
+.addInvoice{
+    @media screen and (max-width:426px) {
+        justify-content: center !important;
+        display: flex;
+        flex-direction: column;
+        .number{
+            justify-content: center !important;
+            display: flex;
+            flex-direction: column; 
+        }
+        .addBottons{
+            margin-top: 10px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+    }
+}
+
+.invoice-details{
+    padding: 3% 1%; 
+    border-radius: 20px !important;
+    .title{
+        border-bottom: 2px solid #D9D9D9;
+    }
+}
+.infoCard{
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
+}
+.gap-6 {
+    gap: 5.5rem!important;
+    @media screen and (max-width:1430px){
+        gap: 2rem!important;
+    }
+}
+.gap-7 {
+    gap: 5.6rem!important;
+    @media screen and (max-width:426px){
+        gap: 1rem!important;
+    }
+}
+.header{
+    font-weight: 700;
+    font-size: 16px;
+    @media screen and (max-width:1024px){
+        font-size: 10px;
+    }
+}
+.displayCard{
+ height: 40px;
+ background-color: #F5F9FC;
+ box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+ border-radius: 10px;
+ border: none;
+ align-items: center;
+ justify-content: center;
+}
+.cards{
+    .totalCards{
+        color: white;
+         height: 150px;
+         border-radius: 10px;
+         .text{
+            font-weight: 600;
+            font-size: 18px;
+         }
+         .num{
+            font-weight: 600;
+            font-size: 32px;
+         }
+    }
+    @media screen and (max-width:769px) {
+        display: flex;
+        justify-content: center !important;
+        width: 100%;
+        gap: 1rem!important;
+        .totalCards{
+            width: 60%;
+        }
+    }
+}
+.shadowCard{
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+border-radius: 10px;
+padding: 1% 1%;
+height: fit-content;
+}
+::ng-deep .p-tabmenu .p-tabmenu-nav {
+background-color:transparent !important;
+}
+::ng-deep .p-menuitem-link{
+background-color:transparent !important;
+}
+::ng-deep .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link:not(.p-disabled):focus{
+box-shadow: none !important;
+}
+.width-12{
+    width: 12%;
+    @media screen and (max-width: 881px) {
+        width: 100%;
+    }
+}
+
+   .wideScreen{
+    display: block;
+    @media screen and (max-width: 881px) {
+        display: none !important;
+    }
+}
+.smallScreen{
+    display: none;
+    @media screen and (max-width: 881px) {
+        display: block;
+    }
+}
+.subTitle{
+    color: rgba(30, 30, 30, 0.5);
+    line-height: normal;
+    font-size: 1.15rem;
+    margin: 0;
+}
+.disabled{
+    .form-control:focus {
+        color: #212529;
+        background-color: #fff;
+        border: 1px solid #ced4da;
+        outline: 0;
+        box-shadow: none;
+    }
+
+}
+
+:host ::ng-deep .productDiv .invisable{
+    .p-dropdown.p-component{
+       min-height: 35px;
+       height: unset;
+   }
+}

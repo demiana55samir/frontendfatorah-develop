@@ -1,0 +1,28 @@
+<!-- ui_fix -->
+<div class="p-2 p-md-0 ps-md-5 pe-md-5">
+  <div class="userInfo">
+    <div>
+      
+  <div class="p-4 card boxShadow-10 borderRadius_20px">
+    <div  class="row w-100 m-auto">
+      <div class="mb-2">
+        <h6 class="fw-bold"> {{'ADDPURCHASE.MAINCURRENCY'|translate}}   </h6>
+      </div>
+      <div class="col-md-6">
+    
+        <div class="col-12 fullScreenWidth mx-0 my-4">
+          <label class="form-label  fw-bold mb-1">{{'ADDPURCHASE.CURRENCY'|translate}}</label>
+          <p-dropdown placeholder="{{'ADDPURCHASE.CURRENCY'|translate}}" [(ngModel)]="choosenCurrency" [options]="currency" placeholder="العميل" class="my-1 mx-0 py-2 py-2" optionLabel="name" optionValue="name"></p-dropdown>        
+        </div>   
+  
+    </div>
+     
+      <div class="col-md-12 d-flex justify-content-center justify-content-md-end mt-5">
+        <app-button-comp [btnType]="'main'" (click)="changeCurrency()"  style="width: 120px;"  [name]="'COMMON.ADD'|translate" [background_color]="'#1B1464'" ></app-button-comp>
+      </div>
+    </div>
+
+  </div>
+    </div>
+  </div>
+</div>

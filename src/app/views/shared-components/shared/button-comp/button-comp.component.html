@@ -1,0 +1,38 @@
+<button type="submit" *ngIf="color && !background_color && !btnType" [ngStyle]="{'border': '2px solid','border-color':color,'color': color,'background': 'white'}" 
+ class="prodBtn fw-semibold  my-auto mx-0 px-4 d-flex gap-2 align-items-center justify-content-center">
+      <img  *ngIf="image" [src]="image" alt="">
+      <span *ngIf="name.length > 0" >{{name}}</span>
+</button>
+<button type="submit" *ngIf="color && !background_color && btnType=='main' " [ngStyle]="{'border': '2px solid','border-color':mainColor,'color': mainColor,'background': 'white'}" 
+ class="prodBtn fw-semibold  my-auto mx-0 px-4 d-flex gap-2 align-items-center justify-content-center">
+      <img  *ngIf="image" [src]="image" alt="">
+      <span *ngIf="name.length > 0" >{{name}}</span>
+</button>
+<button type="submit" *ngIf="color && !background_color && btnType=='secondary'" [ngStyle]="{'border': '2px solid','border-color':secondryColor,'color': secondryColor,'background': 'white'}" 
+ class="prodBtn fw-semibold  my-auto mx-0 px-4 d-flex gap-2 align-items-center justify-content-center">
+      <img  *ngIf="image" [src]="image" alt="">
+      <span *ngIf="name.length > 0" >{{name}}</span>
+</button>
+
+<button type="submit" *ngIf="color && background_color" [ngStyle]="{'border': '2px solid','border-color':color,'color': color,'background': background_color}" 
+ class="prodBtn fw-semibold  my-auto mx-0 px-4 d-flex gap-2 align-items-center justify-content-center">
+      <img  *ngIf="image" [src]="image" alt="">
+      <span *ngIf="name.length > 0" >{{name}}</span>
+</button>
+
+
+<button type="submit" *ngIf="background_color && !color && !btnType" [ngStyle]="{'background': background_color}" 
+ class="prodBtn fw-semibold  border-0 text-white my-auto mx-0 px-4 d-flex gap-2 align-items-center justify-content-center ">
+      <img  *ngIf="image" [src]="image" alt="">
+      <span *ngIf="name.length > 0" >{{name}}</span>
+</button>
+<button type="submit" *ngIf="background_color && !color && btnType=='main'" [ngStyle]="{'background': mainColor}"
+ class="prodBtn fw-semibold  border-0 text-white my-auto mx-0 px-4 d-flex gap-2 align-items-center justify-content-center ">
+      <img  *ngIf="image" [src]="image" alt="">
+      <span *ngIf="name.length > 0" >{{name}}</span>
+</button>
+<button type="submit" *ngIf="background_color && !color && btnType=='secondary'" [ngStyle]="{'background': secondryColor}" 
+ class="prodBtn fw-semibold  border-0 text-white my-auto mx-0 px-4 d-flex gap-2 align-items-center justify-content-center ">
+      <img  *ngIf="image" [src]="image" alt="">
+      <span *ngIf="name.length > 0" >{{name}}</span>
+</button>

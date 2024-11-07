@@ -1,0 +1,304 @@
+<!-- ui_fix -->
+<div class="px-5 divContainer p-0 ps-5 pe-5" [style.paddingTop.%]="7">
+
+    <div>
+      <div class="ps-3">
+        <h2> {{'PRICEOFFERDETAILS.PRICEOFFERDETAILS'|translate}}</h2>
+      </div>
+      <div class="borderRadius_20px card firstCard px-4 py-3 boxShadow-10 mb-3 mt-4 ">
+          <div class="row w-100 m-auto">
+            
+            <div class="col-md-9 flex-fill">
+              <div class="col-md-12 title pb-3">
+                <h2> {{'PRICEOFFERDETAILS.PRICEOFFER'|translate}} </h2>
+              </div>
+
+              <div #excludeMe *ngIf="view" class="row w-100 m-auto col-md-12 d-flex flex-wrap bottons gap-3">
+               <div style="width: 194px;"  class=" botton">
+                 <app-button-comp  class="w-100 me-3 fs-16" (click)=" downloadPdf()" [name]=" 'COMMON.DOWNLOAD'|translate" image="./assets/logo/download.svg" background_color="#11C387" ></app-button-comp>
+               </div>
+                <div style="width: 194px;" class=" botton">
+                  <app-button-comp class="w-100 me-3 fs-16" (click)="openSendToClientModel($event)" [name]="'COMMON.SENDTOCLIENT'|translate" image="./assets/images/inputs/sendBtn.svg" background_color="#5C60F5" ></app-button-comp>
+        
+                </div>
+                 <div style="width: 194px;" class=" botton">
+                   <app-button-comp class="w-100 me-3 fs-16" (click)="openModal($event)"  [name]="'PRICEOFFERDETAILS.SHAREPRICEOFFER'|translate" image="./assets/images/inputs/shareBtn.svg" background_color="#4D4D4D" ></app-button-comp>
+        
+                 </div>        
+              </div>
+            </div>
+            <div *ngIf="myAngularxQrCode.length > 0"  class="col-md-3 QR d-flex justify-content-end">
+              <qrcode [qrdata]="myAngularxQrCode" [width]="200"></qrcode>
+            </div>
+
+          </div>
+          <div class="row mt-5 w-100 m-auto">
+            <div class="col-md-12">
+              <div class="d-flex justify-content-between addInvoice">
+                <div class="number">
+                  <h4>{{'PRICEOFFERDETAILS.DETAILS'|translate}}</h4>
+                  <!-- {{'INVOICE.INVOICE'|translate}} : -->
+                  <span> #{{quotations.number}}</span>
+                </div>
+                  <app-button-comp [btnType]="'main'" (click)="goToAddInvoice('quotation',quotationsUuid)" 
+                   image="./assets/images/invoices/add.svg" style="width: 190px;" class="me-3 addBottons"  [name]="'INVOICE.ADDINVOICE'|translate" [background_color]="'#5C60F5'" ></app-button-comp>
+              </div>
+              <div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+<!-- -------------------------------------->
+  
+<div class="row mt-5 w-100 m-auto">
+  <div class="col-md-12 card invoice-details">
+    <div>{{'PRICEOFFERDETAILS.PRICEOFFER'|translate}}</div>
+    <div class="row mt-4 pb-4  border-bottom border-2 w-100 m-auto">
+      <!-- <div class="col-md-12">
+        <p>{{'COMMON.TO'|translate}}</p>
+      </div> -->
+       <div class="col-md-5">
+          <div class="card infoCard p-3">
+            <div class="d-flex flex-wrap">
+              <p>{{'COMMON.ADDRESS'|translate}} :</p>
+              <p>{{quotations.address}}</p>
+            </div>
+            <div class="d-flex flex-wrap">
+              <p>{{'COMMON.TELEPHONE'|translate}} : </p>
+              <p>{{quotations.telephone}}</p>
+            </div>
+            <div class="d-flex flex-wrap">
+              <p>{{'COMMON.FAXNUMBER'|translate}} : </p>     
+              <p>{{quotations.tax_number}}</p>
+            
+            </div>
+
+          </div>
+       </div>
+
+    </div>
+    <div class="row mt-4 pb-4 w-100 m-auto">
+      <div class="col-md-12">
+        <p>{{'COMMON.TO'|translate}}</p>
+      </div>
+      <div class="col-md-5">
+        <div class="card infoCard p-3">
+          <div class="d-flex">
+            <p>  {{'COMMON.CLIENTNAME'|translate}}: </p>
+            <p>{{quotations.client}}</p>
+          </div>
+          <div class="d-flex">
+            <p>{{'COMMON.TAXIDENTNUMBER'|translate}} : </p>
+            <p>{{quotations.client_tax_number}}</p>
+          </div>
+          <div class="d-flex">
+             <p>{{'COMMON.ADDRESS'|translate}} :</p>              
+             <p>{{quotations.client_address}}</p>
+            </div>
+
+        </div>
+      </div>
+    </div>
+
+  <!--  for wide Screen -->
+ 
+  <div class="me-4 mt-4  wideScreen d-flex align-items-center  border-2 gap-2 flex-wrap ">
+    <div class="flex-fill ">
+     <p class="fw-bold">{{'COMMON.PRODUCTS'|translate}}</p>
+    </div>
+    <div class="width-8">
+      <p class="fw-bold">{{'COMMON.QUANTITY'|translate}}</p>
+     </div>
+    <div class="width-8">
+     <p class="fw-bold"> {{'COMMON.PRICE'|translate}}</p>
+    </div>
+    <div class="width-12">
+      <p class="fw-bold">{{'COMMON.DISCOUNTTYPE' | translate}}</p>
+     </div>
+    <div class="width-12">
+     <p class="fw-bold">{{'COMMON.DISCOUNT'|translate}}</p>
+   </div>
+    <div class="width-12">
+     <p class="fw-bold">{{'COMMON.TAXABLEAMOUNT'|translate}}</p>
+     </div>
+    <div class="width-8"> 
+     <p class="fw-bold"> {{'COMMON.TAX'|translate}} </p></div>
+    <div class="width-12">
+     <p class="fw-bold">{{'COMMON.TOTAL'|translate}}  </p>
+    </div>
+   </div>
+
+   <!-- labels inside white box for small Screen -->
+   <div>
+     <div *ngFor="let product of products" class="me-4 mt-2 w-100 bg-white shadowCard d-flex align-items-center  border-2 gap-2 mb-5 flex-wrap">
+       <div class="flex-fill productDiv">
+       <p class="smallScreen">{{'COMMON.PRODUCTS'|translate}}</p>
+       <div class="card displayCard ">
+           {{product.name}}
+       </div>
+       </div>
+       <div class="width-8">
+       <p class="smallScreen">{{'COMMON.QUANTITY'|translate}}</p>
+       <div class="card displayCard">
+        {{product.pivot.quantity}}
+       </div>
+       </div>
+       <div class="width-8">
+       <p class="smallScreen">{{'COMMON.PRICE'|translate}}</p>
+       <div class="card displayCard">
+           {{product.pivot.price}}
+       </div>
+       </div>
+       <div class="width-12">
+        <p class="smallScreen">{{'COMMON.DISCOUNTTYPE'|translate}}</p>
+
+        <div class="card displayCard" *ngIf="product.pivot.discount_type == 1">
+         {{'COMMON.PERCENTAGE'|translate}}
+       </div>
+
+        <div class="card displayCard" *ngIf="product.pivot.discount_type != 1">
+         {{'COMMON.VALUE'|translate}}
+       </div>
+        </div>
+       <div class="width-12">
+       <p class="smallScreen">{{'COMMON.DISCOUNT'|translate}}</p>
+       <div class="card displayCard">
+        {{product.pivot.discount_value}}
+       </div>
+     </div>
+       <div class="width-12">
+       <p class="smallScreen">{{'COMMON.TAXABLEAMOUNT'|translate}}</p>
+         <div class="card displayCard">
+            {{(product.pivot.price*product.pivot.quantity)-product.pivot.discount  | number:'1.2-2' : ''}} 
+         </div>
+       </div>
+       <div class="width-8"> 
+         <p class="smallScreen"> {{'COMMON.TAX'|translate}} </p>
+         <div class="card displayCard">
+          {{product.pivot.tax}}
+
+         </div>
+       </div>
+       <div class="width-12">
+       <p class="smallScreen">{{'COMMON.TOTAL'|translate}}   </p>
+       <div class="card displayCard">
+        {{product.pivot.total}}
+       </div>
+       </div>
+     </div>
+
+   </div>
+
+
+  <div class="row mt-4  cards  gap-5 mt-4 gap-7 pb-4  border-2 d-flex justify-content-around w-100 m-auto">
+    <div style="background-color: #11C387;" class="totalCards card col-md-3 d-flex align-items-center justify-content-center text-center">
+       <span class="text">{{'COMMON.TOTALTAXABLEAMOUNT'|translate}} </span><br>
+       <span class="">{{'COMMON.SAR' |translate}} {{totalWithoutTax | number:'1.2-2' : ''}}</span>
+    </div>
+    <div style="background-color: #5C60F5;" class="totalCards card col-md-3 d-flex align-items-center justify-content-center text-center">
+      <span class="text">{{'COMMON.TOTALTAX'|translate}} </span><br>
+      <span class="">{{'COMMON.SAR' |translate}} {{totalTax | number:'1.2-2' : ''}}</span>
+    </div>
+    <div style="background-color: #4C4C4C;" class="totalCards card col-md-3 d-flex align-items-center justify-content-center text-center">
+      <span class="text">{{'COMMON.TOTAL'|translate}}   </span><br>
+      <span class="">{{'COMMON.SAR' |translate}} {{quotations.total | number:'1.2-2' : ''}}</span>
+      <!--  -->
+    </div>
+    
+  </div>
+<div class="HLine"></div>
+    <div class="my-3">
+      {{'COMMON.BANKACCOUNTS'|translate}} 
+    </div>
+    <div *ngFor="let bank of bank" class="row d-flex flex-column  mt-4 pb-4 w-100 m-auto">
+      
+      <div class="col-md-5 mb-3">
+        <div class="card infoCard p-3">
+          <div class="d-flex">
+            <p>{{'COMMON.BANKNAME'|translate}}  : </p>
+            <p>{{bank.name}}</p>
+          </div>
+          <div class="d-flex">
+            <p>{{'COMMON.BANKFULLNAME'|translate}}  : </p>
+            <p>{{bank.full_name}}</p>
+          </div>
+          <div class="d-flex">
+            <p>{{'COMMON.IBANNUMBER'|translate}}  : </p>
+            <p>{{bank.number}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- <app-quotation-templates #quotationTemplate [invoiceColor]="invoiceColor"  [quotation]="quotations" ></app-quotation-templates> -->
+<button hidden #downloadBtn type="button" (click)="quotationTemplate.downloadPDF()">
+
+</button>
+
+<app-invoice-template   #quotationTemplate [tempType]="'quotation'"  [downloadBoolean]="downloadBoo"  [invoiceColor]="invoiceColor" [InvoiceType]="templateNumber" [invoice]="quotations" > </app-invoice-template>
+
+
+
+ 
+  </div>
+</div>
+
+
+<button hidden #shareModel type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#shareModel">
+
+</button>
+ <div class="modal fade" id="shareModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="text-end">{{'PRICEOFFERDETAILS.SHAREPRICEOFFER'|translate}} </span>
+      </div>
+      <div class="modal-body">
+        <div class="input-group">
+          <div (click)="copyLink($event)" class="input-group-prepend">
+            <span class="btn input-group-text main-purple-bg badge-primary text-white">{{'COMMON.COPYLINK'|translate}}</span>
+          </div> 
+          <input type="text" #textInput readonly="readonly" value="" class="form-control">
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
+
+
+<button hidden #sendToClientModel type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#sendToClient">
+
+</button>
+ <div class="modal fade" id="sendToClient" tabindex="-1"  aria-hidden="true">
+  <form [formGroup]="sendToClientForm"  action="">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="text-end">{{'COMMON.SENDTOCLIENT'|translate}}</span>
+        </div>
+        <div class="modal-body">
+          <div [ngClass]="{'disabled':disableEmailInput}">
+            <span> {{'LANDING.EMAIL'|translate}}<span style="color:red">*</span></span>
+            <input  formControlName="email" [readOnly]="disableEmailInput" type="text" value="" class="form-control">
+          </div>
+        </div>
+        <div class="modal-footer">
+
+
+        <app-button-comp [btnType]="'secondary'"   data-bs-dismiss="modal" aria-label="Close" #closePoPModal  [name]="'تراجع'" [color]="'#1B1464'"></app-button-comp>
+          <app-button-comp  (click)="sendToclient()"  [btnType]="'main'" [name]="'COMMON.SENDTOCLIENT'|translate" [background_color]="'#1B1464'"></app-button-comp>
+      
+      </div>
+      </div>
+    </div>
+  </form>
+</div> 

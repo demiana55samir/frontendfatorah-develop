@@ -1,0 +1,54 @@
+.divCont{
+    padding: 5% 3%;
+    @media screen and (max-width:1024px){
+        padding: 1% 1%;
+
+    }
+
+    .title{
+        h2{
+         @media only screen and (max-width: 769px) {
+             font-size: 25px !important;
+         }
+        }
+     }
+     .main-info-card{
+        width:96%;
+        @media only screen and (max-width: 769px) {
+         width: 100% !important;
+        }
+     }
+
+}
+
+.width-250{
+    width: 250px;
+}
+.fs-21{
+    font-size: 21px;
+}
+.fs-19{
+    font-size: 19px;
+}
+.topCards{
+    @media screen and (max-width:798px) {
+        justify-content: center;
+    }
+}
+
+
+
+
+
+.fs-33{
+font-size: 33px !important;
+}
+.fs-18{
+font-size: 18px !important;
+}
+
+::ng-deep{
+    [dir='rtl'] .apexcharts-yaxis {
+         transform: translate(-0.125px, 0px) !important;
+     }
+  }

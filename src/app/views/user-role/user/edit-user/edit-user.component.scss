@@ -1,0 +1,100 @@
+.addUserContainer{
+    margin: 6% 4%;
+    @media only screen and (max-width: 1024px) and (min-width:768px){
+        margin: 3% 5%;
+    }
+  .title{
+    h2{
+        font-weight: 600 !important;
+        font-size: 32px !important;
+    }
+   }
+   .dataCards{
+    // height: 382px;
+    border-radius: 20px;
+    padding: 20px;
+    .cardTitle{
+        font-weight: 600 !important;
+        font-size: 20px !important;
+    }
+    .tabs{
+        ::ng-deep .p-menuitem-link{
+            padding: 0.75rem 1.25rem !important;  
+        }
+        ::ng-deep.p-tabmenu-nav-content{
+            border-radius: 20px !important;
+            padding-bottom: 2%;
+        }
+        ::ng-deep .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link:not(.p-disabled):focus{
+            box-shadow: none !important;
+            padding: 0.75rem 1.25rem;
+           }
+        }
+    }
+   }
+
+
+   .Types{
+    display: flex;
+    flex-wrap: wrap;
+    @media only screen and (max-width:768px){
+        justify-content: center;
+    }   
+    .Type{
+        margin: 4px;
+        // background: #ECECEC;
+        border-radius: 10px;
+        text-align: center;
+        label {
+            width: 102px;
+            height: 102px;
+            line-height: 3.0em;
+         
+            margin: 0;
+            cursor: pointer;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            span {
+                text-align: center;
+                height: 100%;
+                display: block;
+                color: #000;
+              }
+
+              .typeBody{
+                width: 102px;
+                height: 102px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+                align-items: center;
+                display: flex;
+                justify-content: center;
+              }
+              input {
+                position: absolute;
+                display: none;
+                color: #fff !important;
+                &:checked + .typeBody{
+                  
+                    border: 2px solid #364F6B;
+                    
+                }
+                
+                &:checked + span{
+                    background: #26D3D7;
+                    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+                    border-radius: 10px;
+                    color: #fff
+                }
+                label{
+                    border: 2px solid #364F6B;
+                }
+                .active{
+                    border: 2px solid #364F6B;
+                }
+              }
+           
+          }
+      }
+}

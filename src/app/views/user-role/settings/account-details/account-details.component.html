@@ -1,0 +1,330 @@
+<!-- ui_fix -->
+<div class="mt-2">
+  <form [formGroup]="additionalInfoForm">
+  <div  class="mb-4 d-flex flex-wrap justify-content-between align-items-center">
+      <div class="w-100 boxShadow-10 " style="border-radius: 24px;">
+        <div class="w-100 h-100 card borderRadius_20px">
+          <div style="
+          height: 50px;
+          background-color: #F5F9FC;
+          border-top-left-radius: 19px;
+      border-top-right-radius: 19px;"  class="card-header">
+           {{'COMMON.ACCOUNTINFO' | translate}}
+          </div>
+          <div class="card-body">
+              <div #form class="w-100 d-flex flex-wrap flex-rev-sm justify-content-between">
+                <!-- data -->
+                <div class="width-40-lg">
+          
+                  <div formGroupName="account_name">
+                    <div class="col-12 fullScreenWidth mx-0 my-4">
+                      <label class="form-label  fw-bold mb-1"> {{'COMMON.CLIENTORCOMPANY' | translate}} <span style="color: red;">*</span></label>
+                      <input type="text" formControlName="ar" style="height: 44px;"  placeholder=" "  
+                      [ngClass]="!additionalInfoForm.get('account_name.ar')?.valid && additionalInfoForm.get('account_name.ar')?.touched ?'errorInput' : ''"
+                      class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+                      <app-Form-errors [control]="additionalInfoForm.get('account_name.ar')"></app-Form-errors>
+                    </div> 
+                    <div class="col-12 fullScreenWidth mx-0 my-4 d-none">
+                      <label class="form-label  fw-bold mb-1"> {{'COMMON.CLIENTORCOMPANY' | translate}} - {{'COMMON.ENGLISH' |translate}} <span style="color: red;">*</span></label>
+                      <input type="text" formControlName="en" style="height: 44px;" 
+                      [ngClass]="!additionalInfoForm.get('account_name.en')?.valid && additionalInfoForm.get('account_name.en')?.touched ?'errorInput' : ''"
+                      placeholder=" "  class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+                      <!-- <app-Form-errors [control]="additionalInfoForm.get('account_name.en')"></app-Form-errors> -->
+                    </div> 
+                  </div>
+                  <!-- <div class="col-12 fullScreenWidth mx-0 my-4">
+                    <label class="form-label  fw-bold mb-1"> {{'COMMON.CLIENTORCOMPANY' | translate}} <span style="color: red;">*</span></label>
+                    <input type="text" formControlName="account_name" style="height: 44px;"  placeholder=" "  class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+                    <app-Form-errors [control]="additionalInfoForm.controls['account_name']"></app-Form-errors>
+                  </div>    -->
+                  <div class="col-12 fullScreenWidth mx-0 my-4" >
+                    <label class="form-label  fw-bold mb-1">{{'COMMON.ADDRESS' | translate}} <span style="color: red;">*</span></label>
+                    <input type="text" style="height: 44px;" formControlName="address"  
+                    [ngClass]="!additionalInfoForm.controls['address'].valid && additionalInfoForm.controls['address'].touched ?'errorInput' : ''"
+                    placeholder=" " class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100">
+                    <app-Form-errors [control]="additionalInfoForm.controls['address']"></app-Form-errors>
+                  </div>    
+
+                  <!-- new inputs -->
+                  <div class="col-12 fullScreenWidth mx-0 my-4" *ngIf="selectedTypes1==1">
+                    <label class="form-label  fw-bold mb-1"> {{'COMMON.STREETNAME' | translate}}  <span style="color: red;">*</span></label>
+                    <input type="text" style="height: 44px;" formControlName="street_name" 
+                    [ngClass]="!additionalInfoForm.controls['street_name'].valid && additionalInfoForm.controls['street_name'].touched ?'errorInput' : ''"
+                    placeholder=" " class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100">
+                    <app-Form-errors [control]="additionalInfoForm.controls['street_name']"></app-Form-errors>
+                  </div>
+                  <div class="col-12 fullScreenWidth mx-0 my-4" *ngIf="selectedTypes1==1">
+                    <label class="form-label  fw-bold mb-1"> {{'COMMON.BUILDINGNUMBER' | translate}} <span style="color: red;">*</span></label>
+                    <input type="text" style="height: 44px;" formControlName="building_number" 
+                    [ngClass]="!additionalInfoForm.controls['building_number'].valid && additionalInfoForm.controls['building_number'].touched ?'errorInput' : ''"
+                    placeholder=" " class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100">
+                    <app-Form-errors [control]="additionalInfoForm.controls['building_number']"></app-Form-errors>
+                  </div> 
+                  <div class="col-12 fullScreenWidth mx-0 my-4" *ngIf="selectedTypes1==1">
+                    <label class="form-label  fw-bold mb-1">{{'COMMON.PLOTID' | translate}} <span style="color: red;">*</span></label>
+                    <input type="text" style="height: 44px;" formControlName="plot_identification"
+                    [ngClass]="!additionalInfoForm.controls['plot_identification'].valid && additionalInfoForm.controls['plot_identification'].touched ?'errorInput' : ''"
+                    placeholder=" " class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100">
+                    <app-Form-errors [control]="additionalInfoForm.controls['plot_identification']"></app-Form-errors>
+                  </div> 
+                  <!-- <div class="col-12 fullScreenWidth mx-0 my-4" >
+                    <label class="form-label  fw-bold mb-1"> {{'COMMON.SUBDIVNAME' | translate}}  <span style="color: red;">*</span></label>
+                    <input type="text" style="height: 44px;" formControlName="sub_division_name"  
+                    [ngClass]="!additionalInfoForm.controls['sub_division_name'].valid && additionalInfoForm.controls['sub_division_name'].touched ?'errorInput' : ''"
+                    placeholder=" " class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100">
+                    <app-Form-errors [control]="additionalInfoForm.controls['sub_division_name']"></app-Form-errors>
+                  </div>     -->
+                  <!-- ===================== -->
+                  <div class="col-12 fullScreenWidth mx-0 my-4" *ngIf="selectedTypes1==1">
+                    <label class="form-label  fw-bold mb-1"> {{'COMMON.REGION' | translate}}  <span style="color: red;">*</span></label>
+                    <input type="text" style="height: 44px;" formControlName="region"  
+                    [ngClass]="!additionalInfoForm.controls['region'].valid && additionalInfoForm.controls['region'].touched ?'errorInput' : ''"
+                    placeholder=" " class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100">
+                    <app-Form-errors [control]="additionalInfoForm.controls['region']"></app-Form-errors>
+                  </div>  
+
+                  <div class="col-12 fullScreenWidth mx-0 my-4">
+                    <label class="form-label  fw-bold mb-1">{{'COMMON.CITY' | translate}} <span style="color: red;">*</span></label>
+                    <p-dropdown formControlName="city_id"  [options]="cities" 
+                    
+                    [styleClass]="['dropDownStyle', !additionalInfoForm.controls['city_id'].valid && additionalInfoForm.controls['city_id'].touched ? 'errorInput' : ''].join(' ')"
+
+                       placeholder="العميل" class=" defaultBg borderRadius_10px w-100 my-1 mx-0 py-2 py-2" optionLabel="name" optionValue="id"></p-dropdown>        
+                    <app-Form-errors [control]="additionalInfoForm.controls['city_id']"></app-Form-errors>
+                  </div>    
+                  <div class="col-12 fullScreenWidth mx-0 my-4">
+                    <label class="form-label  fw-bold mb-1">{{'ADDCLIENT.POSTALCODE' | translate}} <span style="color: red;">*</span></label>
+                    <input type="text"  formControlName="postal_code" 
+                    [ngClass]="!additionalInfoForm.controls['postal_code'].valid && additionalInfoForm.controls['postal_code'].touched ?'errorInput' : ''"
+                    [style.height.px]="44" placeholder=" " class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100">
+                    <app-Form-errors [control]="additionalInfoForm.controls['postal_code']"></app-Form-errors>
+          
+                  </div>    
+              </div>
+
+              <!-- image -->
+
+              <div style="border-radius: 24px;" class="width-40-lg image">
+                <div style="border: none;" class="w-100 h-100 cardsII card borderRadius_20px">
+                  <div style="
+                  height: 50px;
+                  background-color: transparent;
+                  border-top-left-radius: 19px;
+                  border: none;
+              border-top-right-radius: 19px;" class="fw-bold card-header">
+                    {{'COMMON.ONLYLOGO' | translate}}
+                  </div>
+                  <div class="card-body d-flex flex-wrap">
+                    <!-- style="margin-top: 20px;" -->
+                   <div   class="w-100 d-flex flex-column  align-items-center">
+                    <div class="mb-3">
+                      <h6 class="fw-bold text-center">{{'COMMON.LOGOUSED' | translate}}</h6>
+                    </div>
+                    <div class="mb-3 position-relative">
+                      <img *ngIf="!logoImage" src="../../../../assets/images/settings/Group 105.png" alt="">
+                      <img *ngIf="logoImage" class="uploadedImage" [src]="logoImage" alt="">
+                      <img [ngClass]="{'left-58px':language=='en'}" (click)=" removeMedia('logo')" *ngIf="logoImage" class="clearBtn position-relative" src="../../../../assets/images/settings/close-button.png" alt="">
+                    </div>
+                    <div class="d-flex align-items-center">
+                      <div>
+                        <img  src="../../../../assets/images/user-profile/camera-icon.svg" alt="">
+                        <span (click)="fileInput1.click()"  class="cursor-pointer changeTitle fw-bold my-0 mx-2 text-end blue_Color_Btn "> {{'COMMON.ADDLOGOPHOTO' | translate}} </span>
+                        <input type="file"  hidden #fileInput1 accept=".png, .jpg, .jpeg"  id="fileInput2" (change)="validateLogo($event)" style="display: none;"> 
+                         
+                      </div>
+                    </div>
+                   </div>
+                  </div>
+          
+                </div>
+              </div>
+
+
+              <!-- <div class="col-md-12 d-flex justify-content-end mt-5">
+                <app-button-comp [btnType]="'main'" (click)="updateAdditionalData(1)" style="width: 120px;"  [name]="'COMMON.EDIT' | translate" [background_color]="'#1B1464'" ></app-button-comp>
+              </div> -->
+          </div>
+        </div>
+
+        </div>
+        
+      </div>
+
+    </div>
+    
+
+
+
+
+    <div class="w-100 boxShadow-10 " style="border-radius: 24px;">
+      <div class="w-100 h-100 card borderRadius_20px">
+        <div style="
+        height: 50px;
+        background-color: #F5F9FC;
+        border-top-left-radius: 19px;
+    border-top-right-radius: 19px;" class="card-header">
+         {{'COMMON.ADDITIONALINFO' | translate}}
+        </div>
+        <div class="card-body p-4 w-100 d-flex flex-wrap">
+          <div class="row w-100 mb-3 gap-5">
+            <div class="col-md-5">
+              <div class=" mx-0 my-3">
+                <label class="fw-bold mb-2"> {{'COMMON.BUSSINESTYPE' | translate}} <span style="color: red;">*</span></label>
+                <p-dropdown formControlName="business_type_id" 
+                [styleClass]="['dropDownStyle', !additionalInfoForm.controls['business_type_id'].valid && additionalInfoForm.controls['business_type_id'].touched ? 'errorInput' : ''].join(' ')"
+                [style.width.%]="100" [options]="business_types"   placeholder="العميل" class=" defaultBg borderRadius_10px w-100 my-1 mx-0 py-2 py-2" optionLabel="name" optionValue="id"></p-dropdown>        
+                <app-Form-errors [control]="additionalInfoForm.controls['business_type_id']"></app-Form-errors>
+              </div>   
+              <div class=" mx-0 my-3">
+                <label class="fw-bold mb-2">{{'COMMON.ENTITYTYPE' | translate}} <span style="color: red;">*</span></label>
+                <p-dropdown formControlName="company_type_id"
+                [styleClass]="['dropDownStyle', !additionalInfoForm.controls['company_type_id'].valid && additionalInfoForm.controls['company_type_id'].touched ? 'errorInput' : ''].join(' ')"
+                [style.width.%]="100" [options]="company_type"  placeholder="العميل" class=" defaultBg borderRadius_10px w-100 my-1 mx-0 py-2 py-2" optionLabel="name" optionValue="id"></p-dropdown>        
+                <app-Form-errors [control]="additionalInfoForm.controls['company_type_id']"></app-Form-errors>
+              </div>
+              
+              
+              <div class="mx-0 my-3">
+                <label class="fw-bold mb-2"> {{'COMMON.CAPITALMONEY' | translate}} </label>
+                <input type="text" formControlName="opening_balance" placeholder=" " class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 ">
+              
+            </div>   
+
+          </div>
+          <div class="col-md-5">
+            <div class="mx-0 my-3">
+              <label class="fw-bold mb-2"> {{'COMMON.FAXNUMBER' | translate}} </label>
+              <input type="text" formControlName="fax" placeholder=" " class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 ">
+              <app-Form-errors [control]="additionalInfoForm.controls['fax']"></app-Form-errors>
+          </div>   
+            <div class="mx-0 my-3">
+              <label class="fw-bold mb-2">{{'COMMON.TELEPHONE' | translate}}</label>
+              <input type="text" formControlName="telephone"  placeholder=" " class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 ">
+              <app-Form-errors [control]="additionalInfoForm.controls['telephone']"></app-Form-errors>
+          </div>   
+        </div>
+
+         </div>
+
+        </div>
+        <div class="choose p-4 d-flex flex-wrap ">
+          <div>
+           <h5>{{'COMMON.ISTAXABLE' | translate}} <span style="color: red;">*</span></h5>
+           <div class="Types  gap-4">
+           <div class="Type" *ngFor="let type of invoices_types; let i = index">
+             <label class=" rounded-3 ">
+                <input type="radio"  [attr.id]="'class'+i"  [value]="type.id"
+                [checked]="type.id === selectedTypes1"
+                (change)="selectedTypes1 = type.id;changed=true"
+                >
+                <div class="typeBody rounded-3">
+                 <img [src]="type?.img" alt="">
+                 </div>
+                
+             </label>
+             <div *ngIf="language=='ar'" class="pt-3"> {{ type.name_ar }} </div>
+             <div *ngIf="language=='en'" class="pt-3"> {{ type.name_en }} </div>
+          </div>
+        </div>
+          </div>
+          <div>
+           <h5>{{'COMMON.MYSALES' | translate}}</h5>
+           <div class="Types  gap-4">
+
+           <div class="Type" *ngFor="let type of sales_type; let i = index">
+             <label class=" rounded-3 ">
+                <input type="radio"  [attr.id]="'class'+i"  [value]="type.id"
+                [checked]="type.checked === true"
+                (click)="check(i)"
+
+                >
+                <div class="typeBody rounded-3">
+                 <img [src]="type?.img" alt="">
+                 </div>
+                
+             </label>
+             <div *ngIf="language=='ar'" class="pt-3"> {{ type.name_ar }} </div>
+             <div *ngIf="language=='en'" class="pt-3"> {{ type.name_en }} </div>
+          </div>
+        </div>
+          </div>
+        </div>
+        <div class="p-4" *ngIf="selectedTypes1==1">
+          <div class=" tax_numberDiv mx-0 my-3">
+            <!-- <label class="fw-bold mb-2">{{'COMMON.TAXIDENTNUMBER' | translate}}</label> -->
+            <label class="fw-bold mb-2">{{'COMMON.TAXREGNUMBER' | translate}} <span style="color: red;">*</span></label>
+            <input type="text"  placeholder=" " formControlName="tax_number"
+            [ngClass]="!additionalInfoForm.controls['tax_number'].valid && additionalInfoForm.controls['tax_number'].touched ? 'errorInput' : ''"
+            class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 ">
+            <app-Form-errors [control]="additionalInfoForm.controls['tax_number']"></app-Form-errors>
+        </div> 
+          <div class=" tax_numberDiv mx-0 my-3">
+            <label class="fw-bold mb-2">{{'COMMON.COMMREGNUMBER' | translate}} <span style="color: red;">*</span> </label>
+            <input type="text"  placeholder=" " formControlName="commercial_registration_number"
+            [ngClass]="!additionalInfoForm.controls['commercial_registration_number'].valid && additionalInfoForm.controls['commercial_registration_number'].touched ? 'errorInput' : ''"
+            class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 ">
+            <app-Form-errors [control]="additionalInfoForm.controls['commercial_registration_number']"></app-Form-errors>
+        </div> 
+        <p class="pt-4 text-danger fw-bold fs-14"> *{{'COMMON.ZATCAEDITCONFIRM' | translate}} </p>
+        
+         
+        <form [formGroup]="OTPForm">
+          <!-- tax_numberDiv -->
+          <div class="  mx-0 my-3">
+            <div class="d-flex w-100  flex-wrap gap-3">
+              <!-- col-12 col-md-4 -->
+              <div class="otpItem">
+                <label class="fw-bold mb-2">{{'COMMON.OTPZATCA' | translate}} <span style="color: red;">*</span></label>
+                <input type="text" placeholder=" " formControlName="otp"
+                [ngClass]="!OTPForm.controls['otp'].valid && OTPForm.controls['otp'].touched ? 'errorInput' : ''"
+                  class="form-control defaultBg borderRadius_10px mx-0 " style="padding-block: 9px;">
+                  <app-Form-errors [control]="OTPForm.controls['otp']"></app-Form-errors>
+              </div>
+              <!-- col-12 col-md-4 -->
+              <div class="otpItem">
+                <label class="fw-bold mb-2"> {{'COMMON.ZATCASTATUS' | translate}}  <span style="color: red;">*</span></label>
+                <p-dropdown *ngIf="language=='ar'" formControlName="zatca_stage"
+                [styleClass]="['dropDownStyle', !OTPForm.controls['zatca_stage'].valid && OTPForm.controls['zatca_stage'].touched ? 'errorInput' : ''].join(' ')"
+                 [options]="zatcaStages"  class=" defaultBg borderRadius_10px w-100 my-1 mx-0 py-2 py-2" optionLabel="nameAr" optionValue="value"></p-dropdown>       
+
+                <p-dropdown *ngIf="language=='en'" formControlName="zatca_stage"
+                [styleClass]="['dropDownStyle', !OTPForm.controls['zatca_stage'].valid && OTPForm.controls['zatca_stage'].touched ? 'errorInput' : ''].join(' ')"
+                 [options]="zatcaStages"  class=" defaultBg borderRadius_10px w-100 my-1 mx-0 py-2 py-2" optionLabel="nameEn" optionValue="value"></p-dropdown>        
+                <app-Form-errors [control]="OTPForm.controls['zatca_stage']"></app-Form-errors>
+              </div>
+              <!-- col-12 col-md-2 -->
+              <div class="otpItem d-flex align-items-end pb-1">
+                <label class="fw-bold mb-2"> </label>
+                <app-button-comp [btnType]="'main'" (click)="sendOTP()" class="sumbitBtn " [name]="'COMMON.ACTIVATEZATCA' | translate"
+                  [background_color]="'#1B1464'"></app-button-comp>
+                <!-- <app-button-comp [btnType]="'main'"   class="sumbitBtn " [name]="'COMMON.ACTIVATEZATCA' | translate" [background_color]="'#1B1464'" ></app-button-comp> -->
+              </div>
+        
+        
+            </div>
+        
+          </div>
+        </form>
+        <span *ngIf=" generalInfo?.zatca_status_settings">
+          <img  src="./assets/images/invoices/check.png" alt="" width="25">
+          <span class="green_Color_text"> {{ 'COMMON.ZATCASETTINGSACTIVE'|translate }} 
+            <span *ngIf="generalInfo?.zatca_stage_settings == 'developer-portal' || generalInfo?.zatca_stage_settings == 'simulation'"> {{ 'COMMON.ZATCASETTINGSACTIVESIMU'|translate }} </span>
+            <span *ngIf="generalInfo?.zatca_stage_settings == 'core'"> {{ 'COMMON.ZATCASETTINGSACTIVELIVE'|translate }} </span>
+          </span>
+        </span>
+        <span *ngIf=" !generalInfo?.zatca_status_settings">
+          <img   src="./assets/images/invoices/mark.png" alt="" width="25" >
+          <span class="text-danger"> {{ 'COMMON.ZATCASETTINGSNOTACTIVE'|translate }} </span>
+        </span>
+
+
+        </div>
+
+        <div class="col-md-12 d-flex justify-content-end p-4 mt-5">
+          <app-button-comp [btnType]="'main'" (click)="updateAdditionalData(2)"   class="sumbitBtn" [name]="'COMMON.SAVE' | translate" [background_color]="'#1B1464'" ></app-button-comp>
+        </div>
+        <!-- [disabled]="type.id != selectedTypes2" -->
+      </div>
+    </div>
+  </form>
+    </div>

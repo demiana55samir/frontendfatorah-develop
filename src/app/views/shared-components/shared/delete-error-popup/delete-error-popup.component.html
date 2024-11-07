@@ -1,0 +1,21 @@
+<!-- Button trigger modal -->
+<button hidden #OpenModalBtn type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteModal">
+
+</button>
+
+<!-- Modal -->
+<div  class="modal fade "  id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"  aria-hidden="true">
+  
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body d-flex justify-content-center align-items-center">
+        <h1 class="modal-title fs-5" > {{'DELETEPOPUP.MESSAGE'|translate}}</h1>
+      </div>
+      <div class="modal-footer border-0 d-flex justify-content-center">
+        <app-button-comp  (click)="emitChoosenEvent(true,false)"  [style.width.%]="40" [name]="'DELETEPOPUP.DELETE'|translate" [background_color]="'#ff0000'"></app-button-comp>
+        <app-button-comp [btnType]="'secondary'"  (click)="emitChoosenEvent(false,true)"  [style.width.%]="40" [name]="'DELETEPOPUP.CANCEL'|translate" [background_color]="'#1B1464'"></app-button-comp>
+        <button hidden  #closeModal type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+</div>

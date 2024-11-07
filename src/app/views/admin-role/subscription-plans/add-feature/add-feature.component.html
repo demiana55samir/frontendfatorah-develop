@@ -1,0 +1,109 @@
+<!-- ui_fix -->
+<div class="row main-container p-0 ps-5 pe-5">
+  <div class="col-md-12 title mb-2"> 
+     <h2 *ngIf="type=='add'">{{'ALLFEATURES.ADD' |translate}}</h2>
+     <h2 *ngIf="type=='edit'">{{'ALLFEATURES.EDIT' |translate}}</h2>
+  </div>
+  <div class="card borderRadius_20px p-3"> 
+    <div class="cardTitle mb-2">
+      <h5 >{{'ALLFEATURES.DETAILS' |translate}}</h5> 
+    </div>
+    <form [formGroup]="featureDetailsForm" action="">
+      <div #form class="row"> 
+        <div formGroupName="name">
+          <div class="col-md-12">
+            <label class="form-label  fw-bold mb-1">{{'EDITPLAN.NAME' |translate}} - {{'COMMON.ARABIC' |translate}} </label>
+            <input type="text" [ngClass]="{'direction':language=='ar'}"
+             [ngClass]="!featureDetailsForm.get('name.ar')?.valid && featureDetailsForm.get('name.ar')?.touched ?'errorInput' : ''"
+             [readonly]="type=='view'"  formControlName="ar" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+            <app-Form-errors [control]="featureDetailsForm.get('name.ar')"></app-Form-errors>
+        </div>
+        <div class="col-md-12">
+          <label class="form-label  fw-bold mb-1">{{'EDITPLAN.NAME' |translate}} - {{'COMMON.ENGLISH' |translate}} </label>
+          <input type="text" [ngClass]="{'direction':language=='ar'}"
+          [ngClass]="!featureDetailsForm.get('name.en')?.valid && featureDetailsForm.get('name.en')?.touched ?'errorInput' : ''"
+           [readonly]="type=='view'"  formControlName="en" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+          <app-Form-errors [control]="featureDetailsForm.get('name.en')"></app-Form-errors>
+      </div>
+        </div>
+     
+        <div formGroupName="description">
+          <div class="col-md-12">
+            <label class="form-label  fw-bold mb-1">{{'EDITPLAN.DISCRIPTION' |translate}} - {{'COMMON.ARABIC' |translate}} </label>
+            <input type="text" [ngClass]="{'direction':language=='ar'}" [readonly]="type=='view'" 
+            [ngClass]="!featureDetailsForm.get('description.ar')?.valid && featureDetailsForm.get('description.ar')?.touched ?'errorInput' : ''"
+              formControlName="ar" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+            <app-Form-errors [control]="featureDetailsForm.controls['ar']"></app-Form-errors>
+        </div>
+        <div class="col-md-12">
+          <label class="form-label  fw-bold mb-1">{{'EDITPLAN.DISCRIPTION' |translate}} - {{'COMMON.ENGLISH' |translate}} </label>
+          <input type="text" [ngClass]="{'direction':language=='ar'}" 
+          [ngClass]="!featureDetailsForm.get('description.ar')?.valid && featureDetailsForm.get('description.ar')?.touched ?'errorInput' : ''"
+          [readonly]="type=='view'"   formControlName="en" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+          <app-Form-errors [control]="featureDetailsForm.controls['en']"></app-Form-errors>
+      </div>
+        </div>
+     
+        <div class="col-md-6">
+  
+          <div  class="col-12 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1">{{'EDITPLAN.SLUG' |translate}} <span style="color:red">*</span></label>
+            <input type="text" [ngClass]="{'direction':language=='ar'}"
+            [ngClass]="!featureDetailsForm.controls['slug'].valid && featureDetailsForm.controls['slug'].touched ?'errorInput' : ''"
+            [readonly]="type=='view'"  formControlName="slug" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+            <app-Form-errors [control]="featureDetailsForm.controls['slug']"></app-Form-errors>
+
+          </div> 
+   
+          <div class="col-12 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1">{{'EDITFEATURE.Resettable_period' |translate}}  </label>
+            <input type="text" [ngClass]="{'direction':language=='ar'}" 
+            [ngClass]="!featureDetailsForm.controls['resettable_period'].valid && featureDetailsForm.controls['resettable_period'].touched ?'errorInput' : ''"
+            [readonly]="type=='view'"   formControlName="resettable_period" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+            <app-Form-errors [control]="featureDetailsForm.controls['resettable_period']"></app-Form-errors>
+
+          </div>      
+          <div class="col-12 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1">{{'EDITFEATURE.VALUE' |translate}} <span style="color:red">*</span></label>
+            <input type="text" [ngClass]="{'direction':language=='ar'}"
+            [ngClass]="!featureDetailsForm.controls['value'].valid && featureDetailsForm.controls['value'].touched ?'errorInput' : ''"
+            [readonly]="type=='view'"   formControlName="value" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+            <app-Form-errors [control]="featureDetailsForm.controls['value']"></app-Form-errors>
+          </div>   
+
+ 
+  
+      </div>
+        <div class="col-md-6">
+  
+          <div   class="col-12 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1">{{'EDITPLAN.SORT' |translate}} </label>
+            <input type="text" [ngClass]="{'direction':language=='ar'}" 
+            [ngClass]="!featureDetailsForm.controls['sort_order'].valid && featureDetailsForm.controls['sort_order'].touched ?'errorInput' : ''"
+            [readonly]="type=='view'"  formControlName="sort_order" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+            <app-Form-errors [control]="featureDetailsForm.controls['sort_order']"></app-Form-errors>
+          </div> 
+  
+
+          <div class="col-12 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1">{{'EDITFEATURE.Resettable_interval' |translate}}</label>
+            <p-dropdown *ngIf="language=='ar'"  [options]="interval"
+             [styleClass]="!featureDetailsForm.controls['resettable_interval'].valid && featureDetailsForm.controls['resettable_interval'].touched ?'errorInput' : ''"
+            formControlName="resettable_interval"  [readonly]="type=='view'" placeholder=" " class="my-1 mx-0 py-2 w-100" optionLabel="nameAR" optionValue="value"></p-dropdown>                           
+            
+            <p-dropdown *ngIf="language=='en'"  [options]="interval"
+             [styleClass]="!featureDetailsForm.controls['resettable_interval'].valid && featureDetailsForm.controls['resettable_interval'].touched ?'errorInput' : ''"
+            formControlName="resettable_interval" [readonly]="type=='view'" placeholder=" " class="my-1 mx-0 py-2 w-100" optionLabel="nameEN" optionValue="value"></p-dropdown>                           
+            <app-Form-errors [control]="featureDetailsForm.controls['resettable_interval']"></app-Form-errors>
+          </div>  
+ 
+        </div>
+
+        <div class="col-md-12 d-flex justify-content-center justify-content-md-end">
+          <app-button-comp *ngIf="type=='add'" (click)="addFeature()" [btnType]="'main'" style="width: 120px;"  [name]="'COMMON.ADD' |translate" [background_color]="'#1B1464'" ></app-button-comp>
+          <app-button-comp *ngIf="type=='edit'" (click)="editFeatureData()" [btnType]="'main'" style="width: 120px;"  [name]="'COMMON.EDIT' |translate" [background_color]="'#1B1464'" ></app-button-comp>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

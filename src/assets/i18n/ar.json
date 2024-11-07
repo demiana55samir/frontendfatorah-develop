@@ -1,0 +1,1313 @@
+{
+  "LANDING":{
+  "HOME":"الرئيسية",     
+  "fatorhPro":"فاتورة برو",
+  "mainTitle1":"انشئ فواتير احترافية ,",
+  "mainTitle2":"وارسلها لعملائك",
+  "description":"نظام فاتورة برو هو نظام معتمد من هيئة الزكاة و الدخل ينشئ لك فواتيرك الخاصة الكترونيا أونلاين وأرسالها لعملائك مجانا , ويخلصك من الفواتير الورقية , كما يمكنك إدارة فواتير وتنظيمها وحفظها .",
+  "createFreeInvoice":"اصدر فاتورة مجانا",
+  "FEATURES":"مميزات فاتورة",
+  "FEATURESDES":"قدم فاتورة برو عدة مميزات لأصحاب المتاجر والمشاريع الصغيرة والمتوسطة، من المميزات المقدمة :",
+
+  "FEATUREDESCR":"تقدم فاتورة برو عدة مميزات لأصحاب المتاجر والمشاريع الصغيرة والمتوسطة، من المميزات المقدمة :",
+  "EASYTOUSE":"سهولة التعامل",
+  "EASYTOUSEDESC":"بإمكان المستخدم تسجيل حسابه وإدارة فواتيره بسهولة ويسر من خلال لوحة تحكم خاصة به.",
+  "FASTACCESS":"سرعة الوصولs",
+  "FASTACCESSDESC":"بالإمكان إدارة فواتير عملائك ومنتجاتك في صفحة واحدة من خلال لوحة تحكم احترافية.",
+  "GENERALSTATISTICS":"إحصائيات عامة",
+  "GENERALSTATISTICSDESC":"يقدم لك فاتورة برو إحصائيات عن الفواتير والمنتجات والعملاء وحجم مبيعاتك خلال الأشهر..",
+  "ONLINEINVOICES":"فواتير أونلاين",
+  "ONLINEINVOICESDESC":"يمكِّنك فاتورة برو الحصول على تصميم فواتير مثالي، وطباعتها أو إرسالها لعملائك مباشرة ويغنيك عن الفواتير الورقية.",
+  "HIGHSECURITY":"الأمان العالي",
+  "HIGHSECURITYDESC":"فاتورة برو يقدم خدمة إدارة الفواتير على مستوى عالي من الأمن والحماية، معلوماتك وفواتيرك في سرية تامة.",
+  "MULTILANGUAGE":"تعدد اللغات",
+  "MULTILANGUAGEDESC":"يتيج فاتورة برو تعدد اللغات في الموقع، و بإمكانك إنشاء فواتير لعملائك باللغتين العربية والإنجليزية.",
+  "ABOUTUS":"من نحن",
+  "ABOUTFATORAHPRO":"نبذة عن فاتورة برو",
+  "ABOUTFATORAHPRODESC":"موقع فاتورة برو : هو نظام الكتروني يسهل على اصحاب المشاريع او المتاجر سهولة انشاء الفواتير وارسالها الى عملائهم من غير رسوم او اشتراطات معقدة ويسهل استخدام الفواتير الالكترونية بدلا من الفواتير الورقية . المعاملات الالكترونية بدلا من الورقية من غير تكاليف ورق وطباعة وتصميم.",
+  "ABOUTUS1":"تبسيط آلية إنشاء الفواتير و تسجيلها و استلامها لغير الخبراء بالمجال المحاسبي .",
+  "ABOUTUS2":"توفير الوقت و الجهد على غير المختصين و تأمين الوقت اللازم لهم لتطوير أعمالهم .",
+  "USERS":"عدد المستخدمين",
+  "INVOICES":"عدد الفواتير",
+  "PRODUCTS":"عدد المنتجات",
+  
+  "HOWWORKS":"كيف يعمل ",
+  "HOWFATORAPROWORK":"كيف يعمل فاتورة برو",
+  "HOWFATORAPROWORKDESC":"يمكنك من خلال فاتورة برو أن تقوم بإنشاء فواتير وتصدرها لعملائك عن طريق رابط مباشر أو بطباعتها على شكل ملف pdf.",
+  "CREATEACOUNT":"إنشاء حساب",
+  "CREATEACOUNTDESC":"قم بإنشاء حساب جديد ، ثم قم بتفعليه عن طريق رقم الجوال أو بريدك الإلكتروني.",
+  "ADDCUSTOMERS":"إضافة عملاء",
+  "ADDCUSTOMERSDESC":"قم بإضافة قائمة بعملائك من خلال لوحة التحكم بعد تفعيل حسابك.",
+  "CREATEINVOICE":"إنشاء فواتير",
+  "CREATEINVOICEDESC":"قم بإنشاء فواتير لعملائك ، ثم قم بطباعتها وارسالها لهم.",
+  "FAQS":"الأسئلة الشائعة",
+  "REUEQUANTQUAST":"أسئلة حول فاتورة برو",
+  "ANSWER":"جواب",
+  "QUEST1":"كيف يتم حفظ فواتيري ؟",
+  "ANSWER1":"  عن طريق لوحة التحكم الخاصة بالعميل.",
+  "QUEST2":"هل يتم دفع رسوم  على الفواتير ؟",
+  "ANSWER2":"لا ، اصدار الفواتير وارسالها مجانا.",
+  "QUEST3":"هل جميع المتاجر ممكن تستفيد منه ؟",
+  "ANSWER3":" نعم ، الجميع من اصحاب المشاريع ومن لديه عملاء يمكن الاستفادة من الموقع.",
+  "QUEST4":"هل هنالك خصوصية على الفواتير ؟",
+  "ANSWER4":"نعم ، لا أحد يطلع على الفواتير إلا أصحابها.",
+  "QUEST5":"كيف يمكن التواصل معكم؟",
+  "ANSWER5":"جواب : في حال استفساراتكم واتصالاتكم : لديكم روابط التواصل ومنابر التواصل والسوشيل ميديا وارقام الاتصال الرقم (صفة اتصل بنا ).",
+  "SUBSCRIPTIONS":"الإشتراكات",
+  "SUBSCRIPTIONPACKAGES":"باقات الإشتراك",
+  "MONTHLY":"  الأسعار شهرياً",
+  "YEARLY":"الأسعار سنوياً",
+  "SUBSCRIPTION":"الاشتراك",
+  "CONTACTUS":" اتصل بنا",
+  "CONTACTUSFATORAHPRO":"تواصل معنا فاتورة برو",
+  "ENTERYOURMESSAGE":"أكتب رسالتك هنا",
+  "NAME":"الاسم كامل",
+  "EMAIL":"البريد الالكتروني",
+  "SUBJECT":"عنوان الرسالة",
+  "MESSAGE":"اكتب رسالتك هنا" ,
+  "SENDMESSAGE":"أرسل الرسالة",
+  "FOOTERDESC":"هو نظام الكتروني يسهل على اصحاب المشاريع او المتاجر سهولة انشاء الفواتير وارسالها الى عملائهم من غير رسوم او اشتراطات معقدة ويسهل استخدام الفواتير الالكترونية بدلا من الفواتير الورقية",
+  "SUBSCRIBETONEWSLETTER":"اشترك في القائمة البريدية",
+  "ENTERYOUREMAIL":"ادخل بريدك الالكتروني",
+  "ADDRESS":"العنوان ",
+  "PHONE":"رقم الهاتف  ",
+  "LOGIN":"تسجيل الدخول",
+"LOGOUT":"تسجيل خروج",
+"LANG":"اللغة",
+"COPYRIGHTS":"جميع الحقوق محفوظة ©2024 موقع فاتورة برو",
+"TERMS":"الشروط والأحكام و سياسة الخصوصية",
+"CONTACTUSFOOTER":"تواصل معنا",
+"SEND":"أرسل الرسالة",
+"MONTHLYDES":"شهرياً",
+"YEARLYDES":"سنويا",
+"CREATEINVOICEBTN":"قم بانشاء فواتيرك الان",
+"INVALIDPHONE":"الرقم غير صحيح"
+  },
+  "TABLE":{
+      "ADDNEWINVOICE":"اضافة فاتورة جديده",
+      "DOWNLOAD":"تحميل",
+      "DOWNLOADINVOICE":"تحميل الفاتورة",
+      "VERIFIED": "مفعل",
+      "VERIFY": "تفعيل",
+      "NOTVERIFIED": "غير مفعل",
+      "ENTER":"دخول",
+      "PLANFEATURES":"عرض مميزات الخطة",
+
+      "ADDRECEIPTS":"إضافة سند قبض",
+      "ADDCREDIT":"إضافة اشعار دائن",
+      "ADDDEBIT":"إضافة اشعار مدين",
+      "EXPENSE":"مصروف",
+      "CANTCREATCREDIT":"لا يمكن اضافة اشعار دائن لأنه تم ارجاع الفاتورة بالكامل او الفاتورة قد مضى عليها اكثر من 15 يوما "
+
+  }
+  ,
+"CREDITNOTICE":{
+"TITLE":"عرض قائمة الاشعارات الدائنة",
+"SUBTITLE":"قائمة الاشعارات الدائنة",
+"SEARCH":"بحث",
+"CREDITNOTICEDETAILSDISPLAY":" عرض تفاصيل الاشعار الدائن ",
+"CREDITNOTICEDETAILS":"تفاصيل الاشعار الدائن",
+"CREDITNOTICE":"اشعار دائن",
+"CREDITNOTICENUMBER":"رقم الاشعار الدائن",
+"CREATE":"اضافة اشعار دائن",
+"DOWNLOAD":"تحميل اشعار دائن",
+"ADDDESC":"  الرجاء ادخال رقم الفاتورة المرتبطة بالإشعار الدائن (مرتجع المبيعات)",
+"CREDIT":"اشعار دائن ",
+"BACK":"رجوع"
+},
+"DEBITITNOTICE":{
+"TITLE":"عرض قائمة الاشعارات المدينة",
+"SUBTITLE":"قائمة الاشعارات المدينة",
+"SEARCH":"بحث",
+"DEBITNOTICEDETAILSDISPLAY":" عرض تفاصيل الاشعار المدين ",
+"DEBITNOTICEDETAILS":"تفاصيل الاشعار المدين",
+"DEBITNOTICE":"اشعار مدين",
+"DEBITNOTICENUMBER":"رقم الاشعار المدين",
+"CREATE":"اضافة اشعار مدين",
+"DOWNLOAD":"تحميل اشعار مدين",
+"ADDDESC":"  الرجاء ادخال رقم الفاتورة المرتبطة بالإشعار المدين ",
+"DEBIT":"اشعار مدين ",
+"BACK":"رجوع",
+"ORIGINALINVOICEPRODUCTS":"المنتجات الأساسية للفاتورة ",
+"DEBITPRODUCTS":" منتجات الاشعار المدين  "
+}
+,
+"INVOICE":{
+  "TITLE":"عرض قائمة الفواتير ",
+  "SUBTITLE":"قائمة الفواتير",
+  "ADDINVOICE":"اضافة فاتورة جديدة",
+  "CANCELEDINVOICES":"الفواتير الملغاة",
+  "DELETEDINVOICES":"الفواتير المحذوفة",
+  "CANCEL":"الغاء",
+  "INVOICE":"فاتورة",
+  "INVOICENUMBER":"رقم الفاتورة",
+  "TORENEW":"الفاتورة الشهرية المستحقة   ",
+  "PAYDATE":"الدفع القادم المستحق",
+  "CURRENTPLANE":"خطة الاشتراك الحالية",
+  "CREATEDAT":"تاريخ انشاء الفاتورة",
+  "TIME" : "التاريخ والوقت",
+  "INVOICEID":"رقم الكود",
+  "DATEOFCREATION":"تاريخ الإنشاء"
+
+  
+},
+"CANCELLEDINVOICES":{
+  "CANCELLEDINVOICES":"الفواتير الملغاة"
+},
+"RECEIPTVOUCHER":{
+  "TITLE":"عرض قائمة سندات القبض",
+  "SUBTITLE":"قائمة سندات القبض",
+  "CREATE":"اضافة سند قبض",
+  "DETAILS":"تفاصيل سند القبض",
+  "VOUCHERNUMBER":"رقم السند",
+  "RECEIPTVOUCHER":"سندات القبض",
+  "NUMBER":"رقم سند القبض ",
+  "TOTALINVOICE":"إجمالي مبلغ الفاتورة",
+  "ADDDESC": " الرجاء ادخال رقم الفاتورة المرتبطة بسند القبض",
+  "BACK":"رجوع",
+  "PAIDINVOICE":"المبلغ المدفوع",
+  "UNPAIDINVOICE":"المبلغ المتبقى"
+},
+"PAYMENTLINKS":{
+  "TITLE":"عرض روابط الدفع",
+  "SUBTITLE":"قائمة روابط الدفع",
+  "CREATE":"انشاء رابط دفع"
+},
+"BALANCETRANSERREQUESTS":{
+  "TITLE":"طلبات تحويل الرصيد",
+  "SUBTITLE":"طلبات تحويل الرصيد",
+  "ADDBALANCETRANCFERREQUEST":" اضافة طلب تحويل رصيد"
+},
+"PRICELIST":{
+  "TITLE":"عرض قائمة عروض الأسعار",
+  "SUBTITLE":"قائمة عروض الأسعار ",
+  "ADDPRICEOFFER":"اضافة عرض سعر جديد",
+  "PRICEOFFER":"عروض الأسعار",
+  "PRICE":"عرض سعر ",
+  "NUMBER":"رقم عرض السعر ",
+  "CANCELLEDQUOTATIONS":"عروض الأسعار المحذوفة"
+}
+,
+"PRODUCTS":{ 
+  "TITLE":"عرض قائمة المنتجات",
+  "SUBTITLE":"قائمة المنتجات",
+  "ADDPRODUCT":"اضافة منتج جديد",
+  "DESCRIPTION":"الوصف"
+}
+, 
+"PURCHASE":{ 
+  "TITLE":" عرض قائمة المشتريات و المصروفات",
+  "SUBTITLE":"قائمة المشتريات و المصروفات",
+  "PURCHASENUM":" رقم المشتري / المصروف",
+  "PURCHASENUMBER":" رقم المشتري ",
+  "EXPENSENUMBER":" رقم المصروف",
+  "PURCHASE":" مشتري / مصروف",
+  "PURCHASEDETAILS":" عرض تفاصيل المشتري / المصروف",
+  "VIEWPURCHASEDETAILS":"   عرض تفاصيل المشتري" ,
+  "VIEWEXPENSEDETAILS":"   عرض تفاصيل المصروف",
+  "DETAILSPURCHASE":"    تفاصيل المشتري" ,
+  "DETAILSEXPENSE":"    تفاصيل المصروف",
+  "CANDELLEDPURCHASE":"المشتريات الملغاة",
+   "TAXABLE":"ضريبية",
+  "NONTAXABLE" : "غير ضريبية",
+    "IMPORTED":"مستوردة",
+  "NOTIMPORTED" : " غير مستوردة ",
+  "EXEMPT":"معفاة",
+  "ZEROTAX":"ضريبة صفرية"
+},
+"BANKACCOUNT":{
+  "TITLE":"الحسابات البنكية ",
+  "ADDBANK":"اضافة حساب بنكي جديد "
+},
+"USERLIST":{
+  "TITLE":"عرض قائمة العملاء",
+  "SUBTITLE":"قائمة العملاء",
+  "ADDNEWUSER":"اضافة عميل جديد",
+  "CANCELLEDUSERS":"العملاء المحذوفين",
+  "CANCELLEDUSERSTITLE":"قائمة العملاء المحذوفين",
+  "USERDETAILS":"عرض بيانات العميل"
+}, 
+
+"SUPPLIER":{
+"SUPPLIERS":"الموردين",
+"SINGLESUPPLIER":"المورد",
+"TITLE":"عرض قائمة الموردين",
+"SUBTITLE":"قائمة الموردين",
+"ADDNEWUSER":"اضافة مورد جديد",
+"USERDETAILS":"عرض بيانات المورد",
+"EDITSUPPLIER":"تعديل بيانات المورد",
+"SUPPLIERDETAILS":"بيانات المورد",
+"SUPPLIERID":" رقم المورد ",
+"NAME":"اسم المورد",
+"TAXNUMBER":"الرقم الضريبي"
+}, 
+"COMMON":{
+"ID":"الرقم",
+"USER":"المستخدم",
+"EXCEEDINVOICECOUNT":"لقد تخطيت عدد الفواتير المتاحه لك",
+"PRODUCTNUMEBER":"رقم المنتج",
+"CLIENTNUMBER":"رقم العميل",
+
+"SUPPLIERNUMBER":"رقم المورد",
+"SUPPLIERNAME":"اسم المورد ",
+
+"PRICEONLY":"السعر",
+"REQUIRED":"مطلوب",
+"SAR":"ريال سعودي",
+"ACTIVEINVOICE":"فاتورة نشطة",
+"NOTACTIVEINVOICE":"فاتورة غير نشطة",
+"WITHTAX":"فاتورة ضريبية",
+"WITHOUTTAX":"فاتورة غير ضريبية",
+
+"EXPENSETAX":"ضريبية",
+"EXPENSEWITHOUTTAX":"غير ضريبية",
+
+"CHANGEINVOICEDATA1":"* لتغيير نوع الفواتير يلزمك تغيير نوع المنشأة في",
+"CHANGEINVOICEDATA2":" إعدادات حسابك التجاري",
+"CHANEGGENERALDATA1":"قم بتغيير البيانات التالية من صفحة",
+"CHANEGGENERALDATA2":"إعدادات الحساب",
+"LOGO":"شعار الشركة",
+"ADDLOGO":"قم باضافة شعار شركتك الان ",
+"TO":"الي",
+"RECIVEDATE":"تاريخ الإستلام",
+"ISSUEDATE":"تاريخ الاصدار",
+"INVOICEDUE":"تاريخ الإستحقاق",
+"PRODUCTS":"المنتجات",
+"QUANTITY":"الكمية",
+"PRICE":"سعر الوحدة",
+"DISCOUNT":"الخصم",
+"DISCOUNTTYPE":"نوع الخصم",
+"TAXABLEAMOUNT":"المبلغ الخاضع للضريبة  ",
+"TAX":"الضريبة (%)",
+"TOTAL":"الإجمالي",
+"TOTALTAXABLEAMOUNT":"الإجمالي الخاضع للضريبة",
+"TOTALTAX":"إجمالي الضريبة",
+"NOTES":"ملاحظات",
+"ADDRESS":"العنوان",
+"TELEPHONE":"رقم الهاتف",
+"PHONE":"رقم الجوال  ",
+"FAXNUMBER":"رقم الفاكس ",
+"TAXIDENTNUMBER":"رقم التعريف الضريبي",
+"TAXREGNUMBER":"رقم التسجيل  الضريبي",
+"COMMREGNUMBER":"رقم السجل التجارى",
+"REGION":"المنطقة",
+"EDITLATER":"أو بأمكانك تغييرها لاحقا وستتغير جميع فواتيرك",
+"SUBMIT":"إعتماد",
+"CANCEL2":"تراجع",
+"CLIENT":"العميل",
+"ADD":"إضافة",
+"DOWNLOADINVOICE":"تحميل الفاتورة",
+"DOWNLOAD":"تحميل",
+"SENDTOCLIENT":" ارسال للعميل ",
+"SENDVIAEMAIL":"  إرسال عبر البريد الإلكتروني ",
+"SHAREINVOICE":" مشاركة الفاتورة ",
+"CANCELINVOICE":"الغاء الفاتورة",
+"BANKACCOUNTS":"الحسابات البنكية",
+"CLIENTORCOMPANY":"اسم العميل  / الشركة",
+"BANKNAME":"اسم البنك ",
+"BANKFULLNAME":"الاسم الكامل ",
+"IBANNUMBER":"رقم الايبان ",
+"COPYLINK":"انسخ الرابط ",
+"DATE":"التاريخ",
+"ADDPRODUCTNAME":"ادخل اسم المنتج للبحث ",
+"RECEIVEDAT":"تاريخ الاستلام",
+"AMOUNT":"المبلغ",
+"TOBANK":"تحويل لحساب بنكي",
+"PAYMENTMETHOD":"طريقة الدفع",
+"DESCRIPTION":"الإيضاح",
+"TOTALSALES":"إجمالي المبيعات",
+"TOTALINVOICESAMOUNT":"اجمالي قيمة الفواتير",
+
+"RECEIPTSAMOUNT":"إجمالي الإيرادات",
+"SALESREPORT":"تقرير المبيعات ",
+"RECEIPTSREPORT":"تقرير التحصيلات ",
+"TOPCLIENTS":"أكثر العملاء اصدارا للفواتير",
+"VIEWALL":"عرض الكل",
+"BESTPRODUCTS":"أكثر المنتجات مبيعاً",
+"SALESNUMBER":"عدد المبيعات",
+"WELCOME":"مرحبا",
+"DAY":"يوم",
+"REMAINING":"متبقي",
+"NAME":"الإسم",
+"EX":"مثال", 
+"OUSSAMA":"أسامة",
+"COUNTRY":"الدولة",
+"CITY":"المدينة",
+"CODE":"الكود",
+"CANCEL":"الغاء",
+"SAVE":"حفظ",
+"TYPE":"النوع ",
+"EDIT":"تعديل",
+"ADDCLIENTDATE":"تاريخ اضافة العميل",
+"CLIENTSALESREPORT":"تقرير مبيعات العميل ",
+"SHAREPURCHASE":" مشاركة مشتري ",
+"SHAREPURCHASEBTN":" مشاركة المشتري ",
+"SHAREEXPENCEBTN":" مشاركة المصروف ",
+"CLIENTNAME":"اسم العميل ",
+"ADDPRFILEPHOTO":"قم برفع صورة لحسابك الشخصي",
+"ADDLOGOPHOTO":"قم برفع صورة الشعار الخاص بك",
+"ADDSEALPHOTO":"قم برفع صورة الختم الخاص بك",
+"BUSSINESSETTINGS":"بيانات الحساب التجاري",
+"LOGOUSED":"سيتم استخدام شعارك بشكل أساسي في الفواتير الخاصة بك",
+"ADDITIONALINFO":"معلومات إضافية",
+"BUSSINESTYPE":"نوع النشاط التجاري",
+"ENTITYTYPE":"نوع الكيان",
+"ISTAXABLE":"هل المنشاة مسجلة في ضريبه القيمة المضافة",
+"MYSALES":"مبيعاتي",
+"ONLYLOGO":"الشعار",
+"ACCOUNTINFO":"بيانات الحساب",
+"STAMPUSED":"سيتم ارفاق التوقيع المرفق علي جميع الفواتير",
+"LOGODISAPEAR":"إخفاء توقيع الموقع",
+"LOGODISPLAY":"اظهار توقيع الموقع",
+"STAMP":"الختم",
+"FAX":"فاكس",
+"TAXNUMBER":"رقم ضريبي ",
+"INCLUDETAX":"يشمل ضريبة القيمة المضافة",
+"ADDEDBYFATORAH":"تم اصدار هذة الفاتورة من قبل منصة فاتورة برو للفوترة الالكترونية .",
+"PAYMENTCARD":"بطاقة الدفع ",
+"PLANE":" الإشتراك في باقة ",
+"PLANEFROM":"في الفترة الممتدة من ",
+"HOME":" الموقع",
+"ACCOUNT":"حسابي",
+"ROLE":"الدور",
+"STATUS":"حالة الحساب",
+"STATUSONLY":"حالة",
+"EMAIL":"البريد الالكتروني",
+"ARABIC":"عربى",
+"ENGLISH":"إنجليزى",
+"CAPITALMONEY":" الرصيد الافتتاحى ",
+"CATGNAME":"اسم التصنيف",
+"PRODUCTREQUIRED":"المنتجات مطلوبة",
+
+"STREETNAME":"اسم الشارع ",
+"BUILDINGNUMBER":"رقم المبني ",
+"PLOTID":"الرقم الفرعي (الرقم الاضافي) ",
+"SUBDIVNAME":"الحي",
+"OTPZATCA":"رمز التحقق لهيئة الزكاة",
+"REFRESHZATCA":"تنشيط",
+"ACTIVATEZATCA":"تفعيل",
+"SENDTOZATCA":"ارسل إلى هيئة الزكاة",
+"CLIENTTYPE":"نوع العميل",
+
+"ZATCASUBMITED":"تم الربط",
+"ZATCANOTSUBMITED":"لم يتم الربط",
+"NOTCOMPWITHZATCA":"غير متوافقة",
+"CREATEDBEFOREZATCA":"يمكن أن يكون هذا الحساب غير خاضع للضريبة.",
+"NEEDROSENDZATCA":"عليك إرسال الفاتورة لهيئة الزكاة للحصول على رمز الاستجابة السريعة",
+"ZEROTAXCATG":"نوع فئة الضريبة الصفرية",
+"ZATCASIMULATION":" تم الربط بشكل تجريبي ",
+"ZATCASTATUS":"حالة هيئة الزكاة",
+"ZATCAEDITCONFIRM":"اذا كنت تريد الربط مع هيئة الزكاة فعليك التحقق ان بياناتك تم حفظها من خلال ملئ البيانات والضغط على زر الحفظ",
+"REASON":"السبب",
+"REASONDES":"اذكر سبب الاشعار الدائن",
+"REASONDEBIT":"اذكر سبب الاشعار المدين",
+"ZATCASETTINGSACTIVE":"تم تفعيل رمز التحقق لهيئة الزكاة بشكل ",
+"ZATCASETTINGSACTIVESIMU":"تجريبي",
+"ZATCASETTINGSACTIVELIVE":"فعلى",
+"ZATCASETTINGSNOTACTIVE":"لم يتم تفعيل رمز التحقق لهيئة الزكاة من قبل ",
+"SEND":"إرسال",
+"SENDVIAWHATSAPP":" إرسال بواسطة الواتساب",
+
+"CHOOSE_PURCHASE_TYPE":"اختر نوع المشتري",
+"OLDWEBSITE":" الموقع القديم ",
+
+"PREVWEBSITE":" الإصدار السابق  ",
+"INVOICEDUEDISAPEARTITLE":" إعدادات القالب",
+"INVOICEDUEDISAPEAR":"إخفاء تاريخ الأستحقاق ",
+"INVOICEDUEDISPLAY":"إظهار تاريخ الأستحقاق ",
+
+"PERCENTAGE":"نسبة مئوية",
+  "VALUE":"قيمة",
+  "DISCARDCHANGES" :" إلغاء التغييرات ",
+  "DELETEINVOICE":"حذف الفاتورة"
+},
+"ADDINVOICE":{
+  "INVOICEDETAILS":"تفاصيل الفاتورة",
+  "DISPLAYINVOICEDETAILS":"عرض تفاصيل الفاتورة",
+  "INVOICENUMBER":"رقم الفاتورة",
+  "REMAINING":" المبلغ المتبقي من الفاتورة",
+  "INVOICEPAYMENTLINKS":"روابط الدفع للفاتورة",
+  "TAXABLEINVOICE":" فاتورة ضريبية ",
+  "DOWNLOADSIPLEFIED":"تحميل كفاتورة مبسطة",
+  "SIMPLIFIEDINVOICE":"فاتورة ضريبية مبسطة ",
+  "EXTRADISCOUNT":"خصم اضافى"
+ 
+},
+"SUBSCRIPTION":{
+  "SUBSCRIPTIONANDPAYMENT":"الاشتراكات والدفع",
+  "INVOICEAMOUNT":"الفاتورة المستحقة ",
+  "RENEWDATE":"الدفع القادم المستحق",
+  "CURRENTPLANE":"خطة الاشتراك الحالية",
+  "PREVINVOICES":"الفواتير السابقة",
+  "PAYMENTMETHODS":"البطاقات",
+
+  "TRIALBTNI":"جرب مجاناً لمدة  ",
+  "TRIALBTNIDAYS":"يوم",
+
+  
+  "TRIALBTNII":"جرب جميع الميزات الاحترافية خلال فترة التجربة",
+  "OR":"أو",
+  "CHANGEPLAN":"تغيير الباقة",
+
+  "MONTHLYSUB":"اشتراك شهري",
+  "YEARLYSUB":"اشتراك سنوي",
+  "PACKAGE":"باقة",
+  "MOHTN":"شهور",
+  "CURRENTPLAN":"الاشتراك الحالى",
+  "FROM":"من",
+  "TO":"الي",
+  "ENDWITH":"تنتهي بالرقم",
+  "AUTORENEWTITLE":"التجديد التلقائي للباقة",
+  "AUTORENEWDES":"سيضمن لك تفعيل التجديد التلقائي عدم انقطاع الخدمة",
+  "ENABLE":"تفعيل",
+  "DISABLE":"تعطيل",
+
+  "SETDEFAULT":"تعيين كافتراضي",
+  "USEDCARD":"سوف يتم استخدام البطاقة التى تنتهى برقم ",
+  "ADDNEWCARD":" اضافة بطاقة جديدة ",
+  "CARDNUMBER":"رقم البطاقة",
+  "CARDNAME":"الاسم",
+  "CARDMONTH":"الشهر",
+  "CARDYEAR":"السنة",
+  "CARDCVC":"CVC",
+  "NOCARDSEXISTS":"لم يتم إضافة أي بطاقات."
+},
+"ADDCLIENT":{
+  "ADDCLIENT":"اضافة عميل جديد",
+  "CLIENTINFO":"بيانات العميل",
+  "POSTALCODE":"الرمز البريدي",
+  "COMMERCIALREGNUM":"رقم السجل التجاري",
+  "DELIVERYDATA":"بيانات التواصل",
+  "EDITCLIENT":"تعديل عميل "
+},
+"ADDPURCHASE":{
+  "ADDPRURCHASE":"اضافة مشتري جديد",
+  "ADDPRURCHASEANDEXPENSE":" اضافة مشترى بفاتورة / مصروف ",
+  "SELECTTYPE":"حدد النوع",
+  "SELECT":"حدد ",
+  "EDITPRURCHASE":"تعديل بيانات المشتري ",
+  "UPLOADRECEIPT":"ارفاق صورة الفاتورة", 
+  "UPLOADFILE":"ارفاق ملف", 
+  "PURCHASEDETAILS":"تفاصيل المشتريات",
+  "CODENUM":"رقم الكود",
+  "INVOICE_NUMBER":"رقم الفاتورة",
+  "AMOUNT":"المبلغ",
+  "CURRENCY":"العملة",
+ "RECIPIENTNAME": "اسم المستلم",
+ "ISSUEDATE":"تاريخ الاصدار",
+ "PAYMENTMETHOD":"طريقة الدفع",
+ "NOTES":"ملاحظات",
+ "PURCHASEDATE":"تاريخ الشراء ",
+ "MAINCURRENCY":"العملة الرئيسية ",
+ "EXPENSESTYPE":"نوع المصروف",
+ "PURCHASETYPE":"نوع المشتري",
+
+ "TAXAMOUNT":"قيمة الضريبة ",
+ "INVOICEDATE":"تاريخ الفاتورة ",
+
+ "SUPPLIER":"المورد",
+
+ "PAYMENTSLIST":"الدفعات",
+ "PAYMENTNAME":"اسم الدفعة",
+ "PAYMENTAMOUNT":"قيمة الدفعة",
+ "ADDSUPPLIER":"اضافة مورد جديد",
+ "ADDNEWPAYMENT":" اضافة دفعة جديد ",
+ "REMAININGAMOUNT":"المبلغ المتبقى",
+ "TOTALAMOUNT":"المبلغ الأجمالى ",
+ "FILLDATAQRCODE":"يمكنك تعبئة البيانات  باستخدام رمز الاستجابة السريعة (QR)، انقر لتحميل رمز الاستجابة السريعة.",
+ "DOWNLOADRECEIPT":" تحميل الايصال ",
+ "DOWNLOADQRCODE":" تحميل QR Code  ",
+ "TAXEXEMPTION":" نوع فئة الضريبة ",
+ "EXCHANGERATE":"سعر الصرف",
+ "EDITEXCHANGERATE":"تغيير سعر الصرف",
+ "CHANGEEXCHANGERATEWARN":"اى تغيير فى سعر الصرف منصة فاتورة برو غير مسئولة عنها"
+
+},
+"ADDPRODUCT":{
+  "ADDPRODUCT":"اضافة منتج جديد",
+  "EDITPRODUCT":" تعديل منتج ",
+  "PRODUCTDETAILS":"تفاصيل المنتج",
+  "PRICE":"سعر "
+},
+"PRODUCTDETAILS":{
+  "PRODUCTDETAILS":"عرض تفاصيل المنتج",
+  "SUBTITLE":"تفاصيل المنتج",
+  "TOTALPRODUCTSALE":"اجمالي مبيعات المنتج",
+  "PRODUCTSALESREPORT":"تقرير مبيعات المنتج",
+  "PRODUCTINVOICES":"عرض فواتير المنتج",
+  "PRICEOFFERS":"عرض عروض الاسعار",
+  "CREATEDAT":"تاريخ انشاء المنتج"
+},
+"ADDPRICEOFFER":{
+  "ADDPRICEOFFER":"اضافة عرض سعر جديد",
+  "NEWPRICEOFFER":"عرض سعر جديد",
+  "PRICEOFFERNUM":"رقم عرض السعر"
+},
+"PRICEOFFERDETAILS":{
+  "PRICEOFFERDETAILS":"عرض تفاصيل عرض السعر",
+  "PRICEOFFER":"عرض سعر",
+  "SHAREPRICEOFFER":"مشاركة عرض سعر",
+  "DETAILS":"تفاصيل عرض السعر"
+},
+"RECEITVOUCHERDETAILS":{
+  "RECEITVOUCHERDETAILS":"عرض تفاصيل سند القبض",
+  "RECITEVOUCHER":"سند قبض",
+  "VOUCHERNUMEBR":"رقم السند",
+  "SHAREVOUCHER":"مشاركة سند قبض"
+},
+"PAYMENTLINKDETAILS":{
+  "TITLE":"عرض تفاصيل رابط الدفع",
+  "TOTALINVOICEAMOUNT":"اجمالي قيمة الفاتورة",
+  "INVOICEDETAILS":"تفاصيل الفاتورة",
+  "PAYEDAMOUNT":"المبلغ المدفوع",
+  "PAYMENTLINKSDETAILS":"تفاصيل عمليات التحويل",
+  "RECIVEDAMOUNT":"المبلغ المستحق",
+  "SUBTITLE":"تفاصيل رابط الدفع",
+  "PAYMENTFOR":"الدفع لفائدة ",
+  "LINKSTATUS":"حالة الرابط",
+  "GENERATEDAT":"تاريخ الانشاء",
+  "ACTIVEUNTILE":"صالح الي",
+  "PAYMENTTRANSFERS":"عمليات التحويل"
+
+},
+"ADDBALANCETRANSFER":{
+  "ADD_BALANCE_TRANSFER_REQUEST": "اضافة طلب تحويل رصيد",
+  "TRANSFER_FEE": "عمولة التحويل",
+  "WITHDRAWAL_DETAILS": "سحب مبلغ 8.05 ريال ، عمولة التحويل البنكي",
+  "ACCOUNT_HOLDER_NAME": "اسم صاحب الحساب",
+  "MATCH_ACCOUNT_NAME": "تأكد ان اسم الحساب البنكي مطابق لاسم حسابك علي فاتورة برو",
+  "BANK_NAME": "اسم البنك",
+  "IBAN_NUMBER": "رقم الأيبان",
+  "ENSURE_IBAN_NUMBER": "الرجاء التأكد من رقم الأيبان الخاص بالحساب",
+  "AMOUNT": "المبلغ",
+  "MINIMUM_WITHDRAWAL_AMOUNT": "أقل مبلغ متاح للسحب 50 ريال سعودي",
+  "BALANCE_TRANSFER_REQUEST": "طلب تحويل رصيد"
+},
+"USERPROFILE":{
+  "PROFILE_TITLE": "الملف الشخصي",
+  "PERSONAL_PROFILE": "الملف الشخصي",
+  "CHANGE_PASSWORD": "تغيير كلمة المرور",
+  "EDITPROFILE":"تعديل البيانات",
+  "UPLOAD_PROFILE_IMAGE": "رفع صورة الحساب الشخصي",
+  "CHANGE_IMAGE_TITLE": "غير الصورة",
+  "USERNAME": "اسم المستخدم",
+  "PHONE_NUMBER": "رقم الجوال",
+  "EMAIL": "البريد الالكتروني",
+  "EDIT": "تعديل",
+  "CURRENT_PASSWORD": "كلمة المرور الحالية",
+  "NEW_PASSWORD": "كلمة المرور الجديدة",
+  "CONFIRM_PASSWORD": "تأكيد كلمة المرور",
+  "SUBMIT": "تقديم",
+  "REQUIRED_FIELD": "حقل مطلوب"
+},
+"SALESREPORT":{
+  "REPORTS": "التقارير",
+  "SALES_REPORT": "تقرير المبيعات",
+  "CHOOSE_REPORT_DURATION": "اختر مدة التقرير",
+  "CHOOSE_DURATION": "اختر المدة ",
+  "GENERATE": "اصدار التقرير",
+  "END": "النهاية",
+  "SELECT": "اختر",
+  "TOTAL": "الإجمالي",
+  "DATE_ISSUED": "تاريخ الاصدار",
+  "INVOICE_NUMBER": "رقم الفاتورة",
+  "CLIENT": "العميل",
+  "DESCRIPTION": "الوصف",
+  "TAX_NUMBER": "رقم التعريف الضريبي",
+  "TAX_PERCENTAGE": "الضريبة (%)",
+  "TAXABLE_AMOUNT": "المبلغ الخاضع للضريبة",
+  "TAX_VALUE": "مبلغ الضريبة",
+  "GRAND_TOTAL": "الإجمالي",
+  "START":"البدايه",
+  "SELECT_DATE":"اختر تاريخ محدد"
+},
+"TAXREPORT":{
+  "TAXREPORTTITLE":"تقرير الإقرار الضريبي",
+  "TOTALSALES":"إجمالى المبيعات",
+  "TOTALTAX":"إجمالى قيمة الضريبة",
+  "TOTALTAXSALES":"إجمالى المبلغ الخاضع للضريبة",
+  "TOTALTAXPURCHASE":"إجمالى المشتريات الخاضعة للضريبة",
+  "ADDTAXREPORT":"اضافه اقرار ضريبي",
+  "VIEWTAXREPORT":"عرض اقرار ضريبي",
+  "REPORTTYPE" :"نوع الإقرار ",
+  "MONTH":"شهر",
+  "YEAR":"سنة",
+  "QUARTERTYPE":" الربع ",
+  "INVOICEISSUED":"استشر خبيراً ضريبيًا لإستخراج الإقرار الضريبي.",
+  "TAXWARN":"لا تتحمل الشركة أي مسؤولية عن دقة البيانات المعروضة في تقرير الإقرار الضريبي، حيث يعتمد التقرير على المعلومات المدخلة في نظام فاتوره برو المتعلقة بالفواتير البيعية والشرائية. يجب على المستخدم الموافقة على إخلاء الشركة من أي مسؤولية عن أي نزاع أو تعارض قد ينشأ نتيجة استخدام هذا التقرير، ويجب الإقرار بهذه الملاحظة قبل إصدار التقرير.",
+  "AGREE":"أوافق", 
+  "STARTTAXREPORT":"بدء إصدار التقرير",
+  "SAVETAXREPORT":"إصدار التقرير",
+  "DOWNLOAD":"تحميل الأقرار",
+  "QUARTER":"ربع سنوى",
+  "MONTHLY":"شهرى",
+  "OPTIONI":"هل لديك مبيعات او مشتريات خاضعة لنسبة ٥% وفقاً للأحكام الانتقالية أو مبيعات او مشتريات أو استيرادات أو تعديلاتها خاضعة لنسبة ٥% وتود الإقرار عنها خلال هذه الفترة؟"
+
+},
+"COLLECTIONREPORT":{
+  "REPORTS": "التقارير",
+  "COLLECTION_REPORT": "تقرير التحصيلات",
+  "CHOOSE_REPORT_DURATION": "اختر مدة التقرير",
+  "GENERATE": "اصدار التقرير",
+  "START": "بداية",
+  "END": "نهاية",
+  "SELECT": "اختر",
+  "TOTAL": "الإجمالي",
+  "DATE_RECEIVED": "تاريخ الاستلام",
+  "RECEIPT_NUMBER": "رقم السند",
+  "INVOICE_NUMBER": "رقم الفاتورة",
+  "AMOUNT": "المبلغ"
+},
+"CUSTOMERACCOUNTREPORT":{
+  "REPORTS": "التقارير",
+  "COLLECTION_REPORT": " تقرير كشف حساب العميل",
+  "TO": "الى",
+  "GENERATE": "اصدار التقرير",
+"COLLECTION":"تقرير التحصيلات",
+  "CHOOSE_REPORT_DURATION": "اختر مدة التقرير",
+  "TOTAL": "الإجمالي",
+  "TYPE": "النوع",
+  "NUMBER": "الرقم",
+  "DATE": "التاريخ",
+  "DUE_DATE": "تاريخ الاستحقاق",
+  "CREATE_DATE":" تاريخ الاصدار  ",
+  "DESCRIPTION": "الوصف",
+  "DEBIT": "مدين",
+  "CREDIT": "دائن",
+  "BALANCE": "الرصيد",
+  "PDF":"تصدير كملف اكسيل",
+  "EXPORTPDF":"تصدير كملف PDF"
+},
+"ADDBANKACCOUNT":{
+  "ADD_NEW_BANK_ACCOUNT": "اضافة حساب بنكي جديد",
+"BANK_ACCOUNT_INFORMATION": "معلومات الحساب البنكي",
+"EDIT_ACCOUNT_INFORMATION":"تعديل معلومات الحساب البنكي"
+},
+"DESIGNANDCOLORS":{
+  "DESIGNANDCOLORS":"التصميم والألوان"
+},
+"COLORS":{
+  "COLORS":"الألوان",
+  "SELECTCOLOR":"أستخدم أداة التقاط اللون لأختيار ألوان علامتك التجارية من شعار شركتك مباشرة",
+  "INVOICECOLOR":"لون الفاتورة",
+  "DASHBOARDCOLOR":"لون لوحة التحكم الرئيسي",
+  "PRIMARYBTNCOLOR":"لون الزرار الرئيسي",
+  "SECONDARYBTNCOLOR":"لون الزرار الثانوي"
+},
+"INVOICETEMPLATES":{
+  "CHOOSETEMPLATES":"اختيار القالب",
+  "VIEW":"معاينة",
+  "TEMPLATEIMAGE":"صورة القالب"
+},
+"LOGIN":{
+  "LOGIN":"تسجيل دخول",
+  "FORGETPASSWORD":"نسيت كلمة المرور؟",
+  "REMEMBERME":"تذكرني",
+  "NOACCOUNT":" ليس لديك حساب؟ ",
+  "CREATEACOUNT":"إنشاء حساب",
+  "PASSWORD":"كلمة المرور"
+
+
+},
+"REGISTER":{
+  "REGISTER":"تسجيل حساب جديد",
+  "AGREEON":" الموافقة على ",
+  "TEARMSANDCONDITIONS":" الشروط والأحكام",
+  "CREATENEWACCOUNT":" انشاء حساب جديد",
+  "PASSWORD":"كلمة المرور",
+  "REENTERPASSWORD":"اعادة كلمة المرور",
+  "ACCOUNTEXIST":"مسجل بالفعل؟",
+  "LOGIN":"تسجيل دخول",
+
+  "BEFORCONT":"قبل المتابعة",
+  "CHECKMAIL":"الرجاء مراجعة بريدك الالكتروني للحصول علي رابط التحقق أو قم بادخال الرمز المرسل اليك علي البريد الالكتروني",
+  "CODE":"رمز التحقق",
+  "CHECK":"تحقق",
+
+  "CONGRATULATIONS":"تهانينا",
+  "COMPLETED":"تم استكمال بيانات ملفك الشخصي",
+  "CREATEINVOICE":"قم بانشاء فواتيرك الان",
+
+  "DNTRCVCODE":"لم تستلم الكود؟",
+  "REMAINING":"إعادة الإرسال بعد"
+
+},
+"FORGETPASSWORD":{
+  "FORGETPASSWORD":"نسيت كلمة المرور",
+  "RESET":"استعادة كلمة المرور",
+  "REWRITEPASSWORD":"قم بكتابة كلمة المرور الجديدة",
+  "CHANGEPASSWORD":"تغيير كلمة المرور"
+},
+"SIDENAV":{
+  "DASHBOARD":"لوحة التحكم",
+
+  "INVOICES":"فواتير المبيعات",
+  "ALLINVOICES":"قائمة فواتير المبيعات",
+  "CREDITNOTES":"الاشعارات الدائنة",
+  "DEBITNOTES":"الاشعارات المدينة",
+  "ADDINVOICE":"إضافة فاتورة",
+  "ADDCREDITNOTES":"إضافة اشعار دائن",
+  "ADDDEBITNOTES":"إضافة اشعار مدين",
+  
+  "PURCHASE":"المشتريات",
+  "PURCHASEANDEXPENSE":" المشتريات و المصروفات",
+  "ALLPURCHASES":"قائمة المشتريات",
+  "ADDPURCHASES":"إضافة مشتريات",
+
+  
+  "ALLPURCHASEANDEXPENSE":"قائمة المشتريات و المصروفات ",
+   "ADDPURCHASEANDEXPENSE":"إضافة مشتري او مصروف",
+  
+  "CLIENTS":"العملاء",
+
+  "PRODUCTS":"المنتجات",
+
+  "Quotations":"عروض الأسعار",
+
+  "RECEITVOUCHER":"سندات القبض",
+
+  "PAYMENTLINKS":"روابط الدفع",
+
+  "BALANCETRANSFERREQUESTS":"طلبات تحويل الرصيد",
+
+  "SUBSCRIPTIONANDPAYMENT":"الاشتراكات والدفع",
+
+  "REPORTS":"التقارير",
+  "SALESREPORTS":"تقرير المبيعات",
+  "COLLECTIONREPORTS":"تقرير التحصيلات",
+  "CLIENTACCOUNTREPORTS":"تقرير كشف حساب العميل",
+  "PURCHASEREPORTS":" تقرير المشتريات ",
+
+  "SETTINGS":"الاعدادات",
+  "COMMERSIALACCOUNTDETAILS":"بيانات الحساب التجاري",
+  "DESIGNANDCOLORS":"التصميم والألوان",
+  "BLOGS":"المدونة",
+  "MESSAGES":"رسائل اتصل بنا",
+  "TEMPLATES":"قوالب الفواتير",
+  "CITIES":"قائمة المدن",
+  "ACTIVITIES":"قائمة النشاطات",
+  "COMPANYTYPE":"قائمة أنواع الكيان",
+  "GENERALSETTINGS":"الاعدادات العامة",
+
+  "ADMINUSERSREPORT":"تقرير المستخدمين",
+  "ADMININCOMESREPORT":" تقرير الدخل الشهري",
+  "ADMINCONTINUINGUSERSREPORT":" تقرير المستخدمين المستمرين ",
+  "ADMININTERMITTENTUSERSREPORT":"تقرير المستخدمين المتقطعين ",
+  "ADMINEXPIREDSUBREPORT":" تقرير الاشتراكات المنتهية ",
+
+  "TAXRETURNREPORT":" تقرير الإقرار الضريبي",
+  "EARNINGREPORT":"التقرير المالى",
+  "SUPPLIERS":"الموردين",
+  "ADMINSUBS":"تقرير اشتراكات المستخدمين",
+  "LISTOFCATG":" قائمة التصنيفات",
+  "LISTOFDUR":" قائمة المدد",
+  "SENDEMAIL":" إرسال ايميلات",
+
+  "INACTIVEUSERSREPORT":"العملاء الغير نشيطين",
+  "SENDWHATSAPP":" إرسال عبر الواتساب ",
+  "PROFITLOSSREPORTS":" تقرير قائمة الأرباح والخسائر"
+},
+
+"PROFITLOSSREPORTS":{
+  "TITLE":" تقرير قائمة الأرباح والخسائر",
+  "CLIENT":"العميل",
+  "PRODUCT":"المنتج",
+  "TOTALTAXWITHOUTSALES" :" إجمالي المبيعات بدون ضريبة",
+  "TOTALPURCHASES_EXPENSES" :" إجمالي المشتريات والمصروفات ",
+  "TOTALPROFITS" :" إجمالي الأرباح  ",
+  "TOTALLOSS" :" إجمالي الخسارة  "
+},
+
+
+"EARNINGSREPORT":{
+  "EARNINGREPORT":"التقرير المالى",
+  "OPENINGBALANCE":"الرصيد الافتتاحى ",
+  "TOTALPURCHASES" : "اجمالى المشتريات و المصروفات",
+  "TOTALSALES":"اجمالى المبيعات",
+  "TOTALTAX":" اجمالى الضريبة ",
+  "CURRENTBALANCE":" الرصيد الحالى  "
+},
+
+"TREARMSANDCONDITIONS":{
+  "TITLE":"شروط الخدمة وسياسية الخصوصية",
+  "SUBTITLE1":"شروط وأحكام استخدام موقع الإنترنت مرحبا بك في موقعنا على الإنترنت.",
+  "SUBTITLE2":" الخصوصية وبيان سريّة المعلومات:",
+  "SUBTITLE3":"التصفح:",
+  "SUBTITLE4":"(IP) عنوان بروتوكول شبكة الإنترنت:",
+  "SUBTITLE5":"عمليات المسح على الشبكة:",
+  "SUBTITLE6":" إفشاء المعلومات:",
+  "SUBTITLE7":"البيانات الإلزامية لتنفيذ المعاملات المطلوبة من قبلك:",
+  "SUBTITLE8":"عند الاتصال بنا:",
+  "SUBTITLE9":"استرجاع الرسوم :",
+  "SUBTITLE10":"التعديلات على سياسة سرية وخصوصية المعلومات:",
+  "SUBTITLE11":"أخيراً:"
+
+},
+"ADMIN-USERS":{
+  "TITLE":"عرض المستخدمين",
+  "SUBTITLE":"قائمة المستخدمين",
+  "ADDUSER":"اضافة مستخدم جديد",
+  "ADDUSERSUBTITLE":"بيانات المستخدم",
+  "USERDETAILS":" عرض بيانات المستخدم ",
+  "EDITUDER":"تعديل المستخدم",
+  "ALLOWACCESS":"السماح بالدخول للحساب",
+  "CREATEDAT":"تاريخ انشاء الحساب",
+  "ROLE":"تاريخ انشاء الدور"
+},
+"ADMIN-USER-DETAILS":{
+  "CHANGEDATE":"تغيير يوم انتهاء صلاحية الاشتراك ",
+  "TRANSDATE":"تاريخ المعاملات",
+  "AVAILABLEPLANS":"خطط الاشتراك المتاحة :",
+  "ENDPLANEDATE":"يوم انتهاء الصلاحية الجديد :",
+  "INVOICELIST":"عرض قائمة الفواتير",
+  "INVOICELISTSUBTITLE":"قائمة الفواتير"
+},
+"PLANS":{
+  "BASIC":"الباقة الأساسية",
+  "BUSINESS":"باقة الأعمال الأساسية",
+  "PROFESSIONAL":"باقة الأعمال الاحترافية",
+  "PLAN":"خطة الاشتراك"
+},
+"ADMINISTRATIVE-USERS":{
+  "TITLE":"عرض المستخدمين الاداريين",
+  "SUBTITLE":"قائمة المستخدمين الادرايين"
+},
+"ADMIN-SIDENAV":{
+ "USERS":"المستخدمين",
+ "ADMINUSERS":" الاداريين",
+ "ROLES":"الأدوار",
+ "COUPONS":"كوبونات الخصم",
+ "SUBSCRIPTIONPLANS":"خطط الأشتراكات",
+ "SALES":"المبيعات",
+ "REVENUES":"الايرادات"
+
+},
+"DASHBOARD":{
+  "USERS":"المستخدمين",
+  "TAX":"ضريبي",
+  "NONTAX":"غير ضريبي",
+  "PLANS":"باقات الإشتراك",
+  "PLANSSTATISTICS":"إحصائيات الباقات",
+  "REPORTSSTATISTICS":"تقرير التحصيلات",
+  "REVENUESTATISTICS":"تقرير الايرادات",
+  "LASTTRANS":"اخر العمليات",
+  "INVOICESREPORTS":"تقرير الفواتير",
+  "SALESREPORTS":"تقرير المبيعات",
+  "RECEIPTSREPORTS":"تقرير سندات القبض",
+  "PROFITSREPORTS":"تقرير التحصيلات",
+  "ACTIVEUSERS":"المستخدمين النشطين",
+  "INVOICES":"الفواتير",
+  "INVOICE":"فاتورة",
+  "USER":"عميل",
+  "CLIENTS":"العملاء",
+  "USERSREPORTS":"تقرير المستخدمين",
+  "PRICEOFFERSREPORTS":"تقرير عروض الأسعار",
+  "ABOUTTOEXPIRE":"إشتراكات شارفت علي الإنتهاء ",
+  "EXPIRED":"إشتراكات انتهت مؤخرا",
+  "PAYMENTHISTORY":"سجل عمليات الدفع",
+  "CREATED":" بإنشاء",
+  "CREATEDI":"قام ",
+  "CREATEDII":"تم إنشاء عميل جديد ",
+  "NEW1":"جديدة",
+  "NEW2":"جديد",
+
+  "ACTIVE":"(الفعال)",
+  "INACTIVE":"( الغير فعال)",
+
+  "ACTIVESUBS":"( اشتراكات فعالة )",
+  "INACTIVESUBS":" ( اشتراكات غير فعالة  ) ",
+
+  "ZATCAINTEGRATION" :"الربط مع هيئة الزكاة",
+  "LIVEZATCA":"ربط فعلى",
+  "SIMZATCA":"ربط تجريبي"
+},
+
+"DELETEPOPUP":{
+  "MESSAGE":"هل أنت متأكد أنك تريد الحذف؟",
+  "DELETE":"حذف",
+  "CANCEL":"الغاء"
+},
+"ADMINROLES":{
+  "TITLE":"عرض الأدوار",
+  "SUBTITLE":"قائمة الأدوار",
+  "ADDROLE":"اضافة دور جديد"
+},
+"ADDROLE":{
+  "TITLEADD":"اضافة الأدوار",
+  "TITLEEDIT":"تعديل الأدوار",
+  "SUBTITLE":"تفاصيل الدور",
+  "PERMISSIONS":"الصلاحيات",
+  "NAME":"الاسم"
+},
+"ROLEDETAILS":{
+"TITLE":"عرض صلاحيات الأدوار",
+"NOPERMISSIONS":"لا توجد صلاحيات لهذا الدور"
+
+},
+"COUPONS":{
+  "ALLCOUPONS":"عرض كوبونات الخصم",
+  "COUPONSLIST":"قائمة كوبونات الخصم",
+  "ADDCOUPON":"اضافة كوبون جديد"
+},
+"ADDCOUPON":{
+  "COUPONDETAILS":"تفاصيل كوبون الخصم الجديد",
+  "DISCOUNTCOUPN":"كود الخصم",
+  "NUMBEROFUSE":"عدد مرات الاستخدام",
+  "STARTDATE":"تاريخ بداية الكوبون",
+  "ENDDATE":"تاريخ انتهاء الكوبون",
+  "DISCOUNTTYPE":"نوع الخصم",
+  "DISCOUNTAMOUNT":"مقدار الخصم",
+  "SUBSCRIPTIONTYPE":"نوع الاشتراك",
+  "PLANETYPE":"نوع الباقة",
+  "COUPONSTATUS":"حالة الكوبون",
+  "EDITCOUPON":"تعديل كوبون الخصم",
+  "EDITCOUPONDETAILS":"تفاصيل كوبون الخصم "
+
+},
+"COUPONDETAILS":{
+  "COUPONAMOUNT":"المبالغ المحصلة بالكود",
+  "INCOME":"ايرادات الكود",
+  "ALLSUBSCRIPTION":"جميع الاشتراكات"
+},
+"SUBSCRIPTIONPLANS":{
+  "ADD":"اضافة خطة اشتراك",
+  "DISPLAY":"عرض خطط الاشتراك",
+  "DISPLAYSINGLE":"تفاصيل خطة الاشتراك",
+  "LIST":"قائمة خطط الاشتراك",
+  "EDIT":"تعديل خطط الاشتراك",
+  "DETAILS":"تفاصيل خطة الاشتراك ",
+  "NEWDETAILS":"تفاصيل خطة الاشتراك الجديدة",
+
+  "DURATIONLIST":"قائمة مدد الاشتراك",
+  "ADDDURATION":"اضافة مدة",
+  "EDITDURATION":"تعديل بيانات المدة ",
+  "DURATIONTITLE":"المدة",
+  "PRICE":"السعر"
+
+},
+"EDITPLAN":{
+  "PLANNAME":"اسم الخطة  ",
+  "NAME":"اسم الميزة",
+  "ADDRESS":"العنوان ",
+  "DISCRIPTION":"الوصف",
+  "PLANSLUG":" العنوان اللطيف للخطة (Slug)",
+  "SLUG":" العنوان اللطيف للميزة (Slug)",
+  "CURRENCY":"العملة",
+  "SUBSCRIPTIONPRICE":"سعر الاشتراك",
+  "SUBSCRIPTIONPRICEWTHOUTDISCOUNT":" السعر قبل الخصم",
+  "REGISTERCURRENCY":"عمولة التسجيل",
+  "FREETRIALTIME":"فترة التجربة المجانية",
+  "TIMEDIFFERANCE":"الفاصل الزمني لفترة التجربة",
+  "INVOICEDUE":"مدة الفاتورة",
+  "INVOICEDIFFERENCE":"الفاصل الزمني لمدة الفاتورة",
+  "ALLOWTIME":"فترة السماح",
+  "ALLOWDIFFERENCE":"الفاصل الزمني لفترة السماح",
+  "EXPANDDAY":"يوم التمديد",
+  "EXPANDDUE":"مدة التمديد",
+  "EXTENDAMOUNT":"التمديد النسبي المستحق",
+  "MAXACTIVATED":"أقصي عدد للاشتراكات المفعلة",
+  "PLANSTATUS":"حالة خطة الاشتراك",
+  "SORT":"ترتيب الفرز",
+  "DURATIONS":"المدة"
+},
+"INTERVAL":{
+  "HOUR":"ساعة",
+  "DAY":"يوم",
+  "WEEK":"أسبوع",
+  "MONTH":"شهر"
+},
+
+"ALLFEATURES":{
+  "ALLFEATURES":"قائمة  مميزات خطة الاشتراك",
+  "ADD":"اضافة ميزة جديدة",
+  "DETAILS":"تفاصيل ميزة خطة الاشتراك ",
+  "EDIT":"تعديل ميزة خطة الاشتراك"
+
+
+},
+"EDITFEATURE":{
+  "Resettable_period":"مدة تجدد الإستعمال",
+  "Resettable_interval":"الفاصل الزمني لتجدد الاستعمال",
+  "VALUE":"قيمة الميزة"
+
+},
+"ADMINRECEIPTVOUCHER":{
+  "CANCELLEDVOUCHERS":"سندات القبض المحذوفة",
+  "SUBTITLE":"قائمة سندات القبض المحذوفة",
+  "LIST":"عرض قائمة سندات القبض"
+
+
+},
+"REVENUES":{
+  "TITLE":"عرض الايرادات",
+  "SUBTITLE":"قائمة الايرادات"
+},
+"TEMPLATES":{
+  "TITLE":"عرض قائمة القوالب",
+  "SUBTITLE":"قائمة القوالب",
+  "EDIT":"تعديل القالب",
+  "DETAILS":"تفاصيل القالب",
+  "TEMPNAME":"اسم القالب",
+  "SLAG":"الإسم اللطيف",
+  "AVAILABLEPLANS":"خطط الاشتراك المتاحة ",
+  "STATUS":"حالة القالب",
+  "IMAGE":"صورة القالب",
+  "UPLOAD":"قم باضافة صورة القالب "
+},
+
+"BLOGS":{
+  "TITLE":"عرض قائمة المقالات",
+  "SUBTITLE":"قائمة المقالات",
+  "ADD":"اضافة مقال جديد",
+  "NEWDETAILS":"تفاصيل المقال الجديد",
+  "BLOGTITLE":"عنوان المقال",
+  "ARCHIVETITLE":"عنوان ارشفة المقال",
+  "CATEGORIES":"التصنيفات",
+  "BLOGCONTENT":"محتوي المقال",
+  "BLOGIMAGES":"صورة المقال",
+  "ADDTIME":"تاريخ إضافة المقال",
+  "PAYMENTTYPE":"طريقة الدفع ",
+  "ARCHIVETITLEDETAILS":"عنوان أرشفة المقال ( الرابط )",
+  "UPLOAD":"قم باضافة صورة المقال ",
+  "DETAILS":"تفاصيل المقال",
+  "ADDNEW":"إضافة مقال",
+  "EDIT":"تعديل مقال"
+},
+"MESSAGES":{
+  "SUBTITLE":"قائمة الرسائل",
+  "TITLE":"عرض الرسائل",
+  "DETAILSSUBTITLE":"معلومات الرسالة",
+  "SENDERNAME":"اسم المرسل",
+  "EMAIL":"البريد الالكتروني",
+  "CREATEDAT":"تاريخ إرسال الرسالة",
+  "SUBJECT":"عنوان الرسالة",
+  "CONTENT":"محتوي الرسالة",
+  "SENDEMAIL":"إرسل بريد الكتروني",
+  "SENDEWHATSAPP":"إرسل عبر الواتساب ",
+  "CHOOSECLIENTTYPE":"اختر نوع العملاء",
+  "CHOOSECLIENTS":" اختر المستخدمين ",
+  "CHOOSECLIENTSMANUALLY":" اختر المستخدمين يدوياً",
+  "SUBJECTPLACHOLDER":"برجاء ادخال عنوان رسالة البريد الالكتروني ",
+  "ALLCLIENTS":"كل العملاء",
+  "NEWCLIENTS":"عملاء جدد ",
+  "INACTIVECLIENTS":"عملاء لم يُفَعِّلوا الحساب",
+  "EXPIREDSUBSCLIENTS":"عملاء اشتراكاتهم منتهية",
+  "ACTIVECLIENTS":" عملاء اشتراكاتهم سارية ",
+  "SUBCLIENTS":"عملاء مشتركون",
+
+  "CHOOSEJOININGDATE":" أختر مدة تاريخ الانضمام  ",
+  "CHOOSEEXPIREDDATE":" أختر مدة تاريخ الانتهاء  ",
+  "CHOOSESUBSDATE":" أختر مدة تاريخ الاشتراك ",
+  "ISSUINGINVOICES":" إصدار الفواتير ",
+  "HASISSUINGINVOICES":"تم إصدار فواتير",
+  "HASNOTISSUINGINVOICES":"لم يتم إصدار فواتير",
+  "ALL":"الكل"
+
+},
+"CITIES":{
+  "ALLCITIESTITLE":"عرض قائمة المدن",
+  "DELETEDCITIESTITLE":"قائمة المدن المحذوفة",
+  "SUBTITLE":"قائمة المدن",
+  "ADD":"اضافة مدينة جديدة",
+  "DELETEDCITIES":"المدن المحذوفة",
+  "ORDER":"الترتيب",
+  "CREATEDAT":"تاريخ إضافة المدينة ",
+  "DETAILS":"عرض تفاصيل المدينة",
+  "DETAILSSUBTITLE":"تفاصيل المدينة",
+  "EDIT":"تعديل مدينة",
+  "ACTIVATED":"مفعلة",
+  "INACTIVE":"غير مفعلة"
+},
+"ACTIVITIES":{
+  "TITLE":"عرض قائمة انواع النشاطات",
+  "ALLSUBTITLE":"قائمة انواع النشاطات",
+  "ADD":"اضافة نشاط جديد",
+  "DELETEDACTIVITIES":"الانشطة المحذوفة",
+  "DETAILS":"عرض تفاصيل النشاط",
+  "DETAILSSUBTITLE":"تفاصيل النشاط",
+  "EDIT":"تعديل نشاط",
+  "CREATEDAT":"تاريخ إضافة النشاط "
+},
+"DURATION":{
+  "TITLE":"عرض قائمة المدد",
+  "ALLSUBTITLE":"قائمة المدد",
+  "ADD":"اضافة مدة جديدة",
+  "DETAILS":"عرض تفاصيل المدة",
+  "DETAILSSUBTITLE":"تفاصيل المدة",
+  "EDIT":"تعديل المدة",
+  "CREATEDAT":"تاريخ إضافة المدة ",
+  "DAYS":" عدد الايام "
+},
+
+"COMPANYTYPE":{
+  "TITLE":"عرض قائمة انواع الكيانات",
+  "SUBTITLE":"قائمة انواع الكيانات",
+  "ADD":"اضافة كيان جديد",
+  "DELETEDCOMPANYTYPE":"الكيانات المحذوفة",
+  "DELETEDTITLE":"قائمة الكيانات المحذوفة",
+  "DETAILS":"عرض تفاصيل الكيان",
+  "DETAILSSUBTITLE":"تفاصيل الكيان",
+  "EDIT":"تعديل كيان",
+  "CREATEDAT":"تاريخ إضافة الكيان  "
+},
+"GENERALSETTINGS":{
+  "WEBSITESETTINGS":"اعدادات الموقع",
+  "WEBSITENAME":"اسم الموقع",
+  "KEYWORDS":"كلمات مفتاحية",
+  "DESCRIPTION":"وصف الموقع",
+  "SMSACTIVATION":"رسالة تفعيل الحساب",
+  "ACTIVATIONEMAIL":"ايميل تفعيل الحساب",
+  "FACEBOOK":"رابط حساب الفيسبوك",
+  "WHATSAPP":"رقم الواتساب",
+  "TWITTER":"رابط حساب تويتر",
+  "TERMS&CONDITIOS":"الشروط والأحكام"
+},
+"RENEWSUBSCRIPTION":{
+  "NEWPLAN":"اشترك",
+  "CURRENTPLAN":"تجديد الباقة",
+  "ADDCOUPONTITLE":"ادخل كوبون الخصم واحصل على التخفيض",
+  "COUPON":"كود الخصم",
+  "CHOOSEPLAN":"قم باختيار الباقة المناسبة لنشاطك التجاري",
+  "HASCOUPON":"هل لديك كوبون خصم؟",
+  "FREETRIAL":"جرب مجاناً لمدة 7 يوم",
+  "TRYFREEOR":"جرب جميع الميزات الاحترافية خلال فترة التجربة أو",
+  "SUBSCRIBENOW":" قم بالإشتراك بالباقة مباشرة",
+  "CANNOTAPPLAY":"لا يمكن تطبيق رمز الخصم على هذا الاشتراك."
+},
+
+"ADMINREPORTS":{
+  "GENERATE":"اصدار ",
+  "ADMINUSERSREPORT":"تقرير المستخدمين",
+  "ADMINCONTINUINGUSERSREPORT":" تقرير المستخدمين المستمرين ",
+  "ADMININTERMITTENTUSERSREPORT":"تقرير المستخدمين المتقطعين ",
+  "ADMINEXPIREDSUBREPORT":" تقرير الاشتراكات المنتهية ",
+  "ADMININCOMESREPORT":" تقرير الدخل الشهري",
+
+  "SUBCOUNT":"عدد الاشتراكات",
+  "TOTALREVENUE":"اجمالي الايرادات",
+  "NEWSUBS":"اشتراكات جديدة",
+  "RENEWSUBS":"اشتراكات مجددة",
+  "PLAN1":"الباقة الأساسية",
+  "PLAN2":"باقة الأعمال الأساسية",
+  "PLAN3":"باقة الأعمال الاحترافية",
+  "ADMINSUBS":"تقرير اشتراكات المستخدمين",
+  "SEARCH":"بحث",
+  "CHOOSEPLAN":"اختر الباقة",
+  "CHOOSEDURATION":"اختر المدة",
+  "INVOICECREATED":"تم إصدار فواتير من قبل",
+
+  "INACTIVEUSERSREPORT":"العملاء الغير نشيطين"
+
+},
+"all" :{
+  "manage" :"جميع الصلاحيات"
+},
+"access" : {
+  "admin" : "الدخول للوحة التحكم الإدارة"
+},
+"roles" : {
+  "name" : "صلاحيات خاصة بالأدوار: ",
+  "manage" : "إدارة الأدوار"
+},
+"quotations" : {
+  "name" : "صلاحيات خاصة بعروض الأسعار: ",
+  "manage" : "إدارة عروض الأسعار"
+},
+"receipts" : {
+  "name" : "صلاحيات خاصة بسندات القبض: ",
+  "manage" : "إدارة سندات القبض"
+},
+"settings" : {
+  "name" : "صلاحيات خاصة  بإعدادات الموقع: ",
+  "manage" : "إدارة إعدادات الموقع"
+},
+"templates" : {
+  "name" : "صلاحيات خاصة  بقوالب الفواتير: ",
+  "manage" : "إدارة قوالب الفواتير"
+},
+"orders" : {
+  "name" : "صلاحيات خاصة  بطلبات التحويل: ",
+  "manage" : "إدارة طلبات التحويل"
+},
+"vouchers" : {
+  "name" : "صلاحيات خاصة  بكوبونات الخصم: ",
+  "manage" : "إدارة كوبونات الخصم"
+},
+"plans" : {
+  "name" : "صلاحيات خاصة  بخطط الإشتراك: ",
+  "manage" : "إدارة خطط الإشتراك"
+},
+"payment_links" : {
+  "name" : "صلاحيات خاصة  بروابط الدفع: ",
+  "manage" : "إدارة روابط الدفع"
+},
+"revenues" : {
+  "name" : "صلاحيات خاصة  بالإيرادات: ",
+  "view" : "الإطلاع على الإيرادات"
+},
+"reports" : {
+  "name" : "صلاحيات خاصة  بالتقارير: ",
+  "view" : "الإطلاع على التقارير",
+  "download" : "تحميل التقارير"
+},
+"users" : {
+  "name" : "صلاحيات خاصة بالمستخدمين: ",
+  "view" : "الإطلاع على المستخدمين",
+  "manage" : "إدارة المستخدمين",
+  "login_as" : "الدخول لحسابات المستخدمين"
+},
+"profiles" : {
+  "name" : "صلاحيات خاصة بالحساب: ",
+  "manage" : "إدارة الحساب"
+},
+"clients" : {
+  "name" : "صلاحيات خاصة بالعملاء: ",
+  "manage" : "إدارة العملاء"
+},
+"products" : {
+  "name" : "صلاحيات خاصة بالمنتجات: ",
+  "manage" : "إدارة المنتجات"
+},
+"invoices" : {
+  "name" : "صلاحيات خاصة بالفواتير: ",
+  "manage" : "إدارة الفواتير"
+},
+"blogs" : {
+  "name" : "صلاحيات خاصة بالمقالات: ",
+  "manage" : "إدارة المقالات"
+},
+"contact_us" : {
+  "name" : "صلاحيات خاصة بفورم اتصل بنا: ",
+  "manage" : "إدارة رسائل اتصل بنا"
+},
+
+"CATEGORIES":{
+  "VIEWCATGS":"عرض التصنيفات" ,
+  "GATGLIST":"قائمة التصنيفات",
+  "ADDCATG":"اضافة تصنيف جديد",
+  "EDIT":"تعديل التصنيف",
+  "ADD":"إضافة تصنيف جديد",
+  "CATGTYPE":"نوع التصنيف",
+  "CATGSTATUS":"حالة التصنيف",
+  "TAXABLE":"ضريبية",
+  "NONTAXABLE" : "غير ضريبية"
+},
+"ZERORATEDGOODS":{
+    "ITEM1":"النقل الدولي للسلع",
+    "ITEM2":"النقل الدولي للركاب",
+    "ITEM3":"الخدمات المرتبطة مباشرة أو عرضيًا بتوريد النقل الدولي للركاب",
+    "ITEM4":"توريد وسائل النقل المؤهلة",
+    "ITEM5":"الخدمات ذات الصلة بنقل السلع أو الركاب، وفقًا للتعريف الوارد بالمادة الخامسة والعشرين من اللائحة التنفيذية لنظام ضريبة القيمة المضافة",
+    "ITEM6":"الأدوية والمعدات الطبية",
+    "ITEM7":"المعادن المؤهلة",
+    "ITEM8":"الخدمات التعليمية الخاصة للمواطنين",
+    "ITEM9":"الخدمات الصحية الخاصة للمواطنين",
+    "ITEM10":"توريد السلع العسكرية المؤهلة",
+    "ITEM11":"صادرات السلع من المملكة",
+    "ITEM12":"صادرات الخدمات من المملكة",
+    "ITEM13":"الخدمات المالية",
+    "ITEM14":"خدمات التأمين على الحياة",
+    "ITEM15":"المعاملات العقارية"
+  }
+
+}

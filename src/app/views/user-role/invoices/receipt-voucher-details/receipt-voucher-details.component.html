@@ -1,0 +1,150 @@
+<!-- ui_fix -->
+<div class=" px-2 px-md-5 p-0 ps-5 pe-5 divContainer" [style.paddingTop.%]="7">
+
+  <div>
+    <div class="ps-3">
+      <h2>{{'RECEITVOUCHERDETAILS.RECEITVOUCHERDETAILS'|translate}}</h2>
+    </div>
+    <div class="borderRadius_20px card firstCard px-4 py-3 boxShadow-10 mb-3 mt-4 ">
+        <div class="row w-100 m-auto">
+          
+          <div class="col-md-9 flex-fill">
+            <div class="col-md-12 title pb-3">
+              <h2>{{'RECEITVOUCHERDETAILS.RECITEVOUCHER'|translate}}</h2>
+            </div>
+
+            <div #excludeMe  class="row w-100 m-auto col-md-12 d-flex flex-wrap bottons gap-3">
+             <div style="width: 194px;"  class=" botton">
+               <app-button-comp (click)=" downloadPdf()" class="w-100 me-3 fs-16" [name]="'COMMON.DOWNLOAD'|translate" image="./assets/logo/download.svg" background_color="#11C387" ></app-button-comp>
+             </div>
+              <div style="width: 194px;" class=" botton">
+                <app-button-comp class="w-100 me-3 fs-16" (click)="openSendToClientModel($event)" [name]="'COMMON.SENDTOCLIENT'|translate" image="./assets/images/inputs/sendBtn.svg" background_color="#5C60F5" ></app-button-comp>
+      
+              </div>
+               <div style="width: 194px;" class=" botton">
+                 <app-button-comp class="w-100 me-3 fs-16" (click)="openModal($event)"  [name]="'RECEITVOUCHERDETAILS.SHAREVOUCHER'|translate" image="./assets/images/inputs/shareBtn.svg" background_color="#4D4D4D" ></app-button-comp>
+      
+               </div>        
+            </div>
+          </div>
+          <div *ngIf="myAngularxQrCode.length > 0"  class="col-md-3 QR d-flex justify-content-end">
+            <qrcode [qrdata]="myAngularxQrCode" [width]="200"></qrcode>
+          </div>
+
+        </div>
+        <div class="row w-100 m-auto mt-2 gap-3">
+          <div class="col-md-9 h-69px d-flex justify-content-center card borderRadius_20px boxShadow-10">
+            <div class="d-flex ps-3 flex-wrap">
+              <p class="fw-bold my-auto fs-18">{{'RECEITVOUCHERDETAILS.VOUCHERNUMEBR'|translate}} :</p>
+              <p class="my-auto">{{receipt.number}}</p>
+            </div>
+          </div>
+          <div class="col-md-9 h-69px d-flex justify-content-center card borderRadius_20px boxShadow-10">
+            <div class="d-flex ps-3 flex-wrap">
+              <p class="fw-bold my-auto fs-18">{{'INVOICE.INVOICENUMBER'|translate}}  :</p>
+              <p class="my-auto">{{receipt.invoice_number}}</p>
+            </div>
+          </div>
+          <div class="col-md-9 h-69px d-flex justify-content-center card borderRadius_20px boxShadow-10">
+            <div class="d-flex ps-3 flex-wrap">
+              <p class="fw-bold my-auto fs-18">{{'COMMON.AMOUNT'|translate}}  :  </p>
+              <p class="my-auto"> {{receipt.amount}} </p>
+            </div>
+          </div>
+          <div class="col-md-9 h-69px d-flex justify-content-center card borderRadius_20px boxShadow-10">
+            <div class="d-flex ps-3 flex-wrap">
+              <p class="fw-bold my-auto fs-18">{{'COMMON.RECEIVEDAT'|translate}}  :</p>
+              <p class="my-auto"> {{receipt.received_at}} </p>
+            </div>
+
+          </div>
+          <div class="col-md-9 h-69px d-flex justify-content-center card borderRadius_20px boxShadow-10">
+            <div class="d-flex ps-3 flex-wrap">
+              <p class="fw-bold my-auto fs-18">{{'COMMON.PAYMENTMETHOD'|translate}}  :</p>
+              <p class="my-auto">{{receipt.payment_method}}</p>
+            </div>
+
+          </div>
+          <div class="col-md-9 h-69px d-flex justify-content-center card borderRadius_20px boxShadow-10">
+            <div class="d-flex ps-3 flex-wrap">
+              <p class="fw-bold my-auto fs-18">{{'COMMON.DESCRIPTION'|translate}}  : </p>
+              <p class="my-auto">{{receipt.description}}</p>
+            </div>
+
+          </div>
+          <div class="col-md-9 h-69px d-flex justify-content-center card borderRadius_20px boxShadow-10">
+            <div class="d-flex ps-3 flex-wrap">
+              <p class="fw-bold my-auto fs-18">{{'COMMON.NOTES'|translate}}  : </p>
+              <p class="my-auto">{{receipt.notes}}</p>
+            </div>
+
+          </div>
+
+    </div>
+  </div>
+
+<!-- -------------------------------------->
+
+
+</div>
+<button hidden #downloadBtn type="button" (click)="InvoiceTemplate.downloadPDF()">
+
+</button>
+
+   <!-- <app-invoice-template #InvoiceTemplate [downloadBoolean]="downloadBoo" [tempType]="'voucher'"  [invoiceColor]="invoiceColor" [InvoiceType]="default_template_id" [invoice]="receipt" > </app-invoice-template> -->
+
+   <app-invoice-template #InvoiceTemplate [tempType]="'voucher'"  [invoiceColor]="invoiceColor" [InvoiceType]="default_template_id" [invoice]="receipt" > </app-invoice-template>
+
+  </div>
+
+
+
+<button hidden #shareModel type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#shareModel">
+
+</button>
+ <div class="modal fade" id="shareModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="text-end">مشاركة الفاتورة</span>
+      </div>
+      <div class="modal-body">
+        <div class="input-group">
+          <div (click)="copyLink($event)" class="input-group-prepend">
+            <span class="btn input-group-text main-purple-bg badge-primary text-white">انسخ الرابط</span>
+          </div> 
+          <input type="text" #textInput readonly="readonly" value="" class="form-control">
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
+<button hidden #sendToClientModel type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#sendToClient">
+
+</button>
+ <div class="modal fade" id="sendToClient" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <form [formGroup]="sendToClientForm" action="">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="text-end">إرسال للعميل</span>
+        </div>
+        <div class="modal-body">
+          <div>
+            <span>الإيميل <span style="color:red">*</span></span>
+            <input formControlName="email" type="text" value="" class="form-control">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <!-- <button type="button" data-bs-dismiss="modal" aria-label="Close" class="border-0 btn btn-sm btn-secondary">تراجع</button> 
+          <button type="submit" style="background-color: #5C60F5;" class="border-0 btn btn-sm">إرسال للعميل
+        </button> -->
+
+        <app-button-comp [btnType]="'secondary'"  data-bs-dismiss="modal" aria-label="Close" #closePoPModal  [name]="'تراجع'" [color]="'#1B1464'"></app-button-comp>
+          <app-button-comp (click)="sendToclient()"  [btnType]="'main'" [name]="'إرسال للعميل'" [background_color]="'#1B1464'"></app-button-comp>
+      
+      </div>
+      </div>
+    </div>
+  </form>
+</div> 

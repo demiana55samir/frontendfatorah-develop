@@ -1,0 +1,38 @@
+<!-- ui_fix -->
+<div class="row main-container blog p-0 ps-5 pe-5">
+  <div class="col-md-12 d-flex justify-content-start title">
+   <h2 class="ms-4">{{'BLOGS.TITLE' | translate}}</h2>
+  </div>
+  <div class="card main-card mt-3">
+   <div class="px-3 pb-3 d-flex flex-wrap justify-content-between">
+     <div class=" cardTitle ">
+       <p>{{'BLOGS.SUBTITLE' | translate}}</p>
+     </div>
+     <div class="addBtn" >
+
+       <app-button-comp class="Btn" routerLink="/admin/blogs/blog-details/add/null"  [btnType]="'main'" image="../../../../assets/images/invoices/add.svg"    [name]="'BLOGS.ADD' | translate " [background_color]="'#1B1464'" ></app-button-comp>
+
+     </div>
+
+   </div>
+
+
+    <div class="col-md-12">
+
+      <app-table-comp 
+      [columnsArray]="columnsArray"
+      [columnsNames]="columnsNames"
+      [RowsData] = "blogs"
+      [controlArray]="controlArray">
+      </app-table-comp>
+
+
+      <p-paginator (onPageChange)="onPageChange($event)"  #paginator
+       [first]="1" [rows]="perPage" [totalRecords]="totalPage" 
+      ></p-paginator> 
+
+
+    </div>
+</div>
+</div>
+

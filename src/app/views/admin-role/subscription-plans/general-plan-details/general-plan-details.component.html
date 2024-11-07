@@ -1,0 +1,34 @@
+<!-- ui_fix -->
+<div class="main-container p-0 ps-5 pe-5">
+  <div class="title p-4 mb-2">
+    <h2>{{'SUBSCRIPTIONPLANS.DETAILS'|translate}}</h2>
+  </div>
+  <div class="card borderRadius_20px p-2">
+    <div class="mb-2 p-2">
+      <h5>{{'SUBSCRIPTIONPLANS.DISPLAYSINGLE'|translate}}:</h5>
+    </div>
+    <div>
+      <div class="tabs w-100 mb-1">
+        <p-tabMenu [model]="items" [activeItem]="activeItem">
+          <ng-template pTemplate="item" let-item let-i="index">
+           <span>{{item.label}}</span>
+        </ng-template>
+        </p-tabMenu>
+      </div>
+      <div>
+        <div *ngIf="activeItem.id=='0'">
+          <app-plan-details></app-plan-details>
+        </div>
+        <div *ngIf="activeItem.id=='1'">
+          <app-features-list></app-features-list>
+        </div>
+<!-- 
+        <div *ngIf="activeItem.id=='2'">
+          <app-durations-list></app-durations-list>
+        </div> -->
+
+      </div>
+    </div>
+  </div>
+</div>
+ 

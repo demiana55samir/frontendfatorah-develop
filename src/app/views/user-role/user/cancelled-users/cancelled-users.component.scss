@@ -1,0 +1,123 @@
+.div-container{
+    margin: 6% 4%;
+    @media only screen and (max-width: 1024px) and (min-width:768px){
+        margin: 3% 5%;
+    }
+    .title{
+
+        h2{
+            font-weight: 600;
+            font-size: 32px;
+            line-height: 39px;
+            @media only screen and (max-width: 769px) {
+                font-size: 25px;
+            }
+        }
+    }
+    .invoice-card{
+        border-radius: 20px;
+        padding: 20px 0px;        
+        .cardTitle{
+            width: 40%;
+            font-weight: 600;
+            font-size: 20px;
+            display: flex;
+           align-items: center;
+            @media only screen and (max-width: 769px) {
+                font-size: 15px;
+                width: 50%;
+                display: flex;
+                align-items: center;
+            }
+    
+            
+        }
+        .addProdBtn{
+            display: flex;
+            margin: auto 0;
+            span{
+              font-size: 12px;
+            }
+            @media only screen and (max-width: 425px) {
+                margin-inline: auto;
+                //width: 100%;
+                margin-top: 6%;
+                text-align: center;
+                width: 200px;
+                }
+
+            .prodBtn{
+                border-radius: 15px;
+                width: 180px;
+                height: 50px;
+                img{
+                    width: 4vh;
+                    width: 15%;
+                }
+               }
+            }
+
+            .search{
+                width: 100%;
+                input{
+                    width: 55%;
+                    border: #B8B8B8 1px solid !important;
+                    border-radius:10px;
+                    height: 35px;
+                    @media screen and (max-width:426px) {
+                        width: 100%;
+                    }
+                }
+            }
+            .download{
+                span{
+                    @media only screen and (max-width: 769px) {
+                        font-size: 13px;
+                    }
+                }
+            }
+    }
+    // ::ng-deep .p-datatable table{
+    //    min-width: 100% !important;
+    //     @media only screen and (max-width: 768px) {
+    //         min-width: 50% !important;
+    
+    //     }
+    // }
+//     @media only screen and (max-width: 960px) {
+//         ::ng-deep .p-dropdown {
+//             width: 70% ;
+//         }
+//         ::ng-deep .p-datatable .p-datatable-tbody > tr > td{
+//             border: 1px solid #dee2e6 !important;
+//             border-width: 0 0 1px 0 !important; 
+//         }
+//         ::ng-deep #pr_id_1 .p-datatable-thead > tr > th, #pr_id_1 .p-datatable-tfoot > tr > td {
+//          display: table-cell !important;
+//         }
+    
+//     }
+//     @media screen and (max-width: 960px){
+//         ::ng-deep .p-datatable-tbody > tr > td {
+//            display:table-cell !important;
+//         //    width: 40% !important;
+//         }
+//         ::ng-deep .p-datatable-wrapper{
+//             overflow-x: scroll;
+//         }
+
+//     }
+//     ::ng-deep .p-datatable .p-datatable-thead > tr > th{
+//         text-align: center !important;
+//         border-left:1px solid #dee2e6 !important;
+//    }
+//    ::ng-deep .p-datatable .p-datatable-tbody > tr > td{
+//         text-align: center !important;
+//         border-left:1px solid #dee2e6 !important;
+//    }
+}
+
+::ng-deep .btn-secondary{
+    background-color: #FFFFFF !important;
+    border: none;
+}

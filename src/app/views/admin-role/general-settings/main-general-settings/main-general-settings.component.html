@@ -1,0 +1,22 @@
+<div class="contDiv p-4">
+  <div>
+      <div class="title w-100 mb-2">
+         <h3 class="fw-bolder">{{'SIDENAV.GENERALSETTINGS' | translate}}</h3>
+      </div>
+      <div class="tabs w-100 mb-1">
+        <p-tabMenu [model]="items" [activeItem]="activeItem">
+          <ng-template pTemplate="item" let-item let-i="index">
+           <span>{{item.label}}</span>
+        </ng-template>
+        </p-tabMenu>
+      </div>
+
+      <div *ngIf="activeItem.label==='الاعدادات العامة' || activeItem.label==='General Settings'">
+        <app-general-settings-data></app-general-settings-data>
+      </div>
+      <div *ngIf="activeItem.label=='الشروط والأحكام' || activeItem.label==='Terms & Conditions'">
+        <app-terms-and-conditions></app-terms-and-conditions>
+      </div>
+
+  </div>
+</div>

@@ -1,0 +1,91 @@
+.invoices-container{
+    margin: 6% 4%;
+    @media only screen and (max-width: 1024px) and (min-width:768px){
+        margin: 3% 5%;
+    }
+.title{
+
+    h2{
+        font-weight: 600;
+        font-size: 32px;
+        @media only screen and (max-width: 769px) {
+            font-size: 25px;
+        }
+    }
+}
+.invoice-card{
+    border-radius: 20px;
+    .cardTitle{
+        width: 40%;
+        font-weight: 600;
+        font-size: 20px;
+        display: flex;
+       align-items: center;
+        @media only screen and (max-width: 769px) {
+            font-size: 15px;
+            width: 50%;
+        }
+
+        
+    }
+    .addProdBtn{
+        display: flex;
+        align-items: center;
+        margin: auto 0;
+        }
+        .tabs{
+            background-color:#F5F9FC;
+             border-radius: 20px !important;
+        }
+        .bottons{
+            @media only screen and (max-width: 425px) {
+                justify-content: center !important;
+                display: flex;
+                flex-wrap: wrap;
+                .botton{
+                    margin-bottom: 10px;
+                }
+            }
+        }
+        .search{
+            width: 100%;
+            input{
+                width: 40%;
+                border: #B8B8B8 1px solid !important;
+                border-radius:10px;
+                height: 35px;
+                @media screen and (max-width:767px) and (min-width:320px){
+                     width: 100%;               
+                 }
+            }
+            .delete{
+                display: flex;
+                justify-content: flex-end ;
+            }
+            @media screen and (max-width:426px){
+                flex-direction: column;
+                justify-content: center;
+                .delete{
+                    display: flex;
+                    justify-content: center !important;
+                    margin-top: 10px;
+                    width: 100%;
+                }
+                .searchDiv{
+                    width: 100% !important;
+                }
+            }
+        }
+        .dropdown{
+            @media screen and (min-width:767px){
+              display: flex;
+              justify-content: flex-end ;  
+            }
+            @media screen and (max-width:767px) and (min-width:320px){
+             margin-top: 10px;
+            }
+        }
+}
+
+}
+

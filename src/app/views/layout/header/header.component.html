@@ -1,0 +1,90 @@
+<header>
+  <div class="d-flex justify-content-end mainDiv p-3 m-auto navDiv" style="z-index: 2;">
+
+    <div class="dropdown my-auto pe-2-lg">
+      <button class="btn dropdown-toggle fw-bold purple_Text font-main" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        {{'LANDING.LANG'|translate}}
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" (click)="changeLang('en')" > English </a></li>
+        <li><a class="dropdown-item" (click)="changeLang('ar')"> العربية  </a></li>
+      </ul>
+    </div>
+
+    <div class="dropdown my-auto ps-2 pe-2 ">
+      <button class="btn dropdown-toggle purple_Text font-main" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        {{name}}
+      </button>
+      <ul class="dropdown-menu">
+        <li style="border-bottom: 1px solid gainsboro;">
+          <h6 class="dropdown-header d-flex align-items-center">
+            <img *ngIf="!profileImage" src="./assets/logo/profile_img.svg" width="48" height="48" alt="">
+            <img *ngIf="profileImage" [src]="profileImage" width="48" height="48" alt="">
+            <div class="dropdown-user-details text-end text-end ms-3" ><div class="dropdown-user-details-name">{{name}}</div> 
+            <div class="dropdown-user-details-email">{{email}}</div>
+          </div>
+        </h6> 
+          
+        </li>
+        <li class="cursor-pointer" (click)="navigateToProfile()"><a class="dropdown-item d-flex"  >   
+          <div class="dropdown-item-icon">
+          <i class="fas fa-user-cog me-2"></i>
+        </div>
+        {{'COMMON.ACCOUNT'|translate}}
+      </a></li>
+
+
+        <li (click)="navigateToLanding()" class="cursor-pointer"><a class="dropdown-item d-flex"  >
+          <div class="dropdown-item-icon">
+            <i class="fas fa-home me-2"> </i></div>
+         {{'LANDING.HOME'|translate}}
+        </a></li>
+        <li  class="cursor-pointer">
+          <a class="dropdown-item d-flex"  href="https://fatorah-pro.com/auth/login" target="_blank">
+          <div class="dropdown-item-icon">
+          <img src="./assets/images/sidenav/world.svg" class="me-2" width="20" alt="">  
+          </div>
+          {{'COMMON.PREVWEBSITE'|translate}}
+        </a></li>
+        <li class="cursor-pointer" style="background-color: #5C60F5;" (click)="logout()"><a style="color: white;" class="dropdown-item d-flex  logout">
+          <div class="dropdown-item-icon me-2">
+            <i class="fas fa-sign-out-alt"></i></div>
+           {{'LANDING.LOGOUT'|translate}}
+          </a></li>
+      </ul>
+    </div>
+
+
+
+    <div>
+      <img *ngIf="!profileImage" src="./assets/logo/profile_img.svg" width="48" height="48" alt="" class="rounded-circle" style="object-fit: cover;">
+      <img *ngIf="profileImage" [src]="profileImage" width="48" height="48" alt="" class="rounded-circle" style="object-fit: cover;">
+    </div>
+  </div>
+</header>
+
+
+
+<!-- <div aria-labelledby="navbarDropdownUserImage" class="dropdown-menu border-0 shadow animated--fade-in-up show">
+  <h6 class="dropdown-header d-flex align-items-center">
+    <img src="/images/profile.png" class="dropdown-user-img"> 
+    <div class="dropdown-user-details"><div class="dropdown-user-details-name">Muhannad</div> 
+    <div class="dropdown-user-details-email">muhannad@hcpa.sa</div>
+  </div>
+</h6> 
+<div class="dropdown-divider">
+
+</div>
+ <a href="https://preprod-fatorah-pro.com/dashboard/account/profile" class="dropdown-item">
+  <div class="dropdown-item-icon">
+    
+    <i class="fas fa-user-cog"></i>
+  </div>
+  حسابي
+</a> <a href="https://preprod-fatorah-pro.com" class="dropdown-item">
+  <div class="dropdown-item-icon">
+    <i class="fas fa-home"> </i></div>
+  الموقع
+</a> <a href="https://preprod-fatorah-pro.com/auth/logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item"><div class="dropdown-item-icon"><i class="fas fa-sign-out-alt"></i></div>
+  تسجيل الخروج
+</a> <form id="logout-form" action="https://preprod-fatorah-pro.com/auth/logout" method="POST" data-hs-cf-bound="true" style="display: none;"><input type="hidden" name="_token" value="1828XDOW53cwKJigEgeSQFUFxwxRXUFHMWw0F2Yr"></form></div> -->

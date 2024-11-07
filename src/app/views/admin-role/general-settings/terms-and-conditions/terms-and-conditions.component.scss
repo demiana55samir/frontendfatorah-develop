@@ -1,0 +1,20 @@
+::ng-deep{
+    .ql-snow .ql-picker:not(.ql-color-picker):not(.ql-icon-picker) svg {
+        position: absolute;
+        margin-top: -9px;
+        right: -16px;
+        top: 50%;
+        width: 18px;
+    }
+}
+.tab{
+    border: solid #dee2e6;
+    border-width: 0 0 2px 0;
+    background: #ffffff;
+    color: #6c757d;
+}
+.active{
+    background: #ffffff;
+    border-color: #3B82F6;
+    color: #3B82F6;
+}

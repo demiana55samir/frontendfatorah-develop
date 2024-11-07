@@ -1,0 +1,190 @@
+
+.divContainer{
+
+
+}
+.mainCard{
+    @media screen and (max-width:1025px) {
+        margin: 0;
+    }
+}
+
+    .inputDiv{
+        background: #FFFFFF;
+        border: 1px solid #E8E8E8;
+        border-radius: 10px;
+    }
+    
+    ::ng-deep{
+        .p-dropdown{
+            width: 100% !important;
+        }
+    
+        .p-dropdown.p-component, .p-calendar .p-inputtext, .p-calendar , textarea{
+            background: #FFFFFF;
+            border: 1px solid #DDDDDD;
+            border-radius: 5px !important;
+            width: 100% ;
+        }
+    
+        .p-calendar-w-btn .p-datepicker-trigger {
+            width: 10%;
+            background: transparent;
+            color: black;
+            border: none;
+            span{
+                font-size: 22px;
+            }
+        }
+        .p-dropdown-panel{
+          max-width: 100% !important;
+        }
+        .p-dropdown-panel .p-dropdown-header .p-dropdown-filter {
+            padding-right: unset;
+            margin-right: 0;
+    
+            margin-left: unset;
+            padding-left: 0.75rem;
+        }
+    }
+    
+    
+    .wideScreen{
+        display: block;
+        @media screen and (max-width: 881px) {
+            display: none !important;
+        }
+    }
+    .smallScreen{
+        display: none;
+        @media screen and (max-width: 881px) {
+            display: block !important;
+        }
+    }
+    
+    .displayCard{
+        min-height: 40px;
+        background-color: #F5F9FC;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        border: none;
+    }
+    .totalCards{
+        color: white;
+        height: 150px;
+        border-radius: 10px;
+        .text{
+            font-weight: 600;
+            font-size: 18px;
+        }
+        .num{
+            font-weight: 600;
+            font-size: 32px;
+        }
+    }
+    .shadowCard{
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 1% 1%;
+    height: fit-content;
+    }
+    
+       .width-12{
+        width: 12%;
+        @media screen and (max-width: 768px) {
+            width: 100%;
+        }
+       }
+       .width-18{
+        width: 18%;
+        @media screen and (max-width: 768px) {
+            width: 100%;
+        }
+       }
+       .width-4{
+        width: 4%;
+        @media screen and (max-width: 768px) {
+            width: 100%;
+        }
+       }
+    
+    
+    
+       :host ::ng-deep .invisable{
+           .p-dropdown.p-component{
+            border: none !important;
+            background-color: transparent !important;
+            height: 35px;
+        
+        }
+       
+        .p-dropdown-label{
+            display: flex;
+            align-items: center;
+            white-space: normal;
+            line-height: 0.9;
+        }
+       }
+       
+       :host ::ng-deep .productInput.p-inputtext{
+        height: 40px !important;
+        background: transparent !important;
+        border: none !important;
+       }
+
+       .addBtn{
+        @media screen and (max-width: 1024px) {
+          justify-content: center !important;
+          display: flex !important;
+          padding-left: 0 !important;
+       }
+    }
+    .clearBtn{
+        left: 202px;
+        bottom: 62px;
+        width: 25px !important;
+        height: 25px !important;
+    }
+
+    // ::ng-deep{
+    //     .p-datepicker .p-datepicker-prev {
+    //       order: 3 !important;
+    //     }
+    //   .p-datepicker .p-datepicker-title {
+    //       order: 2 !important;
+    //     }
+      
+    //   .p-datepicker .p-datepicker-next {
+    //     order: 1 !important;
+    //     }
+    //   }
+
+      ::ng-deep{
+        .rtl{
+            .p-datepicker .p-datepicker-prev ,.p-datepicker .p-datepicker-next {
+                transform: rotateY(180deg);
+            }
+
+            .p-dropdown-panel .p-dropdown-header .p-dropdown-filter {
+                padding-right: 0.75rem;
+                padding-left: unset;
+            }
+            .p-dropdown-panel .p-dropdown-header .p-dropdown-filter-icon {
+                left: 0.75rem;
+                right: unset;
+            }
+        }}
+
+        .addBtn{
+            width: 10%;
+            @media screen and (max-width:768px) {
+                width: 100%;
+            }
+        }
+
+        :host ::ng-deep .productDiv .invisable{
+            .p-dropdown.p-component{
+               min-height: 35px;
+               height: unset;
+           }
+        }

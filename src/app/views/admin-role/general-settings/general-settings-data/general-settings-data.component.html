@@ -1,0 +1,148 @@
+<div class="card borderRadius_10px p-3">
+  <div class="title mb-2">
+    <h3>{{'GENERALSETTINGS.WEBSITESETTINGS'|translate}}</h3>
+  </div>
+  <form [formGroup]="GeneralSettingsForm" action="">
+    <div class="row w-100">
+      <div formGroupName="site_name">
+          <!-- site name - ar -->
+          <div class="col-md-12 mb-2">
+            <label class="form-label   mb-1">{{'GENERALSETTINGS.WEBSITENAME' |translate}} - {{'COMMON.ARABIC' |translate}}</label>
+            <input type="text" [ngClass]="{'direction':language=='ar'}"  formControlName="ar" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+            <app-Form-errors [control]="GeneralSettingsForm.controls['ar']"></app-Form-errors>
+        </div>
+          <!-- site name - ar -->
+        <div class="col-md-12 mb-2">
+          <label class="form-label   mb-1">{{'GENERALSETTINGS.WEBSITENAME' |translate}} - {{'COMMON.ENGLISH' |translate}}</label>
+          <input type="text" [ngClass]="{'direction':language!='ar'}"  formControlName="en" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+          <app-Form-errors [control]="GeneralSettingsForm.controls['en']"></app-Form-errors>
+        </div>
+      </div>
+    
+      <div formGroupName="keywords">
+        <!-- keywords name - ar -->
+        <div class="col-md-12 mb-2">
+          <label class="form-label   mb-1">{{'GENERALSETTINGS.KEYWORDS' |translate}} - {{'COMMON.ARABIC' |translate}}</label>
+          <input type="text" [ngClass]="{'direction':language=='ar'}"  formControlName="ar" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+          <app-Form-errors [control]="GeneralSettingsForm.controls['ar']"></app-Form-errors>
+        </div>
+         <!-- keywords name - en -->
+         <div class="col-md-12 mb-2">
+          <label class="form-label   mb-1">{{'GENERALSETTINGS.KEYWORDS' |translate}} - {{'COMMON.ENGLISH' |translate}}</label>
+          <input type="text" [ngClass]="{'direction':language!='ar'}"  formControlName="en" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+          <app-Form-errors [control]="GeneralSettingsForm.controls['en']"></app-Form-errors>
+        </div>
+      </div>
+     
+      <div formGroupName="description">
+         <!-- description name - ar -->
+        <div class="col-md-12 mb-2">
+          <label class="form-label   mb-1">{{'GENERALSETTINGS.DESCRIPTION' |translate}} - {{'COMMON.ARABIC' |translate}}</label>
+          <input type="text" [ngClass]="{'direction':language=='ar'}"  formControlName="ar" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+          <app-Form-errors [control]="GeneralSettingsForm.controls['ar']"></app-Form-errors>
+        </div>
+        <!-- description name - en -->
+        <div class="col-md-12 mb-2">
+          <label class="form-label   mb-1">{{'GENERALSETTINGS.DESCRIPTION' |translate}} - {{'COMMON.ENGLISH' |translate}}</label>
+          <input type="text" [ngClass]="{'direction':language!='ar'}"  formControlName="en" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+          <app-Form-errors [control]="GeneralSettingsForm.controls['en']"></app-Form-errors>
+        </div>
+      </div>
+
+      <div formGroupName="sms_activation">
+         <!-- sms_activation - ar -->
+        <div class="col-md-12 mb-2">
+          <label class="form-label   mb-1">{{'GENERALSETTINGS.SMSACTIVATION' |translate}} - {{'COMMON.ARABIC' |translate}}</label>
+          <input type="text" [ngClass]="{'direction':language=='ar'}"  formControlName="ar" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+          <app-Form-errors [control]="GeneralSettingsForm.controls['ar']"></app-Form-errors>
+        </div>
+         <!-- sms_activation - en -->
+        <div class="col-md-12 mb-2">
+          <label class="form-label   mb-1">{{'GENERALSETTINGS.SMSACTIVATION' |translate}} - {{'COMMON.ENGLISH' |translate}}</label>
+          <input type="text" [ngClass]="{'direction':language !='ar'}"  formControlName="en" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+          <app-Form-errors [control]="GeneralSettingsForm.controls['en']"></app-Form-errors>
+        </div>
+        
+      </div>
+    
+
+
+      <!-- -=========- -->
+      <div formGroupName="webiste_name">
+        <div class="col-md-12 mb-2" *ngIf="language=='ar'">
+          <label class="form-label   mb-1">{{'GENERALSETTINGS.ACTIVATIONEMAIL' |translate}}</label>
+          <input type="text" [ngClass]="{'direction':language=='ar'}"  formControlName="ar" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+          <app-Form-errors [control]="GeneralSettingsForm.controls['webiste_name']"></app-Form-errors>
+      </div>
+
+      <div class="col-md-12 mb-2" *ngIf="language=='en'">
+        <label class="form-label   mb-1">{{'GENERALSETTINGS.ACTIVATIONEMAIL' |translate}}</label>
+        <input type="text" [ngClass]="{'direction':language=='en'}"  formControlName="en" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+        <app-Form-errors [control]="GeneralSettingsForm.controls['webiste_name']"></app-Form-errors>
+    </div>
+
+      </div>
+
+      <div formGroupName="facebook">
+        <div class="col-md-12 mb-2" *ngIf="language=='ar'">
+          <label class="form-label   mb-1">{{'GENERALSETTINGS.FACEBOOK' |translate}}</label>
+          <input type="text" [ngClass]="{'direction':language=='ar'}"  formControlName="ar" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+          <app-Form-errors [control]="GeneralSettingsForm.controls['ar']"></app-Form-errors>
+      </div>
+
+      <div class="col-md-12 mb-2" *ngIf="language=='en'">
+        <label class="form-label   mb-1">{{'GENERALSETTINGS.FACEBOOK' |translate}}</label>
+        <input type="text" [ngClass]="{'direction':language=='en'}"  formControlName="en" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+        <app-Form-errors [control]="GeneralSettingsForm.controls['en']"></app-Form-errors>
+    </div>
+      </div>
+    
+    <div class="d-flex flex-wrap mb-2 ">
+      
+      <div formGroupName="whatsapp" class="col-md-6 full-width-sm">
+        <div *ngIf="language=='ar'">
+          <div class="col-md-11">
+            <label class="form-label   mb-1">{{'GENERALSETTINGS.WHATSAPP' |translate}}</label>
+            <input type="text" [ngClass]="{'direction':language=='ar'}"  formControlName="ar" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+            <app-Form-errors [control]="GeneralSettingsForm.controls['ar']"></app-Form-errors>
+        </div>
+        </div>
+
+        <div *ngIf="language=='en'">
+          <div class="col-md-11">
+            <label class="form-label   mb-1">{{'GENERALSETTINGS.WHATSAPP' |translate}}</label>
+            <input type="text" [ngClass]="{'direction':language=='en'}"  formControlName="en" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+            <app-Form-errors [control]="GeneralSettingsForm.controls['en']"></app-Form-errors>
+        </div>
+        </div>
+      </div>
+      <div formGroupName="twitter" class="col-md-6 full-width-sm" >
+        <div *ngIf="language=='ar'">
+          <div class="col-md-12">
+            <label class="form-label   mb-1">{{'GENERALSETTINGS.TWITTER' |translate}}</label>
+            <input type="text" [ngClass]="{'direction':language=='ar'}"  formControlName="ar" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+            <app-Form-errors [control]="GeneralSettingsForm.controls['ar']"></app-Form-errors>
+        </div>
+        </div>
+
+        <div *ngIf="language=='en'">
+          <div class="col-md-12">
+            <label class="form-label   mb-1">{{'GENERALSETTINGS.TWITTER' |translate}}</label>
+            <input type="text" [ngClass]="{'direction':language=='en'}"  formControlName="en" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+            <app-Form-errors [control]="GeneralSettingsForm.controls['en']"></app-Form-errors>
+        </div>
+        </div>
+      </div>
+      
+
+    </div>
+
+
+  <div class="col-md-12 d-flex justify-content-end">
+    <app-button-comp  (click)="editGeneralSettings()" [btnType]="'main'" style="width: 120px;"  [name]="'COMMON.EDIT' |translate" [background_color]="'#1B1464'" ></app-button-comp>
+  </div>
+
+    </div>
+  </form>
+
+</div>

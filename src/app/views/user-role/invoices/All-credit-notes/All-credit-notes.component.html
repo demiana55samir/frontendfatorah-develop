@@ -1,0 +1,44 @@
+<!-- ui_fix -->
+<div class="ceditNotesContainer p-0 ps-5 pe-5">
+  <div class="d-flex mb-2 justify-content-start title">
+    <h2>{{'CREDITNOTICE.TITLE' | translate}}</h2>
+  </div> 
+  <div class="card px-3 py-4 mainCard borderRadius_20px mb-5">
+    <div class="row mb-3 d-flex justify-content-between  w-100 m-auto">
+      <div class="col-md-3 cardTitle">
+        <span>{{'CREDITNOTICE.SUBTITLE' | translate}}</span>
+      </div>
+      <div class="col-md-5 d-flex justify-content-end addProdBtn" >
+        <app-button-comp [btnType]="'main'"  style="width: 245px;" class="botton prodBtn" routerLink="/user/invoices/add-credit-note/create/-1" [image]="'./assets/images/invoices/add.svg'" 
+         [name]="'CREDITNOTICE.CREATE' | translate" background_color="#5C60F5" ></app-button-comp>
+       </div>
+    </div>
+    <div class="row mb-3  w-100 m-auto">
+      <div class="col-md-12  d-flex">
+        <p class="me-3 my-auto">{{'CREDITNOTICE.SEARCH' | translate}}</p>
+        <input type="text" (keyup.enter)="search()"
+        placeholder="{{'COMMON.CLIENT'|translate}}"
+        [(ngModel)]="searchWord" (input)="search()">
+      </div>
+    </div>
+    <div class="row  w-100 m-auto">
+       <div class="col-md-12">
+
+        <app-table-comp 
+        [columnsArray]="columnsArray"
+        [columnsNames]="columnsNames"
+        [type]="'credit'"
+        [RowsData] = "crediteNotes"
+        [controlArray]="controlArray">
+        </app-table-comp>
+
+
+        <p-paginator (onPageChange)="onPageChange($event)" #paginator
+         [first]="1" [rows]="perPage" [totalRecords]="totalPage" 
+        ></p-paginator> 
+       
+  
+       </div>
+    </div>
+  </div>
+</div>

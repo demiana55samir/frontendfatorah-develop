@@ -1,0 +1,146 @@
+<!-- ui_fix -->
+<div class="dashboard-container p-0 ps-5 pe-5">
+  <div *ngIf="name" class="pageTitle">
+    <!-- ui_fix -->
+    <h4  class="pb-3 ps-2">{{'COMMON.WELCOME' |translate}} {{name}}</h4>
+  </div>  
+  <!-- ui_fix -->
+  <div  class="cards d-flex flex-wrap gap-5">
+      <div style="background-color: #F0DAE9;" class="infoCards d-flex flex-column justify-content-center align-items-center">
+        <img src="../../../../assets/images/dashboard/dashboard1.svg" alt="">
+        <span class="cardTitle">{{'COMMON.CLIENT' |translate}}</span>
+        <span class="num">{{CardsData.clients}}</span>
+      </div>
+      <div style="background-color: #DAEDFE;" class="infoCards d-flex flex-column justify-content-center align-items-center">
+        <img src="../../../../assets/images/dashboard/dashboard2.svg" alt="">
+        <span class="cardTitle">{{'INVOICE.INVOICE' |translate}}</span>
+        <span class="num">{{CardsData.invoices}}</span>
+      </div>
+      <div style="background-color:#F3F0F9;" class="infoCards d-flex flex-column justify-content-center align-items-center">
+        <img src="../../../../assets/images/dashboard/dashboard3.svg" alt="">
+        <span class="cardTitle">{{'COMMON.PRODUCTS' |translate}}</span>
+        <span class="num">{{CardsData.products}}</span>
+      </div>
+      <div style="background-color:#C0E1FF;" class="infoCards d-flex flex-column justify-content-center align-items-center">
+        <img src="../../../../assets/images/dashboard/dashboard4.svg" alt="">
+        <span class="cardTitle">{{'PRICELIST.PRICEOFFER' |translate}}</span>
+        <span class="num">{{CardsData.quotations}}</span>
+      </div>
+      <div style="background-color:#E9DAF0;" class="infoCards d-flex flex-column justify-content-center align-items-center">
+        <img src="../../../../assets/images/dashboard/dashboard5.svg" alt="">
+        <span class="cardTitle">{{'COMMON.TOTALSALES' |translate}}</span>
+        <span class="num">{{CardsData.sales}}</span>
+        <span>SAR</span>
+      </div>
+      <div style="background-color:#DAF0E7;" class="infoCards d-flex flex-column justify-content-center align-items-center">
+        <img src="../../../../assets/images/dashboard/dashboard6.svg" alt="">
+        <span class="cardTitle">{{'RECEIPTVOUCHER.RECEIPTVOUCHER' |translate}}</span>
+        <span class="num">{{CardsData.receipts}}</span>
+      </div>
+      <div style="background-color:#DAF0DF;" class="infoCards d-flex flex-column justify-content-center align-items-center">
+        <img src="../../../../assets/images/dashboard/dashboard7.svg" alt="">
+        <span class="cardTitle">{{'COMMON.RECEIPTSAMOUNT' |translate}}</span>
+        <span class="num">{{CardsData.receipts_amount}}</span>
+        <span>SAR</span>
+
+      </div>
+  </div>
+  <div>
+    <div class="chart mt-4 mb-5 ">
+        <div *ngIf="chartOptions">
+            <p-card class="chartCard">
+                <p class="text">
+                  {{'COMMON.SALESREPORT' |translate}}
+                    <button type="button" class="btn me-2 border-0" placement="top"
+                        ngbTooltip="total number of leads">
+                        <i class="fa-solid fa-circle-info"></i>
+                    </button>
+                </p>
+                <div class="chart" id="chart">
+                    <apx-chart *ngIf="chartOptionsReady" [series]="$any(chartOptions.series)" [chart]="$any(chartOptions.chart)"
+                        [xaxis]="$any(chartOptions.xaxis)" [yaxis]="yaxis"
+                        [dataLabels]="$any(chartOptions.dataLabels)" [grid]="$any(chartOptions.grid)"
+                        [stroke]="$any(chartOptions.stroke)" [title]="$any(chartOptions.title)"
+                        [colors]="['#000000']"></apx-chart>
+                       
+                </div>
+            </p-card>
+        </div>
+    </div>
+    <div class="chart mt-4 mb-5">
+        <div *ngIf="chartOptions">
+            <p-card class="chartCard">
+                <p class="text">
+                  {{'COMMON.RECEIPTSREPORT' |translate}}
+                    <button type="button" class="btn me-2 border-0" placement="top"
+                        ngbTooltip="total number of leads">
+                        <i class="fa-solid fa-circle-info"></i>
+                    </button>
+                </p>
+                <div class="chart" id="chart">
+
+                  <!-- <apx-chart
+                  [series]="chartreceiptsOptions.series"
+                  [chart]="chartreceiptsOptions.chart"
+                  [dataLabels]="chartreceiptsOptions.dataLabels"
+                  [grid]="chartreceiptsOptions.grid"
+                  [yaxis]="chartreceiptsOptions.yaxis"
+                  [xaxis]="chartreceiptsOptions.xaxis"
+                  [stroke]="chartreceiptsOptions.stroke"
+                  [title]="chartreceiptsOptions.title"
+                  [colors]="['#000000']"
+                ></apx-chart> -->
+
+
+                    <apx-chart *ngIf="chartreceiptsOptionsReady" [series]="$any(chartreceiptsOptions?.series)" [chart]="$any(chartreceiptsOptions?.chart)"
+                        [xaxis]="$any(chartreceiptsOptions?.xaxis)" [yaxis]="yaxis"
+                        [dataLabels]="$any(chartreceiptsOptions?.dataLabels)" [grid]="$any(chartreceiptsOptions?.grid)"
+                        [stroke]="$any(chartreceiptsOptions?.stroke)" [title]="$any(chartreceiptsOptions?.title)"
+                        [colors]="['#000000']"></apx-chart>
+                </div>
+            </p-card>
+        </div>
+    </div>
+  </div>
+    <div class="secIII d-flex flex-wrap justify-content-between gap-5">
+        <div class="cardsII">
+           <div class="d-flex justify-content-between pb-3">
+              <p class="text"> {{'COMMON.TOPCLIENTS' |translate}}</p>
+              <span routerLink="/user/users/users-list" class="more cursor-pointer">{{'COMMON.VIEWALL' |translate}}</span>
+           </div>
+           <div class="bottomSecII d-flex flex-column justify-content-center gap-3">
+             <div *ngFor="let clients of top_clients;let i=index" class="d-flex align-items-center justify-content-between border border-2 px-2 rounded py-3">
+                <div style="width: 70%;" class="d-flex justify-content-around">
+                    <span class="num">{{i+1}}</span>
+                    <span class="w-100 limit_text ms-2 name">{{clients.name}}</span>
+                </div>
+                <div style="background-color:#D1E4FA; border-radius: 4px;" class="px-4 py-1 d-flex align-items-center justify-content-center">
+                    <span>  {{'COMMON.SALESNUMBER' |translate}} {{clients.invoices_count}}</span>
+                </div>
+             </div>
+           </div>
+        </div>
+        <div class="cardsII">
+           <div class="d-flex justify-content-between pb-3">
+              <p class="text"> {{'COMMON.BESTPRODUCTS' |translate}}  </p>
+              <span routerLink="/user/products/All-products" class="more cursor-pointer">{{'COMMON.VIEWALL' |translate}}</span>
+           </div>
+           <div class="bottomSecII d-flex flex-column justify-content-center gap-3">
+             <div *ngFor="let products of top_products;let i=index" class="d-flex align-items-center justify-content-between border border-2 px-2 rounded py-3">
+                <div style="width: 50%;" class="d-flex justify-content-around">
+                    <span class="num">{{i+1}}</span>
+                    <span class="w-100 limit_text ms-2 name">{{products.name}}</span>
+                </div>
+                <div style="background-color:#D1E4FA; border-radius: 4px;" class="px-4 py-1 d-flex align-items-center justify-content-center">
+                    <span> {{'COMMON.SALESNUMBER' |translate}} {{products.sales}}</span>
+                </div>
+             </div>
+
+           </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- <button routerLink="../invoice-template"> invoice-template</button> -->

@@ -1,0 +1,53 @@
+.bankAccountCont{
+    ::ng-deep .p-datatable table{
+        min-width: 100% !important;
+         @media only screen and (max-width: 768px) {
+             min-width: 50% !important;
+     
+         }
+     }
+    //  ::ng-deep .p-datatable .p-datatable-tbody > tr > td{
+    //     text-align: center !important;
+    //     border: 1px solid #dee2e6 !important;
+    // }
+    // ::ng-deep .p-datatable .p-datatable-thead > tr > th{
+    //     text-align: center !important;
+    //     border: 1px solid #dee2e6 !important;
+    // }
+    // @media only screen and (max-width: 768px) {
+    //     ::ng-deep .p-dropdown {
+    //         width: 70% ;
+    //     }
+    //     ::ng-deep .p-datatable .p-datatable-tbody > tr > td{
+    //         border: 1px solid #dee2e6 !important;
+    //         border-width: 0 0 1px 0 !important; 
+    //         border: 1px solid #dee2e6 !important;
+   
+    //     }
+    //     ::ng-deep .p-datatable-thead > tr > th, .p-datatable-tfoot > tr > td {
+    //      display: table-cell !important;
+    //      font-size: 13px;
+    //      border: 1px solid #dee2e6 !important;
+   
+    //     }
+    
+    // }
+    // @media screen and (max-width: 960px){
+    //     ::ng-deep .p-datatable-tbody > tr > td {
+    //        display:table-cell !important;
+    //     //    width: 40% !important;
+    //        border: 1px solid #dee2e6 !important;
+   
+    //     }
+    //     ::ng-deep .p-datatable-wrapper{
+    //         overflow-x: scroll;
+    //     }
+    // }  
+    .btn{
+        @media screen and (max-width:768px){
+            width: 100%;
+            display: flex;
+            justify-content: center !important;
+        }
+    } 
+}

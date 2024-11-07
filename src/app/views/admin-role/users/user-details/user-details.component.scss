@@ -1,0 +1,133 @@
+.width-250{
+    width: 250px;
+}
+.fs-21{
+    font-size: 21px;
+}
+.fs-19{
+    font-size: 19px;
+}
+.fs-14{
+    font-size: 14px;
+}
+.topCards{
+    @media screen and (max-width:798px) {
+        justify-content: center;
+    }
+}
+.h-40{
+    height: 40%;
+}
+
+.secIII{
+
+    .cardsIIbg{
+        height: 518px;
+        //overflow: auto;
+        width: 45%;
+        //width: 35.8vw;
+        background: #FFFFFF;
+        border-radius: 17.0118px;
+        //padding: 20px;
+        @media screen and (max-width:768px){
+            width: 100%;
+        }
+    }
+    .cardsII{
+        height: 518px;
+        max-height: 518px;
+        //overflow: auto;
+        width: 45%;
+        //width: 35.8vw;
+        border-radius: 17.0118px;
+        //padding: 20px;
+        @media screen and (max-width:768px){
+            width: 100%;
+        }
+    }
+    ::ng-deep .p-card{
+   box-shadow: none;
+   padding: 0;
+    }
+    ::ng-deep .apexcharts-legend.apx-legend-position-bottom.apexcharts-align-center{
+        display: none;
+    }
+  
+    ::ng-deep .apexcharts-toolbar{
+        display: none;
+    }  
+    ::ng-deep apx-chart{
+        >div{
+            min-height: 135px !important;
+        }
+    }
+
+}
+
+.fs-33{
+font-size: 33px !important;
+}
+.fs-18{
+font-size: 18px !important;
+}
+
+::ng-deep{
+    [dir='rtl'] .apexcharts-yaxis {
+         transform: translate(-0.125px, 0px) !important;
+     }
+  }
+  .infoCard{
+    border-radius: 10px;
+  
+  }
+
+  .infoCardII{
+      max-height: 100%;
+    overflow-y: auto;
+  }
+  ::ng-deep{
+    .p-dropdown{
+        width: 100% !important;
+    }
+
+    .p-dropdown.p-component, .p-calendar .p-inputtext, .p-calendar , textarea{
+        background: #FFFFFF;
+        // border: 1px solid #DDDDDD;
+        border-radius: 10px !important;
+        width: 100% ;
+    }
+
+    .p-dropdown-panel{
+      max-width: 100% !important;
+    }
+}
+.h-48{
+height: 48px ;
+border: 1px solid #DDDDDD;
+}
+
+::ng-deep{
+    .p-datepicker .p-datepicker-prev {
+      order: 1 !important;
+    }
+  .p-datepicker .p-datepicker-title {
+      order: 2 !important;
+    }
+  
+  .p-datepicker .p-datepicker-next {
+    order: 3 !important;
+    }
+  }
+
+  ::ng-deep{
+    .rtl{
+        .p-datepicker .p-datepicker-prev ,.p-datepicker .p-datepicker-next {
+            transform: rotateY(180deg);
+        }
+    }}
+
+
+    .form-check-input:checked {
+        background-color: var(--checked-color, #0d6efd); /* Default color is #0d6efd */
+        border-color: var(--checked-color, #0d6efd);
+      }

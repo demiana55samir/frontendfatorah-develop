@@ -1,0 +1,69 @@
+<!-- ui_fix -->
+<div class="main-container p-0 ps-5 pe-5">
+  <div class="row  AddUsers-container">
+    <div class="col-md-12 d-flex justify-content-start title">
+     <h2 *ngIf="type!='edit'" class="ms-4">{{'DURATION.ADD' | translate}}</h2>
+     <h2 *ngIf="type=='edit'" class="ms-4">{{'DURATION.EDIT' | translate}}</h2>
+    </div>
+    <div class="card p-4 borderRadius_10px AddUsers-card mt-3">
+     <div class="px-3 pb-2 d-flex flex-wrap justify-content-between">
+       <div  class=" cardTitle ">
+         <h4 >{{'DURATION.DETAILSSUBTITLE' | translate}}</h4>
+       </div>
+     </div>
+     <form [formGroup]="durationDataForm" >
+  <div class="px-2">
+  
+    <div formGroupName="name">
+      <!-- *ngIf="language == 'ar'" -->
+      <div class="col-12 col-xs-12 col-sm-12 col-md-10 col-lg-10 col-xl-10 fullScreenWidth mx-0 my-4 inner-addon right-addon" >
+        <label class="form-label mb-1">{{ 'COMMON.NAME' | translate }} - {{'COMMON.ARABIC' |translate}} <span style="color: red;">*</span> </label>
+        <input type="text" formControlName="ar"
+        [ngClass]="!durationDataForm.get('name.ar')?.valid && durationDataForm.get('name.ar')?.touched ?'errorInput' : ''"
+        placeholder=" " class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100">
+        <app-Form-errors [control]="durationDataForm.get('name.ar')"></app-Form-errors>
+      </div>  
+
+      <!-- *ngIf="language == 'en'" -->
+      <div class="col-12 col-xs-12 col-sm-12 col-md-10 col-lg-10 col-xl-10 fullScreenWidth mx-0 my-4 inner-addon right-addon" >
+        <label class="form-label mb-1">{{ 'COMMON.NAME' | translate }} - {{'COMMON.ENGLISH' |translate}} <span style="color: red;">*</span> </label>
+        <input type="text" formControlName="en"
+        [ngClass]="!durationDataForm.get('name.en')?.valid && durationDataForm.get('name.en')?.touched ?'errorInput' : ''"
+        placeholder=" " class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100">
+        <app-Form-errors [control]="durationDataForm.get('name.en')"></app-Form-errors>
+      </div>  
+
+    </div>
+     
+    
+    <div class="col-12 col-xs-12 col-sm-12 col-md-10 col-lg-10 col-xl-10 fullScreenWidth mx-0 my-4 inner-addon right-addon">
+      <label class="form-label mb-1">{{ 'TEMPLATES.SLAG' | translate }} <span style="color: red;">*</span></label>
+      <input type="text" formControlName="slug"
+      [ngClass]="!durationDataForm.controls['slug'].valid && durationDataForm.controls['slug'].touched ?'errorInput' : ''"
+      placeholder=" " class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100">
+      <app-Form-errors [control]="durationDataForm.controls['slug']"></app-Form-errors>
+  
+    </div>  
+
+    <!-- todo -->
+    <div class="col-12 col-xs-12 col-sm-12 col-md-10 col-lg-10 col-xl-10 fullScreenWidth mx-0 my-4 inner-addon right-addon">
+      <label class="form-label mb-1">{{ 'EDITPLAN.SORT' | translate }} <span style="color: red;">*</span></label>
+      <input type="text" formControlName="sort_order"
+      [ngClass]="!durationDataForm.controls['sort_order'].valid && durationDataForm.controls['sort_order'].touched ?'errorInput' : ''"
+      placeholder=" " class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100">
+      <app-Form-errors [control]="durationDataForm.controls['sort_order']"></app-Form-errors>
+  
+    </div>  
+
+  </div>
+   
+    <div class="col-12 d-flex justify-content-center justify-content-md-end mt-5">
+      <app-button-comp *ngIf="type!='edit'" [btnType]="'main'" (click)="addDuration()" style="width: 120px;"  [name]=" 'COMMON.ADD' | translate " [background_color]="'#1B1464'" ></app-button-comp>
+      <app-button-comp *ngIf="type=='edit'" [btnType]="'main'" (click)="editDuration()" style="width: 120px;"  [name]=" 'COMMON.EDIT' | translate " [background_color]="'#1B1464'" ></app-button-comp>
+    </div>
+     </form>
+  
+  </div>
+  </div>
+
+</div>

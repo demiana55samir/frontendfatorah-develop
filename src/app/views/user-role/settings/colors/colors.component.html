@@ -1,0 +1,81 @@
+<!-- ui_fix -->
+<div class="p-0 ps-5 pe-5">
+  <div class="w-100 mt-4 h-100 card boxShadow-10 borderRadius_20px">
+    <div style="
+    height: 50px;
+    background-color: #F5F9FC;
+    border-top-left-radius: 19px;
+  border-top-right-radius: 19px;
+  " class="boxShadow-10 fw-bold card-header">
+ {{'COLORS.COLORS'|translate}}
+    </div>
+    <div class="card-body py-3 px-2 px-md-5 px-lg-5 d-flex w-100 flex-wrap">
+      <span class="w-100">{{'COLORS.SELECTCOLOR'|translate}}</span>
+       <div class="width-50 my-2">
+        <div class="d-flex mt-3 flex-wrap flex-column justify-content-between gap-4">
+         <div class="d-flex mb-3 flex-wrap justify-content-between gap-4">
+          <div class="d-flex flex-column colorDiv">
+             <span class="my-2">{{'COLORS.INVOICECOLOR'|translate}}</span>
+             <input class="color-picker"  ejs-colorpicker id='color-picker' [(ngModel)]="invoiceColor" type='color' />
+          </div>
+          <div class="d-flex flex-column colorDiv">
+             <span class="my-2">{{'COLORS.DASHBOARDCOLOR'|translate}}</span>
+             <input class="color-picker" ejs-colorpicker id='color-picker' [(ngModel)]="dashboardColor" type='color' />
+          </div>
+         </div>
+         <div class="d-flex flex-wrap justify-content-between gap-4">
+          <div class="d-flex flex-column colorDiv">
+             <span class="my-2">{{'COLORS.PRIMARYBTNCOLOR'|translate}}</span>
+             <input class="color-picker" ejs-colorpicker id='color-picker' [(ngModel)]="mainBtn" type='color' />
+          </div>
+
+          <!-- style="margin-left: 47px;" -->
+          <div  class=" d-flex flex-column colorDiv">
+             <span class="my-2">{{'COLORS.SECONDARYBTNCOLOR'|translate}}</span>
+             <input class="color-picker" ejs-colorpicker id='color-picker' [(ngModel)]="secondaryBtn" type='color' />
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="width-50 my-2">
+           <div class="secIII d-flex w-100 justify-content-between align-items-center">
+            <div class="cardsII boxShadow-10">
+              <div class="w-100 h-100 card borderRadius_20px">
+                <div style="
+                height: 50px;
+                background-color: #F5F9FC;
+                border-top-left-radius: 19px;
+            border-top-right-radius: 19px;" class="fw-bold card-header">
+                 {{'COMMON.ONLYLOGO'|translate}}
+                </div>
+                <div class="card-body d-flex flex-wrap">
+                 <div class="w-100 d-flex flex-column  align-items-center">
+                  <div  class="mb-3 position-relative">
+                    <img *ngIf="!logoImage" src="../../../../assets/images/settings/Group 106.png" alt="">
+                    <img *ngIf="logoImage" class="uploadedImage" [src]="logoImage" alt="">
+                    <img [ngClass]="{'left-58px':language=='en'}" (click)=" removeMedia('logo')" *ngIf="logoImage" class="clearBtn position-relative" src="../../../../assets/images/settings/close-button.png" alt="">
+                  </div>
+                  <div class="d-flex align-items-center">
+                    <div>
+                      <img  src="../../../../assets/images/user-profile/camera-icon.svg" alt="">
+                      <span  (click)="fileInput2.click()" class="cursor-pointer changeTitle fw-bold my-0 mx-2 text-end blue_Color_Btn ">{{'COMMON.ADDLOGOPHOTO'|translate}}</span>
+                     
+                     <input  type="file"  hidden #fileInput2 accept=".png, .jpg, .jpeg"  id="fileInput2" (change)="validateLogo($event)" style="display: none;"> 
+                     
+                    </div>
+                  </div>
+                 </div>
+                </div>
+        
+              </div>
+              
+            </div>
+           </div>
+       </div>
+       <div class="w-100 d-flex justify-content-center justify-content-md-end mt-5">
+        <app-button-comp [btnType]="'main'" (click)="updateColors()" class="sumbitBtn"  [name]="'COMMON.EDIT'|translate" [background_color]="'#1B1464'" ></app-button-comp>
+       </div>
+    </div>
+  </div>
+
+</div>

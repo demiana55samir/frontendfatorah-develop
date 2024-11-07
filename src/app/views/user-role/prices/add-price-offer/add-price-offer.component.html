@@ -1,0 +1,349 @@
+<!-- ui_fix -->
+<div class="divContainer p-0 ps-5 pe-5"  [style.paddingTop.%]="7">
+
+  <form [formGroup]="addPriceOfferForm"  autocomplete="off">
+    <div>
+      <!-- ui_fix -->
+      <div class="ps-4">
+        <h2>{{'ADDPRICEOFFER.ADDPRICEOFFER'|translate}} </h2>
+      </div>
+      <div class="rounded-3 mainCard card boxShadow-10 mt-4 ">
+          <h4 class=" fw-semibold pt-4 ps-4 "> {{'ADDPRICEOFFER.NEWPRICEOFFER'|translate}} </h4>
+    
+          <div class="px-2">
+     
+            <div class="d-flex flex-wrap justifay justify-content-between mt-4 m-3 pb-4 gap-5  border-2   ">
+              <div class="width-440px my-auto">
+    
+                <label for="invoiceNumber" class="fw-semibold">{{'ADDPRICEOFFER.PRICEOFFERNUM'|translate}} <span style="color:red">*</span></label>
+                <input [readOnly]="true" #priceOfferNumber formControlName="number" 
+                [ngClass]="!addPriceOfferForm.controls['number'].valid && addPriceOfferForm.controls['number'].touched ?'errorInput' : ''"
+                appOnlyNumber class="w-100" id="invoiceNumber" placeholder="{{'ADDPRICEOFFER.PRICEOFFERNUM'|translate}}"
+                  class="form-control fw-semibold py-2 mt-2 inputDiv" type="text"
+                 >
+                 <app-Form-errors [control]="addPriceOfferForm.controls['number']"></app-Form-errors>
+
+              </div>
+              <div >
+                <div class="d-flex justify-content-center">
+                  <div class="d-flex flex-column">
+                   <p>{{'COMMON.LOGO'|translate}} </p>
+                    
+                    <div class="d-flex flex-wrap justifay-center-sm align-items-center gap-3">
+                      <img *ngIf="!companyLogo && !logoImage" style="object-fit: cover;width: 178px;height: 136px; border-radius: 20px; " src="../../../../assets/logo/logo2.svg" alt="">
+                      <img *ngIf="!companyLogo && logoImage" style="object-fit: cover;width: 178px;height: 136px; border-radius: 20px; " [src]="logoImage" alt="">
+                      <img [ngClass]="{'left-58px':language=='en'}" (click)=" removeMedia('logo')" *ngIf="companyLogo || logoImage" class="clearBtn position-relative" src="../../../../assets/images/settings/close-button.png" alt="">
+
+                      <img *ngIf="companyLogo" [src]="companyLogo" style="object-fit: cover;width: 178px;height: 136px; border-radius: 20px; " alt="">
+                      <input type="file"  hidden #fileInput accept=".png, .jpg, .jpeg"  id="fileInput" (change)="validateImage($event)" style="display: none;">
+                      <app-button-comp [btnType]="'main'" (click)="fileInput.click()"  [name]="'COMMON.ADDLOGO'|translate" image="./assets/logo/Group30.svg" [background_color]="'#1B1464'" ></app-button-comp>
+                     </div>
+                  </div>
+                  
+                </div>
+              </div>
+           </div>
+          </div>
+           <div class="HLine"></div>
+      <!-- ui_fix -->
+           <div class="px-4">
+            <div class="py-4 d-flex flex-wrap gap-4">
+            <div class="width-40">
+              <label class="form-label  fw-bold mb-1">  {{'COMMON.TO'|translate}} <span style="color:red">*</span></label>
+              <div>
+                  <p-dropdown formControlName="client_id"  [filter]="true"
+                   [options]="clients" [style.width.%]="100" 
+                   [styleClass]="!addPriceOfferForm.controls['client_id'].valid && addPriceOfferForm.controls['client_id'].touched ?'errorInput' : ''"
+                     placeholder="{{'COMMON.CLIENT'|translate}}" class="my-1 mx-0 py-2 py-2" optionLabel="name" optionValue="id"></p-dropdown>        
+                  <app-Form-errors [control]="addPriceOfferForm.controls['client_id']"></app-Form-errors>
+  
+                </div>       
+            </div> 
+    
+              <div class="width-40">
+                <label class="form-label  fw-bold mb-1"> {{'COMMON.ISSUEDATE'|translate}} <span style="color:red">*</span></label>
+    
+                <div class=" d-flex position-relative justify-content-end align-content-center flex-wrap w-100">
+                  <p-calendar class="w-100" formControlName="date"
+                  [styleClass]="!addPriceOfferForm.controls['date'].valid && addPriceOfferForm.controls['date'].touched ?'errorInput' : ''"
+                  dateFormat="dd-mm-yy"  
+                   placeholder="{{'COMMON.ISSUEDATE'|translate}}  "></p-calendar>
+                  <img class=" position-absolute p-3" src="./assets/images/inputs/calender.svg" alt="">
+                </div>
+                <app-Form-errors [control]="addPriceOfferForm.controls['date']"></app-Form-errors>
+              </div> 
+         
+           
+           </div>
+    
+           <!--  for wide Screen -->
+           <div class="me-4 mt-4  wideScreen d-flex align-items-center  border-2 gap-2 flex-wrap ">
+            <div class="flex-fill">
+             <p>{{'COMMON.PRODUCTS'|translate}}<span style="color:red">*</span> </p>
+            </div>
+            <div class="width-8">
+              <p class="productTitle">{{'COMMON.QUANTITY'|translate}}<span style="color:red">*</span> </p>
+             </div>
+            <div class="width-8">
+             <p class="productTitle"> {{'COMMON.PRICE'|translate}}<span style="color:red">*</span> </p>
+            </div>
+            <div class="width-12">
+              <p class="productTitle">{{'COMMON.DISCOUNTTYPE' | translate}}</p>
+            </div>
+            <div class="width-8">
+             <p class="productTitle">{{'COMMON.DISCOUNT'|translate}} </p>
+           </div>
+            <div class="width-12">
+             <p class="productTitle">{{'COMMON.TAXABLEAMOUNT'|translate}} </p>
+             </div>
+            <div class="width-12"> 
+             <p class="productTitle"> {{'COMMON.TAX'|translate}}  </p></div>
+            <div class="width-12">
+             <p class="productTitle">{{'COMMON.TOTAL'|translate}}   </p>
+            </div>
+           </div>
+    
+           <!-- labels inside white box for small Screen -->
+          <div  *ngFor="let product of addedProducts; let i = index" 
+          class=" mt-2 bg-white shadowCard d-flex align-items-center  border-2 gap-2 mb-3 flex-wrap">
+            <div class="flex-fill productDiv">
+            <p class="smallScreen">{{'COMMON.PRODUCTS'|translate}} 
+              <span style="color:red">*</span></p>
+            <div class="card displayCard ">
+              <p-dropdown   [options]="products" [filter]="true" (onChange)="setPrice(i,product.product_id);getTotalWithoutTax(i);setCardData()" [(ngModel)]="product.product_id" [ngModelOptions]="{standalone:true}"  placeholder=" "  styleClass="invisable" class="invisable my-1 mx-0" optionLabel="name" optionValue="uuid"></p-dropdown>        
+  
+            </div>
+            </div>
+            <div class="width-8">
+            <p class="smallScreen">{{'COMMON.QUANTITY'|translate}}
+               <span style="color:red">*</span></p>
+            <div class="card displayCard">
+              <input  styleClass="productInput" (input)="getTotalWithoutTax(i);setCardData()" 
+              appOnlyNumber autocomplete="off"
+              [(ngModel)]="product.quantity" [ngModelOptions]="{standalone:true}" 
+               class="productInput" type="text" pInputText />
+  
+            </div>
+            </div>
+            <div class="width-8">
+            <p class="smallScreen">{{'COMMON.PRICE'|translate}} <span style="color:red">*</span></p>
+            <div class="card displayCard">
+              <input styleClass="productInput" (input)="getTotalWithoutTax(i);setCardData()"  appOnlyNumber
+              [(ngModel)]="product.price"  class="productInput" [ngModelOptions]="{standalone:true}" type="text" pInputText />
+  
+            </div>
+            </div>
+
+               <!-- discount type -->   <!-- discount type feature -->
+          <div class="width-12">
+            <p class="smallScreen">{{'COMMON.DISCOUNTTYPE' | translate}}</p>
+            <div class="card displayCard">
+              <p-dropdown  *ngIf="language == 'ar'"  [options]="discountTypes"  [(ngModel)]="product.discount_type" appOnlyNumber
+              [ngModelOptions]="{standalone:true}"  placeholder=" " (onChange)="getTotalWithoutTax(i);setCardData()" 
+               styleClass="invisable" class="invisable my-1 mx-0" optionLabel="name_ar" optionValue="id"></p-dropdown>          
+              <p-dropdown  *ngIf="language == 'en'"  [options]="discountTypes"  [(ngModel)]="product.discount_type" appOnlyNumber
+              [ngModelOptions]="{standalone:true}"  placeholder=" " (onChange)="getTotalWithoutTax(i);setCardData()" 
+               styleClass="invisable" class="invisable my-1 mx-0" optionLabel="name_en" optionValue="id"></p-dropdown>          
+            </div>
+          </div>
+
+            <div class="width-8">
+            <p class="smallScreen">{{'COMMON.DISCOUNT'|translate}}</p>
+            <div class="card displayCard">
+              <input styleClass="productInput"  [(ngModel)]="product.discount_value" appOnlyNumber
+               (input)="getTotalWithoutTax(i);setCardData()"   [ngModelOptions]="{standalone:true}"  class="productInput" type="text" pInputText />
+  
+            </div>
+          </div>
+            <div class="width-12">
+            <p class="smallScreen">{{'COMMON.TAXABLEAMOUNT'|translate}}</p>
+              <div class="card displayCard">
+                <input styleClass="productInput" disabled="true"
+                  [(ngModel)]="product.totalwithoutTax" 
+                   [ngModelOptions]="{standalone:true}" 
+                    class="productInput" type="text" pInputText />
+              </div>
+            </div>
+            <div class="width-12"> 
+              <p class="smallScreen"> {{'COMMON.TAX'|translate}}</p>
+              <div class="card displayCard">
+                <!-- <input styleClass="productInput" [(ngModel)]="product.tax"  class="productInput" [ngModelOptions]="{standalone:true}"  class="productInput" type="text" pInputText /> -->
+                <p-dropdown  (onChange)="getTotalWithoutTax(i);setCardData()" [options]="tax"  placeholder=" "  [(ngModel)]="product.tax" [ngModelOptions]="{standalone:true}" styleClass="invisable" class="invisable my-1 mx-0" optionLabel="name" optionValue="value"></p-dropdown>        
+  
+              </div>
+            </div>
+            <div class="width-12">
+            <p class="smallScreen">{{'COMMON.TOTAL'|translate}}  </p>
+            <div class="card displayCard">
+              <input styleClass="productInput" disabled="true" [(ngModel)]="product.total"  appOnlyNumber
+               class="productInput" [ngModelOptions]="{standalone:true}"  class="productInput" type="text" pInputText />
+            </div>
+            </div>
+            <div class="width-5">
+              <i class="pi pi-trash text-danger mx-1  mt-3  fs-4 cursor-pointer " 
+              (click)="deleteRowDevice(i)" *ngIf="i < (addedProducts.length-1) && addedProducts.length > 1"
+            ></i>
+            </div>
+          </div>
+        <!-- ui_fix -->
+         <div class="d-flex">
+          <p *ngIf="!checkValidAddedProducts()" class="err"> 
+            * {{'COMMON.PRODUCTREQUIRED' | translate}}
+           </p>
+            <div class="w-90">
+                <div class="col-md-12 pe-0 pe-md-5 pe-lg-5 mb-3 d-flex justify-content-end">
+                  <app-button-comp [btnType]="'main'" (click)="increaseDevice()" 
+                    class="addBtn" [name]="'COMMON.ADD'|translate"
+                     [background_color]="'#82D35C'">
+                  </app-button-comp>
+                </div>
+            </div>  
+         </div>
+           </div>
+           
+
+           <!-- <div class="p-4" *ngIf="zeroTaxBoolean"> 
+            <label class="form-label  fw-bold mb-1"> {{'COMMON.ZEROTAXCATG' | translate}}  </label>
+            <div class="card displayCard">
+              <p-dropdown 
+              [options]="taxCodes" 
+              formControlName="tax_exemption_code"
+              styleClass="invisable" 
+              class="invisable my-1 mx-0" 
+              optionLabel="name" 
+              optionValue="code">
+              <ng-template let-item pTemplate="item">
+                {{ item.name | translate }}
+              </ng-template>
+              <ng-template let-selectedItem pTemplate="selectedItem">
+                {{ selectedItem.name | translate }}
+              </ng-template>
+            </p-dropdown>
+             
+    
+            </div>
+          </div> -->
+
+           <div class="HLine"></div>
+      
+           <div class="px-2">
+    
+            <div class="gap-4 mt-4 pb-4 px-2  border-2 d-flex flex-wrap justify-content-around ">
+              <div style="background-color: #11C387;" class="totalCards card width-30 d-flex align-items-center justify-content-center text-center">
+                 <span class="text">{{'COMMON.TOTALTAXABLEAMOUNT'|translate}}</span><br>
+                 <span class="">{{'COMMON.SAR' |translate}} {{totalWithTax | number:'1.2-2' : ''}}</span>
+              </div>
+              <div style="background-color: #5C60F5;" class="totalCards card width-30 d-flex align-items-center justify-content-center text-center">
+                <span class="text">{{'COMMON.TOTALTAX'|translate}}</span><br>
+                <span class="">{{'COMMON.SAR' |translate}} {{totaltax | number:'1.2-2' : ''}}</span>
+              </div>
+              <div style="background-color: #4C4C4C;" class="totalCards card width-30 d-flex align-items-center justify-content-center text-center">
+                <span class="text">{{'COMMON.TOTAL'|translate}}  </span><br>
+                <span class="">{{'COMMON.SAR' |translate}} {{total | number:'1.2-2' : ''}}</span>
+              </div>
+            </div>
+    
+    
+            <div formGroupName="notes">
+              <div class="p-4">
+      
+                <label for="invoiceNumber" class="fw-semibold"> {{'COMMON.NOTES' | translate}}  </label>
+                 <textarea name="" id="" id="invoiceNumber" placeholder="{{'COMMON.NOTES' | translate}}"
+                 [style.width.%]="100" [style.heigth.px]="120" formControlName="ar"  [style.resize]="'none'"
+                 class="form-control fw-semibold py-2 mt-2 inputDiv"></textarea>
+                 <!--  formControlName="invoiceNumber" -->
+                <!--   <app-form-errors class="text-left error-message" [control]="loginForm.controls['password']">
+                  </app-form-errors> -->
+              </div>
+
+              <!-- ui_fix -->
+              <div class="p-4 ps-3 d-none">
+      
+                <label for="invoiceNumber" class="fw-semibold"> {{'COMMON.NOTES' | translate}}  </label>
+                 <textarea name="" id="" id="invoiceNumber" placeholder="{{'COMMON.NOTES' | translate}}"
+
+                 [style.width.%]="100" [style.heigth.px]="120" formControlName="en"  [style.resize]="'none'"
+                 class="form-control fw-semibold py-2 mt-2 inputDiv"></textarea>
+                 <!--  formControlName="invoiceNumber" -->
+                <!--   <app-form-errors class="text-left error-message" [control]="loginForm.controls['password']">
+                  </app-form-errors> -->
+              </div>
+            </div>
+
+            <!-- <div class="p-4">
+      
+              <label for="invoiceNumber" class="fw-semibold"> {{'COMMON.NOTES'|translate}} </label>
+               <textarea name="" id="" id="invoiceNumber" placeholder="{{'COMMON.NOTES'|translate}} "
+               [style.width.%]="100" [style.heigth.px]="120" formControlName="notes"  [style.resize]="'none'"
+               class="form-control fw-semibold py-2 mt-2 inputDiv"></textarea>
+                formControlName="invoiceNumber"
+                <app-form-errors class="text-left error-message" [control]="loginForm.controls['password']">
+                </app-form-errors>
+            </div> -->
+    
+           </div>
+          
+           <div class="HLine"></div>
+          
+           <!-- ui_fix -->
+         <div class="px-4 ms-1">
+          <div class=" mt-4 pb-4 border-2">
+            <div class="col-md-12">
+              <p> {{'COMMON.CHANEGGENERALDATA1'|translate}}   <span [style.color]="'#00A7DC'" class="cursor-pointer" routerLink="/user/settings/commercial-account-details"> {{'COMMON.CHANEGGENERALDATA2'|translate}} </span> </p>
+            </div>
+            <div class="col-md-5">
+              <div class="card infoCard p-3">
+                <!-- <div class="d-flex flex-wrap ">
+                  <p>{{'COMMON.ADDRESS'|translate}}  :</p>
+                  <p></p>
+                </div>
+                <div class="d-flex flex-wrap ">
+                  <p>{{'COMMON.TELEPHONE'|translate}}  :  </p>
+                  <p>012345678912</p>
+                </div>
+                <div class="d-flex flex-wrap ">
+                  <p>{{'COMMON.FAXNUMBER'|translate}}  : </p>
+                  <p>98764123245</p>
+                </div>
+                <div class="d-flex flex-wrap ">
+                   <p>  {{'COMMON.TAXIDENTNUMBER'|translate}}  :  </p>              
+                   <p> 123456789123456 </p>
+                </div> -->
+                
+                <div class="d-flex flex-wrap">
+                  <p> {{'COMMON.ADDRESS' | translate}} :</p>
+                  <p>{{profileData?.address}}</p>
+                </div>
+                <div class="d-flex flex-wrap">
+                  <p>  {{'COMMON.TELEPHONE' | translate}} :  </p>
+                  <p>{{profileData?.phone}}</p>
+                </div>
+                <div class="d-flex flex-wrap">
+                  <p>  {{'COMMON.FAXNUMBER' | translate}} : </p>
+                  <p>{{profileData?.fax}}</p>
+                </div>
+                <div class="d-flex flex-wrap">
+                   <p> {{'COMMON.TAXIDENTNUMBER' | translate}} :  </p>              
+                   <p> {{profileData?.tax_number}} </p>
+                </div>
+
+              </div>
+            </div>
+    <!-- ui_fix -->
+            <div class="col-md-12 mt-3">
+              <p> {{'COMMON.EDITLATER'|translate}} </p>
+            </div>
+    
+            <div class=" addBtn d-flex justify-content-center justify-content-md-end w-100 mb-5">
+               <app-button-comp [btnType]="'main'" (click)="addPriceOffer()"  [name]="'COMMON.SUBMIT'|translate"  [background_color]="'#1B1464'"></app-button-comp>
+            </div>
+           
+          </div>
+         </div>
+      </div>
+    </div>
+  
+  </form>
+  </div>
+  
+  

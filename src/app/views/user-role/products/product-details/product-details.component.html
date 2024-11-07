@@ -1,0 +1,76 @@
+<!-- ui_fix -->
+<div class="divCont p-0 ps-5 pe-5">
+  <div class=" title mb-2"> 
+     <h2> {{'PRODUCTDETAILS.PRODUCTDETAILS' | translate}} </h2>
+  </div>
+  <div class="card borderRadius_20px mainCard p-5">
+    <div class="pb-5 w-100">
+      <h5 class="fw-bold">{{'PRODUCTDETAILS.SUBTITLE' | translate}}</h5>
+    </div>
+    <div class="d-flex w-100 flex-wrap justify-content-between gap-3 mb-5">
+        <div class="h-115px width-32 boxShadow-25 borderRadius_20px p-3 gap-2 card">
+           <span class="text-secondary fw-bold fs-16">{{'INVOICE.INVOICE' | translate}}</span>
+           <span class="fw-bold fs-16">{{product.total_invoices}}</span>
+           <span [routerLink]="'/user/products/product-invoices/'+product.uuid"class="cursor-pointer light-purple-text fw-bold fs-16">{{'PRODUCTDETAILS.PRODUCTINVOICES' | translate}}</span>
+        </div>
+        <div class="h-115px width-32 boxShadow-25 borderRadius_20px gap-2 p-3 card">
+           <span class="text-secondary fw-bold fs-16">{{'PRICELIST.PRICEOFFER' | translate}}</span>
+           <span class="fw-bold fs-16">0</span>
+           <!-- [routerLink]="'/products/product-price-offers'+product.uuid" -->
+           <span [routerLink]="'/user/products/product-price-offers/'+product.uuid" class="cursor-pointer light-purple-text fw-bold fs-16">{{'PRODUCTDETAILS.PRICEOFFERS' | translate}}</span>
+        </div>
+        <div class="h-115px flex-fill boxShadow-25 borderRadius_20px gap-3 p-3 card">
+           <span class="text-secondary fw-bold fs-16">{{'PRODUCTDETAILS.TOTALPRODUCTSALE' | translate}}</span>
+           <span *ngIf="language=='ar'" class="fw-bold fs-16">{{product.sales}} ريال</span>
+           <span *ngIf="language=='en'" class="fw-bold fs-16">{{product.sales}} SAR</span>
+        </div>
+    </div>
+    <div style="height:237px;" class="w-100 boxShadow-25 borderRadius_20px p-3 mb-4 card">
+     <div class="mb-2">
+      <span class="fw-bold fs-20">
+        {{'ADDPRODUCT.PRODUCTDETAILS' | translate}}
+     </span>
+    </div>
+    <div class="d-flex">
+      <p>{{'COMMON.NAME' | translate}} : </p>
+      <p>{{product.name}}</p>
+    </div>
+    <div class="d-flex">
+      <p>{{'COMMON.PRICEONLY' | translate}} :   </p>
+      <p *ngIf="language=='ar'">{{product.price}} ريال</p>
+      <p *ngIf="language=='en'">{{product.price}} SAR</p>
+    </div>
+    <div class="d-flex">
+      <p> {{'COMMON.TYPE' | translate}} :</p>
+      <p>{{product.type}}</p>
+    </div>
+    <div class="d-flex"> 
+      <p>{{'PRODUCTDETAILS.CREATEDAT' | translate}} :</p>
+      <p>{{product.created_at}}</p>
+    </div>
+    </div>
+    <div class="w-100">
+      <div class="chart boxShadow-25 borderRadius_20px mt-4 mb-5 ">
+        <div *ngIf="chartOptions">
+            <p-card class="chartCard">
+                <p class="fw-bold fs-20 text">
+                  {{'PRODUCTDETAILS.PRODUCTSALESREPORT' | translate}}
+                  <button type="button" class="btn me-2 border-0" placement="top"
+                        ngbTooltip="total number of leads">
+                        <i class="fa-solid fa-circle-info"></i>
+                    </button>
+                </p>
+                <div class="chart" id="chart">
+                    <apx-chart [series]="$any(chartOptions.series)" [chart]="$any(chartOptions.chart)"
+                        [xaxis]="$any(chartOptions.xaxis)" [yaxis]="yaxis"
+                        [dataLabels]="$any(chartOptions.dataLabels)" [grid]="$any(chartOptions.grid)"
+                        [stroke]="$any(chartOptions.stroke)" [title]="$any(chartOptions.title)"
+                        [colors]="['#000000']"></apx-chart>
+                </div>
+            </p-card>
+        </div>
+    </div>
+    </div>
+  </div>
+</div>
+

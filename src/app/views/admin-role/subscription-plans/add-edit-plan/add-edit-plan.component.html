@@ -1,0 +1,251 @@
+<!-- ui_fix -->
+<div class="row main-container p-0 ps-5 pe-5">
+  <div class="col-md-12 title mb-2"> 
+     <h2 *ngIf="type=='add'">{{'SUBSCRIPTIONPLANS.ADD' |translate}}</h2>
+     <h2 *ngIf="type=='edit'">{{'SUBSCRIPTIONPLANS.EDIT' |translate}}</h2>
+  </div>
+  <div class="card borderRadius_20px p-3"> 
+    <div class="cardTitle mb-2">
+      <h5 *ngIf="type=='add'">{{'SUBSCRIPTIONPLANS.NEWDETAILS' |translate}}</h5>
+      <h5 *ngIf="type=='edit'">{{'SUBSCRIPTIONPLANS.DETAILS' |translate}}</h5>
+    </div>
+    <form [formGroup]="planDetailsForm" action="">
+      <div #form class="row w-100">
+
+      <div formGroupName="name">
+        <div class="col-md-12">
+          <label class="form-label  fw-bold mb-1">{{'EDITPLAN.PLANNAME' |translate}} - {{'COMMON.ARABIC' |translate}}<span style="color:red">*</span></label>
+          <input type="text" [ngClass]="{'direction':language=='ar'}" 
+          [ngClass]="!planDetailsForm.get('name.ar')?.valid && planDetailsForm.get('name.ar')?.touched ?'errorInput' : ''"
+           formControlName="ar" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+          <app-Form-errors [control]="planDetailsForm.get('name.ar')"></app-Form-errors>
+        </div>
+
+        <div class="col-md-12">
+          <label class="form-label  fw-bold mb-1">{{'EDITPLAN.PLANNAME' |translate}} - {{'COMMON.ENGLISH' |translate}}<span style="color:red">*</span></label>
+          <input type="text" [ngClass]="{'direction':language=='ar'}" 
+          [ngClass]="!planDetailsForm.get('name.en')?.valid && planDetailsForm.get('name.en')?.touched ?'errorInput' : ''"
+           formControlName="en" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+          <app-Form-errors [control]="planDetailsForm.get('name.en')"></app-Form-errors>
+        </div>
+      </div>
+     
+      <div formGroupName="description">
+        <div class="col-md-12">
+          <label class="form-label  fw-bold mb-1">{{'EDITPLAN.DISCRIPTION' |translate}} - {{'COMMON.ARABIC' |translate}} </label>
+          <input type="text" [ngClass]="{'direction':language=='ar'}" 
+          [ngClass]="!planDetailsForm.get('description.ar')?.valid && planDetailsForm.get('description.ar')?.touched ?'errorInput' : ''"
+           formControlName="ar" 
+           class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+          <app-Form-errors [control]="planDetailsForm.controls['ar']"></app-Form-errors>
+        </div>
+        <div class="col-md-12">
+          <label class="form-label  fw-bold mb-1">{{'EDITPLAN.DISCRIPTION' |translate}} - {{'COMMON.ENGLISH' |translate}} </label>
+          <input type="text" [ngClass]="{'direction':language=='ar'}" 
+           formControlName="en" 
+           [ngClass]="!planDetailsForm.get('description.ar')?.valid && planDetailsForm.get('description.ar')?.touched ?'errorInput' : ''"
+           class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+          <app-Form-errors [control]="planDetailsForm.controls['en']"></app-Form-errors>
+      </div>
+      </div>
+      
+      <div class="col-md-12">
+        <label class="form-label  fw-bold mb-1">{{'EDITPLAN.DURATIONS' |translate}} </label>
+
+        <p-dropdown placeholder="{{'EDITPLAN.DURATIONS'|translate}}"
+        [styleClass]="!planDetailsForm.controls['duration_id'].valid && planDetailsForm.controls['duration_id'].touched ?'errorInput' : ''"
+        formControlName="duration_id" [options]="durations"
+        placeholder="العميل" class="my-1 mx-0 py-2 py-2" optionLabel="name" optionValue="id" filterBy="name" ></p-dropdown>  
+        <!-- [filter]="true" -->
+
+        <!-- <input type="text" [ngClass]="{'direction':language=='ar'}"  formControlName="duration_id" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 "> -->
+        <app-Form-errors [control]="planDetailsForm.controls['duration_id']"></app-Form-errors>
+      
+    </div>
+
+    <div  class="col-md-12">
+      <label class="form-label  fw-bold mb-1">{{'EDITPLAN.PLANSLUG' |translate}} <span style="color:red">*</span></label>
+      <input type="text" [ngClass]="{'direction':language=='ar'}"  
+      [ngClass]="!planDetailsForm.controls['slug'].valid && planDetailsForm.controls['slug'].touched ?'errorInput' : ''"
+      formControlName="slug" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+      <app-Form-errors [control]="planDetailsForm.controls['slug']"></app-Form-errors>
+
+    </div>  
+
+        <div class="col-md-6">
+  
+          <!-- <div  class="col-11 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1">{{'EDITPLAN.PLANSLUG' |translate}} <span style="color:red">*</span></label>
+            <input type="text" [ngClass]="{'direction':language=='ar'}"  formControlName="slug" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+            <app-Form-errors [control]="planDetailsForm.controls['slug']"></app-Form-errors>
+
+          </div>     -->
+          <div class="col-11 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1">{{'EDITPLAN.SUBSCRIPTIONPRICE' |translate}} <span style="color:red">*</span> </label>
+            <input type="text" [ngClass]="{'direction':language=='ar'}"
+            [ngClass]="!planDetailsForm.controls['price'].valid && planDetailsForm.controls['price'].touched ?'errorInput' : ''"
+            appOnlyNumber formControlName="price" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+            <app-Form-errors [control]="planDetailsForm.controls['price']"></app-Form-errors>
+
+          </div> 
+          <div class="col-11 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1">{{'EDITPLAN.SUBSCRIPTIONPRICEWTHOUTDISCOUNT' |translate}} <span style="color:red">*</span> </label>
+            <input type="text" [ngClass]="{'direction':language=='ar'}"
+            [ngClass]="!planDetailsForm.controls['full_price'].valid && planDetailsForm.controls['full_price'].touched ?'errorInput' : ''"
+            appOnlyNumber formControlName="full_price" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+            <app-Form-errors [control]="planDetailsForm.controls['full_price']"></app-Form-errors>
+
+          </div>
+ 
+          <div class="col-11 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1">{{'EDITPLAN.FREETRIALTIME' |translate}} </label>
+            <input type="text" [ngClass]="{'direction':language=='ar'}" 
+            [ngClass]="!planDetailsForm.controls['trial_period'].valid && planDetailsForm.controls['trial_period'].touched ?'errorInput' : ''"
+            appOnlyNumber formControlName="trial_period" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+            <app-Form-errors [control]="planDetailsForm.controls['trial_period']"></app-Form-errors>
+          </div>   
+          <div class="col-11 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1">{{'EDITPLAN.INVOICEDUE' |translate}} </label>
+            <input type="text" [ngClass]="{'direction':language=='ar'}"
+            [ngClass]="!planDetailsForm.controls['invoice_period'].valid && planDetailsForm.controls['invoice_period'].touched ?'errorInput' : ''"
+            appOnlyNumber formControlName="invoice_period" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+            <app-Form-errors [control]="planDetailsForm.controls['invoice_period']"></app-Form-errors>
+          </div>   
+          <div class="col-11 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1">{{'EDITPLAN.ALLOWTIME' |translate}} </label>
+            <input type="text" [ngClass]="{'direction':language=='ar'}" 
+            [ngClass]="!planDetailsForm.controls['grace_period'].valid && planDetailsForm.controls['grace_period'].touched ?'errorInput' : ''"
+            appOnlyNumber formControlName="grace_period" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+            <app-Form-errors [control]="planDetailsForm.controls['grace_period']"></app-Form-errors>
+          </div>   
+          <div class="col-11 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1">{{'EDITPLAN.EXPANDDAY' |translate}} </label>
+            <input type="text" [ngClass]="{'direction':language=='ar'}" 
+            [ngClass]="!planDetailsForm.controls['prorate_day'].valid && planDetailsForm.controls['prorate_day'].touched ?'errorInput' : ''"
+            appOnlyNumber formControlName="prorate_day" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+            <app-Form-errors [control]="planDetailsForm.controls['prorate_day']"></app-Form-errors>
+          </div>   
+          <div class="col-11 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1">{{'EDITPLAN.EXTENDAMOUNT' |translate}} </label>
+            <input type="text" [ngClass]="{'direction':language=='ar'}"  
+            [ngClass]="!planDetailsForm.controls['prorate_extend_due'].valid && planDetailsForm.controls['prorate_extend_due'].touched ?'errorInput' : ''"
+            formControlName="prorate_extend_due" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+            <app-Form-errors [control]="planDetailsForm.controls['prorate_extend_due']"></app-Form-errors>
+          </div>   
+
+          <div class="col-md-11 mx-0 my-3" *ngIf="!mobileSize">
+              <label class="form-label  fw-bold mb-1">{{ 'EDITPLAN.PLANSTATUS' | translate }} </label>
+              <div class="d-flex gap-1 align-items-center">
+                 <input class="form-check-input cursor-pointer" 
+                 [ngStyle]="{'--checked-color': primaryColor}"
+                 [ngClass]="!planDetailsForm.controls['is_active'].valid && planDetailsForm.controls['is_active'].touched ?'errorInput' : ''"
+                 style="width: 2.4em; height: 2.4em;border-radius: 10px;" formControlName="is_active"  type="checkbox" value="" id="flexCheckDefault">     
+                  <app-Form-errors [control]="planDetailsForm.controls['is_active']"></app-Form-errors>
+                  <span>{{ 'TABLE.VERIFIED' | translate }}</span>
+              </div>
+            </div>
+ 
+  
+      </div>
+        <div class="col-md-6">
+  
+          <div   class="col-11 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1">{{'EDITPLAN.CURRENCY' |translate}}<span style="color:red">*</span> </label>
+            <!-- <input type="text" [ngClass]="{'direction':language=='ar'}"  formControlName="currency" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 "> -->
+            <p-dropdown placeholder="{{'ADDPURCHASE.CURRENCY'|translate}}"
+            [styleClass]="!planDetailsForm.controls['currency'].valid && planDetailsForm.controls['currency'].touched ?'errorInput' : ''"
+            formControlName="currency" [options]="currency"
+             placeholder="{{'ADDPURCHASE.CURRENCY'|translate}}" class="my-1 mx-0 py-2 py-2" optionLabel="name" optionValue="currency_code" filterBy="name" [filter]="true"></p-dropdown>      
+
+            <app-Form-errors [control]="planDetailsForm.controls['currency']"></app-Form-errors>
+
+          </div> 
+          <div   class="col-11 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1">{{'EDITPLAN.REGISTERCURRENCY' |translate}} <span style="color:red">*</span></label>
+            <input type="number" [ngClass]="{'direction':language=='ar'}" 
+            [ngClass]="!planDetailsForm.controls['signup_fee'].valid && planDetailsForm.controls['signup_fee'].touched ?'errorInput' : ''"
+            appOnlyNumber formControlName="signup_fee" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+            <app-Form-errors [control]="planDetailsForm.controls['signup_fee']"></app-Form-errors>
+
+          </div> 
+  
+
+          <div class="col-11 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1">{{'EDITPLAN.TIMEDIFFERANCE' |translate}}</label>
+            <p-dropdown *ngIf="language=='ar'"  [options]="interval" formControlName="trial_interval" 
+               [styleClass]="!planDetailsForm.controls['trial_interval'].valid && planDetailsForm.controls['trial_interval'].touched ?'errorInput' : ''"
+            placeholder=" " class="my-1 mx-0 py-2 w-100" optionLabel="nameAR" optionValue="value"></p-dropdown>   
+
+            <p-dropdown *ngIf="language=='en'"  [options]="interval" formControlName="trial_interval"  
+               [styleClass]="!planDetailsForm.controls['trial_interval'].valid && planDetailsForm.controls['trial_interval'].touched ?'errorInput' : ''"
+            placeholder=" " class="my-1 mx-0 py-2 w-100" optionLabel="nameEN" optionValue="value"></p-dropdown>                           
+            <app-Form-errors [control]="planDetailsForm.controls['trial_interval']"></app-Form-errors>
+          </div>  
+          <div class="col-11 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1">{{'EDITPLAN.INVOICEDIFFERENCE' |translate}}</label>
+            <p-dropdown *ngIf="language=='ar'"  [options]="interval" formControlName="invoice_interval"
+               [styleClass]="!planDetailsForm.controls['invoice_interval'].valid && planDetailsForm.controls['invoice_interval'].touched ?'errorInput' : ''"
+            placeholder=" " class="my-1 mx-0 py-2 w-100" optionLabel="nameAR" optionValue="value"></p-dropdown> 
+
+            <p-dropdown *ngIf="language=='en'"  [options]="interval" formControlName="invoice_interval"
+               [styleClass]="!planDetailsForm.controls['invoice_interval'].valid && planDetailsForm.controls['invoice_interval'].touched ?'errorInput' : ''"
+              placeholder=" " class="my-1 mx-0 py-2 w-100" optionLabel="nameEN" optionValue="value"></p-dropdown>
+
+            <app-Form-errors [control]="planDetailsForm.controls['invoice_interval']"></app-Form-errors>
+          </div>  
+          <div class="col-11 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1">{{'EDITPLAN.ALLOWDIFFERENCE' |translate}}</label>
+            <p-dropdown *ngIf="language=='ar'"  [options]="interval" formControlName="grace_interval"
+               [styleClass]="!planDetailsForm.controls['grace_interval'].valid && planDetailsForm.controls['grace_interval'].touched ?'errorInput' : ''"
+            placeholder=" " class="my-1 mx-0 py-2 w-100" optionLabel="nameAR" optionValue="value"></p-dropdown>    
+                                   
+            <p-dropdown *ngIf="language=='en'"  [options]="interval" formControlName="grace_interval"
+               [styleClass]="!planDetailsForm.controls['grace_interval'].valid && planDetailsForm.controls['grace_interval'].touched ?'errorInput' : ''"
+            placeholder=" " class="my-1 mx-0 py-2 w-100" optionLabel="nameEN" optionValue="value"></p-dropdown>                           
+            <app-Form-errors [control]="planDetailsForm.controls['grace_interval']"></app-Form-errors>
+          </div>  
+  
+          <div   class="col-11 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1">{{'EDITPLAN.EXPANDDUE' |translate}} </label>
+            <input type="text" [ngClass]="{'direction':language=='ar'}" 
+            [ngClass]="!planDetailsForm.controls['prorate_period'].valid && planDetailsForm.controls['prorate_period'].touched ?'errorInput' : ''"
+            appOnlyNumber formControlName="prorate_period" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+            <app-Form-errors [control]="planDetailsForm.controls['prorate_period']"></app-Form-errors>
+          </div> 
+          <div   class="col-11 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1">{{'EDITPLAN.MAXACTIVATED' |translate}} </label>
+            <input type="number" [ngClass]="{'direction':language=='ar'}" 
+            [ngClass]="!planDetailsForm.controls['active_subscribers_limit'].valid && planDetailsForm.controls['active_subscribers_limit'].touched ?'errorInput' : ''"
+            appOnlyNumber formControlName="active_subscribers_limit" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+            <app-Form-errors [control]="planDetailsForm.controls['active_subscribers_limit']"></app-Form-errors>
+          </div> 
+          <div   class="col-11 fullScreenWidth mx-0 my-3">
+            <label class="form-label  fw-bold mb-1">{{'EDITPLAN.SORT' |translate}} <span style="color:red">*</span></label>
+            <input type="number" [ngClass]="{'direction':language=='ar'}" 
+            [ngClass]="!planDetailsForm.controls['sort_order'].valid && planDetailsForm.controls['sort_order'].touched ?'errorInput' : ''"
+            appOnlyNumber formControlName="sort_order" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+            <app-Form-errors [control]="planDetailsForm.controls['sort_order']"></app-Form-errors>
+          </div> 
+        </div>
+
+        <div class="col-md-11 mx-0 my-3" *ngIf="mobileSize">
+          <label class="form-label  fw-bold mb-1">{{ 'EDITPLAN.PLANSTATUS' | translate }} </label>
+          <div class="d-flex gap-1 align-items-center">
+             <input class="form-check-input cursor-pointer"
+             [ngStyle]="{'--checked-color': primaryColor}" 
+             [ngClass]="!planDetailsForm.controls['is_active'].valid && planDetailsForm.controls['is_active'].touched ?'errorInput' : ''"
+             style="width: 2.4em; height: 2.4em;border-radius: 10px;" 
+             formControlName="is_active"  type="checkbox" value="" id="flexCheckDefault">     
+              <app-Form-errors [control]="planDetailsForm.controls['is_active']"></app-Form-errors>
+              <span>{{ 'TABLE.VERIFIED' | translate }}</span>
+          </div>
+        </div>
+
+        <div class="col-md-12 d-flex justify-content-center justify-content-md-end">
+          <app-button-comp *ngIf="type=='add'" (click)="addPlan()" [btnType]="'main'" style="width: 120px;"  [name]="'COMMON.ADD' |translate" [background_color]="'#1B1464'" ></app-button-comp>
+          <app-button-comp *ngIf="type=='edit'" (click)="editPlanData()" [btnType]="'main'" style="width: 120px;"  [name]="'COMMON.EDIT' |translate" [background_color]="'#1B1464'" ></app-button-comp>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

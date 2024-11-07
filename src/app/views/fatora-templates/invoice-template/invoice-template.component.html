@@ -1,0 +1,1108 @@
+
+<!-- 'invoiceTemplate2':(tempType=='quotation' || tempType=='credit' || tempType=='creditAdmin' || tempType=='ClientInvoice'),
+  'invoiceTemplate1':(tempType=='invoice' || tempType=='AdminInvoice' || tempType=='quotation' || tempType=='credit' || tempType=='creditAdmin' || tempType=='ClientInvoice') -->
+<div class="bg-white invoiceTemplate1" *ngIf="display && tempType && invoiceService.downloadShow"
+
+[ngClass]="{
+  'd-block ':invoiceService.downloadShow,
+  'd-none': !invoiceService.downloadShow,
+  'h-max':(tempType=='quotation')
+  
+}" 
+#toDownload >
+
+<div *ngIf="tempType!='simpleInvoiceTemplate' && false" class="pageBreak">
+   <!-- header -->
+   <div class="d-flex justify-content-between px-5  pb-2 ">
+    <!-- <div *ngIf="logo && tempType!='AdminInvoice'" >
+     <img [src]="logo" id="logo" width="160" alt="">
+    </div> -->
+    <div>
+     <img class="logoImage" [src]="logoUrl ? logoUrl : './assets/logo/logo 1.svg'" id="logo" width="160" alt="">
+    </div>
+ 
+    <div class="my-auto">
+      <p class="fs-10"
+      [ngClass]="{
+        'text-white':(InvoiceType === 4 || InvoiceType === 6)
+      }"
+      > {{invoice?.created_at}} </p>
+    </div>
+ </div>
+ 
+ <!-- Main Title -->
+
+ <div class="d-flex w-100 gap-0 justify-content-center">
+<div [ngClass]="{
+  'w-80':InvoiceType === 4,
+  'w-100':InvoiceType != 4
+ }">
+
+ <div [ngClass]="{
+  'd-flex justify-content-end':InvoiceType === 6
+}">
+    <div class="text-center  "
+  [ngClass]="{
+    'invoiceColor border-0':(InvoiceType === 1 || InvoiceType === 7 ),
+    'bg-white':InvoiceType === 2,
+    'mainTitleDiv_3':InvoiceType === 3,
+    'mainTitleDiv_5':InvoiceType === 5,
+    'mainTitleDiv_6':InvoiceType === 6
+  }"
+  >
+      <h1 class="fw-bold  "
+      [style.fontSize.px]="40"
+      [ngClass]="{
+        'MainTilte_1':(InvoiceType === 1 || InvoiceType === 7),
+        'MainTilte_2':InvoiceType === 2,
+        'MainTilte_3':InvoiceType === 3,
+        'MainTilte_5':InvoiceType === 5,
+        'MainTilte_6':InvoiceType === 6
+      }"
+      >
+      <span  *ngIf="InvoiceType != 7 && tempType=='invoice'  || tempType=='subsInvoice'">
+        {{'ADDINVOICE.TAXABLEINVOICE'|translate}}
+      </span>
+      <span  *ngIf="InvoiceType != 7 && tempType=='ClientInvoice'">
+        {{'ADDINVOICE.TAXABLEINVOICE'|translate}}
+      </span>
+      <span *ngIf="InvoiceType === 7 && tempType=='invoice'  || InvoiceType === 7 && tempType=='AdminInvoice'">
+        {{'ADDINVOICE.SIMPLIFIEDINVOICE'|translate}}    
+          </span>
+      <span *ngIf="tempType=='quotation'">
+        {{'PRICELIST.PRICE' | translate}}
+        </span>
+      <span *ngIf="tempType=='credit' || tempType=='creditAdmin'">
+        {{'CREDITNOTICE.CREDIT' | translate}}
+        </span>
+      <span *ngIf="tempType=='voucher'">
+     {{'RECEITVOUCHERDETAILS.RECITEVOUCHER' | translate}}
+        </span>
+     
+    </h1>
+      
+  </div>
+ </div>
+
+<!-- details 1 -->
+<div class="d-flex  justify-content-between px-5">
+
+  <div>
+    <!-- <h6 *ngIf="tempType=='subsInvoice'">{{'COMMON.NAME'|translate}}: {{invoice?.name}}</h6> -->
+    <h6 class="detail1-font" *ngIf="tempType=='subsInvoice'">{{'COMMON.NAME'|translate}}&nbsp; : &nbsp; شركة النسبة الذهبية لتقنية المعلومات </h6>
+    
+    <h6 class="detail1-font"* ngIf="tempType=='subsInvoice'">{{'COMMON.ADDRESS'|translate}} &nbsp; : &nbsp;   الرياض . المملكة العربية السعودية</h6>
+    <h6 class="detail1-font" *ngIf="tempType!='subsInvoice'">{{'COMMON.ADDRESS'|translate}} : {{invoice?.address}}</h6>
+
+    <h6 class="detail1-font" *ngIf="tempType!='subsInvoice'" > {{'COMMON.TELEPHONE'|translate}} &nbsp; : &nbsp; {{invoice?.telephone}} </h6>
+    <h6 class="detail1-font" *ngIf="tempType=='subsInvoice'">  {{'COMMON.TELEPHONE'|translate}} &nbsp; : &nbsp; 966540960850 </h6>
+
+    <h6 class="detail1-font" *ngIf="tempType=='subsInvoice'">  {{'COMMON.EMAIL'|translate}} &nbsp; : &nbsp; info<!-- @ -->ratio-golden.com </h6>
+
+    <!-- <h6 *ngIf="tempType!='subsInvoice'">  {{'COMMON.TAXNUMBER'|translate}} : 123456789456   </h6> -->
+    <h6 class="detail1-font" *ngIf="tempType!='subsInvoice'">{{'COMMON.FAXNUMBER'|translate}} &nbsp; : &nbsp; {{ invoice?.user_fax }}</h6>
+    <h6 class="detail1-font" *ngIf="tempType!='subsInvoice'">  {{'COMMON.TAXIDENTNUMBER'|translate}} &nbsp; :  &nbsp;{{invoice?.tax_number}}   </h6>
+     <h6 class="detail1-font" *ngIf="tempType=='subsInvoice'">  {{'COMMON.TAXIDENTNUMBER'|translate}} &nbsp; : &nbsp; 311403403400003   </h6>
+  </div>
+
+  <div *ngIf="tempType!='subsInvoice'">
+    <h2 class="fw-bold fs-4"> {{ invoice?.account_name }} </h2>
+  </div>
+</div>
+
+<!-- details 2 invoice details -->
+<div *ngIf="InvoiceType != 7 && InvoiceType != 4" class="d-flex justify-content-center gap-3 pt-2 details_2 gap-5">
+    
+  <div *ngIf="tempType=='credit' || tempType=='creditAdmin'" class="align-items-center d-flex flex-column flex-wrap  justify-content-around p-1 text-center gap-2" 
+  [style.width.%]="25"
+  [ngClass]="{
+    'invoiceDetails_1 invoiceDetails1Div':InvoiceType === 1,
+    'invoiceDetails_2 invoiceDetails2Div':(InvoiceType === 2 || InvoiceType === 5),
+    'invoiceDetails_3 invoiceDetails3Div':(InvoiceType === 3 || InvoiceType === 6)
+    
+  }">
+ 
+  <div>
+    <h6  class=" fw-bold">{{'CREDITNOTICE.CREDITNOTICENUMBER'|translate}}</h6>
+  </div>
+    <h6 class="font-montserrat fw-bold"> {{invoice?.number}}  </h6>
+  </div>
+  <div class="align-items-center d-flex flex-column flex-wrap  justify-content-around p-1 text-center gap-2" 
+  [style.width.%]="25"
+  [ngClass]="{
+    'invoiceDetailsI_1 invoiceDetails1Div':InvoiceType === 1,
+    'invoiceDetailsI_2 invoiceDetails2Div':(InvoiceType === 2 || InvoiceType === 5),
+    'invoiceDetailsI_3 invoiceDetails3Div':(InvoiceType === 3 || InvoiceType === 6)
+    
+  }">
+    <h6 *ngIf="tempType=='invoice' || tempType=='AdminInvoice' || tempType=='ClientInvoice' ||  tempType=='credit' || tempType=='creditAdmin' || tempType=='subsInvoice'" class=" fw-bold"> {{'ADDINVOICE.INVOICENUMBER' |translate}}</h6>
+    <h6 *ngIf="tempType=='quotation'" class=" fw-bold"> {{'PRICELIST.NUMBER'|translate}}</h6>
+    <h6 *ngIf="tempType=='voucher'" class=" fw-bold">  {{'RECEIPTVOUCHER.NUMBER'|translate}}</h6>
+    <h6 *ngIf="tempType!='subsInvoice'"  class="font-montserrat fw-bold"> {{invoice?.number}}  </h6>
+    <h6 *ngIf="tempType=='subsInvoice'" class="font-montserrat fw-bold"> {{invoice?.id}}  </h6>
+  </div>
+  <div *ngIf="tempType=='voucher'" class="align-items-center d-flex flex-column flex-wrap  justify-content-around p-1 text-center gap-2" 
+  [style.width.%]="25"
+  [ngClass]="{
+    'invoiceDetailsI_1 invoiceDetails1Div':InvoiceType === 1,
+    'invoiceDetailsI_2 invoiceDetails2Div':(InvoiceType === 2 || InvoiceType === 5),
+    'invoiceDetailsI_3 invoiceDetails3Div':(InvoiceType === 3 || InvoiceType === 6)
+    
+  }">
+    <h6  class=" fw-bold">{{'INVOICE.INVOICENUMBER'|translate}}</h6>
+    <h6   class="font-montserrat fw-bold"> {{invoice?.invoice_number}}  </h6>
+  </div>
+
+  <div *ngIf="tempType != 'voucher'"  class="align-items-center d-flex flex-column flex-wrap  justify-content-around p-1 text-center gap-2"
+  [style.width.%]="25"
+  [ngClass]="{
+    'invoiceDetailsII_1 invoiceDetails1Div':InvoiceType === 1,
+    'invoiceDetailsII_2 invoiceDetails2Div':(InvoiceType === 2 || InvoiceType === 5),
+    'invoiceDetailsII_3 invoiceDetails3Div':(InvoiceType === 3 || InvoiceType === 6)
+    
+  }">
+    <h6 class=" fw-bold"> {{'COMMON.ISSUEDATE'|translate}} </h6>
+    <h6 *ngIf="tempType=='invoice' || tempType=='AdminInvoice' || tempType=='ClientInvoice'" class="font-montserrat fw-bold"> {{invoice?.created_at}}  </h6>
+    <h6 *ngIf="tempType=='quotation' || tempType=='credit' || tempType=='creditAdmin'" class="font-montserrat fw-bold"> {{invoice?.issue_date}}  </h6>
+    <h6 *ngIf="tempType=='subsInvoice'" class="font-montserrat fw-bold"> {{invoice?.date}}  </h6>
+  </div>
+
+  <div *ngIf="tempType != 'quotation' && tempType != 'subsInvoice' && tempType != 'voucher'" class="align-items-center fw-bold
+  d-flex flex-column flex-wrap  justify-content-around p-1 text-center gap-2"
+  [style.width.%]="25"
+  [ngClass]="{
+    'invoiceDetailsIII_1 invoiceDetails1Div':InvoiceType === 1,
+    'invoiceDetailsIII_2 invoiceDetails2Div':(InvoiceType === 2 || InvoiceType === 5),
+    'invoiceDetailsIII_3 invoiceDetails3Div':(InvoiceType === 3 || InvoiceType === 6)
+    
+  }">
+    <h6 class="fw-bold"> {{'COMMON.INVOICEDUE'|translate}} </h6>
+    <h6 *ngIf="tempType=='invoice' || tempType=='AdminInvoice' || tempType=='ClientInvoice'" class="font-montserrat fw-bold"> {{invoice?.invoice_due}}  </h6>
+    <h6 *ngIf="tempType=='quotation' || tempType=='credit' || tempType=='creditAdmin'" class="font-montserrat fw-bold"> {{invoice?.due_date}}  </h6>
+
+  </div>
+  <div *ngIf="tempType == 'voucher'" class="align-items-center fw-bold
+  d-flex flex-column flex-wrap  justify-content-around p-1 text-center gap-2"
+  [style.width.%]="25"
+  [ngClass]="{
+    'invoiceDetailsIII_1 invoiceDetails1Div':InvoiceType === 1,
+    'invoiceDetailsIII_2 invoiceDetails2Div':(InvoiceType === 2 || InvoiceType === 5),
+    'invoiceDetailsIII_3 invoiceDetails3Div':(InvoiceType === 3 || InvoiceType === 6)
+    
+  }">
+    <h6 class="fw-bold">{{'COMMON.RECEIVEDAT'|translate}}</h6>
+    <h6  class="font-montserrat fw-bold"> {{invoice?.received_at}}  </h6>
+
+  </div>
+
+ 
+</div>
+
+<!-- details 3 client details -->
+<div *ngIf="InvoiceType != 7" class="pt-2">
+   <h5 class="text-center py-1"> {{'ADDCLIENT.CLIENTINFO'|translate}} </h5>
+   <div class="d-flex justify-content-between   px-4 pt-2 gap-5">
+      <div class="w-25 align-items-center d-flex flex-column
+      justify-content-around p-3 text-center clientDiv"
+      [ngClass]="{
+        'clientDetailsI_1':(InvoiceType === 1 || InvoiceType === 3 || InvoiceType === 4 || InvoiceType === 6),
+        'clientDetailsI_2':(InvoiceType === 2 || InvoiceType === 5)
+        
+      }">
+        <h6 class="fw-bold m-0 fs-12"> {{'COMMON.CLIENTNAME'|translate}} </h6>
+        <h6  *ngIf="tempType!='subsInvoice'" class="font-montserrat fw-bold m-0 fs-12"> {{invoice?.client}} </h6>
+        <h6  *ngIf="tempType=='subsInvoice'" class="font-montserrat fw-bold m-0 fs-12"> {{invoice?.name}} </h6>
+        <h6  *ngIf="tempType=='voucher'" class="font-montserrat fw-bold m-0 fs-12"> {{invoice?.client_name}} </h6>
+      </div> 
+
+      <div class="flex-fill align-items-center d-flex flex-column 
+        justify-content-around p-3 text-center clientDiv"
+        [ngClass]="{
+          'clientDetailsII_1':(InvoiceType === 1 || InvoiceType === 3 || InvoiceType === 4 || InvoiceType === 6),
+          'clientDetailsII_2':(InvoiceType === 2 || InvoiceType === 5)
+        }">
+        <h6 class="fw-bold m-0 fs-12">  {{'COMMON.ADDRESS'|translate}}  </h6>
+        <h6 *ngIf="tempType!='subsInvoice'" class="font-montserrat fw-bold m-0 fs-12"> {{invoice?.client_address}} </h6>
+        <h6 *ngIf="tempType=='subsInvoice'" class="font-montserrat fw-bold m-0 fs-12"> {{invoice?.address}} </h6>
+      </div>
+   </div>
+
+   <div class="d-flex justify-content-between  gap-5 px-4 pt-3  ">
+    <div *ngIf="tempType!='subsInvoice'" class="w-50 align-items-center d-flex flex-column  
+    justify-content-around p-3 text-center clientDiv"
+    [ngClass]="{
+      'clientDetailsIII_1 ':(InvoiceType === 1 || InvoiceType === 3 || InvoiceType === 4 || InvoiceType === 6),
+      'clientDetailsIII_2 ':(InvoiceType === 2 || InvoiceType === 5)
+      
+    }">
+      <h6 class="fw-bold m-0 fs-12"> {{'COMMON.FAX'|translate}} </h6>
+      <!-- <h6 class="font-montserrat fw-bold"> 12345678912345678 </h6> -->
+      <h6 *ngIf="tempType!='voucher'" class="font-montserrat fw-bold m-0 fs-12">{{invoice?.client_fax}}</h6>
+      <h6 *ngIf="tempType=='voucher'" class="font-montserrat fw-bold m-0 fs-12"> {{invoice?.customer_fax}} </h6>
+    </div>
+    <div *ngIf="tempType=='subsInvoice'" class="w-50 align-items-center d-flex flex-column   
+    justify-content-around p-3 text-center clientDiv"
+    [ngClass]="{
+      'clientDetailsIII_1 ':(InvoiceType === 1 || InvoiceType === 3 || InvoiceType === 4 || InvoiceType === 6),
+      'clientDetailsIII_2 ':(InvoiceType === 2 || InvoiceType === 5)
+      
+    }">
+      <h6 class="fw-bold m-0 fs-12"> {{'COMMON.TELEPHONE'|translate}}  </h6>
+      <h6 class="font-montserrat fw-bold m-0 fs-12"> {{invoice?.phone}} </h6>
+    </div>
+
+    <div class="w-50 align-items-center d-flex flex-column 
+      justify-content-around p-3 text-center clientDiv"
+      [ngClass]="{
+        'clientDetailsVI_1 ':(InvoiceType === 1 || InvoiceType === 3 || InvoiceType === 4 || InvoiceType === 6),
+        'clientDetailsVI_2 ':(InvoiceType === 2 || InvoiceType === 5)
+      }">
+      <h6 class="fw-bold m-0 fs-12">  {{'COMMON.TAXNUMBER'|translate}} </h6>
+      <h6 *ngIf="tempType!='subsInvoice'" class="font-montserrat fw-bold m-0 fs-12"> {{invoice?.client_tax_number}} </h6>
+      <h6 *ngIf="tempType=='subsInvoice'" class="font-montserrat fw-bold m-0 fs-12"> {{invoice?.tax_number}} </h6>
+      <h6 *ngIf="tempType=='voucher'" class="font-montserrat fw-bold m-0 fs-12"> {{invoice?.customer_tax_number}} </h6>
+    </div>
+ </div>
+
+</div>
+
+<!-- details 6 products table -->
+<div class="px-4 productItem"  *ngIf="invoice?.products && tempType!='subsInvoice' && tempType != 'voucher'">
+  
+  <div class="me-4 mt-4  wideScreen d-flex align-items-center 
+  justify-content-between  border-2 gap-2 flex-nowrap text-center fw-bold fs-12">
+    <div  [ngClass]="{
+      'width-20':InvoiceType == 7 ,
+      'width-12':InvoiceType != 7
+    }"
+     >
+     <p> {{'COMMON.PRODUCTS'|translate}}</p>
+    </div>
+    <div
+    [ngClass]="{
+      'width-20':InvoiceType === 7 ,
+      'width-12':InvoiceType != 7
+    }"
+  >
+      <p> {{'COMMON.QUANTITY'|translate}}</p>
+     </div>
+    <div
+    [ngClass]="{
+      'width-20':InvoiceType === 7 ,
+      'width-12':InvoiceType != 7
+    }">
+     <p>  {{'COMMON.PRICE'|translate}}</p>
+    </div>
+    <div *ngIf="InvoiceType!=7" class="width-12">
+     <p> {{'COMMON.DISCOUNT'|translate}}</p>
+   </div>
+    <div *ngIf="InvoiceType!=7" class="width-12">
+     <p> {{'SALESREPORT.TAXABLE_AMOUNT'|translate}}</p>
+     </div>
+    <div *ngIf="InvoiceType!=7" class="width-12"> 
+     <p>  {{'COMMON.TAX'|translate}} </p></div>
+
+
+    <div *ngIf="InvoiceType!=7" class="width-12">
+     <p> {{'COMMON.TOTAL'|translate}}  </p>
+    </div>
+   </div>
+
+   <div  [ngClass]="{ 'purpleLine':(InvoiceType === 3 || InvoiceType === 6)}"></div>
+
+   <div class="me-4  w-100 bg-white   border-2 "
+   [ngClass]="{
+    'shadowCard':(InvoiceType === 1 || InvoiceType === 2 || InvoiceType === 4 || InvoiceType === 5 || InvoiceType === 7 )
+  }">
+
+<!-- justify-content-between -->
+     <div *ngFor="let product of invoice?.products;let i=index"
+     [ngStyle]="{'pb-5': i == 2}"
+     class=" me-4 mt-2 w-100 bg-white  d-flex align-items-center productItem justify-content-between 
+      border-2 gap-2  flex-nowrap text-center fw-bold w-100 fs-12 ">
+
+      
+      <!-- 20 -->
+       <div
+       [ngClass]="{
+        'width-20':InvoiceType == 7 ,
+        'width-12':InvoiceType != 7
+      }"
+       >
+       <p class="smallScreen "> {{'COMMON.PRODUCTS'|translate}}</p>
+       <div class="card displayCard "
+       [ngClass]="{
+        'shadowSingleCard':(InvoiceType != 3 && InvoiceType != 6)
+      }">
+           {{product?.name}}
+       </div>
+       </div>
+       <!-- 12 -->
+       <div
+       [ngClass]="{
+        'width-20':InvoiceType == 7 ,
+        'width-12':InvoiceType != 7
+      }">
+       <p class="smallScreen"> {{'COMMON.QUANTITY'|translate}}</p>
+       <div class="card displayCard" 
+        [ngClass]="{'shadowSingleCard':(InvoiceType != 3 && InvoiceType != 6) }">
+        <!-- *ngIf="tempType === 'invoice' || tempType === 'credit'" -->
+        <div *ngIf="tempType != 'quotation'">
+          <span>
+            {{product?.quantity}}
+          </span>
+        </div>
+        <div *ngIf="tempType === 'quotation'">
+
+          <span>
+            {{product?.pivot?.quantity}}
+          </span>
+        </div>
+       </div>
+       </div>
+       <!-- 12 -->
+       <div [ngClass]="{
+        'width-20':InvoiceType === 7 ,
+        'width-12':InvoiceType != 7
+      }">
+       <p class="smallScreen"> {{'COMMON.PRICE'|translate}}</p>
+       <div class="card displayCard"
+       [ngClass]="{'shadowSingleCard':(InvoiceType != 3 && InvoiceType != 6) }">
+       <span *ngIf="tempType!='quotation'">
+         {{product?.price}}
+       </span>
+       <span *ngIf="tempType=='quotation'">
+         {{product?.pivot?.price}}
+       </span>
+       </div>
+       </div>
+       <!-- 12 -->
+       <div *ngIf="InvoiceType!=7" class="width-12">
+       <p class="smallScreen"> {{'COMMON.DISCOUNT'|translate}}</p>
+       <div class="card displayCard"
+       [ngClass]="{'shadowSingleCard':(InvoiceType != 3 && InvoiceType != 6) }">
+       <span *ngIf="tempType!='quotation'">
+         {{product?.discount}}
+       </span>
+       <span *ngIf="tempType=='quotation'">
+        {{product?.pivot?.discount}}
+       </span>
+       </div>
+     </div>
+     <!-- 12 -->
+       <div *ngIf="InvoiceType!=7" class="width-12">
+       <p class="smallScreen"> {{'SALESREPORT.TAXABLE_AMOUNT'|translate}}</p>
+         <div class="card displayCard"
+         [ngClass]="{'shadowSingleCard':(InvoiceType != 3 && InvoiceType != 6) }">
+         <span *ngIf="tempType!='quotation'">
+           {{(product.price*product.quantity)-product.discount}} 
+
+         </span>
+         <span *ngIf="tempType=='quotation'">
+           {{(product?.pivot?.price*product?.pivot?.quantity)-product?.pivot?.discount}} 
+
+         </span>
+         </div>
+       </div>
+       <!-- 12 -->
+       <div *ngIf="InvoiceType!=7" class="width-12"> 
+         <p class="smallScreen">  {{'COMMON.TAX'|translate}} </p>
+         <div class="card displayCard"
+         [ngClass]="{'shadowSingleCard':(InvoiceType != 3 && InvoiceType != 6) }">
+         <span *ngIf="tempType!='quotation'">
+           {{product?.tax}}
+          
+         </span>
+         <span *ngIf="tempType=='quotation'">
+           {{product?.pivot?.tax}}
+          
+         </span>
+
+         </div>
+       </div>
+       <!-- 12 -->
+       <div *ngIf="InvoiceType !=7 " class="width-12">
+       <p class="smallScreen"> {{'COMMON.TOTAL'|translate}}  </p>
+       <div class="card displayCard"
+       [ngClass]="{'shadowSingleCard':(InvoiceType != 3 && InvoiceType != 6) }">
+       <span *ngIf="tempType!='quotation'">
+         {{product?.total}}
+       </span>
+       <span *ngIf="tempType=='quotation' ">
+         {{product?.pivot?.total}}
+       </span>
+       </div>
+       </div>
+     
+
+   </div>
+   </div>
+  
+
+
+</div>
+
+<!-- details 5 total details -->
+<div *ngIf="tempType != 'voucher'"
+[ngClass]="{'justifyAround':InvoiceType === 7}"
+ class="d-flex justify-content-center gap-3 pt-4 details_2 gap-5">
+    
+  <div *ngIf="InvoiceType === 7 && tempType === 'invoice' || InvoiceType === 7 && tempType=='AdminInvoice'"  class="align-items-center d-flex flex-column flex-wrap  justify-content-around p-1 text-center gap-2" 
+  [style.width.%]="25"
+  [ngClass]="{'totalI_1':InvoiceType === 7}">
+    <h6 class=" fw-bold">{{'COMMON.INCLUDETAX'|translate}} </h6>
+    <h6 class="fw-bold"> 
+       <span *ngIf="tempType!='subsInvoice'" class="font-montserrat"> {{totalWithoutTax}} </span>   
+       <span *ngIf="tempType=='quotations'" class="font-main"> {{invoice?.user_currency}} </span> 
+       <span *ngIf="tempType=='invoice' || tempType=='AdminInvoice' || tempType=='ClientInvoice' || tempType=='credit'" class="font-main"> {{invoice?.currency}} </span> 
+     </h6>
+  </div>
+
+  <div *ngIf="InvoiceType != 7  && tempType != 'voucher'" class="align-items-center d-flex flex-column flex-wrap  justify-content-around p-1 text-center gap-2" 
+  [style.width.%]="25"
+  [ngClass]="{
+    'totalI_1':(InvoiceType === 1 || InvoiceType === 4 ),
+    'totalI_2':(InvoiceType === 2 || InvoiceType === 5),
+    'totalI_3':(InvoiceType === 3 || InvoiceType === 6)
+    
+  }">
+    <h6 class=" fw-bold"> {{'COMMON.TOTALTAXABLEAMOUNT'|translate}} </h6>
+    <h6 class="fw-bold"> 
+       <span *ngIf="tempType!='subsInvoice'" class="font-montserrat"> {{totalWithoutTax}} </span>   
+       <span *ngIf="tempType=='subsInvoice'" class="font-montserrat"> {{invoice?.amount}} </span> 
+       <span *ngIf="tempType=='subsInvoice'">{{'COMMON.SAR' | translate}}</span>  
+  
+       <span *ngIf="tempType=='quotations'" class="font-main"> {{invoice?.user_currency}} </span> 
+       <span *ngIf="tempType=='invoice' || tempType=='AdminInvoice' || tempType=='ClientInvoice' || tempType=='credit' || tempType=='creditAdmin'" class="font-main"> {{invoice?.currency}} </span> 
+     </h6>
+  </div>
+
+  <div *ngIf="InvoiceType != 7" class="align-items-center d-flex flex-column flex-wrap  justify-content-around p-1 text-center gap-2"
+  [style.width.%]="25"
+  [ngClass]="{
+    'totalII_1':(InvoiceType === 1 || InvoiceType === 4 ),
+    'totalII_2':(InvoiceType === 2 || InvoiceType === 5),
+    'totalII_3':(InvoiceType === 3 || InvoiceType === 6)
+    
+  }">
+    <h6 class=" fw-bold"> {{'COMMON.TOTALTAX'|translate}} </h6>
+    <h6 class="fw-bold"> 
+      <span *ngIf="tempType!='subsInvoice'" class="font-montserrat"> {{totalTax}}  </span>  
+      <span *ngIf="tempType=='subsInvoice'" class="font-montserrat"> {{invoice?.total_tax}} </span> 
+      <span *ngIf="tempType=='subsInvoice'">{{'COMMON.SAR' | translate}}</span>  
+      <span *ngIf="tempType=='quotations'" class="font-main"> {{invoice?.user_currency}} </span> 
+      <span *ngIf="tempType=='invoice' || tempType=='AdminInvoice' || tempType=='ClientInvoice' || tempType=='credit' || tempType=='creditAdmin'" class="font-main"> {{invoice?.currency}} </span> 
+      </h6>
+  </div>
+
+  <div class="align-items-center fw-bold
+  d-flex flex-column flex-wrap  justify-content-around p-1 text-center gap-2"
+  [style.width.%]="25" 
+  [ngClass]="{
+    'totalIII_1':(InvoiceType === 1 || InvoiceType === 4 || InvoiceType === 7 ),
+    'totalIII_2':(InvoiceType === 2 || InvoiceType === 5),
+    'totalIII_3':(InvoiceType === 3 || InvoiceType === 6)
+    
+  }">
+    <h6 class="fw-bold">  {{'COMMON.TOTAL'|translate}} </h6>
+    <h6 class=" fw-bold">
+       <span  class="font-montserrat"> {{invoice?.total}}  </span> 
+       <span *ngIf="tempType=='subsInvoice'">{{'COMMON.SAR' | translate}}</span>  
+       <span *ngIf="tempType=='quotations'" class="font-main"> {{invoice?.user_currency}} </span> 
+       <span *ngIf="tempType=='invoice' || tempType=='AdminInvoice' || tempType=='ClientInvoice' || tempType=='credit' || tempType=='creditAdmin'" class="font-main"> {{invoice?.currency}} </span> 
+       </h6>
+  </div>
+
+ 
+</div>
+<!-- [(ngModel)]="invoice.notes" -->
+<div *ngIf="tempType=='quotations'" class="py-4">
+  <label for="invoiceNumber" class="fw-semibold"> {{'COMMON.NOTES'|translate}} </label>
+   <textarea name="" id=""   placeholder="ملاحظات"
+   [style.width.%]="100" [style.heigth.px]="120"   [style.resize]="'none'"
+   class="form-control fw-semibold py-2 mt-2 inputDiv"></textarea>
+
+</div>
+
+<!-- details 5  QRCode -->
+<div *ngIf="tempType!='AdminInvoice'" class="py-2 text-center">
+  <qrcode [qrdata]="myAngularxQrCode" class="QRcode" [width]="100" [allowEmptyString]="true"></qrcode>
+</div>
+<div *ngIf="filgrane==0" class="d-flex justify-content-end">
+
+  <div *ngIf="stamp" class="mb-3 w-50">
+    <span class="pb-2">{{'COMMON.STAMP'|translate}} :</span>
+    <div class="text-center">
+        <img [src]="stamp" id="logo" width="65" height="65" alt="">
+    </div>
+   </div>
+
+</div>
+
+<div class="pt-3">
+  <p class="fw-bold px-3 text-end"> {{'COMMON.ADDEDBYFATORAH'|translate}}</p>
+</div>
+
+
+
+
+<div *ngIf="tempType=='subsInvoice'" class="d-flex  justify-content-center ms-3 gap-3 pt-4 details_2">
+  <div class="row mt-2 gap-3">
+    <div class="col-md-9 h-69px d-flex justify-content-center card borderRadius_20px bomdhadow-10">
+      <div class="d-flex">
+        <p>  {{'INVOICE.INVOICENUMBER'|translate}} &nbsp; : &nbsp;</p>
+        <p>{{invoice?.id}}</p>
+      </div>
+    </div>
+    <div class="col-md-9 h-69px d-flex justify-content-center card borderRadius_20px bomdhadow-10">
+      <div class="d-flex">
+        <p> {{'COMMON.QUANTITY'|translate}} &nbsp; : &nbsp;</p>
+        <p>1</p>
+      </div>
+    </div>
+    <div class="col-md-9 h-69px d-flex justify-content-center card borderRadius_20px bomdhadow-10">
+      <div class="d-flex">
+        <p>{{'COMMON.DATE'|translate}}&nbsp; : &nbsp; </p>
+        <p> {{invoice?.date}} </p>
+      </div>
+    </div>
+    <div class="col-md-9 h-69px d-flex justify-content-center card borderRadius_20px bomdhadow-10">
+      <div class="d-flex">
+        <p>  {{'COMMON.AMOUNT'|translate}} &nbsp; : &nbsp; </p>
+        <p> {{invoice?.amount}} </p>
+      </div>
+
+    </div>
+    <div class="col-md-9 h-69px d-flex justify-content-center card borderRadius_20px bomdhadow-10">
+      <div class="d-flex">
+        <p> {{'COMMON.TOTALTAX'|translate}} &nbsp;: &nbsp;</p>
+        <p>{{invoice?.total_tax}}</p>
+      </div>
+
+    </div>
+    <div class="col-md-9 h-69px d-flex justify-content-center card borderRadius_20px bomdhadow-10">
+      <div class="d-flex">
+        <p>{{'COMMON.DISCOUNT'|translate}} &nbsp; : &nbsp; </p>
+        <p>{{invoice?.discount}}</p>
+      </div>
+
+    </div>
+    <div class="col-md-9 h-69px d-flex justify-content-center card borderRadius_20px bomdhadow-10">
+      <div class="d-flex">
+        <p>{{'COMMON.TOTAL'|translate}} &nbsp; : &nbsp; </p>
+        <p>{{invoice?.total}}</p>
+      </div>
+
+    </div>
+    <div class="col-md-9 h-69px d-flex justify-content-center card borderRadius_20px bomdhadow-10">
+      <div class="d-flex">
+        <p>{{'COMMON.DESCRIPTION'|translate}} &nbsp; : &nbsp; </p>
+        <p>  {{'COMMON.PLANE'|translate}} {{invoice?.details?.plan_name }} {{'COMMON.PLANEFROM'|translate}} {{invoice?.details?.from }} {{'COMMON.TO'|translate}} {{invoice?.details?.to}}</p>
+      </div>
+
+    </div>
+    <div class="col-md-9 h-69px d-flex justify-content-center card borderRadius_20px bomdhadow-10">
+      <div class="d-flex">
+        <p> {{'COMMON.PAYMENTCARD'|translate}} &nbsp; : &nbsp; </p>
+        <p>{{invoice?.payment_method.method}}</p>
+      </div>
+
+    </div>
+
+    </div>
+</div>
+<div *ngIf="tempType=='voucher'" class="d-flex ms-3 gap-3 pt-4 details_2">
+  <div class="row mt-2 gap-3 w-100">
+    <div class=" h-69px d-flex justify-content-center card borderRadius_20px bomdhadow-10">
+      <div class="d-flex">
+        <p> {{'RECEITVOUCHERDETAILS.VOUCHERNUMEBR'|translate}} &nbsp; : &nbsp; </p>
+        <p>{{invoice?.number}}</p>
+      </div>
+    </div>
+    <div class=" h-69px d-flex justify-content-center card borderRadius_20px bomdhadow-10">
+      <div class="d-flex">
+        <p> {{'COMMON.AMOUNT'|translate}} &nbsp; : &nbsp; </p>
+        <p>{{invoice?.amount}}</p>
+      </div>
+    </div>
+    <div class=" h-69px d-flex justify-content-center card borderRadius_20px bomdhadow-10">
+      <div class="d-flex">
+        <p> {{'COMMON.RECEIVEDAT'|translate}} &nbsp; :  &nbsp; </p>
+        <p> {{invoice?.received_at}} </p>
+      </div>
+    </div>
+    <div class=" h-69px d-flex justify-content-center card borderRadius_20px bomdhadow-10">
+      <div class="d-flex">
+        <p>  {{'COMMON.PAYMENTMETHOD'|translate}} &nbsp; : &nbsp; </p>
+        <p> {{invoice?.payment_method}} </p>
+      </div>
+
+    </div>
+    <div class=" h-69px d-flex justify-content-center card borderRadius_20px bomdhadow-10">
+      <div class="d-flex">
+        <p>{{'COMMON.DESCRIPTION'|translate}} &nbsp; : &nbsp; </p>
+        <p>{{invoice?.description}}</p>
+      </div>
+
+    </div>
+
+
+    </div>
+</div>
+ </div>
+
+
+ <div class="h-auto" [ngClass]="{
+  'w-20 dark-purple-bg invoiceType_4':InvoiceType === 4,
+  'd-none':InvoiceType != 4
+ }">
+
+
+<div *ngIf="InvoiceType!=7" class="d-flex justify-content-center gap-3 details_2 align-items-center gap-5 flex-column" [style.marginTop.%]="80">
+    
+  <div class="align-items-center d-flex flex-column flex-wrap  justify-content-around p-4 text-center gap-2" 
+  [style.width.%]="60"
+  [ngClass]="{
+    'flex-nowrap w-90':(InvoiceType == 4),
+    'invoiceDetailsI_1 invoiceDetails1Div':(InvoiceType === 1 || InvoiceType === 4 ),
+    'invoiceDetailsI_2 invoiceDetails2Div':(InvoiceType === 2 || InvoiceType === 5),
+    'invoiceDetailsI_3 invoiceDetails3Div':(InvoiceType === 3 || InvoiceType === 6)
+    
+  }">
+    <h6 class=" fw-bold"> {{'ADDINVOICE.INVOICENUMBER' |translate}}</h6>
+    <h6 class="font-montserrat fw-bold"> {{invoice?.number}}  </h6>
+  </div>
+
+  <div class="align-items-center d-flex flex-column flex-wrap  justify-content-around p-4 text-center gap-2"
+  [style.width.%]="60"
+  [ngClass]="{
+     'flex-nowrap w-90':(InvoiceType == 4),
+    'invoiceDetailsII_1 invoiceDetails1Div':(InvoiceType === 1 || InvoiceType === 4 ),
+    'invoiceDetailsII_2 invoiceDetails2Div':(InvoiceType === 2 || InvoiceType === 5),
+    'invoiceDetailsII_3 invoiceDetails3Div':(InvoiceType === 3 || InvoiceType === 6)
+    
+  }">
+    <h6 class=" fw-bold">  {{ 'CUSTOMERACCOUNTREPORT.CREATE_DATE' | translate }}</h6>
+    <h6 *ngIf="tempType=='invoice' || tempType=='AdminInvoice' || tempType=='ClientInvoice'" class="font-montserrat fw-bold"> {{invoice?.created_at}}  </h6>
+    <h6 *ngIf="tempType=='quotation' || tempType=='credit'" class="font-montserrat fw-bold"> {{invoice?.issue_date}}  </h6>
+  </div>
+
+  <div *ngIf="tempType!='subsInvoice'" class="align-items-center fw-bold
+  d-flex flex-column flex-wrap  justify-content-around p-4 text-center gap-2"
+  [style.width.%]="60"
+  [ngClass]="{
+     'flex-nowrap w-90':(InvoiceType == 4),
+    'invoiceDetailsIII_1 invoiceDetails1Div':(InvoiceType === 1 || InvoiceType === 4 ),
+    'invoiceDetailsIII_2 invoiceDetails2Div':(InvoiceType === 2 || InvoiceType === 5),
+    'invoiceDetailsIII_3 invoiceDetails3Div':(InvoiceType === 3 || InvoiceType === 6)
+    
+  }">
+    <h6 class="fw-bold"> {{ 'CUSTOMERACCOUNTREPORT.DUE_DATE' | translate }}</h6>
+    <h6 *ngIf="tempType=='invoice' || tempType=='AdminInvoice' || tempType=='ClientInvoice'" class="font-montserrat fw-bold"> {{invoice?.invoice_due}}  </h6>
+    <h6 *ngIf="tempType=='quotation' || tempType=='credit'" class="font-montserrat fw-bold"> {{invoice?.due_date}}  </h6>
+  </div>
+
+ 
+</div>
+
+ </div>
+ </div>
+
+
+</div>
+ 
+<div *ngIf="tempType!='simpleInvoiceTemplate' && false" class="d-flex w-100 gap-0 justify-content-center  pageBreak">
+  <div [ngClass]="{
+    'w-80':InvoiceType === 4,
+    'w-100':InvoiceType != 4
+   }">
+   <div class=" px-4 pt-4 fs-14"  *ngIf="invoice?.bank_accounts?.length>0 && InvoiceType!=7 && tempType!='subsInvoice'">
+    <span class="my-3 fw-bold">{{'COMMON.BANKACCOUNTS'|translate}}</span>
+    <div *ngFor="let bank of invoice?.bank_accounts" class="  row d-flex flex-column  mt-1 pb-1">
+      <div class="col-md-7 mb-3 fw-bold">
+        <div class="card infoCard p-3">
+          <div class="d-flex">
+            <p>{{'COMMON.BANKNAME'|translate}} : </p>
+            <p>{{bank?.name}}</p>
+          </div>
+          <div class="d-flex">
+            <p>{{'COMMON.BANKFULLNAME'|translate}} : </p>
+            <p>{{bank?.full_name}}</p>
+          </div>
+          <div class="d-flex">
+            <p>{{'COMMON.IBANNUMBER'|translate}} : </p>
+            <p>{{bank?.number}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+    
+  
+  </div> 
+
+   
+  </div>
+
+  <div class="h-auto" *ngIf="tempType!='voucher'" [ngClass]="{
+    'w-20 dark-purple-bg invoiceType_4':InvoiceType === 4,
+    'd-none':InvoiceType != 4
+    }">
+  
+  
+  <div *ngIf="InvoiceType!=7" class="d-flex justify-content-center gap-3 details_2 align-items-center gap-5 flex-column" [style.marginTop.%]="80">
+      
+    <div class="align-items-center d-flex flex-column flex-wrap  justify-content-around p-4 text-center gap-2" 
+    [style.width.%]="60"
+    [ngClass]="{
+      'flex-nowrap w-90':(InvoiceType == 4),
+      'invoiceDetailsI_1 invoiceDetails1Div':(InvoiceType === 1 || InvoiceType === 4 ),
+      'invoiceDetailsI_2 invoiceDetails2Div':(InvoiceType === 2 || InvoiceType === 5),
+      'invoiceDetailsI_3 invoiceDetails3Div':(InvoiceType === 3 || InvoiceType === 6)
+      
+    }">
+      <h6 class=" fw-bold"> {{'ADDINVOICE.INVOICENUMBER' |translate}}</h6>
+      <h6 class="font-montserrat fw-bold"> {{invoice?.number}}  </h6>
+    </div>
+  
+    <div class="align-items-center d-flex flex-column flex-wrap  justify-content-around p-4 text-center gap-2"
+    [style.width.%]="60"
+    [ngClass]="{
+       'flex-nowrap w-90':(InvoiceType == 4),
+      'invoiceDetailsII_1 invoiceDetails1Div':(InvoiceType === 1 || InvoiceType === 4 ),
+      'invoiceDetailsII_2 invoiceDetails2Div':(InvoiceType === 2 || InvoiceType === 5),
+      'invoiceDetailsII_3 invoiceDetails3Div':(InvoiceType === 3 || InvoiceType === 6)
+      
+    }">
+      <h6 class=" fw-bold">  {{ 'CUSTOMERACCOUNTREPORT.CREATE_DATE' | translate }}</h6>
+      <h6 *ngIf="tempType=='invoice' || tempType=='AdminInvoice' || tempType=='ClientInvoice'" class="font-montserrat fw-bold"> {{invoice?.created_at}}  </h6>
+      <h6 *ngIf="tempType=='quotation' || tempType=='credit'" class="font-montserrat fw-bold"> {{invoice?.issue_date}}  </h6>
+    </div>
+  
+    <div *ngIf="tempType!='subsInvoice'" class="align-items-center fw-bold
+    d-flex flex-column flex-wrap  justify-content-around p-4 text-center gap-2"
+    [style.width.%]="60"
+    [ngClass]="{
+       'flex-nowrap w-90':(InvoiceType == 4),
+      'invoiceDetailsIII_1 invoiceDetails1Div':(InvoiceType === 1 || InvoiceType === 4 ),
+      'invoiceDetailsIII_2 invoiceDetails2Div':(InvoiceType === 2 || InvoiceType === 5),
+      'invoiceDetailsIII_3 invoiceDetails3Div':(InvoiceType === 3 || InvoiceType === 6)
+      
+    }">
+      <h6 class="fw-bold"> {{ 'CUSTOMERACCOUNTREPORT.DUE_DATE' | translate }}</h6>
+      <h6 *ngIf="tempType=='invoice' || tempType=='AdminInvoice' || tempType=='ClientInvoice'" class="font-montserrat fw-bold"> {{invoice?.invoice_due}}  </h6>
+      <h6 *ngIf="tempType=='quotation' || tempType=='credit'" class="font-montserrat fw-bold"> {{invoice?.due_date}}  </h6>
+    </div>
+  
+   
+  </div>
+  
+   </div>
+</div>
+
+
+<div *ngIf="tempType=='simpleInvoiceTemplate'" class="pageBreak p-3">
+
+  <div class="header">
+    <div dir="ltr" class="d-flex justify-content-end" style="padding-top: 7% !important; width: 100%;">
+    <small class="smallwb" style="padding-top: 10px !important;margin-bottom: 15px;">{{'INVOICE.TIME'|translate}}: {{currentDate | date:'yyyy-MM-dd HH:mm:ss'}}  </small>
+  </div>
+  <div class="row text-center">
+    <div class="col-md-12">
+        <h2 style="color:#669FDB !important;" class="fw-bolder">{{'ADDINVOICE.SIMPLIFIEDINVOICE'|translate}}</h2>
+    <h4>{{ invoice?.account_name }}</h4>
+    </div>
+  </div>
+  <div class="d-flex justify-content-between align-items-center flex-wrap">
+    <div >
+        <small class="smallwb"><b>{{'COMMON.ADDRESS'|translate}}</b> : {{ invoice.client_address }}</small><br>
+        <small class="smallwb"><b> {{'COMMON.TAXNUMBER'|translate}}</b> : {{invoice?.client_tax_number}}</small>
+    </div>
+    <div >
+        <small class="smallwb"><b>{{'INVOICE.INVOICENUMBER'|translate}}</b> : {{invoice?.invoice_number}}</small><br>
+        <small class="smallwb"><b>{{'COMMON.ISSUEDATE'|translate}} </b> : {{invoice?.created_at | date:'Y-m-d'}} </small>
+    </div>
+    <div  style="margin-right: -2%">
+      <qrcode [qrdata]="myAngularxQrCode" class="QRcode" [width]="100" [allowEmptyString]="true"></qrcode>
+    </div>
+  
+  </div>
+  </div>
+  <!-- body -->
+    <div class="main_body">
+      <div class="preview">
+        <div>
+
+            <table class="table">
+                <thead class="">
+                    <tr >
+                        <th >
+                            <small class="smallwb">{{'PRODUCTS.DESCRIPTION'|translate }}</small>
+                        </th>
+                        <th >
+                            <small class="smallwb">{{'COMMON.QUANTITY'|translate}}</small>
+                        </th>
+                        <th >
+                            <small class="smallwb">{{'COMMON.PRICE'|translate}}</small>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <tr  *ngFor="let product of invoice.products">
+                      <td ><p class="smallb">{{ product.name }}</p></td>
+                      <td ><p class="smallwb">{{ product.quantity }}</p></td>
+                      <td ><p class="smallwb">{{ product.total }}</p></td>
+                  </tr>
+              </tbody>
+            </table>
+            <table class="table">
+              <tfoot>
+                <tr >
+                    <th class="">
+                      <div class="d-flex justify-content-between">
+                        <small class="smallwb"> الاجمالى({{ invoice.currency }})</small>
+                        <small class="smallwb">{{ invoice.total }}</small>
+                      </div>
+                    </th>
+                </tr>
+                <tr  *ngIf="invoice.with_tax">
+                    <th>
+                        <div class="d-flex justify-content-between">
+                          <small class="smallwb"> يشمال ضريبة القيمة المضافة ({{ invoice.products[0].tax }}%):</small>
+                          <small class="smallwb"> {{ totalTaxes }}</small>
+
+                        </div>
+                    </th>
+                </tr>
+            </tfoot>
+            </table>
+        </div>
+    </div>
+    </div>
+</div>
+
+
+<!-- default templates -->
+<div class="preview " *ngIf="true">
+
+  <div class="pageBreak">
+  <!-- header -->
+  <div >
+    <small>{{ invoice?.created_at }}</small>
+</div>
+<div class="row">
+    <div class="col-md-9">
+        <h2 class="text-primary">{{ invoice.title }}</h2>
+        <h2>{{ invoice.account_name ? invoice.account_name : invoice.name }}</h2>
+        {{'COMMON.ADDRESS'|translate}} : {{ invoice.address }} <br>
+        {{'COMMON.TELEPHONE'|translate}} : {{ invoice.telephone }} <br>
+        {{ 'COMMON.FAXNUMBER'|translate}} : {{ invoice.fax }} <br>
+      
+        <span>
+          {{'COMMON.TAXIDENTNUMBER'|translate}} : {{ invoice.tax_number }}
+        </span>  <br>
+    
+    </div>
+    <div class="col-md-3">
+            <img [src]="invoice.logo"  *ngIf="invoice.logo" class="p-2 uploading-image" />
+    </div>
+</div><hr>
+
+<!-- body -->
+<div>
+        <div class="row no-gutters customer-area d-flex justify-content-between">
+            <div class="col-md-6 no-gutters text-center">
+                <div class="row">
+                    <div class="col-md-5"><p class="bg-primary text-white rounded p-1"><b> {{'INVOICE.INVOICENUMBER'|translate}} </b></p></div>
+                    <div class="col-md-7"><p class="bg-light rounded p-1">{{invoice?.number}} </p></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5"><p class="bg-primary text-white rounded p-1"><b>{{'COMMON.ISSUEDATE'|translate}}</b></p></div>
+                    <div class="col-md-7"><p class="bg-light rounded p-1"> {{invoice?.date}} </p></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5"><p class="bg-primary text-white rounded p-1"><b> {{'COMMON.INVOICEDUE'|translate}} </b></p></div>
+                    <div class="col-md-7"><p class="bg-light rounded p-1">{{invoice?.invoice_due}}</p></div>
+                </div>
+            </div>
+            <div class="col-md-6 no-gutters text-center">
+                <div class="row">
+                  <qrcode [qrdata]="myAngularxQrCode" class="QRcode" [width]="100" [allowEmptyString]="true"></qrcode>
+                </div>
+            </div>
+        </div><br>
+        <div class="row no-gutters customer-area d-flex justify-content-between">
+            <div class="col-md-8 no-gutters text-center">
+                <h2> {{'ADDCLIENT.CLIENTINFO'|translate}} </h2>
+                <div class="row">
+                    <div class="col-md-4"><p class="bg-primary text-white rounded p-1"><b>{{'COMMON.CLIENTNAME'|translate}}</b></p></div>
+                    <div class="col-md-8 col-md-8"><p class="bg-light rounded p-1">{{invoice?.client}}</p></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 "><p class="bg-primary text-white rounded p-1"><b>{{'COMMON.ADDRESS'|translate}}</b></p></div>
+                    <div class="col-md-8 col-md-8"><p class="bg-light rounded p-1"> {{invoice?.client_address}} </p></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4"><p class="bg-primary text-white rounded p-1"><b>{{'COMMON.FAX'|translate}}</b></p></div>
+                    <div class="col-md-8 col-md-8"><p class="bg-light rounded p-1">{{invoice?.client_fax}}</p></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 "><p class="bg-primary text-white rounded p-1"><b>{{'COMMON.TELEPHONE'|translate}} </b></p></div>
+                    <div class="col-md-8 "><p class="bg-light rounded p-1"> {{invoice?.client_phone}}</p></div>
+                </div>
+            </div>
+            <!-- <div class="col-md-12 no-gutters">
+                @if ($invoice->isCancelled())
+                    <div class="cancelled">{{ __('invoices.status.cancelled') }}</div>
+                @endif
+            </div> -->
+        </div>
+        <hr>
+        <table class="table">
+            <thead class="bg-primary text-white">
+                <tr>
+                    <th scope="col" class="text-center">{{'COMMON.PRODUCTS'|translate}}</th>
+                    <th scope="col" class="text-center">{{'COMMON.QUANTITY'|translate}}</th>
+                    <th scope="col" class="text-center"> {{'COMMON.PRICE'|translate}}</th>
+                    <th scope="col" class="text-center">{{'COMMON.DISCOUNT'|translate}}</th>
+                    
+                        <th scope="col" *ngIf="invoice.istaxable != 0" class="text-center"> {{'SALESREPORT.TAXABLE_AMOUNT'|translate}}</th>
+                        <th scope="col" *ngIf="invoice.istaxable != 0"  class="text-center">{{'COMMON.TAX'|translate}}</th>
+                  
+                    <th scope="col" class="text-center">{{'COMMON.TOTAL'|translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let product of invoice?.products;let i=index">
+
+                    <th scope="row">{{ product.name }}</th>
+                    <td class="text-center">{{ product.quantity }}</td>
+                    <td class="text-center">{{ product.price }}</td>
+                    <td class="text-center">{{ product.discount ? product.discount : '00.00 '}}</td>
+
+                    <td class="text-center" *ngIf="invoice.istaxable != 0">{{ product.taxable_amount }}</td>
+                    <td class="text-center" *ngIf="invoice.istaxable != 0">{{ product.tax_value }}</td>
+                
+                    <td class="text-center">{{ product.total }}</td>
+                </tr>
+            
+            </tbody>
+            <tfoot>
+              
+                <div *ngIf="invoice.istaxable != 0">
+                  <tr>
+                    <td class="border-0" colspan="4"></td>
+                    <th class="border-0" 
+                      [ngClass]="{
+                        'text-left':language=='ar',
+                        'text-right':language=='en'
+                      }"
+                      colspan="2" scope="row">{{'COMMON.TOTALTAXABLEAMOUNT'|translate}}:</th>
+                    <td class="border-0">{{ totalWithoutTax }}  {{invoice?.currency}}</td>
+                </tr>
+                <tr>
+                    <td class="border-0" colspan="4"></td>
+                    <th class="border-0 "
+                    [ngClass]="{
+                      'text-left':language=='ar',
+                      'text-right':language=='en'
+                    }" colspan="2" scope="row">{{'COMMON.TOTALTAX'|translate}} :</th>
+                    <td class="border-0">{{ totalTax }}  {{invoice?.currency}}</td>
+                </tr>
+                <tr>
+                    <td class="border-0" colspan="4"></td>
+                    <th class="border-0 " 
+                    [ngClass]="{
+                      'text-left':language=='ar',
+                      'text-right':language=='en'
+                    }"colspan="2" scope="row"> {{'COMMON.TOTAL'|translate}} :</th>
+                    <td class="border-0">{{ invoice?.total}}  {{invoice?.currency}}</td>
+                </tr>
+                </div>
+               
+                <div *ngIf="invoice.istaxable == 0">
+                <tr>
+                    <td class="border-0" colspan="3"></td>
+                    <th class="border-0 "
+                    [ngClass]="{
+                      'text-left':language=='ar',
+                      'text-right':language=='en'
+                    }" scope="row"> {{'COMMON.TOTAL'|translate}}:</th>
+                    <td class="border-0">{{invoice?.total}}  {{invoice?.currency}}</td>
+                </tr>
+              </div>
+            </tfoot>
+        </table>
+      
+            <div class="row no-gutters" *ngIf=" invoice.notes">
+                <div class="col-md-12 pageBreak">
+                    <b>{{'COMMON.NOTES'|translate}}</b>: {{ invoice.notes }}
+                </div>
+            </div>
+   
+        <hr>
+        <!-- @if($invoice->user->canUseFeature('bank-accounts')) -->
+            <!-- @if(count($invoice->user->banks) > 0) -->
+                <!-- @if(count($invoice->user->banks) > 1 || count($invoice->products) > 2) -->
+                 
+</div>
+
+<!-- footer -->
+<p class="pageNum" style="margin-top: 0px"> <span class="page" id="pdfkit_page_current"></span>/<span class="topage"
+id="pdfkit_page_count"></span></p>
+
+<div class="row" *ngIf="filgrane==0">
+  <div class="col-md-6 p-3">
+      <img [src]="stamp" class="uploading-image" style="height:150px;width:150px"/>
+  </div>
+</div>
+
+<!-- @if(!$user->onShowFilgrane())
+<div dir="ltr" class="p-3 text-left">
+@lang('website.powered_by', [], 'en')
+{{ link_to_route('index') }}
+@lang('website.all_right_resereved', [], 'en') -->
+<!-- </div> -->
+
+  </div>
+  <div class="row no-gutters page border-white pageBreak">
+    <div class="">
+        <!-- @if ($invoice->isCancelled()) -->
+            <!-- <div class="cancelled">{{ __('invoices.status.cancelled') }}</div> -->
+        <!-- @endif -->
+    </div>
+  <!-- @else -->
+  <div class="row no-gutters"  *ngIf="invoice?.bank_accounts?.length>0" >
+  <!-- @endif -->
+  <div class="col-md-12" >
+    <h3>{{'COMMON.BANKACCOUNTS'|translate}}:</h3>
+   
+    <div  *ngFor="let bank of invoice?.bank_accounts">
+        <b>{{'COMMON.BANKNAME'|translate}}</b>:{{bank?.name}} <br>
+        <b>{{'COMMON.BANKFULLNAME'|translate}}</b>: {{bank?.full_name}} <br>
+        <b>{{'COMMON.IBANNUMBER'|translate}} </b>: {{bank?.number}}
+    </div>
+  
+   
+  </div>
+  </div>
+  
+  </div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+ 

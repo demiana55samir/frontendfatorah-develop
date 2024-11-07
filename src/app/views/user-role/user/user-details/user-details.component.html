@@ -1,0 +1,127 @@
+<!-- ui_fix -->
+<div class="divCont p-0 ps-5 pe-5">
+  <div class="topCards d-flex flex-wrap gap-3 mb-5">
+    <div class="h-119px width-250 d-flex flex-row justify-content-between   boxShadow-25 borderRadius_20px p-3 card">
+        <div class="d-flex flex-column">
+           <span class="text-secondary fs-21 fw-400">{{'INVOICE.INVOICE'|translate}}</span>
+           <span class="fs-48 fw-400">{{client.invoices_count}}</span>
+        </div>
+        <div class="d-flex align-items-center">
+          <img src="../../../../assets/images/user/invoice.png" alt="">
+        </div>
+    </div>
+    <div class="h-119px width-250 d-flex flex-row justify-content-between   boxShadow-25 borderRadius_20px p-3 gap-2 card">
+      <div class="d-flex flex-column">
+         <span [ngClass]="{'fs-18':language=='en'}" class="text-secondary fs-21 fw-400"> {{'RECEIPTVOUCHER.RECEIPTVOUCHER'|translate}}</span>
+         <span [ngClass]="{'fs-33':language=='en'}" class="fs-48 fw-400">{{client.receipts_count}}</span>
+      </div>
+      <div class="d-flex align-items-center">
+        <img src="../../../../assets/images/user/receipt.png" alt="">
+      </div>
+  </div>
+  <div class="h-119px width-250 d-flex justify-content-between   flex-row  boxShadow-25 borderRadius_20px p-3 gap-2 card">
+    <div class="d-flex flex-column">
+       <span class="text-secondary fs-21 fw-400">{{'PRICELIST.PRICEOFFER'|translate}}</span>
+       <span class="fs-48 fw-400">{{client.quotations_count}}</span>
+    </div>
+    <div class="d-flex align-items-center">
+      <img src="../../../../assets/images/user/price-offers.png" alt="">
+    </div>
+</div>
+<div class="h-119px width-250 d-flex justify-content-between  flex-row  boxShadow-25 borderRadius_20px p-3 gap-2 card">
+  <div class="d-flex flex-column">
+     <span class="text-secondary fs-21 fw-400">{{'COMMON.TOTALSALES'|translate}}</span>
+     <span *ngIf="language=='ar'" class="fs-19 fw-400">{{client.total | number:'1.2-2'}} ريال</span>
+     <span *ngIf="language=='en'" class="fs-19 fw-400">{{client.total | number:'1.2-2'}} SAR</span>
+  </div>
+  <div class=" d-flex align-items-center">
+    <img src="../../../../assets/images/user/total.png" alt="">
+  </div>
+</div>
+</div>
+
+<div class="secIII d-flex flex-wrap  gap-5">
+  <div class="cardsII">
+    <div class="mt-4 pb-4 ">
+      <div class="ps-3">
+        <p class="fw-bold">{{'ADDCLIENT.CLIENTINFO'|translate}}</p>
+      </div>
+      <div>
+        <div class="card border-0 infoCard p-3">
+          <div class="d-flex">
+            <p>  {{'COMMON.CLIENTORCOMPANY'|translate}} : </p>
+            <p>{{client.name}}</p>
+          </div>
+          <div class="d-flex">
+            <p>{{'LANDING.EMAIL'|translate}} :</p>
+            <p>{{client.email}}</p>
+           </div>
+          <div class="d-flex">
+            <p>{{'COMMON.TAXIDENTNUMBER'|translate}} : </p>
+            <p>{{client.tax_number}}</p>
+          </div>
+
+          <div class="d-flex row">
+            <div class="col-md-6 d-flex justify-content-start">
+               <p>{{'COMMON.ADDRESS'|translate}} :</p>              
+               <p>{{client.address}}</p>
+              </div>
+            <div class="col-md-6 d-flex justify-content-start">
+               <p>{{'COMMON.CITY'|translate}} :</p>              
+               <p>{{client.city}}</p>
+              </div>
+          </div>
+          <div class="d-flex row">
+            <div class="d-flex col-md-6  justify-content-start">
+               <p>{{'ADDCLIENT.POSTALCODE'|translate}} :</p>              
+               <p>{{client.postal_code}}</p>
+              </div>
+            <div class="d-flex col-md-6  justify-content-start">
+               <p>{{'COMMON.FAXNUMBER'|translate}}  :</p>              
+               <p>{{client.fax}}</p>
+              </div>
+          </div>
+          <div class="d-flex row">
+            <div class="d-flex col-md-6 justify-content-start">
+               <p> {{'COMMON.TELEPHONE'|translate}} :</p>              
+               <p>{{client.phone}}</p>
+              </div>
+            <div class="d-flex col-md-6 justify-content-start">
+               <p> {{'COMMON.PHONE'|translate}} :</p>              
+               <p>{{client.mobile}}</p>
+              </div>
+          </div>
+          <div class="d-flex">
+             <p>{{'COMMON.ADDCLIENTDATE'|translate}} :  </p>             
+             <p>{{client.created_at}}</p>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+  <div class="cardsII borderRadius_20px">
+    <div class="chart mb-5 ">
+      <div *ngIf="chartOptions">
+          <p-card class="chartCard">
+              <p class="fw-400 fw-bold text-dark">
+                {{'COMMON.CLIENTSALESREPORT'|translate}}
+                  <button type="button" class="btn me-2 border-0" placement="top"
+                      ngbTooltip="total number of leads">
+                      <i class="fa-solid fa-circle-info"></i>
+                  </button>
+              </p>
+              <div class="chart" id="chart">
+                  <apx-chart [series]="$any(chartOptions.series)" [chart]="$any(chartOptions.chart)"
+                      [xaxis]="$any(chartOptions.xaxis)" [yaxis]="yaxis"
+                      [dataLabels]="$any(chartOptions.dataLabels)" [grid]="$any(chartOptions.grid)"
+                      [stroke]="$any(chartOptions.stroke)" [title]="$any(chartOptions.title)"
+                      [colors]="['#000000']"></apx-chart>
+              </div>
+          </p-card>
+      </div>
+  </div>
+  </div>
+</div>
+</div>

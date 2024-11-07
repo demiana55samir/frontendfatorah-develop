@@ -1,0 +1,21 @@
+<div *ngIf="item" class="card p-3 borderRadius_30px mb-4">
+    <div class="w-100 borderRadius_30px">
+      <img class="w-100 h-100" [src]="item.image" alt="">
+    </div>
+    <div class=" w-100 d-flex flex-column">
+      <span *ngIf="language=='en'" class="fw-700 fw-bold fs-16 w-100 text-center mb-3">{{item.titleEN}}</span>
+      <span *ngIf="language=='ar'" class="fw-700 fw-bold fs-16 w-100 text-center mb-3">{{item.titleAR}}</span>
+      <span *ngIf="language=='en'" class="fw-600 fs-16">{{item.bodyEN}}</span>
+      <span *ngIf="language=='ar'" class="fw-600 fs-16">{{item.bodyAR}}</span>
+    </div>
+</div>
+<div *ngIf="item1" class="card p-3 borderRadius_30px mb-4">
+    <div class="w-100 borderRadius_30px">
+      <img class="w-100 h-100" [src]="item1.image" alt="">
+    </div>
+    <div class=" w-100 d-flex flex-column">
+      <span class="fw-800 fw-bold light-purple-text fs-39 w-100 text-center mb-3">{{item1.number}}</span>
+      <span *ngIf="language=='en'" class="fw-600 fs-16 w-100 text-center">{{item1.bodyEN}}</span>
+      <span *ngIf="language=='ar'" class="fw-600 fs-16 w-100 text-center">{{item1.bodyAR}}</span>
+    </div>
+</div>

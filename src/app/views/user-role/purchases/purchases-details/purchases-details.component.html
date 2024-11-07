@@ -1,0 +1,470 @@
+<!-- <div class="px-2 px-md-5 px-lg-5 divContainer" [style.paddingTop.%]="7">
+
+  <div>
+    <div class="ps-3">
+      <h2 *ngIf="this.purchase?.status == 1">{{'PURCHASE.VIEWPURCHASEDETAILS' | translate}}</h2>
+      <h2 *ngIf="this.purchase?.status == 0">{{'PURCHASE.VIEWEXPENSEDETAILS' | translate}}</h2>
+    </div>
+    <div class="borderRadius_20px card firstCard px-4 py-3 boxShadow-10 mb-3 mt-4 ">
+      <div class="d-flex  justify-content-between flex-wrap">
+
+        <div class="flex-fill my-auto">
+          <div class=" flex-fill">
+  
+            <div #excludeMe *ngIf="viewOnly" class=" col-md-12 d-flex flex-wrap bottons gap-3">
+              <div class=" btnDiv">
+                <app-button-comp (click)="download()" class="w-100 me-3 fs-16" [name]="'ADDPURCHASE.DOWNLOADRECEIPT' | translate"
+                  image="./assets/logo/download.svg" background_color="#11C387"></app-button-comp>
+              </div>
+            
+              <div class=" btnDiv">
+                <app-button-comp class="w-100 me-3 fs-16" [name]="'ADDPURCHASE.DOWNLOADQRCODE' | translate"
+                  image="./assets/logo/download.svg" background_color="#5C60F5"></app-button-comp>
+              </div>
+            
+              <div class=" btnDiv">
+                <app-button-comp *ngIf="this.purchase?.status == 1" class="w-100 me-3 fs-16" (click)="openModal($event)" [name]="'COMMON.SHAREPURCHASEBTN' | translate"
+                  image="./assets/images/inputs/shareBtn.svg" background_color="#4D4D4D"></app-button-comp>
+                <app-button-comp *ngIf="this.purchase?.status == 0" class="w-100 me-3 fs-16" (click)="openModal($event)" [name]="'COMMON.SHAREEXPENCEBTN' | translate"
+                  image="./assets/images/inputs/shareBtn.svg" background_color="#4D4D4D"></app-button-comp>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex flex-column mx-auto ">
+          <img src="./assets/images/QR_code_for_mobile_English_Wikipedia 30.png" width="180" height="180" alt="">
+        </div>
+        
+      </div>
+        
+        <div class="row mt-2 gap-3 w-100 m-auto">
+          <div class="col-12 col-md-12 col-lg-9 col-xl-9 h-69px d-flex justify-content-center card borderRadius_20px boxShadow-10">
+            <div class="d-flex px-3 flex-wrap">
+              <p class="fw-bold m-0 m-0" *ngIf="this.purchase?.status == 1"> {{'PURCHASE.PURCHASENUMBER' | translate}} :</p>
+              <p class="fw-bold m-0 m-0" *ngIf="this.purchase?.status == 0"> {{'PURCHASE.EXPENSENUMBER' | translate}} :</p>
+              <p class="m-0">{{purchase.number}}</p>
+            </div>
+          </div>
+          <div class="col-12 col-md-12 col-lg-9 col-xl-9 h-69px d-flex justify-content-center card borderRadius_20px boxShadow-10">
+            <div class="d-flex px-3 flex-wrap">
+              <p class="fw-bold m-0">  {{'ADDPURCHASE.CODENUM' | translate}} :</p>
+              <p class="m-0">{{purchase.code_number}}</p>
+            </div>
+          </div>
+          <div class="col-12 col-md-12 col-lg-9 col-xl-9 h-69px d-flex justify-content-center card borderRadius_20px boxShadow-10">
+            <div class="d-flex px-3 flex-wrap">
+              <p class="fw-bold m-0">{{'ADDPURCHASE.AMOUNT' | translate}} :  </p>
+              <p class="m-0">{{purchase.currency}} {{ purchase.total | number:'1.2-2' }}</p>
+            </div>
+          </div>
+          <div class="col-12 col-md-12 col-lg-9 col-xl-9 h-69px d-flex justify-content-center card borderRadius_20px boxShadow-10">
+            <div class="d-flex px-3 flex-wrap">
+              <p class="fw-bold m-0">  {{'ADDPURCHASE.PURCHASEDATE' | translate}}  :</p>
+              <p class="m-0"> {{purchase.date}} </p>
+            </div>
+
+          </div>
+          <div class="col-12 col-md-12 col-lg-9 col-xl-9 h-69px d-flex justify-content-center card borderRadius_20px boxShadow-10">
+            <div class="d-flex px-3 flex-wrap">
+              <p class="fw-bold m-0"> {{'ADDPURCHASE.PAYMENTMETHOD' | translate}} :</p>
+              <p class="m-0">{{purchase.payment_method}}</p>
+            </div>
+
+          </div>
+          <div class="col-12 col-md-12 col-lg-9 col-xl-9 h-69px d-flex justify-content-center card borderRadius_20px boxShadow-10">
+            <div class="d-flex px-3 flex-wrap">
+              <p class="fw-bold m-0"> {{'ADDPURCHASE.SUPPLIER' | translate}} :</p>
+              <p class="m-0">{{purchase.supplier_name}}</p>
+            </div>
+          </div>
+          <div class="col-12 col-md-12 col-lg-9 col-xl-9 h-69px d-flex justify-content-center card borderRadius_20px boxShadow-10">
+            <div class="d-flex px-3 flex-wrap">
+              <p class="fw-bold my-auto fs-18">{{'COMMON.NOTES'|translate}}  : </p>
+              <p class="my-auto">{{purchase.notes}}</p>
+            </div>
+          </div>
+
+         </div>
+  </div>
+
+
+</div>
+
+</div> -->
+
+<button hidden #shareModel type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#shareModel">
+
+</button>
+ <div class="modal fade" id="shareModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="text-end" *ngIf="this.purchase?.status == 1">{{'COMMON.SHAREPURCHASEBTN'|translate}}</span>
+        <span class="text-end" *ngIf="this.purchase?.status == 0">{{'COMMON.SHAREEXPENCEBTN'|translate}}</span>
+      </div>
+      <div class="modal-body">
+        <div class="input-group">
+          <div (click)="copyLink($event)" class="input-group-prepend">
+            <span class="btn input-group-text main-purple-bg badge-primary text-white" >{{'COMMON.COPYLINK'|translate}}</span>
+          </div> 
+          <input type="text" #textInput readonly="readonly" value="" class="form-control">
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
+
+<button hidden #sendToClientModel type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#sendToClient">
+
+</button>
+ <div class="modal fade" id="sendToClient" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <form [formGroup]="sendToClientForm" (ngSubmit)="sendToclient()" action="">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="text-end">{{'COMMON.SENDTOCLIENT'|translate}}</span>
+        </div>
+        <div class="modal-body">
+          <div >
+            <span> {{'LANDING.EMAIL'|translate}}<span style="color:red">*</span></span>
+            <input  formControlName="email" type="text" value="" class="form-control">
+          </div>
+        </div>
+        <div class="modal-footer">
+        <app-button-comp type="button" [btnType]="'secondary'"   data-bs-dismiss="modal" aria-label="Close" #closePoPModal  [name]="'تراجع'" [color]="'#1B1464'"></app-button-comp>
+          <app-button-comp type="submit"  [btnType]="'main'" [name]="'COMMON.SENDTOCLIENT'|translate" [background_color]="'#1B1464'"></app-button-comp>
+      
+      </div>
+      </div>
+    </div>
+  </form>
+</div> 
+
+
+
+
+  <div class="divCont">
+    <div class="title mb-3">
+      <h2 *ngIf="this.purchase?.status == 1">{{'PURCHASE.VIEWPURCHASEDETAILS' | translate}}</h2>
+      <h2 *ngIf="this.purchase?.status == 0">{{'PURCHASE.VIEWEXPENSEDETAILS' | translate}}</h2>
+    </div>
+  
+    <div class="d-flex  justify-content-between flex-wrap p-3">
+
+      <div class="flex-fill my-auto">
+        <div class=" flex-fill">
+
+          <div #excludeMe *ngIf="viewOnly" class=" col-md-12 d-flex flex-wrap bottons gap-3">
+            <div class=" btnDiv">
+              <app-button-comp (click)="download()" class="w-100 me-3 fs-16" [name]="'ADDPURCHASE.DOWNLOADRECEIPT' | translate"
+                image="./assets/logo/download.svg" background_color="#11C387"></app-button-comp>
+            </div>
+          
+            <!-- <div class=" btnDiv">
+              <app-button-comp class="w-100 me-3 fs-16" [name]="'ADDPURCHASE.DOWNLOADQRCODE' | translate"
+                image="./assets/logo/download.svg" background_color="#5C60F5"></app-button-comp>
+            </div> -->
+          
+            <div class=" btnDiv">
+              <app-button-comp *ngIf="this.purchase?.status == 1" class="w-100 me-3 fs-16" (click)="openModal($event)" [name]="'COMMON.SHAREPURCHASEBTN' | translate"
+                image="./assets/images/inputs/shareBtn.svg" background_color="#4D4D4D"></app-button-comp>
+              <app-button-comp *ngIf="this.purchase?.status == 0" class="w-100 me-3 fs-16" (click)="openModal($event)" [name]="'COMMON.SHAREEXPENCEBTN' | translate"
+                image="./assets/images/inputs/shareBtn.svg" background_color="#4D4D4D"></app-button-comp>
+            </div>
+            <div class=" btnDiv" *ngIf="this.purchase?.status == 1 && (this.purchase.unpaid_converted && this.purchase.unpaid_converted > 0)">
+              <app-button-comp class="w-100 me-3 fs-16"    data-bs-toggle="modal" data-bs-target="#addNewModal" 
+               [name]="'ADDPURCHASE.ADDNEWPAYMENT'| translate"
+                image="./assets/logo/newPayment.svg" background_color="#6759FF"></app-button-comp>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+    </div>
+    <div class="card ligth-blue-Bg boxShadow-10 borderRadius_20px">
+
+      <!-- <div class="d-flex  justify-content-between flex-wrap p-3">
+
+        <div class="flex-fill my-auto">
+          <div class=" flex-fill">
+  
+            <div #excludeMe *ngIf="viewOnly" class=" col-md-12 d-flex flex-wrap bottons gap-3">
+              <div class=" btnDiv">
+                <app-button-comp (click)="download()" class="w-100 me-3 fs-16" [name]="'ADDPURCHASE.DOWNLOADRECEIPT' | translate"
+                  image="./assets/logo/download.svg" background_color="#11C387"></app-button-comp>
+              </div>
+            
+              <div class=" btnDiv">
+                <app-button-comp class="w-100 me-3 fs-16" [name]="'ADDPURCHASE.DOWNLOADQRCODE' | translate"
+                  image="./assets/logo/download.svg" background_color="#5C60F5"></app-button-comp>
+              </div>
+            
+              <div class=" btnDiv">
+                <app-button-comp *ngIf="this.purchase?.status == 1" class="w-100 me-3 fs-16" (click)="openModal($event)" [name]="'COMMON.SHAREPURCHASEBTN' | translate"
+                  image="./assets/images/inputs/shareBtn.svg" background_color="#4D4D4D"></app-button-comp>
+                <app-button-comp *ngIf="this.purchase?.status == 0" class="w-100 me-3 fs-16" (click)="openModal($event)" [name]="'COMMON.SHAREEXPENCEBTN' | translate"
+                  image="./assets/images/inputs/shareBtn.svg" background_color="#4D4D4D"></app-button-comp>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex flex-column mx-auto ">
+          <img src="./assets/images/QR_code_for_mobile_English_Wikipedia 30.png" width="180" height="180" alt="">
+        </div>
+        
+      </div> -->
+      <!-- <div class="HLine"></div> -->
+      <div class="p-3">
+        <h5 class="fw-bold" *ngIf="this.purchase?.status == 1">{{'PURCHASE.DETAILSPURCHASE' | translate}}</h5>
+        <h5 class="fw-bold" *ngIf="this.purchase?.status == 0">{{'PURCHASE.DETAILSEXPENSE' | translate}}</h5>
+
+        <div class="d-flex flex-wrap justify-content-center justify-content-lg-start justify-content-md-start py-4">
+          <app-button-comp *ngIf="purchase.has_taxable_inoivce == 1" [btnType]="'main'" class="me-3 addBottons" [name]="'PURCHASE.TAXABLE'|translate" [color]="'#5C60F5'"></app-button-comp>
+          <app-button-comp *ngIf="purchase.has_taxable_inoivce == 0" [btnType]="'main'" class="me-3 addBottons" [name]="'PURCHASE.NONTAXABLE'|translate" [color]="'#5C60F5'"></app-button-comp>
+          <app-button-comp *ngIf="purchase.is_imported == 1" [btnType]="'main'" class="me-3 addBottons" [name]="'PURCHASE.IMPORTED'|translate" [color]="'#5C60F5'"></app-button-comp>
+          <app-button-comp *ngIf="purchase.is_imported == 0" [btnType]="'main'" class="me-3 addBottons" [name]="'PURCHASE.NOTIMPORTED'|translate" [color]="'#5C60F5'"></app-button-comp>
+        </div>
+
+        <div class="secIII d-flex flex-wrap  gap-5">
+          <div class="cardsII">
+            <div class="h-100">
+              <!-- <div class="ps-3">
+                <p class="fw-bold">{{'ADDCLIENT.CLIENTINFO'|translate}}</p>
+              </div> -->
+             
+                <div class="card border-0 infoCard p-3 h-100 d-flex flex-column justify-content-around">
+                  <div class="fs-16 fw-400 mx-0 my-2" *ngIf="purchase?.expenses_types?.name">
+                    <div class="form-label fs-16 fw-400 mb-1">
+                      <span class="fw-bold" *ngIf="this.purchase?.status == 1"> {{'ADDPURCHASE.PURCHASETYPE'|translate}} </span>
+                      <span class="fw-bold" *ngIf="this.purchase?.status == 0"> {{'ADDPURCHASE.EXPENSESTYPE'|translate}} </span>
+                      :
+                      <span>{{ purchase.expenses_types.name }}</span>
+                    </div>
+                
+                  </div>
+                  <div class="fs-16 fw-400 mx-0 my-2" *ngIf="this.purchase?.status == 1 && purchase?.code_number">
+                    <div class="form-label fs-16 fw-400 mb-1 ">
+                      <span class="fw-bold">{{'ADDPURCHASE.INVOICE_NUMBER'|translate}}</span>
+                        :
+                      <span>{{ purchase.code_number }}</span>
+                  </div>
+                  </div>
+                  <div class="fs-16 fw-400 mx-0 my-2" *ngIf="this.purchase?.status == 1 &&  purchase.purchase_date">
+                    <div class="form-label  fs-16 fw-400 mb-1 ">
+                      <span class="fw-bold"> {{'ADDPURCHASE.INVOICEDATE'|translate}}</span>
+                      :
+                      <span>{{ purchase.purchase_date }}</span>
+                      </div>
+                  </div>
+                  <div class="fs-16 fw-400 mx-0 my-2" *ngIf="purchase.supplier_name">
+                    <div class="form-label fs-16 fw-400"> 
+                       <span class="fw-bold">{{'SUPPLIER.SINGLESUPPLIER'|translate}} </span> 
+                       :
+                       <span>{{ purchase.supplier_name }}</span>
+                    </div>
+                  </div>
+                  <div class="fs-16 fw-400 mx-0 my-2" *ngIf="purchase.recipient">
+                    <span class="fw-bold">
+                      {{'ADDPURCHASE.RECIPIENTNAME'|translate}}
+                    </span>  :
+                    <span>{{ purchase.recipient }}</span>
+                  </div>
+                  <div class="fs-16 fw-400 mx-0 my-2" *ngIf="purchase.date">
+                    <span class="fw-bold"> {{'ADDPURCHASE.ISSUEDATE'|translate}} </span>
+                    :
+                    <span>{{ purchase.date }}</span>
+                  </div>
+                  <div class="fs-16 fw-400 mx-0 my-2" *ngIf="purchase.payment_method">
+                    <div class="form-label fs-16 fw-400 mb-2 ">
+                      <span class="fw-bold"> {{'ADDPURCHASE.PAYMENTMETHOD'|translate}}  </span>
+                      :
+                      <span>{{ purchase.payment_method }}</span>
+                    </div>
+                  </div>
+                  <div class="fs-16 fw-400 mx-0 my-2" *ngIf="purchase.tax_exemption_reason">
+                    <div class="form-label fs-16 fw-400 mb-2 ">
+                      <span class="fw-bold"> {{'COMMON.ZEROTAXCATG' | translate}} </span>
+                      :
+                      <span>{{ purchase.tax_exemption_reason }}</span>
+                    </div>
+                  </div>
+                </div>
+        
+
+            </div>
+          </div>
+          <div class="cardsII borderRadius_20px">
+          
+            <div class="card border-0 infoCard p-3 h-100 d-flex flex-column justify-content-around">
+              <div class="fs-16 fw-400 mx-0 my-2" *ngIf="purchase.currency">
+                <div class="form-label fs-16 fw-400 mb-1 " >
+                  <span class="fw-bold"> {{'ADDPURCHASE.CURRENCY'|translate}}</span>
+                  :
+                  <span> {{ purchase.currency }}</span>
+                </div>
+              </div>
+              <div class="fs-16 fw-400 mx-0 my-2" *ngIf="purchase.conversion_rate">
+                <div class="form-label fs-16 fw-400 mb-1 ">
+                  <span class="fw-bold"> {{'ADDPURCHASE.EXCHANGERATE'|translate}}</span>
+                  :
+                  <span> {{ purchase.conversion_rate }}</span>
+                </div>
+              </div>
+              <div class="fs-16 fw-400 mx-0 my-2" *ngIf="(purchase?.converted_amount ?? 0) >= 0">
+                <div class="form-label  fs-16 fw-400 mb-1 ">
+                  <span class="fw-bold"> {{'ADDPURCHASE.AMOUNT'|translate}} </span>
+                  :
+                  <span> {{ purchase.converted_amount }} </span>
+                </div>
+    
+              </div>
+              <div class="fs-16 fw-400 mx-0 my-2" *ngIf="(purchase?.total ?? 0) >= 0 ">
+                <div class="form-label  fs-16 fw-400 mb-1 ">
+                  <span class="fw-bold"> {{'ADDPURCHASE.AMOUNT'|translate}} ( {{'COMMON.SAR'|translate}} ) </span>
+                  :
+                  <span>{{ purchase.total }}</span>
+                </div>
+              </div>
+              <div class="fs-16 fw-400 mx-0 my-2" *ngIf="purchase.tax_rate  != undefined || purchase.tax_rate != null">
+                <div class="form-label  fs-16 fw-400 mb-1 ">
+                  <span class="fw-bold"> {{'ADDPURCHASE.TAXEXEMPTION'|translate}}</span>
+                  :
+                  <span *ngIf="purchase.tax_rate >= 0"> {{ purchase.tax_rate }} %</span>
+                  <span *ngIf="purchase.tax_rate < 0"> {{'PURCHASE.EXEMPT'|translate}} </span>
+                  <!-- <span *ngIf="purchase.tax_rate == 0"> {{'PURCHASE.ZEROTAX'|translate}} </span> -->
+                </div>
+              </div>
+              <div class="fs-16 fw-400 mx-0 my-2" *ngIf="this.purchase?.status == 1 && (purchase?.tax_after_tax ?? 0) >= 0 ">
+                <div class="form-label  fs-16 fw-400 mb-1">
+                  <span class=" fw-bold"> {{'ADDPURCHASE.TOTALAMOUNT'|translate}}</span>
+                  :
+                  <span>{{ purchase.tax_after_tax }}</span>
+                </div>
+              </div>
+            </div>
+           
+
+          </div>
+        </div>
+   
+      </div>
+  
+      <div class="HLine"></div>
+      <div class="row m-3" style="margin-bottom: 80px !important;">
+  
+        <div *ngIf="this.purchase?.status == 1 && addedPayments.length > 0">
+          <label class="form-label  fs-16 fw-400 mb-1 fw-bold"> {{'ADDPURCHASE.PAYMENTSLIST'|translate}}  </label>
+        
+          <!--  for wide Screen  PaymentsCard-->
+          <div class="me-4 mt-4 ms-2  wideScreen d-flex align-items-center  border-2 gap-2 flex-wrap ">
+           <div class="flex-fill">
+            <p> {{'ADDPURCHASE.PAYMENTNAME'|translate}} </p>
+           </div>
+           <div class="flex-fill d-flex ">
+             <p> {{'ADDPURCHASE.PAYMENTAMOUNT'|translate}}</p>
+            </div>
+           <div class="flex-fill d-flex ">
+             <p> {{'ADDPURCHASE.PAYMENTAMOUNT'|translate}} ( {{'COMMON.SAR'|translate}} )</p>
+            </div>
+          </div>
+   
+          <!-- labels inside white box for small Screen  PaymentsCard-->
+         <div  *ngFor="let product of addedPayments; let i = index" class="py-2 m-sm-auto m-auto ms-md-2 me-md-4 mt-2 bg-white shadowCard  d-flex align-items-center  border-2 gap-2 mb-3 flex-wrap">
+   
+           <div class="flex-fill">
+           <p class="smallScreen"> {{'ADDPURCHASE.PAYMENTNAME'|translate}} </p>
+           <div class="card displayCard">
+             <input   styleClass="productInput" type="text" [disabled]="true"
+              [(ngModel)]="product.name" [ngModelOptions]="{standalone:true}"  class="productInput" pInputText />
+           </div>
+           </div>
+           <div class="flex-fill">
+           <p class="smallScreen"> {{'ADDPURCHASE.PAYMENTAMOUNT'|translate}} </p>
+           <div class="card displayCard">
+             <input styleClass="productInput" type="text" appOnlyNumber [disabled]="true"
+               [(ngModel)]="product.converted_amount"  class="productInput" [ngModelOptions]="{standalone:true}"  pInputText />
+           </div>
+           </div>
+           <div class="flex-fill">
+           <p class="smallScreen"> {{'ADDPURCHASE.PAYMENTAMOUNT'|translate}} ( {{'COMMON.SAR'|translate}} )</p>
+           <div class="card displayCard">
+             <input styleClass="productInput" type="text" appOnlyNumber  [disabled]="true"
+             [(ngModel)]="product.paid_amount"  class="productInput" [ngModelOptions]="{standalone:true}"  pInputText />
+           </div>
+           </div>
+         </div>
+        </div>
+       
+  
+         <div class="col-md-12 py-3">
+          <label class="form-label fs-16 fw-400 mb-1 fw-bold">{{'ADDPURCHASE.NOTES'|translate}}</label>
+          <textarea resize="false" class="form-control no-resize" readonly [(ngModel)]="purchase.notes" 
+            placeholder="{{'ADDPURCHASE.NOTES'|translate}}"  style="height: 100px" id="validationTextarea"></textarea>
+         </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+  <div class="modal fade" id="addNewModal" tabindex="-1" aria-labelledby="addNewModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="text-end fw-bold"> {{'ADDPURCHASE.ADDNEWPAYMENT'|translate}} </span>
+         
+  
+          <button type="button" class="btn-close m-0" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+    
+          <form [formGroup]="paymentForm" class="row g-3 needs-validation ContactForm" >
+            
+            <span class="flex-fill" *ngIf="purchase.currency_is_sar != 1 "> <span class=" fw-bold"> {{'ADDPURCHASE.REMAININGAMOUNT'|translate}} ( {{ purchase.currency }} ) </span> : {{ purchase.unpaid_converted }} </span>
+            <span class="flex-fill"> <span class=" fw-bold"> {{'ADDPURCHASE.REMAININGAMOUNT'|translate}} ( {{'COMMON.SAR'|translate}} )</span>  : {{ purchase.remaining_amount }} </span>
+
+  
+            <div class="col-12" formGroupName="name">
+                <label for="validationCustomPhone" class="form-label"> {{'ADDPURCHASE.PAYMENTNAME'|translate}} </label>
+                <input formControlName="ar" type="text" class="form-control"  placeholder="{{'ADDPURCHASE.PAYMENTNAME'|translate}}" id="validationCustomPhone" aria-describedby="inputGroupPrepend" required>
+                <app-Form-errors [control]="paymentForm.get('name.ar')"></app-Form-errors>
+              </div>
+
+
+                <div class="col-12">
+                  <label for="validationCustomPhone" class="form-label"> {{'ADDPURCHASE.PAYMENTAMOUNT'|translate}} ( {{ purchase.currency  }} )</label>
+                  <input formControlName="converted_amount" type="text" 
+                  (ngModelChange)="updateTotalAmount()"
+                  class="form-control" appOnlyNumber placeholder=" {{'ADDPURCHASE.PAYMENTAMOUNT'|translate}}" id="validationCustomPhone" aria-describedby="inputGroupPrepend" required>
+                  <app-Form-errors [control]="paymentForm.controls['converted_amount']"></app-Form-errors>
+                </div>
+  
+                <div class="col-12" *ngIf="purchase.currency_is_sar != 1 ">
+                  <label for="validationCustomPhone" class="form-label"> {{'ADDPURCHASE.PAYMENTAMOUNT'|translate}} ( {{'COMMON.SAR'|translate}} )</label>
+                  <input formControlName="paid_amount" [readOnly]="true" type="text" class="form-control" appOnlyNumber placeholder=" {{'ADDPURCHASE.PAYMENTAMOUNT'|translate}} ( {{'COMMON.SAR'|translate}} )" id="validationCustomPhone" aria-describedby="inputGroupPrepend" required>
+                  <app-Form-errors [control]="paymentForm.controls['paid_amount']"></app-Form-errors>
+                </div>
+         
+  
+          
+  
+        <div class="col-12">
+          <div class="d-flex justify-content-end">
+            <!-- data-bs-dismiss="modal" -->
+            <app-button-comp [btnType]="'main'" (click)="AddPayment()" data-bs-dismiss="modal" class="me-2" [name]="'COMMON.ADD'|translate" [background_color]="'#1B1464'"></app-button-comp>
+          </div>
+        </div>
+        </form>
+         
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  

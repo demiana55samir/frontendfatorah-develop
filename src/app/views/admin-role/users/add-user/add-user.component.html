@@ -1,0 +1,128 @@
+<!-- ui_fix -->
+<div class="row AddUsers-container p-0 ps-5 pe-5">
+  <div class="col-md-12 d-flex justify-content-start title">
+   <h2 *ngIf="type!='update'" class="ms-4">{{'ADMIN-USERS.ADDUSER' | translate}}</h2>
+   <h2 *ngIf="type=='update'" class="ms-4">{{'ADMIN-USERS.EDITUDER' | translate}}</h2>
+  </div>
+  <div class="card AddUsers-card mt-3">
+   <div class="px-3 pb-3 d-flex flex-wrap justify-content-between">
+     <div  class=" cardTitle ">
+       <p >{{'ADMIN-USERS.ADDUSERSUBTITLE' | translate}}</p>
+     </div>
+   </div>
+   <form [formGroup]="addUserForm"  autocomplete="off">
+<div class="px-3">
+
+  <div class="col-12 col-md-10 col-lg-10 fullScreenWidth mx-0 my-4 inner-addon right-addon">
+    <label class="form-label  fw-bold mb-1">{{ 'COMMON.CLIENTORCOMPANY' | translate }} 
+      <span style="color: red;">*</span></label>
+    <input type="text" formControlName="name" 
+    [ngClass]="!addUserForm.controls['name'].valid && addUserForm.controls['name'].touched ?'errorInput' : ''"
+    placeholder="{{ 'COMMON.CLIENTORCOMPANY' | translate }}" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100">
+    <app-Form-errors [control]="addUserForm.controls['name']"></app-Form-errors>
+
+  </div>   
+  <div class="col-12 col-md-10 col-lg-10 fullScreenWidth mx-0 my-4 inner-addon right-addon">
+    <label class="form-label  fw-bold mb-1">{{ 'COMMON.PHONE' | translate }} <span style="color: red;">*</span></label>
+    <div class="teleDiv h-46px" >
+      <div [ngClass]="
+      {
+        'phoneInputAR':language=='ar',
+        'phoneInputEN':language=='en'
+    }
+      " class="input-group has-validation">
+      <!-- [ngModelOptions]="{standalone:true}" -->
+
+          <ngx-intl-tel-input 
+          [cssClass]="!addUserForm.controls['phoneObj'].valid && addUserForm.controls['phoneObj'].touched ?'errorInput' : ''"
+          appOnlyNumber
+           class="customngxTele" 
+           id="phone" formControlName="phoneObj"
+          [preferredCountries]="preferredCountries"
+          [enableAutoCountrySelect]="false" 
+          [enablePlaceholder]="true" 
+          [searchCountryFlag]="true"
+          [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+          [selectFirstCountry]="false" 
+          [selectedCountryISO]="CountryISO.SaudiArabia"
+          [maxLength]="9" 
+          [minlength]="9"
+          [phoneValidation]="true" 
+          [separateDialCode]="true"
+          customPlaceholder="{{'COMMON.PHONE'|translate}}"
+        >
+        </ngx-intl-tel-input>
+        
+      </div>
+  </div>
+    <!-- <app-Form-errors [control]="addUserForm.controls['phone']"></app-Form-errors> -->
+    <app-Form-errors [control]="addUserForm.controls['phoneObj']"></app-Form-errors>
+<!-- <span *ngIf="language=='en' && invalidNumber">min 9</span>
+<span *ngIf="language=='ar' && invalidNumber">الحد الأدنى  9</span> -->
+  </div>   
+  <div class="col-12 col-md-10 col-lg-10 fullScreenWidth mx-0 my-4 inner-addon right-addon">
+    <label class="form-label  fw-bold mb-1">{{ 'USERPROFILE.EMAIL' | translate }} <span style="color: red;">*</span></label>
+    <input type="text"  autocomplete="off" name="UserEmail" 
+    [ngClass]="!addUserForm.controls['email'].valid && addUserForm.controls['email'].touched ?'errorInput' : ''"
+    formControlName="email" placeholder="{{ 'USERPROFILE.EMAIL' | translate }}" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100">
+    <app-Form-errors [control]="addUserForm.controls['email']"></app-Form-errors>
+
+  </div>   
+
+  <!-- *ngIf="type!='update'" -->
+  <div class="col-12 col-md-10 col-lg-10 fullScreenWidth mx-0 my-4 inner-addon right-addon">
+    <label class="form-label  fw-bold mb-1">{{'LOGIN.PASSWORD'|translate}} </label>
+    <input type="text" onfocus="this.removeAttribute('readonly');" readonly formControlName="password" [type]="showPassword ? 'text' : 'password'" placeholder="{{'LOGIN.PASSWORD'|translate}}" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100">
+    <i [ngClass]="{'far-ltr':language=='en'}" alt="show" class="text-white far fa-eye eye-show" 
+    (click)="showPassword = !showPassword"
+    [class.hide]="showPassword"></i>
+    <i [ngClass]="{'far-ltr':language=='en'}" alt="hide" class="text-white far fa-eye-slash eye-hide" 
+    (click)="showPassword = !showPassword"
+    [class.hide]="!showPassword"></i> 
+    <app-Form-errors [control]="addUserForm.controls['password']"></app-Form-errors>
+
+
+
+  </div>   
+ 
+  <div class="col-12 col-md-10 col-lg-10 fullScreenWidth mx-0 my-4 ">
+    <label class="form-label  fw-bold mb-1">{{ 'COMMON.ROLE' | translate }} </label>
+    <p-dropdown class="normalDropDown" formControlName="role" placeholder="{{ 'COMMON.ROLE' | translate }}"  optionLabel="name" optionValue="id" [options]="roles" ></p-dropdown>
+    <app-Form-errors [control]="addUserForm.controls['role']"></app-Form-errors>
+
+  </div>
+
+  <div class="col-7 d-flex flex-wrap gap-5 justify-content-between fullScreenWidth mx-0 my-4 ">
+    <div>
+      <label class="form-label  fw-bold mb-1">{{ 'COMMON.STATUS' | translate }} </label>
+      <div class="d-flex gap-1 align-items-center">
+  <input class="form-check-input cursor-pointer" style="    width: 2.4em;
+                height: 2.4em;border-radius: 10px;" 
+                  [ngStyle]="{'--checked-color': primaryColor}"
+                formControlName="status"  type="checkbox" value="" id="flexCheckDefault">      <app-Form-errors [control]="addUserForm.controls['role']"></app-Form-errors>
+  <span>{{ 'TABLE.VERIFIED' | translate }}</span>
+      </div>
+
+    </div>
+    <div *ngIf="type != 'add'">
+      <label class="form-label  fw-bold mb-1">{{ 'ADMIN-USERS.ALLOWACCESS' | translate }} </label>
+      <div class="d-flex gap-1 align-items-center">
+  <input class="form-check-input cursor-pointer" style="width: 2.4em;
+                height: 2.4em;border-radius: 10px;" formControlName="is_banned"
+                  [ngStyle]="{'--checked-color': primaryColor}"
+                type="checkbox" value="" >     
+               <app-Form-errors [control]="addUserForm.controls['role']"></app-Form-errors>
+  <span>{{ 'TABLE.VERIFIED' | translate }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+  <div class="col-11 d-flex justify-content-center justify-content-md-end mt-5">
+    <app-button-comp *ngIf="type!='update'" [btnType]="'main'" (click)="addUser()" style="width: 120px;"  [name]=" 'COMMON.ADD' | translate " [background_color]="btnColor" ></app-button-comp>
+    <app-button-comp *ngIf="type=='update'" [btnType]="'main'" (click)="editUserData()" style="width: 120px;"  [name]=" 'COMMON.EDIT' | translate " [background_color]="btnColor" ></app-button-comp>
+  </div>
+   </form>
+
+</div>
+</div>

@@ -1,0 +1,365 @@
+.btnDiv{
+    width: 194px;
+    @media screen and (max-width:768px){
+        width: 100%;
+    }
+}
+// -======
+.divCont {
+    padding: 10% 3%;
+
+    .closebutton {
+        position: absolute;
+        top: -20%;
+        left: 0;
+
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        border: none;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    ::ng-deep {
+
+        .p-dropdown-item.p-ripple {
+            white-space: normal !important;
+        }
+
+        .p-dropdown {
+            width: 100%;
+            height: 45px;
+            border-radius: 10px !important;
+
+        }
+
+        .p-dropdown .p-dropdown-panel {
+            min-width: 100%;
+            max-width: 280px;
+        }
+
+        .p-calendar .p-inputtext,
+        .p-calendar,
+        textarea {
+            background: #FFFFFF;
+            border: 1px solid #DDDDDD;
+            border-radius: 10px !important;
+            width: 100%;
+        }
+
+        .p-calendar-w-btn .p-datepicker-trigger {
+            width: 10%;
+            background: transparent;
+            color: black;
+            border: none;
+
+            span {
+                font-size: 22px;
+            }
+        }
+
+
+    }
+}
+
+
+.Types {
+    display: flex;
+    flex-wrap: wrap;
+
+    .Type {
+        margin: 4px;
+        border-radius: 10px;
+        text-align: center;
+
+        label {
+            width: 102px;
+            height: 102px;
+            line-height: 3.0em;
+
+            margin: 0;
+            cursor: pointer;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+            align-items: center;
+            display: flex;
+            justify-content: center;
+
+            span {
+                text-align: center;
+                height: 100%;
+                display: block;
+                color: #000;
+            }
+
+            .typeBody {
+                width: 102px;
+                height: 102px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+                align-items: center;
+                display: flex;
+                justify-content: center;
+            }
+
+            input {
+                position: absolute;
+                display: none;
+                color: #fff !important;
+
+                &:checked+.typeBody {
+
+                    border: 2px solid #364F6B;
+
+                }
+
+                &:checked+span {
+                    background: #26D3D7;
+                    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+                    border-radius: 10px;
+                    color: #fff
+                }
+
+                label {
+                    border: 2px solid #364F6B;
+                }
+
+                .active {
+                    border: 2px solid #364F6B;
+                }
+            }
+
+        }
+    }
+}
+
+::ng-deep {
+
+    .p-calendar .p-inputtext {
+        z-index: 1047 !important;
+    }
+
+    .rtl {
+
+        .p-datepicker .p-datepicker-prev,
+        .p-datepicker .p-datepicker-next {
+            transform: rotateY(180deg);
+        }
+    }
+}
+
+::ng-deep {
+    .rtl {
+
+        .p-datepicker .p-datepicker-prev,
+        .p-datepicker .p-datepicker-next {
+            transform: rotateY(180deg);
+        }
+
+        .p-dropdown-panel .p-dropdown-header .p-dropdown-filter {
+            padding-right: 0.75rem;
+            padding-left: unset;
+        }
+
+        .p-dropdown-panel .p-dropdown-header .p-dropdown-filter-icon {
+            left: 0.75rem;
+            right: unset;
+        }
+    }
+}
+
+
+
+
+
+.wideScreen {
+    display: block;
+
+    @media screen and (max-width: 881px) {
+        display: none !important;
+    }
+}
+
+.smallScreen {
+    display: none;
+
+    @media screen and (max-width: 881px) {
+        display: block !important;
+    }
+}
+
+.displayCard {
+    height: 40px;
+    background-color: #F5F9FC;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    border: none;
+}
+
+.totalCards {
+    color: white;
+    height: 150px;
+    border-radius: 10px;
+
+    .text {
+        font-weight: 600;
+        font-size: 18px;
+    }
+
+    .num {
+        font-weight: 600;
+        font-size: 32px;
+    }
+}
+
+.shadowCard {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 1% 1%;
+    height: fit-content;
+}
+
+.width-12 {
+    width: 12%;
+
+    @media screen and (max-width: 768px) {
+        width: 100%;
+    }
+}
+
+.width-18 {
+    width: 18%;
+
+    @media screen and (max-width: 768px) {
+        width: 100%;
+    }
+}
+
+.width-4 {
+    width: 4%;
+
+    @media screen and (max-width: 768px) {
+        width: 100%;
+    }
+}
+
+
+
+::ng-deep .invisable {
+    .p-dropdown.p-component {
+        border: none !important;
+        background-color: transparent !important;
+        height: 35px;
+
+    }
+
+    .p-dropdown-label {
+        display: flex;
+        align-items: center;
+    }
+}
+
+::ng-deep .productInput.p-inputtext {
+    height: 40px !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+::ng-deep .newItemsContainer .p-calendar-w-btn .p-datepicker-trigger {
+    width: 10%;
+    background: transparent;
+    color: #000;
+    border: none !important;
+}
+
+::ng-deep .p-button:enabled:hover {
+    background: transparent;
+    color: black;
+    border-color: transparent;
+}
+
+
+::ng-deep .p-calendar .p-inputtext {
+    border: none !important;
+}
+
+::ng-deep .p-inputtext:enabled:focus {
+    box-shadow: none !important;
+}
+
+.logo {
+    object-fit: cover;
+    width: 178px;
+    height: 136px;
+    border-radius: 20px;
+}
+
+.addBtn {
+    @media screen and (max-width: 1024px) {
+        justify-content: center !important;
+        display: flex !important;
+        padding-left: 0 !important;
+    }
+}
+
+::ng-deep {
+    .rtl {
+
+        .p-datepicker .p-datepicker-prev,
+        .p-datepicker .p-datepicker-next {
+            transform: rotateY(180deg);
+        }
+
+        .p-dropdown-panel .p-dropdown-header .p-dropdown-filter {
+            padding-right: 0.75rem;
+            padding-left: unset;
+        }
+
+        .p-dropdown-panel .p-dropdown-header .p-dropdown-filter-icon {
+            left: 0.75rem;
+            right: unset;
+        }
+    }
+}
+
+.addBtn {
+    width: 10%;
+
+    @media screen and (max-width:768px) {
+        width: 100%;
+    }
+}
+
+.PaymentsCard {
+    width: 50%;
+
+    @media screen and (max-width:768px) {
+        width: 100%;
+    }
+}
+
+
+.styled-option {
+    white-space: pre-wrap;
+}
+
+.vl {
+    border-left: 3px solid #364F6B;
+
+    @media screen and (max-width:768px) {
+        display: none;
+    }
+}
+.secIII{
+
+    .cardsII{
+        width: 45%;
+        max-height: 450px;
+        background: #FFFFFF;
+        border-radius: 17.0118px;
+        //padding: 20px;
+        @media screen and (max-width:768px){
+            width: 100%;
+        }
+    }
+    
+
+}

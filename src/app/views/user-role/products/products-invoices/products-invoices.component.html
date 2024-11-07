@@ -1,0 +1,47 @@
+<!-- ui_fix -->
+<div class="invoices-container px-5 p-0 ps-5 pe-5">
+  <div class="col-md-12 d-flex justify-content-start title">
+   <h2>{{'INVOICE.TITLE' | translate}}</h2>
+  </div>
+  <div class="card mb-5 invoice-card">
+   <div class="row px-2 py-3 d-flex flex-row justify-content-between">
+     <div class="col-md-3 cardTitle">
+       <p> {{'INVOICE.SUBTITLE' | translate}}</p>
+     </div>
+   </div>
+
+    
+    <div class="row w-100 justify-content-between px-2 py-3">
+       <div class="col-md-6 search px-1 d-flex justify-content-between w-100">
+         <div style="width: 50%;" class="p-3 searchDiv">
+          <span class="me-2 my-auto">{{'CREDITNOTICE.SEARCH' | translate}}</span>
+           <input  placeholder="{{'SALESREPORT.INVOICE_NUMBER' |translate}} , {{'INVOICE.CREATEDAT'|translate}}"
+            type="text" (keyup.enter)="search()"
+           [(ngModel)]="searchWord" (input)="search()">
+
+         </div>
+         <!-- [style.width.px]="'227px'" style="width: 227px !important;"  -->
+       </div>
+       <div class="dropdown col-md-6" hidden>
+         <p-dropdown [options]="options" optionLabel="name"></p-dropdown>
+       </div>
+    </div>
+    <div class="col-md-12">
+
+     <app-table-comp 
+     [columnsArray]="columnsArray"
+     [columnsNames]="columnsNames"
+     [RowsData] = "invoices"
+     [controlArray]="controlArray">
+     </app-table-comp>
+
+
+     <p-paginator #paginator (onPageChange)="onPageChange($event)"
+     [first]="1"  [rows]="perPage" [totalRecords]="totalPage" 
+     ></p-paginator> 
+
+    </div>
+  </div>
+</div>
+
+

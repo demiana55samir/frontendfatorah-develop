@@ -1,0 +1,15 @@
+.card{
+    width: 20rem;
+    height: 22rem;
+    //width: 16rem; 
+    @media only screen and (max-width: 320px){
+        width: 17rem; 
+    }
+    
+}
+.fs-39{
+font-size: 39px;
+}
+.fw-800{
+font-weight: 800
+}

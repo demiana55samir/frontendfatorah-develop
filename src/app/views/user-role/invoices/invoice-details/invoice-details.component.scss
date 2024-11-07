@@ -1,0 +1,281 @@
+.invoice-details-container{
+    padding: 10% 3%;
+    @media screen and (max-width:1024px){
+        padding: 5% 3%;
+    }
+    .title{
+        h2{
+            font-weight: 600;
+        }
+    }
+    .QR{
+        @media screen and (max-width:768px){
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+    }
+    .bottons{
+        @media screen and (max-width:768px){
+            justify-content: center;
+            margin-top: 15px;
+            .botton{
+                width: 65% !important;
+            }
+        } 
+    }
+    .addBottons{
+        width: 165px;
+        @media screen and (max-width:425px) {
+            width: 120px;
+        }
+    }
+    .links{
+        padding: 3% 1%; 
+        min-height: 150px;
+        overflow-y: scroll;
+        border-radius: 20px !important;
+        }
+        .invoice-details{
+            padding: 3% 1%; 
+            border-radius: 20px !important;
+            .title{
+                border-bottom: 2px solid #D9D9D9;
+            }
+        }
+        .infoCard{
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+            border-radius: 20px;
+        }
+        .gap-6 {
+            gap: 5.5rem!important;
+            @media screen and (max-width:1430px){
+                gap: 2rem!important;
+            }
+        }
+        .gap-7 {
+            gap: 5.6rem!important;
+            @media screen and (max-width:426px){
+                gap: 1rem!important;
+            }
+        }
+        .header{
+            font-weight: 700;
+            font-size: 16px;
+            @media screen and (max-width:1024px){
+                font-size: 10px;
+            }
+        }
+        .displayCard{
+         min-height: 40px;
+         background-color: #F5F9FC;
+         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+         border-radius: 10px;
+         border: none;
+         align-items: center;
+         justify-content: center;
+        }
+        .cards{
+            .totalCards{
+                color: white;
+                 height: 150px;
+                 border-radius: 10px;
+                 .text{
+                    font-weight: 600;
+                    font-size: 18px;
+                 }
+                 .num{
+                    font-weight: 600;
+                    font-size: 21px;
+                 }
+            }
+            @media screen and (max-width:769px) {
+                display: flex;
+                justify-content: center !important;
+                width: 100%;
+                gap: 1rem!important;
+                .totalCards{
+                    width: 60%;
+                }
+            }
+        }
+        .shadowCard{
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 1% 1%;
+            height: fit-content;
+            @media screen and (max-width:769px) {
+                flex-wrap: wrap;
+            }
+        }
+    ::ng-deep .p-tabmenu .p-tabmenu-nav {
+        background-color:transparent !important;
+    }
+    ::ng-deep .p-menuitem-link{
+        background-color:transparent !important;
+    }
+    ::ng-deep .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link:not(.p-disabled):focus{
+        box-shadow: none !important;
+       }
+
+
+
+
+// -------------
+
+::ng-deep .p-datatable .p-datatable-thead > tr > th{
+    text-align: center !important;
+    border: 1px solid #dee2e6 !important;
+
+}
+::ng-deep .p-datatable .p-datatable-tbody > tr > td{
+    text-align: center !important;
+    border: 1px solid #dee2e6 !important;
+
+}
+::ng-deep .p-datatable table{
+   min-width: 100% !important;
+    @media only screen and (max-width: 768px) {
+        min-width: 50% !important;
+
+    }
+}
+@media only screen and (max-width: 960px) {
+    ::ng-deep .p-dropdown {
+        width: 70% ;
+    }
+    ::ng-deep .p-datatable .p-datatable-tbody > tr > td{
+        border-bottom: 1px solid #dee2e6 !important;
+        border-left:1px solid #dee2e6 !important;
+        border-width: 0 0 1px 0 !important; 
+        border: 1px solid #dee2e6 !important;
+
+    }
+    ::ng-deep .p-datatable-thead > tr > th, .p-datatable-tfoot > tr > td {
+     display: table-cell !important;
+    }
+
+}
+@media screen and (max-width: 960px){
+    ::ng-deep .p-datatable-tbody > tr > td {
+       display:table-cell !important;
+    //    width: 40% !important;
+       border-left:1px solid #dee2e6 !important;
+       border: 1px solid #dee2e6 !important;
+
+    }
+    ::ng-deep .p-datatable-wrapper{
+        overflow-x: scroll;
+    }
+
+}
+
+
+}
+#createLinkModel{
+    .modal-dialog{
+        max-width: 25vw !important;
+        .modal-content{
+            border-radius: 30px !important;
+            .modal-header{
+                span{
+                    font-weight: 600 !important ;
+                    font-size: 18px !important;
+                }
+            }
+        }
+        @media only screen and (max-width:768px) and (min-width:426px) {
+            max-width: 50vw !important;
+           margin: 4% 20% auto !important;
+        }
+        @media only screen and (max-width:426px){
+            max-width: 65vw !important;
+           margin: 4% 20% auto !important;
+        }
+        label{
+            font-weight: 400;
+            font-size: 17px;
+        }
+    }
+}
+
+.width-12{
+    width: 12%;
+    @media screen and (max-width: 881px) {
+        width: 100%;
+    }
+}
+
+   .wideScreen{
+    display: block;
+    @media screen and (max-width: 881px) {
+        display: none !important;
+        flex-wrap: wrap;
+    }
+}
+.smallScreen{
+    display: none;
+    @media screen and (max-width: 881px) {
+        display: block;
+    }
+}
+.subTitle{
+    color: rgba(30, 30, 30, 0.5);
+    line-height: normal;
+    font-size: 1.15rem;
+    margin: 0;
+}
+.disabled{
+    .form-control:focus {
+        color: #212529;
+        background-color: #fff;
+        border: 1px solid #ced4da;
+        outline: 0;
+        box-shadow: none;
+    }
+
+}
+
+
+::ng-deep{
+    .p-tabmenu .p-tabmenu-nav {
+        background: #F5F5F5 !important;
+    }
+    .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link {
+        background: #F5F5F5 !important;
+    }
+    .p-dropdown-panel .p-dropdown-header .p-dropdown-filter {
+        padding-right: unset;
+        margin-right: 0;
+
+        margin-left: unset;
+        padding-left: 0.75rem;
+    }
+}
+::ng-deep{
+    .p-dropdown{
+        width: 100% !important;
+    }
+
+    .p-dropdown.p-component, .p-calendar .p-inputtext, .p-calendar , textarea{
+        background: #FFFFFF;
+        border: 1px solid #DDDDDD;
+        border-radius: 5px !important;
+        width: 100% ;
+    }
+    
+
+    .p-calendar-w-btn .p-datepicker-trigger {
+        width: 10%;
+        background: transparent;
+        color: black;
+        border: none;
+        span{
+            font-size: 22px;
+        }
+    }
+    .p-dropdown-panel{
+      max-width: 100% !important;
+    }
+}
+

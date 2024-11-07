@@ -1,0 +1,449 @@
+
+<div class="bg-white  invoiceTemplate" *ngIf="quotation"  #toDownload>
+  <!-- header -->
+  <div class="d-flex justify-content-between px-5 pt-4 pb-5">
+    <div>
+     <!-- <img [src]="logo" id="logo" width="160" alt=""> -->
+    </div>
+ 
+    <div class="my-auto">
+      <p
+      [ngClass]="{
+        'text-white':(quotationType === 4 || quotationType === 6)
+      }"
+      > 02-07-2023 </p>
+    </div>
+ </div>
+ 
+ <!-- Main Title -->
+
+ <div class="d-flex w-100 gap-0">
+<div [ngClass]="{
+  'w-80':quotationType === 4,
+  'w-100':quotationType != 4
+ }">
+
+ <div [ngClass]="{
+  'd-flex justify-content-end':quotationType === 6
+}">
+    <div class="text-center  "
+  [ngClass]="{
+    'invoiceColor border-0':(quotationType === 1 || quotationType === 7 ),
+    'bg-white':quotationType === 2,
+    'mainTitleDiv_3':quotationType === 3,
+    'mainTitleDiv_5':quotationType === 5,
+    'mainTitleDiv_6':quotationType === 6
+  }"
+  >
+      <h1 class="fw-bold  "
+      [style.fontSize.px]="65"
+      [ngClass]="{
+        'MainTilte_1':(quotationType === 1 || quotationType === 7),
+        'MainTilte_2':quotationType === 2,
+        'MainTilte_3':quotationType === 3,
+        'MainTilte_5':quotationType === 5,
+        'MainTilte_6':quotationType === 6
+      }"
+      >
+      <span>
+        عرض سعر      </span>
+
+     
+    </h1>
+      
+  </div>
+ </div>
+
+<!-- details 1 -->
+<div class="d-flex  justify-content-between px-5 pt-4">
+
+  
+  <div>
+    <h6>العنوان : </h6>
+    <h6> رقم الهاتف : 123456789456 </h6>
+    <h6> رقم الفاكس : 123456789456   </h6>
+    <h6> رقم التعريف الضريبي : 123456789456   </h6>
+  </div>
+
+  <div>
+    <h2 class="fw-bold"> Fatoraprotest </h2>
+  </div>
+</div>
+
+<!-- details 2 invoice details -->
+<div *ngIf="quotationType != 7" class="d-flex justify-content-center gap-3 pt-4 details_2 gap-5">
+    
+  <div class="align-items-center d-flex flex-column flex-wrap  justify-content-around p-4 text-center gap-2" 
+  [style.width.%]="20"
+  [ngClass]="{
+    'invoiceDetailsI_1':quotationType === 1,
+    'invoiceDetailsI_2':(quotationType === 2 || quotationType === 5),
+    'invoiceDetailsI_3':(quotationType === 3 || quotationType === 6)
+    
+  }">
+    <h6 class=" fw-bold">رقم عرض السعر</h6>
+    <h6 class="font-montserrat fw-bold"> 1211  </h6>
+  </div>
+
+  <div class="align-items-center d-flex flex-column flex-wrap  justify-content-around p-4 text-center gap-2"
+  [style.width.%]="20"
+  [ngClass]="{
+    'invoiceDetailsII_1':quotationType === 1,
+    'invoiceDetailsII_2':(quotationType === 2 || quotationType === 5),
+    'invoiceDetailsII_3':(quotationType === 3 || quotationType === 6)
+    
+  }">
+    <h6 class=" fw-bold"> تاريخ الاصدار </h6>
+    <h6 class="font-montserrat fw-bold"> 20-06-2023  </h6>
+  </div>
+
+</div>
+
+<!-- details 3 client details -->
+<div *ngIf="quotationType != 7" class="pt-5">
+   <h5 class="text-center py-3"> بيانات العميل </h5>
+   <div class="d-flex justify-content-between  gap-5 px-4 pt-2">
+      <div class="w-25 align-items-center d-flex flex-column flex-wrap  
+      justify-content-around p-3 text-center gap-2"
+      [ngClass]="{
+        'clientDetailsI_1':(quotationType === 1 || quotationType === 3 || quotationType === 4 || quotationType === 6),
+        'clientDetailsI_2':(quotationType === 2 || quotationType === 5)
+        
+      }">
+        <h6 class="fw-bold"> فاكس </h6>
+        <h6 class="font-montserrat fw-bold"> 12345678912345678 </h6>
+      </div>
+
+      <div class="flex-fill align-items-center d-flex flex-column flex-wrap
+        justify-content-around p-3 text-center gap-2"
+        [ngClass]="{
+          'clientDetailsII_1':(quotationType === 1 || quotationType === 3 || quotationType === 4 || quotationType === 6),
+          'clientDetailsII_2':(quotationType === 2 || quotationType === 5)
+        }">
+        <h6 class="fw-bold">  رقم ضريبي  </h6>
+        <h6 class="font-montserrat fw-bold"> 12345678912345678 </h6>
+      </div>
+   </div>
+
+   <div class="d-flex justify-content-between  gap-5 px-4 pt-5  ">
+    <div class="w-50 align-items-center d-flex flex-column flex-wrap  
+    justify-content-around p-3 text-center gap-2"
+    [ngClass]="{
+      'clientDetailsIII_1':(quotationType === 1 || quotationType === 3 || quotationType === 4 || quotationType === 6),
+      'clientDetailsIII_2':(quotationType === 2 || quotationType === 5)
+      
+    }">
+      <h6 class="fw-bold"> فاكس </h6>
+      <h6 class="font-montserrat fw-bold"> 12345678912345678 </h6>
+    </div>
+
+    <div class="w-50 align-items-center d-flex flex-column flex-wrap
+      justify-content-around p-3 text-center gap-2"
+      [ngClass]="{
+        'clientDetailsVI_1':(quotationType === 1 || quotationType === 3 || quotationType === 4 || quotationType === 6),
+        'clientDetailsVI_2':(quotationType === 2 || quotationType === 5)
+      }">
+      <h6 class="fw-bold">  رقم ضريبي  </h6>
+      <h6 class="font-montserrat fw-bold"> 12345678912345678 </h6>
+    </div>
+ </div>
+
+</div>
+<!-- details 6 products table -->
+<div class="pt-5 px-4"  *ngIf="quotation.products">
+  
+  <!--  for wide Screen -->
+  <div class="me-4 mt-4  wideScreen d-flex align-items-center justify-content-between  border-2 gap-2 flex-wrap text-center fw-bold ">
+    <div  [ngClass]="{
+      'width-20':quotationType === 7 ,
+      'width-100':quotationType != 7
+    }"
+     >
+     <p>الوصف</p>
+    </div>
+    <div
+    [ngClass]="{
+      'width-20':quotationType === 7 ,
+      'width-12':quotationType != 7
+    }"
+  >
+      <p>الكمية</p>
+     </div>
+    <div
+    [ngClass]="{
+      'width-20':quotationType === 7 ,
+      'width-12':quotationType != 7
+    }">
+     <p> سعر الوحدة</p>
+    </div>
+    <div *ngIf="quotationType!=7" class="width-12">
+     <p>الخصم</p>
+   </div>
+    <div *ngIf="quotationType!=7" class="width-12">
+     <p>المبلغ الخاضع للضريبة</p>
+     </div>
+    <div *ngIf="quotationType!=7" class="width-12"> 
+     <p> الضريبة (%)</p></div>
+    <div *ngIf="quotationType!=7" class="width-12">
+     <p>الإجمالي  </p>
+    </div>
+   </div>
+
+   <div  [ngClass]="{ 'purpleLine':(quotationType === 3 || quotationType === 6)}"></div>
+
+   <!-- labels inside white box for small Screen -->
+   <div class="me-4 mt-2 w-100 bg-white   border-2 mb-5 "
+   [ngClass]="{
+    'shadowCard':(quotationType === 1 || quotationType === 2 || quotationType === 4 || quotationType === 5 || quotationType === 7 )
+  }">
+
+     <div *ngFor="let product of quotation.products" 
+     class="me-4 mt-2 w-100 bg-white  d-flex align-items-center productItem
+      border-2 gap-2  flex-wrap text-center fw-bold justify-content-between">
+   
+       <div
+       [ngClass]="{
+        'width-20':quotationType === 7 ,
+        'width-100':quotationType != 7
+      }"
+       >
+       <p class="smallScreen w-100">الوصف</p>
+       <div class="card displayCard "
+       [ngClass]="{
+        'shadowSingleCard':(quotationType != 3 && quotationType != 6)
+      }">
+           {{product?.name}}
+       </div>
+       </div>
+       <div
+       [ngClass]="{
+        'width-20':quotationType === 7 ,
+        'width-12':quotationType != 7
+      }">
+       <p class="smallScreen">الكمية</p>
+       <div class="card displayCard" 
+        [ngClass]="{'shadowSingleCard':(quotationType != 3 && quotationType != 6) }">
+        {{product?.pivot?.quantity}}
+       </div>
+       </div>
+       <div [ngClass]="{
+        'width-20':quotationType === 7 ,
+        'width-12':quotationType != 7
+      }">
+       <p class="smallScreen">سعر الوحدة</p>
+       <div class="card displayCard"
+       [ngClass]="{'shadowSingleCard':(quotationType != 3 && quotationType != 6) }">
+           {{product?.pivot?.price}}
+       </div>
+       </div>
+       <div *ngIf="quotationType!=7" class="width-12">
+       <p class="smallScreen">الخصم</p>
+       <div class="card displayCard"
+       [ngClass]="{'shadowSingleCard':(quotationType != 3 && quotationType != 6) }">
+        {{product?.pivot.discount}}
+       </div>
+     </div>
+       <div *ngIf="quotationType!=7" class="width-12">
+       <p class="smallScreen">المبلغ الخاضع للضريبة</p>
+         <div class="card displayCard"
+         [ngClass]="{'shadowSingleCard':(quotationType != 3 && quotationType != 6) }">
+            {{(product?.pivot.price*product.pivot.quantity)-product.pivot.discount}} 
+         </div>
+       </div>
+       <div *ngIf="quotationType!=7" class="width-12"> 
+         <p class="smallScreen"> الضريبة (%)</p>
+         <div class="card displayCard"
+         [ngClass]="{'shadowSingleCard':(quotationType != 3 && quotationType != 6) }">
+          {{product?.pivot.tax}}
+
+         </div>
+       </div>
+       <div *ngIf="quotationType!=7" class="width-12">
+       <p class="smallScreen">الإجمالي  </p>
+       <div class="card displayCard"
+       [ngClass]="{'shadowSingleCard':(quotationType != 3 && quotationType != 6) }">
+        {{product?.pivot.total}}
+       </div>
+       </div>
+     
+
+   </div>
+   </div>
+  
+
+
+</div>
+
+<!-- details 5 total details -->
+<div
+[ngClass]="{'justifyAround':quotationType === 7}"
+ class="d-flex justify-content-center gap-3 pt-4 details_2 gap-5">
+    
+  <div *ngIf="quotationType === 7"  class="align-items-center d-flex flex-column flex-wrap  justify-content-around p-4 text-center gap-2" 
+  [style.width.%]="20"
+  [ngClass]="{'totalI_1':quotationType === 7}">
+    <h6 class=" fw-bold">يشمل ضريبة القيمة المضافة</h6>
+    <h6 class="fw-bold"> 
+       <span class="font-montserrat"> 2433 </span>   
+      <span class="font-main"> ريال سعودي  </span> 
+     </h6>
+  </div>
+  <div *ngIf="quotationType != 7"  class="align-items-center d-flex flex-column flex-wrap  justify-content-around p-4 text-center gap-2" 
+  [style.width.%]="20"
+  [ngClass]="{
+    'totalI_1':(quotationType === 1 || quotationType === 4 ),
+    'totalI_2':(quotationType === 2 || quotationType === 5),
+    'totalI_3':(quotationType === 3 || quotationType === 6)
+    
+  }">
+    <h6 class=" fw-bold"> الاجمالي الخاضع للضريبة </h6>
+    <h6 class="fw-bold"> 
+       <span class="font-montserrat"> 2433 </span>   
+      <span class="font-main"> ريال سعودي  </span> 
+     </h6>
+  </div>
+  <div *ngIf="quotationType != 7" class="align-items-center d-flex flex-column flex-wrap  justify-content-around p-4 text-center gap-2" 
+  [style.width.%]="20"
+  [ngClass]="{
+    'totalI_1':(quotationType === 1 || quotationType === 4 ),
+    'totalI_2':(quotationType === 2 || quotationType === 5),
+    'totalI_3':(quotationType === 3 || quotationType === 6)
+    
+  }">
+    <h6 class=" fw-bold"> الاجمالي الخاضع للضريبة </h6>
+    <h6 class="fw-bold"> 
+       <span class="font-montserrat"> 2433 </span>   
+      <span class="font-main"> ريال سعودي  </span> 
+     </h6>
+  </div>
+
+  <div *ngIf="quotationType != 7" class="align-items-center d-flex flex-column flex-wrap  justify-content-around p-4 text-center gap-2"
+  [style.width.%]="20"
+  [ngClass]="{
+    'totalII_1':(quotationType === 1 || quotationType === 4 ),
+    'totalII_2':(quotationType === 2 || quotationType === 5),
+    'totalII_3':(quotationType === 3 || quotationType === 6)
+    
+  }">
+    <h6 class=" fw-bold"> اجمالي الضريبة </h6>
+    <h6 class="fw-bold"> 
+      <span class="font-montserrat"> 265.99  </span>  
+      <span class="font-main"> ريال سعودي  </span> 
+      </h6>
+  </div>
+
+  <div class="align-items-center fw-bold
+  d-flex flex-column flex-wrap  justify-content-around p-4 text-center gap-2"
+  [style.width.%]="20" 
+  [ngClass]="{
+    'totalIII_1':(quotationType === 1 || quotationType === 4 || quotationType === 7 ),
+    'totalIII_2':(quotationType === 2 || quotationType === 5),
+    'totalIII_3':(quotationType === 3 || quotationType === 6)
+    
+  }">
+    <h6 class="fw-bold">  الاجمالي </h6>
+    <h6 class=" fw-bold">
+       <span class="font-montserrat"> 2689  </span> 
+       <span class="font-main"> ريال سعودي  </span>
+       </h6>
+  </div>
+
+ 
+</div>
+
+<div class="py-4">
+  <label for="invoiceNumber" class="fw-semibold"> ملاحظات </label>
+   <textarea name="" id=""   placeholder="ملاحظات"
+   [style.width.%]="100" [style.heigth.px]="120"  [style.resize]="'none'"
+   class="form-control fw-semibold py-2 mt-2 inputDiv"></textarea>
+
+</div>
+
+<!-- details 5  QRCode -->
+<div class="pt-5 text-center">
+      <img src="./assets/images/QR_code_for_mobile_English_Wikipedia 30.png" width="300" alt="">
+</div>
+
+<div class="pt-3">
+  <p class="fw-bold px-3 text-end"> تم اصدار هذة الفاتورة من قبل منصة فاتورة برو للفوترة الالكترونية .</p>
+</div>
+
+<div class="px-4" *ngIf="quotation.bank_accounts ">
+  <span class="my-3 fw-bold">الحسابات البنكية</span>
+  <div *ngFor="let bank of quotation.bank_accounts" class="row d-flex flex-column  mt-4 pb-4">
+    <div class="col-md-5 mb-3 fw-bold">
+      <div class="card infoCard p-3">
+        <div class="d-flex">
+          <p>اسم البنك : </p>
+          <p>{{bank?.name}}</p>
+        </div>
+        <div class="d-flex">
+          <p>الاسم الكامل : </p>
+          <p>{{bank?.full_name}}</p>
+        </div>
+        <div class="d-flex">
+          <p>رقم الايبان : </p>
+          <p>{{bank?.number}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+ </div>
+
+ <div [ngClass]="{
+  'w-20 dark-purple-bg quotationType_4':quotationType === 4,
+  'd-none':quotationType != 4
+ }">
+
+ <!-- details 2 invoice details -->
+<div *ngIf="quotationType!=7" class="d-flex justify-content-center gap-3 details_2 align-items-center gap-5 flex-column" [style.marginTop.%]="80">
+    
+  <div class="align-items-center d-flex flex-column flex-wrap  justify-content-around p-4 text-center gap-2" 
+  [style.width.%]="60"
+  [ngClass]="{
+    'invoiceDetailsI_1':(quotationType === 1 || quotationType === 4 ),
+    'invoiceDetailsI_2':(quotationType === 2 || quotationType === 5),
+    'invoiceDetailsI_3':(quotationType === 3 || quotationType === 6)
+    
+  }">
+    <h6 class=" fw-bold"> رقم الفاتورة </h6>
+    <h6 class="font-montserrat fw-bold"> 1211  </h6>
+  </div>
+
+  <div class="align-items-center d-flex flex-column flex-wrap  justify-content-around p-4 text-center gap-2"
+  [style.width.%]="60"
+  [ngClass]="{
+    'invoiceDetailsII_1':(quotationType === 1 || quotationType === 4 ),
+    'invoiceDetailsII_2':(quotationType === 2 || quotationType === 5),
+    'invoiceDetailsII_3':(quotationType === 3 || quotationType === 6)
+    
+  }">
+    <h6 class=" fw-bold"> تاريخ الاصدار </h6>
+    <h6 class="font-montserrat fw-bold"> 20-06-2023  </h6>
+  </div>
+
+  <div class="align-items-center fw-bold
+  d-flex flex-column flex-wrap  justify-content-around p-4 text-center gap-2"
+  [style.width.%]="60"
+  [ngClass]="{
+    'invoiceDetailsIII_1':(quotationType === 1 || quotationType === 4 ),
+    'invoiceDetailsIII_2':(quotationType === 2 || quotationType === 5),
+    'invoiceDetailsIII_3':(quotationType === 3 || quotationType === 6)
+    
+  }">
+    <h6 class="fw-bold"> تاريخ الاستحقاق </h6>
+    <h6 class="font-montserrat fw-bold"> 20-06-2023  </h6>
+  </div>
+
+ 
+</div>
+
+ </div>
+ </div>
+ 
+ 
+
+</div>

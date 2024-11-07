@@ -1,0 +1,82 @@
+<!-- ui_fix -->
+<div class="row div-container p-0 ps-5 pe-5">
+  <div class="col-md-12 d-flex justify-content-start title">
+   <h2 class="ms-4">{{'USERLIST.TITLE' | translate}}</h2>
+  </div>
+  <div class="card invoice-card mt-3">
+   <div class="px-3 pb-3 d-flex flex-wrap justify-content-between">
+     <div class=" cardTitle ">
+       <p>{{"USERLIST.CANCELLEDUSERSTITLE" | translate}}</p>
+     </div>
+     <div class="addProdBtn" >
+       <button routerLink="/user/users/users-list" class="prodBtn fw-semibold blue_Color_BG  border-0 text-white my-auto mx-0">
+           <span >{{'USERLIST.SUBTITLE' | translate}}</span>
+       </button>
+     </div>
+
+   </div>
+
+    <div class="col-md-12 d-flex justify-content-between px-3 py-3">
+       <div class="search">
+        <span class="me-2 my-auto">{{'CREDITNOTICE.SEARCH' | translate}}</span>
+         <input type="text" placeholder="{{'COMMON.CLIENTNUMBER'|translate}} , {{'COMMON.CLIENTNAME'|translate}} , {{'USERPROFILE.EMAIL'|translate}} , {{'COMMON.TELEPHONE'|translate}}" (keyup.enter)="search()"
+         [(ngModel)]="searchWord" (input)="search()">
+       </div>
+    </div>
+    <div class="col-md-12">
+
+      <app-table-comp 
+      [columnsArray]="columnsArray"
+      [columnsNames]="columnsNames"
+      [RowsData] = "cancelledUsers"
+      [controlArray]="controlArray">
+      </app-table-comp>
+
+
+      <p-paginator (onPageChange)="onPageChange($event)"  #paginator
+       [first]="1" [rows]="perPage" [totalRecords]="totalPage" 
+      ></p-paginator> 
+     <!-- <p-table [responsive]="true" [value]="cancelledUsers">
+       <ng-template pTemplate="header">
+           <tr>
+             <th> رقم العميل </th>
+             <th>إسم العميل</th>
+             <th>الايميل</th>
+             <th> رقم الهاتف </th>
+               <th>تحكم</th>
+           </tr>
+       </ng-template>
+       <ng-template pTemplate="body" let-user>
+           <tr>
+               <td>{{ user.client_id }}</td>
+               <td style="width: 100px;" class="color-lightBlue">
+                <span style="width: 150px;" class="limit_text">{{ user.name }}</span>
+              </td>
+               <td>{{ user.email }}</td>
+               <td> {{ user.mobile }}</td>
+               <td>
+
+                <div class="btn-group dropend">
+                  <button type="button" class="btn btn-secondary dropdown-toggle"
+                  id="dropdownMenuButton1" 
+                   data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-ellipsis-v" style="color: #000000;"></i>
+                  </button>
+                  <ul  class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li (click)="restoreUser(user.uuid)"
+                    class="p-2 cursor-pointer">
+                      <span>اعادة العميل</span>
+                    </li>
+
+                  </ul>
+                </div>
+
+              </td>
+
+           </tr>
+       </ng-template>
+   </p-table> -->
+    </div>
+</div>
+</div>
+

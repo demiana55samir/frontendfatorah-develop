@@ -1,0 +1,88 @@
+<div class="subscription">
+  <!-- ui_fix -->
+  <div class="content p-0 ps-5 pe-5">
+    <div class="title py-2  ">
+      <h2 class="text-dark">{{'DASHBOARD.PLANS'|translate}}</h2>
+    </div>
+    <div class="card boxShadow-10 borderRadius_10px">
+      <div class="card-header">
+       <div class="d-flex justify-content-between">
+        <span class="lightblueColor">{{'RENEWSUBSCRIPTION.CHOOSEPLAN'|translate}}</span>
+        <a (click)="openAddCouponModel()" class="lightblueColor cursor-pointer">{{'RENEWSUBSCRIPTION.HASCOUPON'|translate}}</a>
+       </div>
+      </div>
+    <div class="d-flex p-2 flex-column text-center"> 
+
+      <!-- <div class="d-flex mt-5 text-center justify-content-center">
+        <span class="text-dark">{{ 'LANDING.MONTHLY' | translate }}</span>
+        <p-inputSwitch class="mx-3 toggelSwitch" [(ngModel)]="monthly"></p-inputSwitch>
+        <span class="text-dark">{{ 'LANDING.YEARLY' | translate }}</span>
+      </div> -->
+
+      <div class="row justify-content-center m-auto w-100 ">
+        <ul class="nav nav-tabs justify-content-center gap-2" role="tablist">
+          <li class="nav-item ml-2" *ngFor="let duration of filteredDurations">
+            <a class="nav-link " [ngClass]="(currentDuration == duration.id)?'active':''" href="#monthly" id="monthly-tab"
+              role="tab" data-bs-toggle="tab" aria-controls="monthly" aria-expanded="true"
+              (shown.bs.tab)="onTabChange($event, 'monthly');chooseDurationFilter(duration.id)">
+              {{ duration.name }}
+            </a>
+          </li>
+      
+        </ul>
+      </div>
+      <!-- <div class="row justify-content-center m-auto w-100 ">
+        <ul class="nav nav-tabs justify-content-center gap-2" role="tablist">
+            <li class="nav-item ml-2 ">
+                <a class="nav-link boxShadow-10 active" href="#monthly" id="monthly-tab" 
+                    role="tab" data-bs-toggle="tab" aria-controls="monthly"
+                      aria-expanded="true" (shown.bs.tab)="onTabChange($event, 'monthly')">
+                    {{  'LANDING.MONTHLY' | translate}}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link boxShadow-10" href="#yearly" role="tab"
+                 id="yearly-tab" data-bs-toggle="tab" aria-controls="yearly"
+                  aria-expanded="false" (shown.bs.tab)="onTabChange($event, 'yearly')">
+                    {{ 'LANDING.YEARLY' | translate }}
+                </a>
+            </li>
+        </ul>
+    </div> -->
+
+
+    </div>
+     <app-owl-carousel [couponData]="couponData" [monthly]="monthly" [subscriptionPlanes]="subscriptionPlanes"></app-owl-carousel>
+    </div>
+
+
+  </div>
+</div>
+
+<!-- coupon popup -->
+
+<button hidden #openAddCoupon type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCoupon">
+
+</button>
+ <div class="modal fade" id="addCoupon" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <form [formGroup]="addCouponForm" action="">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="text-end">{{'RENEWSUBSCRIPTION.ADDCOUPONTITLE'|translate}}</span>
+        </div>
+        <div class="modal-body">
+          <div >
+            <span> {{'RENEWSUBSCRIPTION.COUPON'|translate}}<span style="color:red">*</span></span>
+            <input  formControlName="coupon"  type="text" value="" class="form-control">
+            <app-Form-errors [control]="addCouponForm.controls['coupon']"></app-Form-errors>
+          </div>
+        </div>
+        <div class="modal-footer">
+        <app-button-comp [btnType]="'secondary'"   data-bs-dismiss="modal" aria-label="Close" #closePoPModal  [name]="'COMMON.CANCEL2'|translate" [color]="'#1B1464'"></app-button-comp>
+        <app-button-comp (click)="addCoupon()"  [btnType]="'main'" [name]="'COMMON.SUBMIT'|translate" [background_color]="'#1B1464'"></app-button-comp>      
+      </div>
+      </div>
+    </div>
+  </form>
+</div> 

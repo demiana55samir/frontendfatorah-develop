@@ -1,0 +1,31 @@
+<!-- ui_fix -->
+<div class="divCont p-0 ps-5 pe-5">
+  <div class="d-flex mb-4 fwbold justify-content-start title">
+    <h2>{{'USERLIST.USERDETAILS' | translate}}</h2>
+  </div>
+  <div>
+
+  </div>
+  <div class="px-3">
+    <div class="col-md-12 tabs mb-3" >
+      <p-tabMenu [model]="items" [activeItem]="activeItem">
+
+      </p-tabMenu>
+     </div>
+  </div>
+ 
+  <div *ngIf="activeItem.label=='عرض بيانات العميل' || activeItem.label=='Show client'">
+   <app-user-details></app-user-details>
+  </div>  
+
+  <div *ngIf="activeItem.label=='الفواتير' || activeItem.label=='Invoices'">
+<app-user-invoices></app-user-invoices>
+  </div>  
+  <div *ngIf="activeItem.label=='سندات القبض' || activeItem.label=='Receipts'">
+    <app-user-receipt-voucher></app-user-receipt-voucher>
+  </div>  
+  <div *ngIf="activeItem.label=='عروض الأسعار' || activeItem.label=='Quotations'">
+    <app-user-price-offers></app-user-price-offers>
+  </div>  
+
+</div>

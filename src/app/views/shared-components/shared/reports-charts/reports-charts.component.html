@@ -1,0 +1,28 @@
+<div class="chart mt-4 mb-5 ">
+  <div *ngIf="chartOptions">
+      <p-card class="chartCard">
+        <div class="w-100 d-flex flex-wrap justify-content-between align-items-center">
+          <div>
+            <p class="text">
+              {{name}}
+                <button type="button" class="btn me-2 border-0" placement="top"
+                    ngbTooltip="total number of leads">
+                    <i class="fa-solid fa-circle-info"></i>
+                </button>
+            </p>
+          </div>
+          <div>
+            <app-button-comp [btnType]="'main'" (click)="downloadCSV()" style="width: 190px;" type="button"  [name]="'CUSTOMERACCOUNTREPORT.PDF'|translate" [background_color]="'#5C60F5'"></app-button-comp>
+          </div>
+
+        </div>
+          <div class="chart" id="chart">
+              <apx-chart [series]="$any(chartOptions.series)" [chart]="$any(chartOptions.chart)"
+                  [xaxis]="$any(chartOptions.xaxis)" [yaxis]="yaxis"
+                  [dataLabels]="$any(chartOptions.dataLabels)" [grid]="$any(chartOptions.grid)"
+                  [stroke]="$any(chartOptions.stroke)" [title]="$any(chartOptions.title)"
+                  [colors]="['#000000']"></apx-chart>
+          </div>
+      </p-card>
+  </div>
+</div>

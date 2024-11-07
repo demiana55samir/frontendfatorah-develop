@@ -1,0 +1,30 @@
+<div class="card p-3 borderRadius_10px">
+  <div class="title mb-2">
+    <h4 class="fw-bold">{{'GENERALSETTINGS.WEBSITESETTINGS'|translate}}</h4>
+  </div>
+  <div>
+    <h5>{{'GENERALSETTINGS.TERMS&CONDITIOS' |translate}}</h5>
+  </div>
+  <div class="row w-100">
+    <div class="d-flex " style="margin-inline-start: 8px;">
+      <button class="tab px-3" [ngClass]="currentLang == 'ar' ? 'active' : ''" 
+      (click)="currentLang = 'ar'"> {{'COMMON.ARABIC' |translate}} </button>
+
+      <button class="tab px-3" [ngClass]="currentLang == 'en' ? 'active' : ''" 
+      (click)="currentLang = 'en'"> {{'COMMON.ENGLISH' |translate}} </button>
+    </div>
+    <div  class="col-12 mb-5" *ngIf="currentLang == 'ar'">
+      <p-editor [style]="{ height: '320px' }"  [(ngModel)]="termsAndConditions_ar" ></p-editor>
+  
+      <!-- <textarea  id="" placeholder=" "  [(ngModel)]="termsAndConditions" class="form-control termsAndCondition defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100"></textarea> -->
+    </div>
+    <div  class="col-12 mb-5" *ngIf="currentLang == 'en'">
+      <p-editor [style]="{ height: '320px' }"  [(ngModel)]="termsAndConditions_en" ></p-editor>
+      
+      <!-- <textarea  id="" placeholder=" "  [(ngModel)]="termsAndConditions" class="form-control termsAndCondition defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100"></textarea> -->
+    </div>
+    <div class="col-12 d-flex justify-content-end">
+      <app-button-comp  (click)="editTermsAndConditions()" [btnType]="'main'" style="width: 120px;"  [name]="'COMMON.EDIT' |translate" [background_color]="'#1B1464'" ></app-button-comp>
+    </div>
+  </div>
+</div>

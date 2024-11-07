@@ -1,0 +1,32 @@
+<!-- <div class="mainLayoutBody">
+ 
+   
+  <div  class="mainLayout" id="mainLayout" >
+    <div class="w-100 d-flex flex-wrap">
+      <app-sideNavbar class="SidNavDiv" ></app-sideNavbar>
+      <app-header class="header"></app-header>
+    </div>
+       <div class="MainDiv">
+       <router-outlet ></router-outlet>
+       </div>
+     
+   </div>
+  
+ 
+ </div> -->
+
+ <div class="mainLayoutBody">
+ 
+   
+  <div  class="mainLayout" id="mainLayout" >
+    <div class="SidNavDiv">
+      <app-sideNavbar *ngIf="auth.isUserAuth()"  ></app-sideNavbar>
+    </div>
+    <div class="MainDiv">
+      <router-outlet ></router-outlet>
+    </div>
+     
+   </div>
+  
+ 
+ </div>

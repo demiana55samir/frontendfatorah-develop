@@ -1,0 +1,257 @@
+
+::ng-deep{
+    .p-tabmenu .p-tabmenu-nav {
+        background: #F5F5F5 !important;
+    }
+    .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link {
+        background: #F5F5F5 !important;
+    }
+    .p-dropdown-panel .p-dropdown-header .p-dropdown-filter {
+        padding-right: unset;
+        margin-right: 0;
+
+        margin-left: unset;
+        padding-left: 0.75rem;
+    }
+}
+
+.Types{
+    display: flex;
+    flex-wrap: wrap;
+
+    // ui_fix
+    .Type{
+        margin: 4px;
+        // background: #ECECEC;
+        border-radius: 10px;
+        // text-align: center;
+        label {
+            width: 102px;
+            height: 102px;
+            line-height: 3.0em;
+         
+            margin: 0;
+            cursor: pointer;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            span {
+                text-align: center;
+                height: 100%;
+                display: block;
+                color: #000;
+              }
+
+              .typeBody{
+                width: 102px;
+                height: 102px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+                align-items: center;
+                display: flex;
+                justify-content: center;
+              }
+              input {
+                position: absolute;
+                display: none;
+                color: #fff !important;
+                &:checked + .typeBody{
+                  
+                    border: 2px solid #364F6B;
+                    
+                }
+                
+                &:checked + span{
+                    background: #26D3D7;
+                    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+                    border-radius: 10px;
+                    color: #fff
+                }
+                label{
+                    border: 2px solid #364F6B;
+                }
+                .active{
+                    border: 2px solid #364F6B;
+                }
+              }
+           
+          }
+      }
+}
+.main_container{
+ @media screen and (max-width:426px) {
+    padding: 1% !important;
+ }
+}
+
+.inputDiv{
+    background: #FFFFFF;
+    border: 1px solid #E8E8E8;
+    border-radius: 10px;
+}
+    ::ng-deep{
+        .p-dropdown{
+            width: 100% !important;
+        }
+    
+        .p-dropdown.p-component, .p-calendar .p-inputtext, .p-calendar , textarea{
+            background: #FFFFFF;
+            border: 1px solid #DDDDDD;
+            border-radius: 5px !important;
+            width: 100% ;
+        }
+        
+    
+        .p-calendar-w-btn .p-datepicker-trigger {
+            width: 10%;
+            background: transparent;
+            color: black;
+            border: none;
+            span{
+                font-size: 22px;
+            }
+        }
+        .p-dropdown-panel{
+          max-width: 100% !important;
+        }
+    }
+
+
+
+
+.wideScreen{
+    display: block;
+    @media screen and (max-width: 881px) {
+        display: none !important;
+    }
+}
+.smallScreen{
+    display: none;
+    @media screen and (max-width: 881px) {
+        display: block !important;
+    }
+}
+
+.displayCard{
+    height: 40px;
+    background-color: #F5F9FC;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    border: none;
+}
+.totalCards{
+    color: white;
+    height: 150px;
+    border-radius: 10px;
+    .text{
+        font-weight: 600;
+        font-size: 18px;
+    }
+    .num{
+        font-weight: 600;
+        font-size: 32px;
+    }
+}
+.shadowCard{
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+border-radius: 10px;
+padding: 1% 1%;
+height: fit-content;
+}
+
+   .width-12{
+    width: 12%;
+    @media screen and (max-width: 768px) {
+        width: 100%;
+    }
+   }
+   .width-18{
+    width: 18%;
+    @media screen and (max-width: 768px) {
+        width: 100%;
+    }
+   }
+   .width-4{
+    width: 4%;
+    @media screen and (max-width: 768px) {
+        width: 100%;
+    }
+   }
+
+
+
+   ::ng-deep .invisable{
+       .p-dropdown.p-component{
+        border: none !important;
+        background-color: transparent !important;
+        height: 35px;
+    
+    }
+    .p-dropdown-label{
+        display: flex;
+        align-items: center;
+    }
+   }
+   
+   ::ng-deep .productInput.p-inputtext{
+    height: 40px !important;
+    background: transparent !important;
+    border: none !important;
+   }
+
+   ::ng-deep .newItemsContainer .p-calendar-w-btn .p-datepicker-trigger {
+    width: 10%;
+    background: transparent;
+    color: #000;
+    border: none!important;
+}
+
+::ng-deep .p-button:enabled:hover {
+    background: transparent;
+    color: black;
+    border-color: transparent;
+}
+
+
+::ng-deep .p-calendar .p-inputtext{
+    border: none !important;
+}
+::ng-deep .p-inputtext:enabled:focus{
+    box-shadow: none !important;
+}
+
+.logo{
+    object-fit: cover;
+    width: 178px;
+    height: 136px;
+    border-radius: 20px;
+}
+.addBtn{
+    @media screen and (max-width: 1024px) {
+      justify-content: center !important;
+      display: flex !important;
+      padding-left: 0 !important;
+   }
+}
+
+::ng-deep{
+.rtl{
+    .p-datepicker .p-datepicker-prev ,.p-datepicker .p-datepicker-next {
+        transform: rotateY(180deg);
+    }
+    .p-dropdown-panel .p-dropdown-header .p-dropdown-filter {
+        padding-right: 0.75rem;
+        padding-left: unset;
+    }
+    .p-dropdown-panel .p-dropdown-header .p-dropdown-filter-icon {
+        left: 0.75rem;
+        right: unset;
+    }
+}}
+
+.addBtn{
+    width: 10%;
+    @media screen and (max-width:768px) {
+        width: 100%;
+    }
+}

@@ -1,0 +1,176 @@
+.secIII{
+
+    .cardsII{
+        height: 640px;
+        overflow: auto;
+        width: 47%;
+        //width: 35.8vw;
+        // height: 480px;
+        background: #FFFFFF;
+        border-radius: 17.0118px;
+        // padding: 20px;
+        @media screen and (max-width:768px){
+            width: 100%;
+        }
+    }
+    @media screen and (max-width:768px){
+        row-gap: 25px;
+    }
+
+}
+
+.Types{
+    display: flex;
+    flex-wrap: wrap;
+    @media only screen and (max-width:768px){
+        justify-content: center;
+    }   
+    .Type{
+        margin: 4px;
+        // background: #ECECEC;
+        border-radius: 10px;
+        text-align: center;
+        label {
+            width: 102px;
+            height: 102px;
+            line-height: 3.0em;
+         
+            margin: 0;
+            cursor: pointer;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            span {
+                text-align: center;
+                height: 100%;
+                display: block;
+                color: #000;
+              }
+
+              .typeBody{
+                width: 102px;
+                height: 102px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+                align-items: center;
+                display: flex;
+                justify-content: center;
+              }
+              input {
+                position: absolute;
+                display: none;
+                color: #fff !important;
+                &:checked + .typeBody{
+                  
+                    border: 2px solid #364F6B;
+                    
+                }
+                
+                &:checked + span{
+                    background: #26D3D7;
+                    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+                    border-radius: 10px;
+                    color: #fff
+                }
+                label{
+                    border: 2px solid #364F6B;
+                }
+                .active{
+                    border: 2px solid #364F6B;
+                }
+              }
+           
+          }
+      }
+}
+
+.choose{
+    gap: 205px;
+   @media screen and (max-width:768px) {
+    gap: 66px !important;
+    display: flex !important;
+    justify-content: center !important;
+}
+}
+.clearBtn{
+    left: 247px;
+    bottom: 96px;
+}
+.uploadedImage{
+    width: 220px;
+    height: 220px;
+    border-radius: 10px;
+    @media screen and (max-width:413px) {
+        width: 210px !important;
+        height: 210px !important;
+    }
+}
+.left-58px{
+    left: -58px !important;
+}
+
+::ng-deep{
+    .p-dropdown{
+        width: 100% !important;
+    }
+
+    .p-dropdown.p-component, .p-calendar .p-inputtext, .p-calendar , textarea{
+        background: #FFFFFF;
+        border: 1px solid #DDDDDD;
+        border-radius: 10px !important;
+        width: 100% ;
+    }
+}
+
+.image{
+    justify-content: flex-end !important;
+@media screen and (max-width:426px) {
+    justify-content: center !important;
+}
+    .cardsII{
+        height: 340px;
+        overflow: auto;
+        width: 55%;
+       //width: 35.8vw;
+        // height: 480px;
+        background: #FFFFFF;
+        border-radius: 17.0118px;
+        // padding: 20px;
+        @media screen and (max-width:768px){
+            width: 100%;
+        }
+    }
+    @media screen and (max-width:768px){
+        row-gap: 25px;
+    }
+}
+
+.width-40-lg{
+width: 40%;
+@media screen and (max-width:1247px) {
+    width: 100% !important;
+}
+}
+
+.flex-rev-sm{
+    @media screen and (max-width:1247px) {
+       flex-direction: column-reverse !important;
+    }
+}
+
+:host ::ng-deep  .dropDownStyle{
+    height: 44px ;
+    width: 100%;
+}
+
+.tax_numberDiv{
+    width: 55%;
+    @media screen and (max-width:768px){
+        width: 100%;
+    }
+}
+.otpItem{
+    @media screen and (max-width:768px){
+        width: 100%;
+    }
+}

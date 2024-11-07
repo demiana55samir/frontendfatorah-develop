@@ -1,0 +1,15 @@
+::ng-deep{
+    #mysr-cc-number{
+        direction: ltr;
+    }
+
+    #mysr-form-form-el#mysr-form-form-el#mysr-form-form-el.mysr-form-moyasarForm[payment-form=true] .mysr-form-ccInputGroup {
+        direction: ltr;
+    }
+}
+@media print {
+    /* Hide the component content when printing */
+    :host {
+      display: none;
+    }
+  }

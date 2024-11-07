@@ -1,0 +1,44 @@
+<!-- ui_fix -->
+<div class="row main-container p-0 ps-5 pe-5">
+  <div class="col-md-12 d-flex justify-content-start title">
+   <h2  class="ms-4">{{'ROLEDETAILS.TITLE' | translate}}</h2>
+  </div>
+    <div class="card main-card mt-3">
+     <div class="px-3  d-flex flex-wrap justify-content-between">
+       <div class=" cardTitle ">
+         <p>{{'ADDROLE.SUBTITLE' | translate}}</p>
+       </div>
+     </div>
+     <div class="p-3"> 
+      <div class="col-12 fullScreenWidth mx-0 mb-3 inner-addon right-addon">
+        <!-- <label class="form-label mb-1">{{ 'ADDROLE.NAME' | translate }} :  </label> -->
+        <h4> {{ 'ADDROLE.NAME' | translate }} :  <span class="fw-bold"> {{role.name}} </span></h4>    
+      </div> 
+      <div>
+        <div class="mb-3">
+          <h6>{{ 'ADDROLE.PERMISSIONS' | translate }}</h6>
+        </div>
+        <div>
+          <div class="d-flex flex-wrap gap-7 mb-2">
+              <div *ngFor="let permission of permissions" style="min-width: 33%;"> 
+                <div class="d-flex gap-3  align-items-center">
+                  <p-checkbox
+                  [value]="permission" name="group" [disabled]="true" [ngModelOptions]="{standalone:true}" [(ngModel)]="permissions"   [inputId]="permission.id"></p-checkbox>
+                  <span class="permissionsName">{{ permission.name | translate }}</span>
+                </div>
+              </div>
+              <div class="mt-2" *ngIf="permissions.length==0">
+                <span class=" fw-bold">{{'ROLEDETAILS.NOPERMISSIONS'|translate}}</span>
+              </div>
+          </div>
+        </div>
+
+
+      </div>
+     </div>
+  
+     
+  </div>
+
+</div>
+

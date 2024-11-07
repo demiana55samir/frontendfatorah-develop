@@ -1,0 +1,175 @@
+<div class="err" *ngIf=" control && control.touched && control.errors">
+  <div *ngIf="control.errors.required">
+    <span *ngIf="langservice.local_lenguage=='en'">
+        *Required
+    </span>
+    <span *ngIf="langservice.local_lenguage=='ar'">
+        *مطلوب
+    </span>
+</div>
+  <div *ngIf="control.errors.maxlength && langservice.local_lenguage=='en'">
+    *Maximum length {{control.errors.maxlength.requiredLength}} 
+  </div>
+  <div *ngIf="control.errors.maxlength && langservice.local_lenguage=='ar'">
+    *الحدالأقصى {{control.errors.maxlength.requiredLength}} 
+  </div>
+  
+  <div *ngIf="control.errors.minlength && langservice.local_lenguage=='en'">
+    *Minimum length {{control.errors.minlength.requiredLength}} 
+  </div>
+
+
+  <div *ngIf="control.errors.minlength && langservice.local_lenguage=='ar'">
+    *الحد الأدنى  {{control.errors.minlength.requiredLength}} 
+  </div>
+  <div *ngIf="control.errors.min">
+    <span  *ngIf="langservice.local_lenguage=='en'">
+        *Min {{control.errors.min.min}}
+    </span>
+    <span  *ngIf="langservice.local_lenguage=='ar'">
+        *الحد الأدنى {{control.errors.min.min}}
+    </span>
+  </div>
+  <div *ngIf="control.errors.max">
+    <span  *ngIf="langservice.local_lenguage=='en'">
+        *Max {{control.errors.max.max}}
+    </span>
+    <span  *ngIf="langservice.local_lenguage=='ar'">
+        *الحد الاقصى {{control.errors.max.max}}
+    </span>
+  </div>
+  <div *ngIf="control.errors.email || control.errors.pattern?.requiredPattern == emailRegex">
+    <span *ngIf="langservice.local_lenguage=='en'">
+        *Invalid email format
+    </span>
+    <span *ngIf="langservice.local_lenguage=='ar'">
+        *البريد الإلكتروني غير صحيح
+    </span>
+  </div>
+  <div *ngIf="control.errors.pattern?.requiredPattern == phoneRegex">
+      *Invalid phone ex:(111) 111-1111
+  </div>
+  <div *ngIf="control.errors.pattern?.requiredPattern == EgyptphoneRegex">
+      *Invalid phone ex:(011) 1111 1111
+  </div>
+  <div *ngIf="control.errors.pattern?.requiredPattern == decimalValuRegex">
+      *Invalid value ex:00.00
+  </div>
+  <div *ngIf="control.errors.pattern?.requiredPattern == passwordRegex">
+    <span *ngIf="langservice.local_lenguage=='en'">
+        *Password should contain capital letters And small letters, numbers, and special characters
+    </span>
+    <span *ngIf="langservice.local_lenguage=='ar'">
+        *يجب أن تحتوي كلمة المرور على حروف كبيرة وحروف صغيرة، وأرقام، وحروف خاصة.
+    </span>
+  </div>
+  <div *ngIf="control.errors.pattern?.requiredPattern == webSiteRegex">
+      *Invalid website
+  </div>
+  <div *ngIf="control.errors.pattern?.requiredPattern == alphaRegex">
+      *Letters only
+  </div>
+  <div *ngIf="control.errors.pattern?.requiredPattern == skuPattern">
+     *Sku must be lowercase letters or numbers
+  </div>
+  <div *ngIf="control.errors.passwordMismatch  && control?.value ">
+      *Passwords do not match
+  </div>
+  <div *ngIf="control.hasError('invalidEgyptMobile') && control?.value">
+      *Invalid phone 
+  </div>
+  <div *ngIf="control.hasError('invalidPhoneOrPassword') && control?.value">
+      *Invalid phone or password
+  </div>
+  <div *ngIf="control.hasError('confirmPasswordMismatch') && control?.value">
+    <span *ngIf="langservice.local_lenguage=='en'">
+        *Passwords do not match
+    </span>
+    <span *ngIf="langservice.local_lenguage=='ar'">
+        *كلمات المرور غير متطابقة
+    </span>
+  </div>
+  <div *ngIf="control.hasError('confirmPasswordmatch') && control?.value">
+    <span *ngIf="langservice.local_lenguage=='en'">
+        *Passwords are the same
+    </span>
+    <span *ngIf="langservice.local_lenguage=='ar'">
+        *كلمات المرور متطابقة
+    </span>
+
+  </div>
+  <div *ngIf="control.hasError('twoWords') && control?.value">
+    <span *ngIf="langservice.local_lenguage=='en'">
+        *First and last name is required.
+    </span>
+    <span *ngIf="langservice.local_lenguage=='ar'">
+        *الأسم الأول والأخير مطلوب
+    </span>
+
+  </div>
+  <div *ngIf="control.hasError('invalidMonth') && control?.value">
+    <span *ngIf="langservice.local_lenguage=='en'">
+        *Invalid expiration month
+    </span>
+    <span *ngIf="langservice.local_lenguage=='ar'">
+        *شهر الإنتهاء غير صحيح
+    </span>
+
+  </div>
+  
+  <div *ngIf="control.errors.pattern?.requiredPattern == numericalRegex">
+    <span *ngIf="langservice.local_lenguage=='en'">*Digits Only</span>
+    <span *ngIf="langservice.local_lenguage=='ar'">*أرقام فقط</span>
+  </div>
+
+  <div *ngIf="control.errors.pattern?.requiredPattern == saudiNumber">
+    <span *ngIf="langservice.local_lenguage=='en'">* Number should be 996 000-000-000 </span>
+    <span *ngIf="langservice.local_lenguage=='ar'">* يجب ان يكون الرقم 000-000-000 966 </span>
+  </div>
+
+  
+  <div *ngIf="control.errors.pattern?.requiredPattern == floatPattern">
+    <span *ngIf="langservice.local_lenguage=='en'">*Digits Only</span>
+    <span *ngIf="langservice.local_lenguage=='ar'">*أرقام فقط</span>
+  </div>
+
+  <div *ngIf="control.errors.pattern?.requiredPattern == liscencePattern">
+      * accepts small letters, capital letters, numbers and underscore only
+  </div>
+  <div *ngIf="control.errors.pattern?.requiredPattern == paymentRegx">
+      * Bank Account Number Doesn't Match
+  </div>
+
+  <div *ngIf="control.errors.pattern?.requiredPattern == taxIdPattern">
+      *Tax Id should be formatted as 111-11-1111
+  </div>
+
+  <div *ngIf="control.errors.pattern?.requiredPattern == preventSpaceRegex">
+      *No spaces allowed
+  </div>
+
+  <div *ngIf="control.errors.unmatchedPasswords">
+      *Passwords do not match
+  </div>
+  <div *ngIf="control.errors.unmatchedAccountNumber">
+      *Bank Number do not match
+  </div>
+  <div *ngIf="control.errors.fileExt">
+      *Images Only (.jpg, .jpeg, .JPG, .JPEG, .png, .PNG, .bmp, .BMP)
+  </div>
+  <div *ngIf="control.errors.fileSize">
+      * Max file size is 2 MB
+  </div>
+
+  <div *ngIf="control.errors.ccNumber">
+      *Number is invalid
+  </div>
+  <div *ngIf="control.errors.expDate">
+      *ExpDate is invalid
+  </div>
+
+  <div *ngIf="control.errors.pattern?.requiredPattern == textOnly">
+    <span *ngIf="langservice.local_lenguage=='en'">*Letters Only</span>
+    <span *ngIf="langservice.local_lenguage=='ar'">*حروف فقط</span>
+  </div>
+</div>

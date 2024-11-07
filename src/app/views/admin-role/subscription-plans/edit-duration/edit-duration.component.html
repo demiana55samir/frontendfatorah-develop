@@ -1,0 +1,34 @@
+<!-- ui_fix -->
+<div class="row main-container p-0 ps-5 pe-5">
+  <div class="col-md-12 title mb-2"> 
+     <h2 *ngIf="type=='add'">  {{'SUBSCRIPTIONPLANS.ADDDURATION' | translate}} </h2>
+     <h2 *ngIf="type=='edit'">  {{'SUBSCRIPTIONPLANS.EDITDURATION' | translate}}    </h2>
+  </div>
+  <div class="card borderRadius_20px p-3"> 
+    <form [formGroup]="durationDetailsForm" action="">
+      <!-- row -->
+      <div #form class=" d-flex flex-wrap gap-5 "> 
+
+      <div class="flex-fill">
+        <label class="form-label  fw-bold mb-1">{{'SUBSCRIPTIONPLANS.DURATIONTITLE' | translate}}</label>
+        <p-dropdown  [options]="durations" formControlName="duration_id" [readonly]="type=='view'"
+         placeholder="{{'SUBSCRIPTIONPLANS.DURATIONTITLE' | translate}}" class="my-1 mx-0 py-2 w-100" optionLabel="name" optionValue="id"></p-dropdown>                           
+        <app-Form-errors [control]="durationDetailsForm.controls['duration_id']"></app-Form-errors>
+      </div>  
+
+      <div class="flex-fill">
+          <label class="form-label  fw-bold mb-1"> {{'SUBSCRIPTIONPLANS.PRICE' | translate}} </label>
+          <input type="text" [ngClass]="{'direction':language=='ar'}"  formControlName="price" 
+          placeholder=" {{'SUBSCRIPTIONPLANS.PRICE' | translate}} "
+          class="form-control defaultBg borderRadius_10px  mx-0 py-2 py-2 w-100 ">
+          <app-Form-errors [control]="durationDetailsForm.controls['price']"></app-Form-errors>
+      </div>
+
+        <div class="col-md-12 d-flex justify-content-center justify-content-md-end">
+          <app-button-comp *ngIf="type=='add'" (click)="addFeature()" [btnType]="'main'" style="width: 120px;"  [name]="'COMMON.ADD' |translate" [background_color]="'#1B1464'" ></app-button-comp>
+          <app-button-comp *ngIf="type=='edit'" (click)="editFeatureData()" [btnType]="'main'" style="width: 120px;"  [name]="'COMMON.EDIT' |translate" [background_color]="'#1B1464'" ></app-button-comp>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

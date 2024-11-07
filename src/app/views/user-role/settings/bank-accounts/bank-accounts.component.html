@@ -1,0 +1,28 @@
+<!-- ui_fix -->
+<div class="bankAccountCont p-0 ps-5 pe-5 mt-4">
+  <div class="card borderRadius_20px boxShadow-10">
+    <div class="ps-5 pe-5 pb-5 pt-4 d-flex flex-wrap justify-content-between" >
+      <div class="title">
+         <h3>
+          {{'BANKACCOUNT.TITLE' | translate}}
+         </h3>
+      </div>
+       <div class="btn">
+        <app-button-comp [btnType]="'main'" style="width:220px;" type="button" routerLink="/user/settings/bank-accounts/add-bank-account/add/null"  image="./assets/images/invoices/add.svg"  [name]="'BANKACCOUNT.ADDBANK' | translate" [background_color]="'#5C60F5'"></app-button-comp>
+      </div>
+    </div>
+    <div class="w-100">
+      <app-table-comp 
+      [columnsArray]="columnsArray"
+      [columnsNames]="columnsNames"
+      [RowsData] = "bankAccount"
+      [controlArray]="controlArray">
+      </app-table-comp>
+
+
+      <p-paginator (onPageChange)="onPageChange($event)"  #paginator
+       [first]="1" [rows]="perPage" [totalRecords]="totalPage" 
+      ></p-paginator> 
+    </div>
+  </div>
+</div>

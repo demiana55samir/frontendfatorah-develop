@@ -1,0 +1,82 @@
+<!-- ui-fix -->
+<div class="row invoices-container p-0 ps-5 pe-5">
+  <div class="col-md-12 d-flex justify-content-start title">
+   <h2 class="ms-4">{{'RECEIPTVOUCHER.TITLE' | translate}}</h2>
+  </div>
+  <div class="card invoice-card mt-3">
+   <div class="px-3 pb-3 d-flex flex-wrap justify-content-between">
+     <div class=" cardTitle ">
+       <p>{{'RECEIPTVOUCHER.SUBTITLE' | translate}}</p>
+     </div>
+     <!-- <div class="viewBtn" >
+      <app-button-comp class="Btn" routerLink="/admin/receipt-vouchers/cancelled-receipt-vouchers"  image="../../../../assets/images/invoices/trash.svg"  
+        [name]="'ADMINRECEIPTVOUCHER.SUBTITLE' | translate " [background_color]="'#F44545'" ></app-button-comp>
+    </div> -->
+
+   </div>
+
+
+    <div class="col-md-12">
+
+      <app-table-comp 
+      [columnsArray]="columnsArray"
+      [columnsNames]="columnsNames"
+      [type]="'voucher'"
+      [RowsData] = "ReceiptVoucher"
+      [controlArray]="controlArray">
+      </app-table-comp>
+
+
+      <p-paginator (onPageChange)="onPageChange($event)" #paginator
+       [first]="1" [rows]="perPage" [totalRecords]="totalPage" 
+      ></p-paginator> 
+      
+     <!-- <p-table [responsive]="true" [value]="ReceiptVoucher">
+       <ng-template pTemplate="header">
+           <tr>
+             <th style="display: table-cell !important;">رقم السند</th>
+             <th style="display: table-cell !important;">رقم الفاتورة</th>
+             <th style="display: table-cell !important;">المبلغ</th>
+             <th style="display: table-cell !important;"> تحميل </th>
+               <th style="display: table-cell !important;">تاريخ الإستلام</th>
+               <th style="display: table-cell !important;">طريقة الدفع</th>
+               <th style="display: table-cell !important;">تحكم</th>
+           </tr>
+       </ng-template>
+       <ng-template pTemplate="body" let-ReceiptVoucher>
+           <tr>
+               <td>{{ ReceiptVoucher.number }}</td>
+               <td style="width: 100px;" class="color-lightBlue"><span style="width: 150px;" class="limit_text">{{ ReceiptVoucher.invoice_number }}</span></td>
+               <td>{{ ReceiptVoucher.amount }}</td>
+               <td>
+                <div class="cursor-pointer download">
+                  <button style="border-radius: 20px;width: 101px;" class="prodBtn px-3 py-1 fw-semibold green_Color_BG  border-0 text-white my-auto mx-0">
+                      <span> تحميل</span>
+                  </button>
+                </div>
+               </td>
+               <td>{{ ReceiptVoucher.received_at }}</td>
+               <td>{{ ReceiptVoucher.payment_method }}</td>
+               <td>             
+                 <div class="btn-group dropend">
+                <button type="button" class="btn btn-secondary dropdown-toggle"
+                id="dropdownMenuButton1" 
+                 data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fas fa-ellipsis-v" style="color: #000000;"></i>
+                </button>
+                <ul  class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li 
+                  [routerLink]="'/invoices/receipt-voucher-details//'+ReceiptVoucher.uuid" 
+                  class="p-2 cursor-pointer">
+                    <span>رؤية  سند القبض  </span>
+                  </li>
+
+                </ul>
+              </div></td>
+           </tr>
+       </ng-template>
+   </p-table> -->
+    </div>
+</div>
+</div>
+

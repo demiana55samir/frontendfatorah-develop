@@ -1,0 +1,96 @@
+<!-- ui_fix -->
+<div class="row main-container p-0 ps-5 pe-5">
+  <div class="col-md-12 d-flex justify-content-start title">
+    <h2 *ngIf="type!='edit'"  class="ms-4">{{'BLOGS.ADDNEW' | translate}}</h2>
+   <h2 *ngIf="type=='edit'"  class="ms-4">{{'BLOGS.EDIT' | translate}}</h2>
+  </div>
+  <div class="card borderRadius_10px p-3 main-card mt-3">
+   <div class="px-3 pb-3 d-flex flex-wrap justify-content-between">
+     <div  class=" cardTitle ">
+       <h5 *ngIf="type!='edit'">{{'BLOGS.NEWDETAILS' | translate}}</h5>
+       <h5 *ngIf="type=='edit'">{{'BLOGS.DETAILS' | translate}}</h5>
+       <!-- <p *ngIf="type!='update'">{{'BLOGS.NEWDETAILS' | translate}}</p> -->
+     </div>
+   </div>
+   <form [formGroup]="articleDataForm" >
+<div class="px-3">
+
+  <div class="col-12 fullScreenWidth mx-0 my-4 inner-addon right-addon">
+    <label class="form-label  fw-bold mb-1">{{ 'BLOGS.BLOGTITLE' | translate }} </label>
+    <input type="text" formControlName="title" placeholder=" " class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100">
+    <app-Form-errors [control]="articleDataForm.controls['title']"></app-Form-errors>
+
+  </div>   
+ 
+  <div class="col-12 fullScreenWidth mx-0 my-4 inner-addon right-addon">
+    <label class="form-label  fw-bold mb-1">{{ 'BLOGS.ARCHIVETITLE' | translate }} </label>
+    <input type="text" formControlName="slug" placeholder=" " class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100">
+    <app-Form-errors [control]="articleDataForm.controls['slug']"></app-Form-errors>
+
+  </div>   
+  
+ 
+  <div class="col-12 fullScreenWidth mx-0 my-4 ">
+    <label class="form-label  fw-bold mb-1">{{ 'BLOGS.CATEGORIES' | translate }} <span style="color: red;">*</span></label>
+    <p-multiSelect *ngIf="language=='ar'" [options]="tags" formControlName="tags"
+       [styleClass]="!articleDataForm.controls['tags'].valid && articleDataForm.controls['tags'].touched ?'errorInput' : ''"
+     [(ngModel)]="selectedTags"  optionLabel="nameAR" optionValue="nameAR"  display="chip"></p-multiSelect>
+    <p-multiSelect *ngIf="language=='en'" [options]="tags" formControlName="tags"
+         [styleClass]="!articleDataForm.controls['tags'].valid && articleDataForm.controls['tags'].touched ?'errorInput' : ''"
+    [(ngModel)]="selectedTags"  optionLabel="nameEN" optionValue="nameEN"  display="chip"></p-multiSelect>
+
+    <app-Form-errors [control]="articleDataForm.controls['tags']"></app-Form-errors>
+
+  </div>
+
+  <div class="col-12 fullScreenWidth mx-0 my-4 inner-addon right-addon">
+    <label class="form-label  fw-bold mb-1">{{ 'BLOGS.BLOGCONTENT' | translate }} </label>
+    <textarea type="text" formControlName="content" placeholder=" " class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100"></textarea>
+    <app-Form-errors [control]="articleDataForm.controls['content']"></app-Form-errors>
+
+  </div>  
+
+  <div class="col-md-12">
+    <div class="text-start d-flex flex-column">
+      <div class="title mb-3">
+        <span class=" fw-bold ">{{'BLOGS.BLOGIMAGES'|translate}} <span style="color: red;">*</span></span>
+      </div>
+      <ngx-dropzone class="imgUpload" style="justify-content: center;overflow: hidden;" #drop [id]="'idtest'" [aria-label]="'al-test'" [aria-labelledby]="'alb-test'"
+      (change)="onFilesAdded($event)" >
+      <ngx-dropzone-label>
+        <div class="d-flex align-items-center flex-wrap gap-1 justify-content-center">
+          <svg width="76" height="64" viewBox="0 0 76 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M75.5 33.3916C75.5 26.1441 69.9578 20.1708 62.8991 19.5196C63.1036 12.6252 57.5572 6.81921 50.5958 6.81921C48.4375 6.81921 46.3588 7.37297 44.5108 8.43248C38.3176 -1.39122 24.3013 -2.26155 16.9384 6.7788L16.9384 6.77883C14.011 10.3736 12.6851 14.9428 13.2012 19.5106C6.09523 20.1145 0.5 26.1107 0.5 33.3922C0.5 41.0727 6.72592 47.3238 14.383 47.3238H19.1063C19.8189 47.3238 20.3936 46.7444 20.3936 46.0337C20.3936 45.323 19.8188 44.7436 19.1063 44.7436H14.383C8.14994 44.7436 3.07454 39.6524 3.07454 33.3922C3.07454 27.1321 8.14994 22.0409 14.383 22.0409H14.6985C15.5127 22.0409 16.1212 21.2927 15.9601 20.4944L15.96 20.4942C15.0915 16.1999 16.1751 11.7963 18.9328 8.41034C25.478 0.37474 38.1013 1.61494 42.9352 10.853L42.9353 10.8531C43.3015 11.5524 44.2032 11.7612 44.8384 11.2927L44.8385 11.2926C46.5182 10.0531 48.5076 9.39876 50.5961 9.39876C55.961 9.39876 60.3301 13.7812 60.3301 19.17C60.3301 19.627 60.2965 20.0976 60.2295 20.5667C60.1762 20.9371 60.2864 21.3119 60.5304 21.5944C60.7748 21.8776 61.13 22.0403 61.5038 22.0403H61.6173C67.8504 22.0403 72.9258 27.1315 72.9258 33.3916C72.9258 39.6518 67.8504 44.743 61.6173 44.743H56.894C56.1815 44.743 55.6068 45.3224 55.6068 46.0331C55.6068 46.7438 56.1815 47.3232 56.894 47.3232H61.617V47.3232C69.274 47.3232 75.5 41.0727 75.5 33.3916Z" fill="#6759FF" stroke="#6759FF"/>
+            <path d="M20.5391 45.3058C20.5391 55.2 28.5677 63.2502 38.438 63.2502C48.3083 63.2502 56.3369 55.1999 56.3369 45.3058C56.3369 35.4115 48.3083 27.3613 38.438 27.3613C28.5676 27.3613 20.5391 35.4116 20.5391 45.3058ZM22.4513 45.3058C22.4513 36.4674 29.6238 29.2772 38.438 29.2772C47.2521 29.2772 54.4246 36.4672 54.4246 45.3058C54.4246 54.1442 47.2521 61.3343 38.438 61.3343C29.6239 61.3343 22.4513 54.1443 22.4513 45.3058Z" fill="#6759FF" stroke="#6759FF" stroke-width="0.5"/>
+            <path d="M37.9939 52.4291C37.9939 52.8527 38.3367 53.1973 38.7607 53.1973C39.1847 53.1973 39.5276 52.8532 39.5276 52.4291V38.9566C39.5276 38.5331 39.1848 38.1885 38.7607 38.1885C38.3367 38.1885 37.9939 38.5331 37.9939 38.9566V52.4291Z" fill="#6759FF" stroke="#6759FF" stroke-width="0.5"/>
+            <path d="M38.7607 40.0445L42.3529 43.646C42.5024 43.7959 42.6994 43.8712 42.8953 43.8712L38.7607 40.0445ZM38.7607 40.0445L35.1687 43.6458C35.1687 43.6459 35.1686 43.6459 35.1686 43.6459C35.1686 43.6459 35.1685 43.646 35.1685 43.646C34.8691 43.9465 34.383 43.9462 34.0836 43.646L34.2606 43.4694L34.0836 43.646C33.7843 43.3459 33.7843 42.8601 34.0836 42.56L38.218 38.4149C38.2181 38.4149 38.2181 38.4149 38.2181 38.4148C38.5175 38.1142 39.0037 38.1145 39.3032 38.4147L43.4378 42.56C43.737 42.86 43.7371 43.3458 43.438 43.6458C43.2881 43.7966 43.0908 43.8712 42.8954 43.8712L38.7607 40.0445Z" fill="#6759FF" stroke="#6759FF" stroke-width="0.5"/>
+            </svg>
+            <div class="d-flex"> 
+              <span class="fw-bold main-purple-color">{{'BLOGS.UPLOAD'|translate}}</span>
+            </div>
+        </div>
+      </ngx-dropzone-label>
+      <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemove(f)">
+          <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+      </ngx-dropzone-image-preview>
+  </ngx-dropzone>
+  <span *ngIf="showImageRequired" style="color: red;">*{{'COMMON.REQUIRED'|translate}}</span>
+</div>
+    <!-- <label class="form-label  fw-bold mb-1">{{'TEMPLATES.TEMPNAME' |translate}} </label>
+    <input type="text" [ngClass]="{'direction':language=='ar'}"  formControlName="name" class="form-control defaultBg borderRadius_10px my-1 mx-0 py-2 py-2 w-100 ">
+    <app-Form-errors [control]="templateDataForm.controls['name']"></app-Form-errors> -->
+</div>
+
+
+<div class="col-12 d-flex justify-content-center justify-content-md-end mt-5">
+  <app-button-comp *ngIf="type!='edit'" [btnType]="'main'" (click)="addArticle()" style="width: 120px;"  [name]=" 'COMMON.ADD' | translate " [background_color]="'#1B1464'" ></app-button-comp>
+  <app-button-comp *ngIf="type=='edit'" [btnType]="'main'" (click)="editArticleData()" style="width: 120px;"  [name]=" 'COMMON.EDIT' | translate " [background_color]="'#1B1464'" ></app-button-comp>
+</div>
+
+</div>
+ 
+  
+   </form>
+
+</div>
+</div>
