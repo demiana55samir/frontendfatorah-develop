@@ -1,8 +1,9 @@
 <!-- ui_fix -->
 <div class="divCont p-0 ps-5 pe-5">
   <div class="topCards d-flex flex-wrap gap-3 mb-5">
-    <div class="h-119px width-250 d-flex flex-row justify-content-between   boxShadow-25 borderRadius_20px p-3 card">
-        <div class="d-flex flex-column">
+    <div class="h-119px width-250 d-flex flex-row justify-content-between  
+       boxShadow-25 borderRadius_20px p-3 card">
+        <div class="d-flex flex-column ">
            <span class="text-secondary fs-21 fw-400">{{'INVOICE.INVOICE'|translate}}</span>
            <span class="fs-48 fw-400">{{client.invoices_count}}</span>
         </div>
@@ -10,7 +11,8 @@
           <img src="../../../../assets/images/user/invoice.png" alt="">
         </div>
     </div>
-    <div class="h-119px width-250 d-flex flex-row justify-content-between   boxShadow-25 borderRadius_20px p-3 gap-2 card">
+    <div class="h-119px width-250 d-flex flex-row justify-content-between 
+    boxShadow-25 borderRadius_20px p-3 gap-2 card">
       <div class="d-flex flex-column">
          <span [ngClass]="{'fs-18':language=='en'}" class="text-secondary fs-21 fw-400"> {{'RECEIPTVOUCHER.RECEIPTVOUCHER'|translate}}</span>
          <span [ngClass]="{'fs-33':language=='en'}" class="fs-48 fw-400">{{client.receipts_count}}</span>

@@ -1,5 +1,5 @@
 <!-- ui_fix -->
-<div class="customerStatmentReportCont p-0 ps-5 pe-5">
+<div class="customerStatmentReportCont p-0 ps-5 pe-5 pb-5">
   <div>
     <h3 class="fw-bolder fw-600 mb-3 px-3">{{'CUSTOMERACCOUNTREPORT.REPORTS' | translate}}</h3>
   </div>
@@ -24,13 +24,15 @@
             </div> 
 
           </div>
-          <div class="d-flex align-items-center me-4 px-2">
-            <app-button-comp [btnType]="'main'" (click)="getReport()" type="submit"  [name]="'CUSTOMERACCOUNTREPORT.GENERATE' | translate" [background_color]="'#1B1464'"></app-button-comp>
+          <div class="d-flex align-items-center me-4 mt-4">
+            <app-button-comp [btnType]="'main'" (click)="getReport()" class="pt-1"
+            type="submit"  [name]="'CUSTOMERACCOUNTREPORT.GENERATE' | translate" 
+            [background_color]="'#1B1464'"></app-button-comp>
           </div>
         </div>
       </div>
       <div class="HLine"></div>
-      <div class="p-4">
+      <div class="p-3">
         <div class="chart mt-4 mb-5 ">
           <div>
               <div class=" card boxShadow-10 borderRadius_20px">

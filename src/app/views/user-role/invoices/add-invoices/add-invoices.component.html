@@ -32,10 +32,11 @@
             <div class="width-476px my-auto">
     
               <label for="invoiceNumber" class="fw-semibold">{{'ADDINVOICE.INVOICENUMBER' | translate}} <span style="color: red;">*</span></label>
+              <!-- ui_fix -->
               <input  formControlName="number" readonly id="invoiceNumber"
               [ngClass]="{'errorInput': !addInvoiceForm.controls['number'].valid && addInvoiceForm.controls['number'].touched}"
               placeholder="{{'ADDINVOICE.INVOICENUMBER' | translate}}"
-                class="form-control h-100 d-flex fw-semibold py-2 mt-2 inputDiv" type="text" #invoiceNumber appOnlyNumber
+                class="form-control h-100 d-flex fw-semibold py-2 mt-3  inputDiv" type="text" #invoiceNumber appOnlyNumber
                >
                <app-Form-errors [control]="addInvoiceForm.controls['number']"></app-Form-errors>
 
@@ -53,7 +54,12 @@
                     <!-- <img class="logo" *ngIf="companyLogo && ! currentCompanyLogo" [src]="companyLogo"  alt=""> -->
                     <img class="logo" *ngIf="!currentCompanyLogo" src="../../../../assets/images/landing/logo 3.png"  alt="">
                     <input type="file"  hidden #fileInput accept=".png, .jpg, .jpeg"  id="fileInput" (change)="validateImage($event)" style="display: none;">
-                    <app-button-comp (click)="fileInput.click()" [btnType]="'main'" [name]="'COMMON.ADDLOGO' | translate" image="./assets/logo/Group30.svg" background_color="#1B1464" ></app-button-comp>
+                    <app-button-comp (click)="fileInput.click()"
+                     [btnType]="'main'"
+                     [name]="'COMMON.ADDLOGO' | translate"
+                     image="./assets/logo/Group30.svg" 
+                     background_color="#1B1464" >
+                    </app-button-comp>
                    </div>
                 </div>
                 

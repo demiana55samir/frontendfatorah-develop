@@ -1,9 +1,9 @@
 <!-- ui_fix -->
 <div class="salesReportCont p-0 ps-5 pe-5">
   <div>
-    <h3 class="fw-bolder fw-600 mb-3 px-3">{{'SALESREPORT.REPORTS' |translate}}</h3>
+    <h3 class="fw-bolder fw-600 mb-3 px-4">{{'SALESREPORT.REPORTS' |translate}}</h3>
   </div>
-   <div class="card borderRadius_20px boxShadow-10">
+   <div class="card borderRadius_20px boxShadow-10 p-2">
       <div class="p-3">
         <div class="w-100">
           <h4 class="fw-bold">{{'SALESREPORT.SALES_REPORT' |translate}}</h4>
@@ -29,7 +29,10 @@
           </div> 
 
           <div class="d-flex align-items-center">
-            <app-button-comp [btnType]="'main'" (click)="getSalesReport()"  type="submit"  [name]="'SALESREPORT.GENERATE' |translate" background_color="#1B1464"></app-button-comp>
+            <app-button-comp [btnType]="'main'"
+             (click)="getSalesReport()" class="mt-4 pt-1"
+               type="submit" 
+                [name]="'SALESREPORT.GENERATE' |translate" background_color="#1B1464"></app-button-comp>
           </div>
         </div>
       </div>
