@@ -293,9 +293,10 @@
                 <app-Form-errors [control]="OTPForm.controls['zatca_stage']"></app-Form-errors>
               </div>
               <!-- col-12 col-md-2 -->
-              <div class="otpItem d-flex align-items-end pb-1">
-                <label class="fw-bold mb-2"> </label>
-                <app-button-comp [btnType]="'main'" (click)="sendOTP()" class="sumbitBtn " [name]="'COMMON.ACTIVATEZATCA' | translate"
+              <div class="otpItem d-flex align-items-end ms-3 mt-4">
+                <label class="fw-bold "> </label>
+                <app-button-comp class="py-2" [btnType]="'main'" (click)="sendOTP()" 
+                 class="sumbitBtn " [name]="'COMMON.ACTIVATEZATCA' | translate"
                   [background_color]="'#1B1464'"></app-button-comp>
                 <!-- <app-button-comp [btnType]="'main'"   class="sumbitBtn " [name]="'COMMON.ACTIVATEZATCA' | translate" [background_color]="'#1B1464'" ></app-button-comp> -->
               </div>
@@ -320,7 +321,7 @@
 
         </div>
 
-        <div class="col-md-12 d-flex justify-content-end p-4 mt-5">
+        <div class="col-md-12 d-flex justify-content-end p-4 mt-5 me-5">
           <app-button-comp [btnType]="'main'" (click)="updateAdditionalData(2)"   class="sumbitBtn" [name]="'COMMON.SAVE' | translate" [background_color]="'#1B1464'" ></app-button-comp>
         </div>
         <!-- [disabled]="type.id != selectedTypes2" -->

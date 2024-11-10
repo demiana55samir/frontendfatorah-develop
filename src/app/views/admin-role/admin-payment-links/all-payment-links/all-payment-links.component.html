@@ -1,11 +1,12 @@
 <!-- ui_fix -->
 <div class="row invoices-container p-0 ps-5 pe-5">
   <div class="col-md-12 d-flex justify-content-start title">
-    <h2 class="ms-4">{{'PAYMENTLINKS.TITLE' | translate}}</h2>
+    <!-- ui_fix -->
+    <h2 class="ps-3 pb-3">{{'PAYMENTLINKS.TITLE' | translate}}</h2>
   </div>
   <div class="card invoice-card">
    <div class="px-2 py-3 d-flex flex-wrap justify-content-between">
-     <div class=" cardTitle ">
+     <div class=" cardTitle ps-3 ">
       <p>{{'PAYMENTLINKS.SUBTITLE' | translate}}</p>
     </div>
 
@@ -14,7 +15,7 @@
 
     <div class="col-md-12 d-flex justify-content-between px-2 py-3">
        <div class="search">
-        <span class="me-2 my-auto">{{'CREDITNOTICE.SEARCH' | translate}}</span>
+        <span class="me-2 my-auto mx-3">{{'CREDITNOTICE.SEARCH' | translate}}</span>
          <input placeholder="{{'PAYMENTLINKDETAILS.PAYMENTFOR'|translate}} , {{'LANDING.EMAIL'|translate}}" type="text" (keyup.enter)="search()"
          [(ngModel)]="searchWord" (input)="search()">
        </div>

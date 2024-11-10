@@ -1,10 +1,10 @@
 <!-- ui_fix -->
 <div class="ReportCont p-0 ps-5 pe-5">
   <div>
-    <h3 class="fw-bolder fw-600 mb-3">{{'SALESREPORT.REPORTS' |translate}}</h3>
+    <h3 class="fw-bolder fw-600 mb-3 px-3">{{'SALESREPORT.REPORTS' |translate}}</h3>
   </div>
    <div class="card borderRadius_20px boxShadow-10">
-      <div class="p-4">
+      <div class="p-3">
         <div class="w-100">
           <h4 class="fw-bold">{{'EARNINGSREPORT.EARNINGREPORT' |translate}}</h4>
         </div>
@@ -21,7 +21,7 @@
           </div>
          
           
-          <div class="d-flex align-items-center">
+          <div class="d-flex align-items-center me-5 mt-4 px-3">
             <app-button-comp [btnType]="'main'" (click)="getReport()"  type="submit"  [name]="'SALESREPORT.GENERATE' |translate" background_color="#1B1464"></app-button-comp>          </div>
         </div>
       </div>
@@ -33,7 +33,7 @@
       </div> -->
 
 
-      <div class="p-4" id="reportTable">
+      <div class="p-3" id="reportTable">
         <div class="row w-100 m-auto mt-2 gap-3 ">
           <div  class="col-12 col-md-12 col-lg-9 col-xl-9 min_height_69px d-flex justify-content-center card borderRadius_20px boxShadow-10">
             <div class="d-flex ps-3 flex-wrap gap-2">

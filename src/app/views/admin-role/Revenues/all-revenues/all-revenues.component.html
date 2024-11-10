@@ -1,11 +1,11 @@
 <!-- ui_fix -->
-<div class="invoices-container px-2 px-md-5 p-0 ps-5 pe-5">
-  <div class="col-md-12 d-flex justify-content-start title">
+<div class="invoices-container px-2 px-md-5 p-5">
+  <div class="col-md-12 d-flex justify-content-start title p-3">
    <h2>{{'REVENUES.TITLE' | translate}}</h2>
   </div>
   <div class="card mb-5 invoice-card">
-   <div class="row px-2 py-3 d-flex flex-row justify-content-between">
-     <div class="col-md-3 cardTitle">
+   <div class="row px-3 py-3 d-flex flex-row justify-content-between">
+     <div class="col-md-3 cardTitle px-1">
        <p> {{'REVENUES.SUBTITLE' | translate}}</p>
      </div>
    </div>
@@ -26,7 +26,10 @@
 
   
   <div class="topPart h-100 d-flex flex-wrap  align-items-center gap-3 px-2">
-    <label class="form-label fw-bolder mt-2 mb-0">{{'SALESREPORT.CHOOSE_REPORT_DURATION' |translate}}</label>
+    <!-- ui_fix -->
+    <label class="form-label fw-bolder mt-2 mb-0 px-3">
+      {{'SALESREPORT.CHOOSE_REPORT_DURATION' |translate}}
+    </label>
     <div class="mx-0"> 
    
       <p-dropdown *ngIf="language=='ar'" #durationDropDown (click)="openModelCheck()" [options]="duration" [(ngModel)]="currentDuration" 

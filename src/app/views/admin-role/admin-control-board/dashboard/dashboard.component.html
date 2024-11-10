@@ -1,8 +1,8 @@
 <!-- ui_fix -->
-<div class="dashboard-container p-0 ps-5 pe-5">
+<div class="dashboard-container p-5">
   <div *ngIf="name" class="pageTitle">
-    <h4  class="pb-2">{{'COMMON.WELCOME' |translate}} {{name}}</h4>
-    <h6> {{ todayDate  | date:'EEEE d, MMMM y':undefined:language }} </h6> 
+    <h4  class="pb-2 pt-2">{{'COMMON.WELCOME' |translate}} {{name}}</h4>
+    <h6 class="pb-2"> {{ todayDate  | date:'EEEE d, MMMM y':undefined:language }} </h6> 
 
   </div>  
   <div  class="cards d-flex flex-wrap gap-3">

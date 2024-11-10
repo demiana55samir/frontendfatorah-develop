@@ -1,10 +1,10 @@
 <!-- ui_fix -->
 <div class="customerStatmentReportCont p-0 ps-5 pe-5">
   <div>
-    <h3 class="fw-bolder fw-600 mb-3">{{'CUSTOMERACCOUNTREPORT.REPORTS' | translate}}</h3>
+    <h3 class="fw-bolder fw-600 mb-3 px-3">{{'CUSTOMERACCOUNTREPORT.REPORTS' | translate}}</h3>
   </div>
    <div class="card borderRadius_20px boxShadow-10">
-      <div class="p-4">
+      <div class="p-3">
         <div class="w-100">
           <h4 class="fw-bold">{{'SIDENAV.PURCHASEREPORTS' | translate}}</h4>
         </div>
@@ -44,19 +44,23 @@
             </div>
 
           </div>
-          <div class="d-flex align-items-center">
-            <app-button-comp [btnType]="'main'" (click)="getReport()" type="submit"  [name]="'CUSTOMERACCOUNTREPORT.GENERATE' | translate" [background_color]="'#1B1464'"></app-button-comp>
+          <div class="d-flex align-items-center mt-4 pt-1 me-3 ">
+            <app-button-comp [btnType]="'main'" (click)="getReport()" 
+            type="submit"  class="my-5"
+            [name]="'CUSTOMERACCOUNTREPORT.GENERATE' | translate"
+             [background_color]="'#1B1464'">
+            </app-button-comp>
           </div>
         </div>
       </div>
       <div class="HLine"></div>
-      <div class="p-4">
+      <div class="p-3">
         <div class="chart mt-4 mb-5 ">
           <div>
               <div class=" card boxShadow-10 borderRadius_20px">
-                <div class="p-4 w-100 mb-3 d-flex flex-wrap justify-content-between align-items-center">
+                <div class="p-3 w-100 mb-3 d-flex flex-wrap justify-content-between align-items-center">
                   <div>
-                    <p class="text">
+                    <p class="text my-4 mt-5 ">
                       {{'SIDENAV.PURCHASEREPORTS' | translate}}
                         <button type="button" class="btn me-2 border-0" placement="top"
                             ngbTooltip="total number of leads">
@@ -64,7 +68,7 @@
                         </button>
                     </p>
                   </div>
-                  <div>
+                  <div class="mt-3">
                     <app-button-comp [btnType]="'main'" (click)="downloadCSV()" style="width: 190px;" type="button"  [name]="'CUSTOMERACCOUNTREPORT.PDF' | translate" [background_color]="'#5C60F5'"></app-button-comp>
                   </div>
         
